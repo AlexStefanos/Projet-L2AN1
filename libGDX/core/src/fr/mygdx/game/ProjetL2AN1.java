@@ -13,7 +13,7 @@ public class ProjetL2AN1 extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("Ban.jpg");
+		img = new Texture("Blackjack.jpg");
 	}
 
 	@Override
