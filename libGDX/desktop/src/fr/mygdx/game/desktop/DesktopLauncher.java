@@ -9,7 +9,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new ProjetL2AN1(), config);
 		config.title = "Drop";
-	    config.width = 474;
-	    config.height = 238;
+		config.useGL30 = true;
+	    config.width = 1280;
+	    config.height = 720;
 	}
 }
