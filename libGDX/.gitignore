@@ -37,8 +37,8 @@ com_crashlytics_export_strings.xml
 .project
 .metadata/
 /android/bin/
-/core/bin/
 /html/bin/
+/core/bin/
 /ios/bin/
 *.tmp
 *.bak
