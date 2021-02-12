@@ -12,6 +12,7 @@ import fr.mygdx.game.splashscreen.Splash;
 public class ProjetL2AN1 extends Game {
 	//SpriteBatch batch;
 	//Texture img;
+	public static final String TITTLE = "BLACKJACK City", VERSION="0.0.0.0";
 	
 	@Override
 	public void create () {
