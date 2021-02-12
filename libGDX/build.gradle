@@ -50,7 +50,6 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        compile fileTree(dir: "../libs", include: "*java")
     }
 }
 
@@ -62,8 +61,8 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-        compile fileTree(dir: "../libs", include: "*java")
-  
+        compile "org.mini2Dx:universal-tween-engine:6.3.3"
+        compile fileTree(dir: '../libs', include: '*jar')
         
     }
 }
