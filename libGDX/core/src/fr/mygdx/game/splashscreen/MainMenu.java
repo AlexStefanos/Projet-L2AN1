@@ -19,7 +19,7 @@ public class MainMenu implements Screen {
 	private TextButton buttonPlay, buttonExit;
 	private Label heading;
 	private Skin skin;
-	private BitmapFont white, black;
+	private BitmapFont black, white;
 	private TextureAtlas atlas;
 	
 	
@@ -31,6 +31,8 @@ public class MainMenu implements Screen {
 		stage = new Stage();
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
+		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -41,10 +43,6 @@ public class MainMenu implements Screen {
 		
 		buttonExit = new TextButton("EXIT", textButtonStyle);
 		buttonExit.pad(20);
-		
-		
-		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
-		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		
 		table.add(buttonExit);
 		table.debug();
