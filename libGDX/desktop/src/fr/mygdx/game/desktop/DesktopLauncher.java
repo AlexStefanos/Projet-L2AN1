@@ -11,6 +11,7 @@ public class DesktopLauncher {
 		config.title = ProjetL2AN1.TITTLE + " v " + ProjetL2AN1.VERSION;
 		config.vSyncEnabled = true;
 		config.useGL30 = true;
+		config.fullscreen = false;
 	    config.width = 1280;
 	    config.height = 720;
 	}

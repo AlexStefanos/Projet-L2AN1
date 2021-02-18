@@ -19,23 +19,17 @@ public class MainMenu implements Screen {
 	private Stage stage;
 	private Table table;
 	private TextButton buttonPlay, buttonExit;
+	private Texture Background;
 	private Label heading;
 	private Skin skin;
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
-	//private SpriteBatch batch;
-	//private Texture background;
-	
-	
-	public void create() {
-		//setScreen(new Splash());
-		
-		//batch = new SpriteBatch();
-		//background = new Texture ("Background.png");
-	}
+	private SpriteBatch batch;
 	
 	@Override
 	public void show() {
+		batch = new SpriteBatch();
+		Background = new Texture("Background.png");
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
@@ -62,14 +56,14 @@ public class MainMenu implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0,0,0,1);
+		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+		batch.begin();
+		batch.draw(Background,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.end();
 		stage.act(delta);
-		
-		//batch.begin();
 		stage.draw();
-		//batch.draw(background, 0, 0);
+		
 		//batch.end();
 
 	}
