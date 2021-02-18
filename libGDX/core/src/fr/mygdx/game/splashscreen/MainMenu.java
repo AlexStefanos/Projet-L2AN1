@@ -100,8 +100,8 @@ public class MainMenu implements Screen {
 
 	@Override
 	public void dispose() {
-		batch.dispose();
-		background.dispose();
+		//batch.dispose();
+		//background.dispose();
 
 	}
 
