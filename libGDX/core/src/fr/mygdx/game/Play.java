@@ -1,9 +1,8 @@
-package fr.mygdx.game.splashscreen;
+package fr.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,23 +11,19 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-import fr.mygdx.game.Options;
-import fr.mygdx.game.Play;
-import fr.mygdx.game.ProjetL2AN1;
-import fr.mygdx.game.Rules;
+import fr.mygdx.game.splashscreen.MainMenu;
 
-public class MainMenu implements Screen {
+public class Play implements Screen {
 
 	private Stage stage;
 	private Table table;
-	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions;
+	private TextButton buttonBack;
 	private Texture Background;
 	private Label heading;
 	private Skin skin;
@@ -55,64 +50,21 @@ public class MainMenu implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
-	
 		
-		buttonPlay = new TextButton("Play", textButtonStyle);
-		buttonPlay.addListener(new ClickListener() {
+		buttonBack = new TextButton("Back", textButtonStyle);
+		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Play());
+				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
 			}
 		});
-		buttonPlay.pad(15f, 40f, 15f, 40f);
-		buttonRules = new TextButton("Rules", textButtonStyle);
-		buttonRules.pad(15f, 36f, 15f, 36f);
-		buttonRules.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Rules());
-			}
-		});
-		buttonOptions = new TextButton("Options", textButtonStyle);
-		buttonOptions.pad(15f, 27.5f, 15f, 27.5f);
-		buttonOptions.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Options());
-			}
-		});
-		buttonExit = new TextButton("Exit", textButtonStyle);
-		buttonExit.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.exit();
-            }
-        });
-		buttonExit.pad(15f, 41f, 15f, 41f);
+		buttonBack.pad(15f, 40f, 15f, 40f);
 		
-		LabelStyle headingStyle = new LabelStyle(black, Color.BLACK);
-		
-		heading = new Label(ProjetL2AN1.TITTLE, headingStyle);
-		heading.setFontScale(1.5f);
-		
-		table.setPosition(1500f, 500f, 0);
-		table.add(heading);
-		table.getCell(heading).spaceBottom(35f);
-		table.row();
-		table.add(buttonPlay);
-		table.getCell(buttonPlay).spaceBottom(20f);
-		table.row();
-		table.add(buttonRules);
-		table.getCell(buttonRules).spaceBottom(20f);
-		table.row();
-		table.add(buttonOptions);
-		table.getCell(buttonOptions).spaceBottom(20f);
-		table.row();
-		table.add(buttonExit);
-		table.getCell(buttonExit).spaceBottom(20f);
+		table.setPosition(1700f, 150f, 0);
+		table.add(buttonBack);
+		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
 		stage.addActor(table);
-				
 	}
 
 	@Override
@@ -129,34 +81,33 @@ public class MainMenu implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void dispose() {
-		stage.dispose();
-		atlas.dispose();
-		skin.dispose();
-		white.dispose();
-		black.dispose();
+		// TODO Auto-generated method stub
+		
 	}
-
+	
+	
 }
+
