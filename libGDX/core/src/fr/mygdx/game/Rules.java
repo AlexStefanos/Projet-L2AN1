@@ -35,7 +35,7 @@ public class Rules implements Screen {
 	public void show() {
 		batch = new SpriteBatch();
 		Background = new Texture("Background.png");
-		atlas = new TextureAtlas("ui/button.pack");
+		atlas = new TextureAtlas("ui/button1.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
