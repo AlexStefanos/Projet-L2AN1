@@ -91,8 +91,7 @@ public class MainMenu implements Screen {
 		buttonExit.pad(15f, 41f, 15f, 41f);
 		
 		LabelStyle headingStyle = new LabelStyle(black, Color.BLACK);
-		
-		heading = new Label(ProjetL2AN1.TITTLE, headingStyle);
+		heading = new Label(ProjetL2AN1.TITLE, headingStyle);
 		heading.setFontScale(1.5f);
 		
 		table.setPosition(1500f, 500f, 0);

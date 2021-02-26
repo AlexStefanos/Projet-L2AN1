@@ -6,7 +6,7 @@ import com.badlogic.gdx.Game;
 import fr.mygdx.game.splashscreen.Splash;
 
 public class ProjetL2AN1 extends Game {
-	public static final String TITTLE = "BLACKJACK City", VERSION="0.0.0.0";
+	public static final String TITLE = "BLACKJACK City", VERSION="0.0.0.0";
 	
 	@Override
 	public void create () {
