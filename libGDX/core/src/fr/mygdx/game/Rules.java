@@ -1,6 +1,7 @@
 package fr.mygdx.game;
 
 import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -21,6 +22,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.splashscreen.MainMenu;
 
+import java.awt.Graphics;
+
 public class Rules implements Screen {
 
 	private Stage stage;
@@ -32,8 +35,9 @@ public class Rules implements Screen {
 	private Label rules;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	private static final String textrules = "La partie oppose individuellement chaque joueur contre la banque. "
-			+ "Le but est de battre le croupier sans dépasser 21. Dès qu'un joueur fait plus que 21, "
+	
+	private static final String textrules = "La partie oppose individuellement chaque joueur contre la banque. \n "
+			+ "Le but est de battre le croupier sans dépasser 21. Dès qu'un joueur fait plus que 21, \n "
 			+ "on dit qu'il ‘ Brûle ‘ ou qu'il ‘ crève ‘ et il perd sa mise initiale. "
 			+ "La valeur des cartes est établie comme suit : de 2 à 9 -> valeur nominale de la carte\\r\\n chaque figure + "
 			+ "le 10 surnommées bûche -> 10 points\\r\\n l'As -> 1 ou 11 (au choix).\\r\\n Un Blackjack est composé d'un As"
@@ -92,7 +96,7 @@ public class Rules implements Screen {
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		Background = new Texture("Background.png");
+		Background = new Texture("Backgroundrules.png");
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
@@ -120,7 +124,7 @@ public class Rules implements Screen {
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
 		
-		LabelStyle rulesStyle = new LabelStyle(black, Color.BLACK);
+		LabelStyle rulesStyle = new LabelStyle(white, Color.WHITE);
 		rules = new Label(textrules, rulesStyle);
 		rules.setFontScale(0.75f);
 		
@@ -143,6 +147,7 @@ public class Rules implements Screen {
 		batch.end();
 		stage.act(delta);
 		stage.draw();
+		
 	}
 
 	@Override

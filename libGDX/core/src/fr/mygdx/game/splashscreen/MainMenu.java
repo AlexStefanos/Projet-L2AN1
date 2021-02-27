@@ -3,6 +3,8 @@ package fr.mygdx.game.splashscreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,6 +37,8 @@ public class MainMenu implements Screen {
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
+	private Music music;
+	private Sound pressbutton;
 	
 	@Override
 	public void show() {
@@ -43,6 +47,8 @@ public class MainMenu implements Screen {
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
+		music = Gdx.audio.newMusic(Gdx.files.internal("Mainmusic.mp3"));
+		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -55,13 +61,19 @@ public class MainMenu implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
-	
 		
+		music.setLooping(true);
+		music.setVolume(0.2f);
+		music.play();
+		
+	
 		buttonPlay = new TextButton("Play", textButtonStyle);
 		buttonPlay.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new Play());
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonPlay.pad(15f, 40f, 15f, 40f);
@@ -71,6 +83,8 @@ public class MainMenu implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new Rules());
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonOptions = new TextButton("Options", textButtonStyle);
@@ -79,6 +93,8 @@ public class MainMenu implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new Options());
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonExit = new TextButton("Exit", textButtonStyle);
@@ -86,6 +102,7 @@ public class MainMenu implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.app.exit();
+                
             }
         });
 		buttonExit.pad(15f, 41f, 15f, 41f);
