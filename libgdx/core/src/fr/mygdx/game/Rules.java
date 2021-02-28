@@ -22,8 +22,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.splashscreen.MainMenu;
 
-import java.awt.Graphics;
-
 public class Rules implements Screen {
 
 	private Stage stage;
@@ -38,11 +36,11 @@ public class Rules implements Screen {
 	private SpriteBatch batch;
 	
 	private static final String textrules = "REGLES PRINCIPALES :\n"
-			    		+ "Voici les règles de base a connaitre pour le Blackjack :\n"
-						+ "La partie oppose individuellement chaque joueur contre la banque. Le but est de battre le croupier sans dépasser 21.\n"
-						+ "Dès qu'un joueur fait plus que 21, on dit qu'il ‘ Brûle ‘ ou qu'il ‘ crève ‘ et il perd sa mise initiale.\n"
-						+ "La valeur des cartes est établie comme suit : -De 2 à 9 -> valeur nominale de la carte l'As -> 1 ou 11 (au choix).\n"
-						+ "                                                   -Chaque figure + le 10 surnommées bûche -> 10 points\n"
+			    		+ "Voici les regles de base a connaitre pour le Blackjack :\n"
+						+ "La partie oppose individuellement chaque joueur contre la banque. Le but est de battre le croupier sans dï¿½passer 21.\n"
+						+ "Dï¿½s qu'un joueur fait plus que 21, on dit qu'il ï¿½ Brï¿½le ï¿½ ou qu'il ï¿½ crï¿½ve ï¿½ et il perd sa mise initiale.\n"
+						+ "La valeur des cartes est ï¿½tablie comme suit : -De 2 ï¿½ 9 -> valeur nominale de la carte l'As -> 1 ou 11 (au choix).\n"
+						+ "                                                   -Chaque figure + le 10 surnommï¿½es bï¿½che -> 10 points\n"
 						+ "                                                   -l'As -> 1 ou 11 (au choix).\n"
 						+ "\n"
 						+ "\n"
@@ -58,24 +56,24 @@ public class Rules implements Screen {
 						+ "\n"
 						+ "\n"
 						+ "\n"
-						+ "Un Blackjack est composé d'une bûche et d'un As ce qui fait 21, si on obtient 21 avec 3 cartes ou plus, ce n'est pas un blackjack mais un 21\n"
+						+ "Un Blackjack est composï¿½ d'une bï¿½che et d'un As ce qui fait 21, si on obtient 21 avec 3 cartes ou plus, ce n'est pas un blackjack mais un 21\n"
 						+ "Dans un premier temps, le(s) joueur(s) mise(nt) puis le croupier distribue 2 cartes visibles a chaque joueur, et 1 carte visible ainsi qu'une\n"
 						+ "carte non visible pour lui. Le premier joueur (celui a la gauche du croupier) commence :\n"
-						+ "Il peut tirer autant de carte qu'il veut tant qu'il ne dépasse pas 21 ou qu'il n'a pas atteint 21. Si il dépasse 21, il perd sa mise initiale, on dit qu'il 'bust'.\n"
-						+ "Il peut décider de s'arreter de tirer des cartes, on dit qu'il 'stay', ainsi chaque joueur joue en tirant tour par tour leurs cartes, et ce jusqu'a ce que tous les\n"
-						+ "joueurs aient joué. Maintenant, c'est au tour du croupier, qui dévoile sa seconde carte et va tirer tant qu'il n'a pas 17 points ou plus.\n"
+						+ "Il peut tirer autant de carte qu'il veut tant qu'il ne dï¿½passe pas 21 ou qu'il n'a pas atteint 21. Si il dï¿½passe 21, il perd sa mise initiale, on dit qu'il 'bust'.\n"
+						+ "Il peut dï¿½cider de s'arreter de tirer des cartes, on dit qu'il 'stay', ainsi chaque joueur joue en tirant tour par tour leurs cartes, et ce jusqu'a ce que tous les\n"
+						+ "joueurs aient jouï¿½. Maintenant, c'est au tour du croupier, qui dï¿½voile sa seconde carte et va tirer tant qu'il n'a pas 17 points ou plus.\n"
 						+ "\n"
-						+ "Le croupier possède en première carte un AS :\n"
-						+ "Ici, l'AS est une carte dangereuse car si la deuxième carte est un 10, le joueur perd dans tous les cas, une option s'offre a lui : l'assurance, cela consiste \n"
-						+ "a payer la moitié de la mise initiale mais le joueur ne peut pas perdre la main(Il perd donc seulement la moitié de sa mise).\n"
+						+ "Le croupier possï¿½de en premiï¿½re carte un AS :\n"
+						+ "Ici, l'AS est une carte dangereuse car si la deuxiï¿½me carte est un 10, le joueur perd dans tous les cas, une option s'offre a lui : l'assurance, cela consiste \n"
+						+ "a payer la moitiï¿½ de la mise initiale mais le joueur ne peut pas perdre la main(Il perd donc seulement la moitiï¿½ de sa mise).\n"
 						+ "\n"
-						+ "Si le joueur pense avoir un bon jeu contre le croupier, a condition qu'il n'ai pas tiré une seul fois pendant la main, il peut prendre\n"
-						+ "le décision de doubler sa mise mais ne pourra tirer qu'une seule carte.\n"
+						+ "Si le joueur pense avoir un bon jeu contre le croupier, a condition qu'il n'ai pas tirï¿½ une seul fois pendant la main, il peut prendre\n"
+						+ "le dï¿½cision de doubler sa mise mais ne pourra tirer qu'une seule carte.\n"
 						+ "\n"
-						+ "Parfois, il arrive que le joueur pioche deux cartes de même valeur (deux 8 ou meme un Valet et une Dame), dans ce cas, il peut décider\n"
-						+ "de 'Split', cela consiste a séparer ses deux cartes pour avoir 2 mains et en meme temps doubler la mise(la mise initiale par main) Il pourra\n"
-						+ "ainsi jouer ses deux mains dans le meme tour, avec les memes règles que précédemment, sauf une :\n"
-						+ "Si le joueur décide de Split deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
+						+ "Parfois, il arrive que le joueur pioche deux cartes de mï¿½me valeur (deux 8 ou meme un Valet et une Dame), dans ce cas, il peut dï¿½cider\n"
+						+ "de 'Split', cela consiste a sï¿½parer ses deux cartes pour avoir 2 mains et en meme temps doubler la mise(la mise initiale par main) Il pourra\n"
+						+ "ainsi jouer ses deux mains dans le meme tour, avec les memes rï¿½gles que prï¿½cï¿½demment, sauf une :\n"
+						+ "Si le joueur dï¿½cide de Split deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
