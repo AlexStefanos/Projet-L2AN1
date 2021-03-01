@@ -30,7 +30,7 @@ public class MainMenu implements Screen {
 
 	private Stage stage;
 	private Table table;
-	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions;
+	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions, buttonMenu;
 	private Texture Background;
 	private Label heading;
 	private Skin skin;
@@ -107,14 +107,18 @@ public class MainMenu implements Screen {
             }
         });
 		buttonExit.pad(15f, 41f, 15f, 41f);
-		
-		LabelStyle headingStyle = new LabelStyle(black, Color.BLACK);
-		heading = new Label(BLACKJACKCity.TITLE, headingStyle);
-		heading.setFontScale(1.5f);
+		buttonMenu = new TextButton("BLACKJACK City", textButtonStyle);
+		buttonMenu.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+			}
+		});
+		buttonMenu.pad(15f,41f, 15f, 41f);
 		
 		table.setPosition(1500f, 500f, 0);
-		table.add(heading);
-		table.getCell(heading).spaceBottom(35f);
+		table.add(buttonMenu);
+		table.getCell(buttonMenu).spaceBottom(20f);
 		table.row();
 		table.add(buttonPlay);
 		table.getCell(buttonPlay).spaceBottom(20f);

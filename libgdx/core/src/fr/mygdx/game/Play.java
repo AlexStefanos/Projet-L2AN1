@@ -87,7 +87,7 @@ public class Play implements Screen {
 		table.add(buttonBack);
 		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
-		tablePlay.setPosition(1500f, 500f, 0);
+		tablePlay.setPosition(1500f, 700f, 0);
 		tablePlay.add(buttonSingle);
 		tablePlay.getCell(buttonSingle).spaceBottom(35f);
 		tablePlay.row();

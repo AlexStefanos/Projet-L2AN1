@@ -25,7 +25,7 @@ public class Options implements Screen {
 
 	private Stage stage;
 	private Table table;
-	private TextButton buttonBack;
+	private TextButton buttonBack, buttonFullscreen;
 	private Texture Background;
 	private Label heading;
 	private Skin skin;
@@ -49,7 +49,7 @@ public class Options implements Screen {
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
-		
+	
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
 		textButtonStyle.down = skin.getDrawable("button.down");
@@ -72,6 +72,13 @@ public class Options implements Screen {
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
+		buttonFullscreen = new TextButton("Fullscreen On/Off", textButtonStyle);
+		buttonFullscreen.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				
+			}
+		}); //pas encore fini
 		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
