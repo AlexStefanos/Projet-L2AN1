@@ -24,8 +24,8 @@ import fr.mygdx.game.splashscreen.MainMenu;
 public class Play implements Screen {
 
 	private Stage stage;
-	private Table table;
-	private TextButton buttonBack;
+	private Table table, tablePlay;
+	private TextButton buttonBack, buttonSingle;
 	private Texture Background;
 	private Label heading;
 	private Skin skin;
@@ -45,6 +45,8 @@ public class Play implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tablePlay = new Table(skin);
+		tablePlay.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
@@ -71,12 +73,26 @@ public class Play implements Screen {
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
-		
+		buttonSingle = new TextButton("SinglePlayer", textButtonStyle);
+		buttonSingle.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new Gameplay());
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonSingle.pad(15f, 40f, 15f, 40f);
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
 		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
+		tablePlay.setPosition(1500f, 500f, 0);
+		tablePlay.add(buttonSingle);
+		tablePlay.getCell(buttonSingle).spaceBottom(35f);
+		tablePlay.row();
 		stage.addActor(table);
+		stage.addActor(tablePlay);
 	}
 
 	@Override

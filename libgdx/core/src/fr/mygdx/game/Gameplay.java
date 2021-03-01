@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -21,34 +20,33 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.splashscreen.MainMenu;
 
-public class Options implements Screen {
+public class Gameplay implements Screen {
 
 	private Stage stage;
-	private Table table;
-	private TextButton buttonBack;
-	private Texture Background;
-	private Label heading;
-	private Skin skin;
-	private BitmapFont black, white;
-	private TextureAtlas atlas;
 	private SpriteBatch batch;
+	private Texture BlackjackTable;
+	private TextButton buttonQuit;
+	private BitmapFont black, white;
+	private Table table;
+	private TextureAtlas atlas;
+	private Skin skin;
 	private Music music;
 	private Sound pressbutton;
 	
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		Background = new Texture("Background.png");
+		BlackjackTable = new Texture("BlackjackTable.png");
 		atlas = new TextureAtlas("ui/button.pack");
-		skin = new Skin(atlas);
 		stage = new Stage();
+		skin = new Skin(atlas);
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
-		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -61,9 +59,8 @@ public class Options implements Screen {
 		music.setVolume(0.15f);
 		music.play();
 		
-		
-		buttonBack = new TextButton("Back", textButtonStyle);
-		buttonBack.addListener(new ClickListener() {
+		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
+		buttonQuit.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
@@ -71,11 +68,10 @@ public class Options implements Screen {
 				music.dispose();
 			}
 		});
-		buttonBack.pad(15f, 40f, 15f, 40f);
-		
+		buttonQuit.pad(15f, 40f, 15f, 40f);
 		table.setPosition(1700f, 150f, 0);
-		table.add(buttonBack);
-		table.getCell(buttonBack).spaceBottom(35f);
+		table.add(buttonQuit);
+		table.getCell(buttonQuit).spaceBottom(35f);
 		table.row();
 		stage.addActor(table);
 	}
@@ -85,10 +81,11 @@ public class Options implements Screen {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(Background,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(BlackjackTable,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
 		stage.act(delta);
 		stage.draw();
+
 	}
 
 	@Override

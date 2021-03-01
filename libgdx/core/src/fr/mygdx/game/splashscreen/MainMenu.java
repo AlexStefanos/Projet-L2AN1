@@ -21,9 +21,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.Options;
 import fr.mygdx.game.Play;
-import fr.mygdx.game.ProjetL2AN1;
 import fr.mygdx.game.Rules;
 
 public class MainMenu implements Screen {
@@ -109,7 +109,7 @@ public class MainMenu implements Screen {
 		buttonExit.pad(15f, 41f, 15f, 41f);
 		
 		LabelStyle headingStyle = new LabelStyle(black, Color.BLACK);
-		heading = new Label(ProjetL2AN1.TITLE, headingStyle);
+		heading = new Label(BLACKJACKCity.TITLE, headingStyle);
 		heading.setFontScale(1.5f);
 		
 		table.setPosition(1500f, 500f, 0);
