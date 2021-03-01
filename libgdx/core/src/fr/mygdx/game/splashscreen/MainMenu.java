@@ -63,7 +63,7 @@ public class MainMenu implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(0.2f);
+		music.setVolume(0.15f);
 		music.play();
 		
 	
@@ -101,7 +101,8 @@ public class MainMenu implements Screen {
 		buttonExit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.exit();
+            	pressbutton.play();
+            	Gdx.app.exit();
                 
             }
         });

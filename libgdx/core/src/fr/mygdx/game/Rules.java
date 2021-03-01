@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -34,6 +36,8 @@ public class Rules implements Screen {
 	private Label rules;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
+	private Sound pressbutton;
+	private Music music;
 	
 	private static final String textrules = "REGLES PRINCIPALES :\n"
 			    		+ "Voici les regles de base a connaitre pour le Blackjack :\n"
@@ -96,12 +100,21 @@ public class Rules implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
+		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
+		music.setLooping(true);
+		music.setVolume(0.15f);
+		music.play();
+		
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);

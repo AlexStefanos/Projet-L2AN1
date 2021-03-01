@@ -3,6 +3,8 @@ package fr.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -30,6 +32,8 @@ public class Play implements Screen {
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
+	private Sound pressbutton;
+	private Music music;
 	
 	@Override
 	public void show() {
@@ -43,6 +47,8 @@ public class Play implements Screen {
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
+		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -50,12 +56,18 @@ public class Play implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
+		music.setLooping(true);
+		music.setVolume(0.15f);
+		music.play();
+		
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
