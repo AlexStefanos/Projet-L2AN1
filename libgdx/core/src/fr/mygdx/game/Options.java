@@ -27,7 +27,6 @@ public class Options implements Screen {
 	private Table table;
 	private TextButton buttonBack, buttonFullscreen;
 	private Texture Background;
-	private Label heading;
 	private Skin skin;
 	private BitmapFont black, white;
 	private TextureAtlas atlas;

@@ -27,7 +27,6 @@ public class Play implements Screen {
 	private Table table, tablePlay;
 	private TextButton buttonBack, buttonSingle;
 	private Texture Background;
-	private Label heading;
 	private Skin skin;
 	private BitmapFont black, white;
 	private TextureAtlas atlas;

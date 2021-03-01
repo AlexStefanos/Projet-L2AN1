@@ -32,7 +32,6 @@ public class MainMenu implements Screen {
 	private Table table;
 	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions, buttonMenu;
 	private Texture Background;
-	private Label heading;
 	private Skin skin;
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
@@ -179,5 +178,4 @@ public class MainMenu implements Screen {
 		white.dispose();
 		black.dispose();
 	}
-
 }
