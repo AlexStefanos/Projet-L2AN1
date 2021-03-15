@@ -79,6 +79,7 @@ public class Options implements Screen {
 		buttonFullscreenOn.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableFullscreen.removeActor(buttonFullscreenOn);
 				tableFullscreen.add(buttonFullscreenOff);
 				tableFullscreen.getCell(buttonFullscreenOff).spaceBottom(20f);
@@ -88,6 +89,7 @@ public class Options implements Screen {
 		buttonFullscreenOff.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableFullscreen.removeActor(buttonFullscreenOff);
 				tableFullscreen.add(buttonFullscreenOn);
 				tableFullscreen.getCell(buttonFullscreenOn).spaceBottom(20f);
@@ -104,6 +106,7 @@ public class Options implements Screen {
 		buttonVolume25.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableVolume.removeActor(buttonVolume25);
 				tableVolume.add(buttonVolume50);
 				tableVolume.getCell(buttonVolume50).spaceBottom(20f);
@@ -113,6 +116,7 @@ public class Options implements Screen {
 		buttonVolume50.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableVolume.removeActor(buttonVolume50);
 				tableVolume.add(buttonVolume75);
 				tableVolume.getCell(buttonVolume75).spaceBottom(20f);
@@ -122,6 +126,7 @@ public class Options implements Screen {
 		buttonVolume75.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableVolume.removeActor(buttonVolume75);
 				tableVolume.add(buttonVolume100);
 				tableVolume.getCell(buttonVolume100).spaceBottom(20f);
@@ -131,6 +136,7 @@ public class Options implements Screen {
 		buttonVolume100.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableVolume.removeActor(buttonVolume100);
 				tableVolume.add(buttonVolume0);
 				tableVolume.getCell(buttonVolume0).spaceBottom(20f);
@@ -140,6 +146,7 @@ public class Options implements Screen {
 		buttonVolume0.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
 				tableVolume.removeActor(buttonVolume0);
 				tableVolume.add(buttonVolume25);
 				tableVolume.getCell(buttonVolume25).spaceBottom(20f);
