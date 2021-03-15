@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.splashscreen.MainMenu;
+import fr.mygdx.game.Options;
 
 public class Rules implements Screen {
 
@@ -102,8 +103,9 @@ public class Rules implements Screen {
 		textButtonStyle.font = black;
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
+		
 		music.setLooping(true);
-		music.setVolume(0.25f);
+		music.setVolume(Options.VOLUME);
 		music.play();
 		
 		

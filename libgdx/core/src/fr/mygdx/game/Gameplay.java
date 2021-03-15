@@ -58,7 +58,7 @@ public class Gameplay implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(0.25f);
+		music.setVolume(Options.VOLUME);
 		music.play();
 		
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
@@ -102,7 +102,6 @@ public class Gameplay implements Screen {
 		batch.end();
 		stage.act(delta);
 		stage.draw();
-
 	}
 
 	@Override

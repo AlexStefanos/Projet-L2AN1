@@ -32,6 +32,7 @@ public class Options implements Screen {
 	private SpriteBatch batch;
 	private Music music;
 	private Sound pressbutton;
+	public static float VOLUME = 0.25f;
 	
 	@Override
 	public void show() {
@@ -60,7 +61,7 @@ public class Options implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(0.25f);
+		music.setVolume(VOLUME);
 		music.play();
 		
 		
@@ -111,6 +112,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume50);
 				tableVolume.getCell(buttonVolume50).spaceBottom(20f);
 				music.setVolume(0.50f);
+				VOLUME = 0.50f;
 			}
 		});
 		buttonVolume50.addListener(new ClickListener() {
@@ -121,6 +123,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume75);
 				tableVolume.getCell(buttonVolume75).spaceBottom(20f);
 				music.setVolume(0.75f);
+				VOLUME = 0.75f;
 			}
 		});
 		buttonVolume75.addListener(new ClickListener() {
@@ -131,6 +134,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume100);
 				tableVolume.getCell(buttonVolume100).spaceBottom(20f);
 				music.setVolume(1.00f);
+				VOLUME = 1.00f;
 			}
 		});
 		buttonVolume100.addListener(new ClickListener() {
@@ -141,6 +145,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume0);
 				tableVolume.getCell(buttonVolume0).spaceBottom(20f);
 				music.setVolume(0.00f);
+				VOLUME = 0.00f;
 			}
 		});
 		buttonVolume0.addListener(new ClickListener() {
@@ -151,6 +156,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume25);
 				tableVolume.getCell(buttonVolume25).spaceBottom(20f);
 				music.setVolume(0.25f);
+				VOLUME = 0.25f;
 			}
 		});
 		buttonVolume25.pad(15f, 41f, 15f, 41f);
@@ -170,6 +176,7 @@ public class Options implements Screen {
 		tableVolume.setPosition(1500f, 620f, 0);
 		tableVolume.add(buttonVolume25);
 		tableVolume.getCell(buttonVolume25).spaceBottom(20f);
+		
 		stage.addActor(table);
 		stage.addActor(tableFullscreen);
 		stage.addActor(tableVolume);
