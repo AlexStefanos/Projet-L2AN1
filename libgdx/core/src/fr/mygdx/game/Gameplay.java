@@ -25,9 +25,9 @@ public class Gameplay implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
 	private Texture BlackjackTable;
-	private TextButton buttonQuit;
+	private TextButton buttonQuit, buttonTirer;
 	private BitmapFont black, white;
-	private Table table;
+	private Table table, tableJeu;
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Music music;
@@ -43,6 +43,8 @@ public class Gameplay implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableJeu = new Table(skin);
+		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
@@ -68,12 +70,27 @@ public class Gameplay implements Screen {
 				music.dispose();
 			}
 		});
+		buttonTirer = new TextButton("Tirer", textButtonStyle);
+		buttonTirer.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+				
+			}
+		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
+		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonQuit);
 		table.getCell(buttonQuit).spaceBottom(35f);
 		table.row();
+		
+		tableJeu.setPosition(800f, 50f, 0);
+		tableJeu.add(buttonTirer);
+		tableJeu.getCell(buttonTirer).spaceBottom(20f);
+		
 		stage.addActor(table);
+		stage.addActor(tableJeu);
 	}
 
 	@Override
