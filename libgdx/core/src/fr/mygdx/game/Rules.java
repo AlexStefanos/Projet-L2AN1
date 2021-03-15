@@ -103,7 +103,7 @@ public class Rules implements Screen {
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
 		music.setLooping(true);
-		music.setVolume(0.15f);
+		music.setVolume(0.25f);
 		music.play();
 		
 		

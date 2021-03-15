@@ -62,7 +62,7 @@ public class MainMenu implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(0.15f);
+		music.setVolume(0.25f);
 		music.play();
 		
 	

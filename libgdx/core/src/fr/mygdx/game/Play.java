@@ -58,7 +58,7 @@ public class Play implements Screen {
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 		music.setLooping(true);
-		music.setVolume(0.15f);
+		music.setVolume(0.25f);
 		music.play();
 		
 		
