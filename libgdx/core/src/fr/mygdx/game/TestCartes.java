@@ -9,31 +9,22 @@ public class TestCartes {
     	
     	Cartes p1 = new Cartes(a, paquet);
     	Cartes p2 = new Cartes(a, paquet);
+    	Cartes p3 = new Cartes(a, paquet);
+    	Cartes p4 = new Cartes(a, paquet);
     	Cartes croupier = new Cartes(a, paquet);
     	
-    	
-    	//paquet.afficher();
     	paquet.conversion();
     	paquet.shuffle();
     	//paquet.afficher();
     	croupier.croupierdep();
     	p1.maindep();
-    	p1.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
-    	croupier.croupiertirer(p1.total());
-    	//p1.total();
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     	//p2.maindep();
-       	//p2.total();
-    	
-    	
-    	
+    	//p3.maindep();
+    	//p4.maindep();
+    	p1.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
+    	//p2.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
+    	//p3.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
+    	//p4.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
+    	croupier.croupiertirer(p1.total());  	
     }
 }

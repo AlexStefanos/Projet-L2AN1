@@ -46,7 +46,7 @@ private boolean tirer;
 	 }
 	        
 	        public void tirerjoueur(ArrayList<Integer> maincroupier, int totalcroupier) {
-	            while (tirer) {
+	            while (tirer && total() < 21) {
 	        	/*String reponse;
 	    	    Scanner clavier = new Scanner(System.in);
 	    	    System.out.print("Voulez vous tirer une carte : \n");
@@ -61,10 +61,7 @@ private boolean tirer;
 	    	        }
 	    	        if (a != 1) {
 	    	    	    tirer = false;
-	    	        }
-	    	        
-	    	    
-	    	    
+	    	        }   
 	        }
 	        
 	       

@@ -24,7 +24,7 @@ public class Gameplay implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable;
+	private Texture BlackjackTable, FondCarteBleu;
 	private TextButton buttonQuit, buttonTirer;
 	private BitmapFont black, white;
 	private Table table, tableJeu;
@@ -37,6 +37,7 @@ public class Gameplay implements Screen {
 	public void show() {
 		batch = new SpriteBatch();
 		BlackjackTable = new Texture("BlackjackTable.png");
+		FondCarteBleu = new Texture("Large/Back Blue 2.png");
 		atlas = new TextureAtlas("ui/button.pack");
 		stage = new Stage();
 		skin = new Skin(atlas);
@@ -70,6 +71,7 @@ public class Gameplay implements Screen {
 				music.dispose();
 			}
 		});
+		
 		buttonTirer = new TextButton("Tirer", textButtonStyle);
 		buttonTirer.addListener(new ClickListener() {
 			@Override
@@ -97,9 +99,11 @@ public class Gameplay implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
 		batch.draw(BlackjackTable,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
+		
 		stage.act(delta);
 		stage.draw();
 	}

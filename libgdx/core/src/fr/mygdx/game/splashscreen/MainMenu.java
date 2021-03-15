@@ -139,9 +139,11 @@ public class MainMenu implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
 		batch.draw(Background,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
+		
 		stage.act(delta);
 		stage.draw();
 	}

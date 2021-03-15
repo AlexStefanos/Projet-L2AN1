@@ -169,10 +169,12 @@ public class Options implements Screen {
 		table.add(buttonBack);
 		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
+		
 		tableFullscreen.setPosition(1500f, 700f, 0);
 		tableFullscreen.add(buttonFullscreenOn);
 		tableFullscreen.getCell(buttonFullscreenOn).spaceBottom(20f);
 		tableFullscreen.row();
+		
 		tableVolume.setPosition(1500f, 620f, 0);
 		tableVolume.add(buttonVolume25);
 		tableVolume.getCell(buttonVolume25).spaceBottom(20f);
