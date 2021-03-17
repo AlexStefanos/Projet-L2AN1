@@ -25,7 +25,7 @@ public class Gameplay implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
 	private Texture BlackjackTable, FondCarteBleu;
-	private TextButton buttonQuit, buttonTirer;
+	private TextButton buttonQuit, buttonTirer, buttonTirer2, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
 	private Table table, tableJeu;
 	private TextureAtlas atlas;
@@ -71,23 +71,32 @@ public class Gameplay implements Screen {
 				music.dispose();
 			}
 		});
+		buttonQuit.pad(15f, 40f, 15f, 40f);
 		
 		buttonTirer = new TextButton("Tirer", textButtonStyle);
 		buttonTirer.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				
 			}
 		});
-		buttonQuit.pad(15f, 40f, 15f, 40f);
+		buttonTirer.pad(15f, 40f, 15f, 40f);
+		
+		buttonTirer2 = new TextButton("Tirer", textButtonStyle);
+		buttonTirer2.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+			}
+		});
+		buttonTirer2.pad(15f, 40f, 15f, 40f);
 		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonQuit);
 		table.getCell(buttonQuit).spaceBottom(35f);
 		table.row();
 		
-		tableJeu.setPosition(800f, 50f, 0);
+		tableJeu.setPosition(500f, 50f, 0);
 		tableJeu.add(buttonTirer);
 		tableJeu.getCell(buttonTirer).spaceBottom(20f);
 		
@@ -102,6 +111,17 @@ public class Gameplay implements Screen {
 		
 		batch.begin();
 		batch.draw(BlackjackTable,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		if (buttonTirer.isChecked()) {
+			batch.draw(FondCarteBleu, 500f, 500f, 143f, 241f);
+			tableJeu.removeActor(buttonTirer);
+			tableJeu.add(buttonTirer2);
+			tableJeu.getCell(buttonTirer2).spaceBottom(20f);
+		}
+		
+		if (buttonTirer2.isChecked()) {
+			batch.draw(FondCarteBleu, 800f, 500f, 143f, 241f);
+		}
 		batch.end();
 		
 		stage.act(delta);
