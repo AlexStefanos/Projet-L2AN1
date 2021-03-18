@@ -25,7 +25,7 @@ public class Play implements Screen {
 
 	private Stage stage;
 	private Table table, tablePlay;
-	private TextButton buttonBack, buttonSingle;
+	private TextButton buttonBack, buttonSingle, buttonDuo, buttonTrio, buttonQuadra;
 	private Texture Background;
 	private Skin skin;
 	private BitmapFont black, white;
@@ -73,6 +73,7 @@ public class Play implements Screen {
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
+		
 		buttonSingle = new TextButton("SinglePlayer", textButtonStyle);
 		buttonSingle.addListener(new ClickListener() {
 			@Override
@@ -83,14 +84,59 @@ public class Play implements Screen {
 			}
 		});
 		buttonSingle.pad(15f, 40f, 15f, 40f);
+		
+		buttonDuo = new TextButton("DuoPlayers", textButtonStyle);
+		buttonDuo.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new DuoPlayers());
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonDuo.pad(15f, 40f, 15f, 40f);
+		
+		buttonTrio = new TextButton("TrioPlayers", textButtonStyle);
+		buttonTrio.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new TrioPlayers());
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonTrio.pad(15f, 40f, 15f, 40f);
+		
+		buttonQuadra = new TextButton("QuadraPlayers", textButtonStyle);
+		buttonQuadra.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				((Game) Gdx.app.getApplicationListener()).setScreen(new QuadraPlayers());
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonQuadra.pad(15f, 40f, 15f, 40f);
+		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
 		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
-		tablePlay.setPosition(1500f, 700f, 0);
+		
+		tablePlay.setPosition(1500f, 500f, 0);
 		tablePlay.add(buttonSingle);
-		tablePlay.getCell(buttonSingle).spaceBottom(35f);
+		tablePlay.getCell(buttonSingle).spaceBottom(20f);
 		tablePlay.row();
+		tablePlay.add(buttonDuo);
+		tablePlay.getCell(buttonDuo).spaceBottom(20f);
+		tablePlay.row();
+		tablePlay.add(buttonTrio);
+		tablePlay.getCell(buttonTrio).spaceBottom(20f);
+		tablePlay.row();
+		tablePlay.add(buttonQuadra);
+		tablePlay.getCell(buttonQuadra).spaceBottom(20f);
+		tablePlay.row();
+		
 		stage.addActor(table);
 		stage.addActor(tablePlay);
 		}
@@ -99,9 +145,11 @@ public class Play implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		batch.begin();
 		batch.draw(Background,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.end();
+		
 		stage.act(delta);
 		stage.draw();
 	}
