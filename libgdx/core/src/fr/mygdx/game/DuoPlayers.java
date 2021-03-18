@@ -30,14 +30,14 @@ public class DuoPlayers implements Screen{
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
-	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
+	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
-	private Table table, tableJeu;
+	private Table table, tableJeu, tableJeu2;
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Music music;
 	private Sound pressbutton;
-	private int clique;
+	private int cliqueJ1, cliqueJ2;
 		
 	/*int a = 1;
 	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
@@ -55,13 +55,16 @@ public class DuoPlayers implements Screen{
 		atlas = new TextureAtlas("ui/button.pack");
 		stage = new Stage();
 		skin = new Skin(atlas);
-		clique = 0;
+		cliqueJ1 = 0;
+		cliqueJ2 = 0;
 		Gdx.input.setInputProcessor(stage);
 		
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu = new Table(skin);
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableJeu2 = new Table(skin);
+		tableJeu2.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
@@ -153,13 +156,13 @@ public class DuoPlayers implements Screen{
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
 			
-		buttonJouer = new TextButton("Jouer", textButtonStyle);
+		buttonJouer = new TextButton("Play", textButtonStyle);
 		buttonJouer.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				tableJeu.removeActor(buttonJouer);
-				tableJeu.add(buttonTirer);
+				tableJeu.add(buttonTirerJ1);
 				/*paquet.generateur();		|
 				paquet.conversion();		|
 				paquet.shuffle();			| Lancer la generation de paquet et des mains de depart lorsque l'on appuie sur Jouer  
@@ -169,26 +172,36 @@ public class DuoPlayers implements Screen{
 		});
 		buttonJouer.pad(15f, 40f, 15f, 40f);
 			
-		buttonTirer = new TextButton("Tirer", textButtonStyle);
-		buttonTirer.addListener(new ClickListener() {
+		buttonTirerJ1 = new TextButton("Draw", textButtonStyle);
+		buttonTirerJ1.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				clique++;
+				cliqueJ1++;
+			}
+		});
+		
+		buttonTirerJ2 = new TextButton("Draw", textButtonStyle);
+		buttonTirerJ2.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+				cliqueJ2++;
 			}
 		});
 			
-		table.setPosition(1700f, 150f, 0);
+		table.setPosition(1700f, 50f, 0);
 		table.add(buttonQuit);
-		table.getCell(buttonQuit).spaceBottom(35f);
 		table.row();
 			
 		tableJeu.setPosition(500f, 50f, 0);
 		tableJeu.add(buttonJouer);
 			
+		tableJeu2.setPosition(1030f, 50f, 0);
 		
 		stage.addActor(table);
 		stage.addActor(tableJeu);
+		stage.addActor(tableJeu2);
 	}
 
 	@Override
@@ -211,38 +224,88 @@ public class DuoPlayers implements Screen{
 			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
 		}
-		if (clique >= 1) {
-			batch.draw(AsCoeur, 750f, 140f, 103f, 138f);
+		if (cliqueJ1 >= 1) {
+			batch.draw(AsCoeur, 740f, 140f, 103f, 138f);
 		}	
-		if (clique >=2) {
-			batch.draw(AsCoeur, 780f, 110f, 103f, 138f);
+		
+		if (cliqueJ1 >= 2) {
+			batch.draw(AsCoeur, 770f, 110f, 103f, 138f);
 		}
-		if (clique >= 3) {
-			batch.draw(AsCoeur, 900f, 200f, 103f, 138f);
+		
+		if (cliqueJ1 >= 3) {
+			batch.draw(AsCoeur, 800f, 80f, 103f, 138f);
 		}
-		if (clique >= 4) {
-			batch.draw(AsCoeur, 1245f, 200f, 103f, 138f);
-				
+		
+		if (cliqueJ1 >= 4) {
+			batch.draw(AsCoeur, 520f, 172f, 103f, 138f);
 		}	
-		if (clique >= 5) {
-			batch.draw(AsCoeur, 1590f, 200f, 103f, 138f);
-		}		
-		if (clique >= 6) {
-			batch.draw(AsCoeur, 800f, 500f, 103f, 138f);
-				
+		
+		if (cliqueJ1 >= 5) {
+			batch.draw(AsCoeur, 550f, 140f, 103f, 138f);
 		}	
-		if (clique >= 7) {
-			batch.draw(AsCoeur, 1000f, 500f, 103f, 138f);
-		}		
-		if (clique >= 8) {
-			batch.draw(AsCoeur, 1200f, 500f, 103f, 138f);
+		
+		if (cliqueJ1 >= 6) {
+			batch.draw(AsCoeur, 580f, 110f, 103f, 138f);	
 		}	
-		if (clique >= 9){
-			batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
+		
+		if (cliqueJ1 >= 7) {
+			batch.draw(AsCoeur, 610f, 80f, 103f, 138f);
 		}
-		if (clique >= 10) {
-			batch.draw(AsCoeur, 1600f, 500f, 103f, 138f);
+		
+		if (cliqueJ1 >= 8) {
+			batch.draw(AsCoeur, 350f, 172f, 103f, 138f);
 		}
+		
+		if (cliqueJ1 >= 9){
+			batch.draw(AsCoeur, 380f, 140f, 103f, 138f);
+		}
+		
+		if (cliqueJ1 >= 10) {
+			batch.draw(AsCoeur, 410f, 110f, 103f, 138f);
+			tableJeu.removeActor(buttonTirerJ1);
+			tableJeu2.add(buttonTirerJ2);
+		}
+		
+		if (cliqueJ2 >= 1) {
+			batch.draw(AsCoeur, 1155f, 140f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 2) {
+			batch.draw(AsCoeur, 1185f, 110f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 3) {
+			batch.draw(AsCoeur, 1215f, 80f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 4) {
+			batch.draw(AsCoeur, 1345f, 172f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 5) {
+			batch.draw(AsCoeur, 1375f, 140f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 6) {
+			batch.draw(AsCoeur, 1405f, 110f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 7) {
+			batch.draw(AsCoeur, 1435f, 80f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 8) {
+			batch.draw(AsCoeur, 1565f, 172f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 9) {
+			batch.draw(AsCoeur, 1595f, 140f, 103f, 138f);
+		}
+		
+		if (cliqueJ2 >= 10) {
+			batch.draw(AsCoeur, 1625f, 110f, 103f, 138f);
+		}
+		
 		batch.end();
 			
 		stage.act(delta);
