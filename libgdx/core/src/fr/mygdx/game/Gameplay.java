@@ -29,7 +29,8 @@ public class Gameplay implements Screen {
 	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarrot, DeuxCarrot, TroisCarrot, QuatreCarrot, 
 	CinqCarrot, SixCarrot, SeptCarrot, HuitCarrot, NeufCarrot, DixCarrot, ValetCarrot, DameCarrot, RoiCarrot, AsCoeur, DeuxCoeur, TroisCoeur,
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
-	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, JokerRed;
+	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
+	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
 	private TextButton buttonQuit, buttonTirer, buttonTirer2, buttonTirer3, buttonTirer4, buttonTirer5, buttonTirer6, buttonTirer7, 
 	buttonTirer8, buttonTirer9, buttonTirer10, buttonTirer11, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
@@ -144,6 +145,13 @@ public class Gameplay implements Screen {
 		RoiPique = new Texture("Large/Spades 13.png");
 		JokerBlack = new Texture("Large/Joker Black.png");
 		JokerRed = new Texture("Large/Joker Red.png");
+		JetonBleu = new Texture("LargeChips/chip_blue.png");
+		JetonBleuClair = new Texture("LargeChips/chip_lightblue.png");
+		JetonRouge = new Texture("LargeChips/chip_red.png");
+		JetonBlanc = new Texture("LargeChips/chip_white.png");
+		JetonVert = new Texture("LargeChips/chip_green.png");
+		JetonBeige = new Texture("LargeChips/chip_biege.png");
+		JetonJaune = new Texture("LargeChips/chip_yellow.png");
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -313,59 +321,70 @@ public class Gameplay implements Screen {
 			tableJeu.removeActor(buttonJouer);
 			tableJeu2.add(buttonTirer);
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 180f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 181f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 525f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 870f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 1216f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 1565f, 230f, 103f, 138f);
+			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
+			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
+			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
+			batch.draw(JetonBleu, 953f, 1005f, 65f, 29f);
+			batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
+			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
+			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
 		}
 		
 		if (buttonTirer.isChecked()) {
-			batch.draw(AsCoeur, 210, 200f, 103f, 138f);
+			batch.draw(AsCoeur, 210f, 200f, 103f, 138f);
 			tableJeu2.removeActor(buttonTirer);
 			tableJeu3.add(buttonTirer2);
 		}
 		
 		if (buttonTirer2.isChecked()) {
-			batch.draw(AsCoeur, 400f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 555f, 200f, 103f, 138f);
 			tableJeu3.removeActor(buttonTirer2);
 			tableJeu4.add(buttonTirer3);
 		}
 
 		if (buttonTirer3.isChecked()) {
-			batch.draw(AsCoeur, 550f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 900f, 200f, 103f, 138f);
 			tableJeu4.removeActor(buttonTirer3);
 			tableJeu5.add(buttonTirer4);
 		}
 
 		if (buttonTirer4.isChecked()) {
-			batch.draw(AsCoeur, 700f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 1245f, 200f, 103f, 138f);
 			tableJeu5.removeActor(buttonTirer4);
 			tableJeu6.add(buttonTirer5);
 		}
 		
 		if (buttonTirer5.isChecked()) {
-			batch.draw(AsCoeur, 850f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 1590f, 200f, 103f, 138f);
 			tableJeu6.removeActor(buttonTirer5);
 			tableJeu7.add(buttonTirer6);
 		}
 		
 		if (buttonTirer6.isChecked()) {
-			batch.draw(AsCoeur, 1000f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 800f, 500f, 103f, 138f);
 			tableJeu7.removeActor(buttonTirer6);
 			tableJeu8.add(buttonTirer7);
 		}
 		
 		if (buttonTirer7.isChecked()) {
-			batch.draw(AsCoeur, 1150f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 1000f, 500f, 103f, 138f);
 			tableJeu8.removeActor(buttonTirer7);
 			tableJeu9.add(buttonTirer8);
 		}
 		
 		if (buttonTirer8.isChecked()) {
-			batch.draw(AsCoeur, 1300f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 1200f, 500f, 103f, 138f);
 			tableJeu9.removeActor(buttonTirer8);
 			tableJeu10.add(buttonTirer9);
 		}
 		
 		if (buttonTirer9.isChecked()) {
-			batch.draw(AsCoeur, 1450f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
 			tableJeu10.removeActor(buttonTirer9);
 			tableJeu11.add(buttonTirer10);
 		}
@@ -376,6 +395,9 @@ public class Gameplay implements Screen {
 			tableJeu12.add(buttonQuit);
 		}
 		
+		/* batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
+		batch.draw(AsCoeur, 1600f, 500f, 103f, 138f);
+		 */
 		batch.end();
 		
 		stage.act(delta);
