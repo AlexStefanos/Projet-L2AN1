@@ -21,7 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import fr.mygdx.game.splashscreen.MainMenu;
 import fr.mygdx.game.blackjack.*;
 
-public class Gameplay implements Screen {
+public class SinglePlayer implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
@@ -202,7 +202,6 @@ public class Gameplay implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
 			batch.draw(AsCoeur, 181f, 230f, 103f, 138f);
 			batch.draw(AsCoeur, 525f, 230f, 103f, 138f);
