@@ -31,15 +31,14 @@ public class Gameplay implements Screen {
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
-	private TextButton buttonQuit, buttonTirer, buttonTirer2, buttonTirer3, buttonTirer4, buttonTirer5, buttonTirer6, buttonTirer7, 
-	buttonTirer8, buttonTirer9, buttonTirer10, buttonTirer11, buttonJouer, buttonMiser;
+	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
-	private Table table, tableJeu, tableJeu2, tableJeu3, tableJeu4, tableJeu5, tableJeu6, tableJeu7, tableJeu8, tableJeu9, tableJeu10, 
-	tableJeu11, tableJeu12;
+	private Table table, tableJeu;
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Music music;
 	private Sound pressbutton;
+	private int clique;
 	
 	/*int a = 1;
 	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
@@ -57,34 +56,14 @@ public class Gameplay implements Screen {
 		atlas = new TextureAtlas("ui/button.pack");
 		stage = new Stage();
 		skin = new Skin(atlas);
+		clique = 0;
 		Gdx.input.setInputProcessor(stage);
 	
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu = new Table(skin);
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu2 = new Table(skin);
-		tableJeu2.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu3 = new Table(skin);
-		tableJeu3.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu4 = new Table(skin);
-		tableJeu4.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu5 = new Table(skin);
-		tableJeu5.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu6 = new Table(skin);
-		tableJeu6.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu7 = new Table(skin);
-		tableJeu7.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu8 = new Table(skin);
-		tableJeu8.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu9 = new Table(skin);
-		tableJeu9.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu10 = new Table(skin);
-		tableJeu10.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu11 = new Table(skin);
-		tableJeu11.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu12 = new Table(skin);
-		tableJeu12.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
@@ -180,6 +159,8 @@ public class Gameplay implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
+				tableJeu.removeActor(buttonJouer);
+				tableJeu.add(buttonTirer);
 				/*paquet.generateur();		|
 				paquet.conversion();		|
 				paquet.shuffle();			| Lancer la generation de paquet et des mains de depart lorsque l'on appuie sur Jouer  
@@ -194,87 +175,10 @@ public class Gameplay implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
+				clique++;
 			}
 		});
 		
-		buttonTirer2 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer2.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer3 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer3.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer4 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer4.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer5 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer5.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer6 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer6.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer7 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer7.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer8 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer8.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer9 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer9.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		
-		buttonTirer10 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer10.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});	
-		buttonTirer11 = new TextButton("Tirer", textButtonStyle);
-		buttonTirer11.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});		
 		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonQuit);
@@ -283,31 +187,11 @@ public class Gameplay implements Screen {
 		
 		tableJeu.setPosition(500f, 50f, 0);
 		tableJeu.add(buttonJouer);
-		tableJeu2.setPosition(500f, 50f, 0);
-		tableJeu3.setPosition(500f, 50f, 0);
-		tableJeu4.setPosition(500f, 50f, 0);
-		tableJeu5.setPosition(500f, 50f, 0);
-		tableJeu6.setPosition(500f, 50f, 0);
-		tableJeu7.setPosition(500f, 50f, 0);
-		tableJeu8.setPosition(500f, 50f, 0);
-		tableJeu9.setPosition(500f, 50f, 0);
-		tableJeu10.setPosition(500f, 50f, 0);
-		tableJeu11.setPosition(500f, 50f, 0);
-		tableJeu12.setPosition(500f, 50f, 0);
+		
 		
 		stage.addActor(table);
 		stage.addActor(tableJeu);
-		stage.addActor(tableJeu2);
-		stage.addActor(tableJeu3);
-		stage.addActor(tableJeu4);
-		stage.addActor(tableJeu5);
-		stage.addActor(tableJeu6);
-		stage.addActor(tableJeu7);
-		stage.addActor(tableJeu8);
-		stage.addActor(tableJeu9);
-		stage.addActor(tableJeu10);
-		stage.addActor(tableJeu11);
-		stage.addActor(tableJeu12);
+		
 	}
 
 	@Override
@@ -318,8 +202,7 @@ public class Gameplay implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			tableJeu.removeActor(buttonJouer);
-			tableJeu2.add(buttonTirer);
+			
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
 			batch.draw(AsCoeur, 181f, 230f, 103f, 138f);
 			batch.draw(AsCoeur, 525f, 230f, 103f, 138f);
@@ -335,64 +218,46 @@ public class Gameplay implements Screen {
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
 		}
 		
-		if (buttonTirer.isChecked()) {
+		if (clique >= 1) {
 			batch.draw(AsCoeur, 210f, 200f, 103f, 138f);
-			tableJeu2.removeActor(buttonTirer);
-			tableJeu3.add(buttonTirer2);
 		}
 		
-		if (buttonTirer2.isChecked()) {
+		if (clique >=2) {
 			batch.draw(AsCoeur, 555f, 200f, 103f, 138f);
-			tableJeu3.removeActor(buttonTirer2);
-			tableJeu4.add(buttonTirer3);
 		}
 
-		if (buttonTirer3.isChecked()) {
+		if (clique >= 3) {
 			batch.draw(AsCoeur, 900f, 200f, 103f, 138f);
-			tableJeu4.removeActor(buttonTirer3);
-			tableJeu5.add(buttonTirer4);
 		}
 
-		if (buttonTirer4.isChecked()) {
+		if (clique >= 4) {
 			batch.draw(AsCoeur, 1245f, 200f, 103f, 138f);
-			tableJeu5.removeActor(buttonTirer4);
-			tableJeu6.add(buttonTirer5);
+			
 		}
 		
-		if (buttonTirer5.isChecked()) {
+		if (clique >= 5) {
 			batch.draw(AsCoeur, 1590f, 200f, 103f, 138f);
-			tableJeu6.removeActor(buttonTirer5);
-			tableJeu7.add(buttonTirer6);
 		}
 		
-		if (buttonTirer6.isChecked()) {
+		if (clique >= 6) {
 			batch.draw(AsCoeur, 800f, 500f, 103f, 138f);
-			tableJeu7.removeActor(buttonTirer6);
-			tableJeu8.add(buttonTirer7);
+			
 		}
 		
-		if (buttonTirer7.isChecked()) {
+		if (clique >= 7) {
 			batch.draw(AsCoeur, 1000f, 500f, 103f, 138f);
-			tableJeu8.removeActor(buttonTirer7);
-			tableJeu9.add(buttonTirer8);
 		}
 		
-		if (buttonTirer8.isChecked()) {
+		if (clique >= 8) {
 			batch.draw(AsCoeur, 1200f, 500f, 103f, 138f);
-			tableJeu9.removeActor(buttonTirer8);
-			tableJeu10.add(buttonTirer9);
 		}
 		
-		if (buttonTirer9.isChecked()) {
+		if (clique >= 9){
 			batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
-			tableJeu10.removeActor(buttonTirer9);
-			tableJeu11.add(buttonTirer10);
 		}
 		
-		if (buttonTirer10.isChecked()) {
+		if (clique >= 10) {
 			batch.draw(AsCoeur, 1600f, 500f, 103f, 138f);
-			tableJeu11.removeActor(buttonTirer10);
-			tableJeu12.add(buttonQuit);
 		}
 		
 		/* batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
