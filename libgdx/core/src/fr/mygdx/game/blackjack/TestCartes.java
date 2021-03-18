@@ -1,5 +1,4 @@
-package fr.mygdx.game;
-
+package fr.mygdx.game.blackjack;
 
 public class TestCartes {
 	public static void main(String[] args) {

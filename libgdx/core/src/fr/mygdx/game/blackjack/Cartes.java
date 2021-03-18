@@ -1,13 +1,13 @@
-package fr.mygdx.game;
+package fr.mygdx.game.blackjack;
 
 import java.util.*;
 
 public class Cartes {
 
-private ArrayList<Integer> mains;
-private int nbparticipants;
-private Deck paquet;
-private boolean tirer;
+public ArrayList<Integer> mains;
+public int nbparticipants;
+public Deck paquet;
+public boolean tirer;
 	
 	public Cartes(int nbparticipants, Deck paquet) {
 		

@@ -1,4 +1,4 @@
-package fr.mygdx.game;
+package fr.mygdx.game.blackjack;
 
 import java.util.ArrayList;
 import java.util.Collections;
