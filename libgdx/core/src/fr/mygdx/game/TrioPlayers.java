@@ -30,14 +30,14 @@ public class TrioPlayers implements Screen {
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
-	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
+	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonTirerJ3, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
-	private Table table, tableJeu;
+	private Table table, tableJeu, tableJeu2, tableJeu3;
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Music music;
 	private Sound pressbutton;
-	private int clique;
+	private int cliqueJ1, cliqueJ2, cliqueJ3;
 		
 	/*int a = 1;
 	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
@@ -55,13 +55,19 @@ public class TrioPlayers implements Screen {
 		atlas = new TextureAtlas("ui/button.pack");
 		stage = new Stage();
 		skin = new Skin(atlas);
-		clique = 0;
+		cliqueJ1 = 0;
+		cliqueJ2 = 0;
+		cliqueJ3 = 0;
 		Gdx.input.setInputProcessor(stage);
 		
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu = new Table(skin);
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableJeu2 = new Table(skin);
+		tableJeu2.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableJeu3 = new Table(skin);
+		tableJeu3.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
@@ -153,13 +159,13 @@ public class TrioPlayers implements Screen {
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
 			
-		buttonJouer = new TextButton("Jouer", textButtonStyle);
+		buttonJouer = new TextButton("Play", textButtonStyle);
 		buttonJouer.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				tableJeu.removeActor(buttonJouer);
-				tableJeu.add(buttonTirer);
+				tableJeu.add(buttonTirerJ1);
 				/*paquet.generateur();		|
 				paquet.conversion();		|
 				paquet.shuffle();			| Lancer la generation de paquet et des mains de depart lorsque l'on appuie sur Jouer  
@@ -169,25 +175,49 @@ public class TrioPlayers implements Screen {
 		});
 		buttonJouer.pad(15f, 40f, 15f, 40f);
 			
-		buttonTirer = new TextButton("Tirer", textButtonStyle);
-		buttonTirer.addListener(new ClickListener() {
+		buttonTirerJ1 = new TextButton("Draw Player 1", textButtonStyle);
+		buttonTirerJ1.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				clique++;
+				cliqueJ1++;
 			}
 		});
-				
-		table.setPosition(1700f, 150f, 0);
+		buttonTirerJ1.pad(15f, 40f, 15f, 40f);
+		
+		buttonTirerJ2 = new TextButton("Draw Player 2", textButtonStyle);
+		buttonTirerJ2.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+				cliqueJ2++;
+			}
+		});
+		buttonTirerJ2.pad(15f, 40f, 15f, 40f);	
+		
+		buttonTirerJ3 = new TextButton("Draw Player 3", textButtonStyle);
+		buttonTirerJ3.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+				cliqueJ3++;
+			}
+		});
+		buttonTirerJ3.pad(15f, 40f, 15f, 40f);	
+		
+		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
-		table.getCell(buttonQuit).spaceBottom(35f);
-		table.row();
 			
-		tableJeu.setPosition(500f, 50f, 0);
+		tableJeu.setPosition(220f, 600f, 0);
 		tableJeu.add(buttonJouer);
+		
+		tableJeu2.setPosition(220f, 600f, 0);
+		tableJeu3.setPosition(220f, 600f, 0);
 
 		stage.addActor(table);
 		stage.addActor(tableJeu);
+		stage.addActor(tableJeu2);
+		stage.addActor(tableJeu3);
 	}
 
 	@Override
@@ -199,11 +229,10 @@ public class TrioPlayers implements Screen {
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 181f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 525f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 870f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 1216f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 1565f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 1268f, 183f, 103f, 138f); //1ere Carte J1	
+			batch.draw(AsCoeur, 920f, 183f, 103f, 138f); //1ere Carte J2
+			batch.draw(AsCoeur, 565f, 183f, 103f, 138f); //1ere Carte J3
+			batch.draw(AsCoeur, 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -212,37 +241,102 @@ public class TrioPlayers implements Screen {
 			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
 		}	
-		if (clique >= 1) {
-			batch.draw(AsCoeur, 210f, 200f, 103f, 138f);
-		}
-			
-		if (clique >=2) {
-			batch.draw(AsCoeur, 555f, 200f, 103f, 138f);
-		}
-		if (clique >= 3) {
-			batch.draw(AsCoeur, 900f, 200f, 103f, 138f);
-		}
-		if (clique >= 4) {
-			batch.draw(AsCoeur, 1245f, 200f, 103f, 138f);	
-		}
-		if (clique >= 5) {
-			batch.draw(AsCoeur, 1590f, 200f, 103f, 138f);
-		}
-		if (clique >= 6) {
-			batch.draw(AsCoeur, 800f, 500f, 103f, 138f);		
+		if (cliqueJ1 >= 1) {
+			batch.draw(AsCoeur, 1300f, 150f, 103f, 138f);
+			if (cliqueJ1 >=2) {
+				batch.draw(AsCoeur, 1330f, 120f, 103f, 138f);
+				if (cliqueJ1 >= 3) {
+					batch.draw(AsCoeur, 1360f, 90f, 103f, 138f);
+					if (cliqueJ1 >= 4) {
+						batch.draw(AsCoeur, 1470f, 183f, 103f, 138f);
+						if (cliqueJ1 >= 5) {
+							batch.draw(AsCoeur, 1500f, 150f, 103f, 138f);
+							if (cliqueJ1 >= 6) {
+								batch.draw(AsCoeur, 1530f, 120f, 103f, 138f);
+								if (cliqueJ1 >= 7) {
+									batch.draw(AsCoeur, 1560f, 90f, 103f, 138f);
+									if (cliqueJ1 >= 8) {
+										batch.draw(AsCoeur, 1670f, 183f, 103f, 138f);
+										if (cliqueJ1 >= 9){
+											batch.draw(AsCoeur, 1700f, 150f, 103f, 138f);
+											if (cliqueJ1 >= 10) {
+												batch.draw(AsCoeur, 1730f, 120f, 103f, 138f);
+												tableJeu.removeActor(buttonTirerJ1);
+												tableJeu2.add(buttonTirerJ2);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}	
-		if (clique >= 7) {
-			batch.draw(AsCoeur, 1000f, 500f, 103f, 138f);
+		if (cliqueJ2 >= 1) {
+			batch.draw(AsCoeur, 950f, 150f, 103f, 138f);
+			if (cliqueJ2 >=2) {
+				batch.draw(AsCoeur, 980f, 120f, 103f, 138f);
+				if (cliqueJ2 >= 3) {
+					batch.draw(AsCoeur, 1010f, 90f, 103f, 138f);
+					if (cliqueJ2 >= 4) {
+						batch.draw(AsCoeur, 920f, 400f, 103f, 138f);
+						if (cliqueJ2 >= 5) {
+							batch.draw(AsCoeur, 950f, 370f, 103f, 138f);
+							if (cliqueJ2 >= 6) {
+								batch.draw(AsCoeur, 980f, 340f, 103f, 138f);
+								if (cliqueJ2 >= 7) {
+									batch.draw(AsCoeur, 1010f, 310f, 103f, 138f);
+									if (cliqueJ2 >= 8) {
+										batch.draw(AsCoeur, 1130f, 400f, 103f, 138f);
+										if (cliqueJ2 >= 9){
+											batch.draw(AsCoeur, 1160f, 370f, 103f, 138f);
+											if (cliqueJ2 >= 10) {
+												batch.draw(AsCoeur, 1190f, 340f, 103f, 138f);
+												tableJeu2.removeActor(buttonTirerJ2);
+												tableJeu3.add(buttonTirerJ3);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
-		if (clique >= 8) {
-			batch.draw(AsCoeur, 1200f, 500f, 103f, 138f);
-		}
-		if (clique >= 9){
-			batch.draw(AsCoeur, 1400f, 500f, 103f, 138f);
-		}
-		if (clique >= 10) {
-			batch.draw(AsCoeur, 1600f, 500f, 103f, 138f);
-		}
+		if (cliqueJ3 >= 1) {
+			batch.draw(AsCoeur, 595f, 150f, 103f, 138f);
+			if (cliqueJ3 >=2) {
+				batch.draw(AsCoeur, 625f, 120f, 103f, 138f);
+				if (cliqueJ3 >= 3) {
+					batch.draw(AsCoeur, 655f, 90f, 103f, 138f);
+					if (cliqueJ3 >= 4) {
+						batch.draw(AsCoeur, 400f, 183f, 103f, 138f);
+						if (cliqueJ3 >= 5) {
+							batch.draw(AsCoeur, 430f, 150f, 103f, 138f);
+							if (cliqueJ3 >= 6) {
+								batch.draw(AsCoeur, 460f, 120f, 103f, 138f);
+								if (cliqueJ3 >= 7) {
+									batch.draw(AsCoeur, 490f, 90f, 103f, 138f);
+									if (cliqueJ3 >= 8) {
+										batch.draw(AsCoeur, 260f, 183f, 103f, 138f);
+										if (cliqueJ3 >= 9){
+											batch.draw(AsCoeur, 290f, 150f, 103f, 138f);
+											if (cliqueJ3 >= 10) {
+												batch.draw(AsCoeur, 320f, 120f, 103f, 138f);
+												tableJeu3.removeActor(buttonTirerJ3);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}	
+		
 		batch.end();
 			
 		stage.act(delta);

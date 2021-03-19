@@ -199,11 +199,11 @@ public class QuadraPlayers implements Screen{
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 181f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 525f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 870f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 1216f, 230f, 103f, 138f);
-			batch.draw(AsCoeur, 1565f, 230f, 103f, 138f);
+			batch.draw(AsCoeur, 181f, 230f, 103f, 138f); //1ere Carte J1
+			batch.draw(AsCoeur, 525f, 230f, 103f, 138f); //1ere Carte J2
+			batch.draw(AsCoeur, 870f, 230f, 103f, 138f); //1ere Carte J3
+			batch.draw(AsCoeur, 1216f, 230f, 103f, 138f); //1ere Carte J4
+			batch.draw(AsCoeur, 1565f, 230f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);

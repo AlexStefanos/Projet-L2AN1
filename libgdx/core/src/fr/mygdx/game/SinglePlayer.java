@@ -179,12 +179,10 @@ public class SinglePlayer implements Screen {
 			}
 		});
 			
-		table.setPosition(1700f, 150f, 0);
+		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
-		table.getCell(buttonQuit).spaceBottom(35f);
-		table.row();
 		
-		tableJeu.setPosition(500f, 50f, 0);
+		tableJeu.setPosition(220f, 600f, 0);
 		tableJeu.add(buttonJouer);
 	
 		stage.addActor(table);
@@ -200,8 +198,8 @@ public class SinglePlayer implements Screen {
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 920f, 172f, 103f, 138f);
-			batch.draw(AsCoeur, 800f, 500f, 103f, 138f);
+			batch.draw(AsCoeur, 920f, 172f, 103f, 138f); //1ere Carte J1
+			batch.draw(AsCoeur, 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -213,42 +211,33 @@ public class SinglePlayer implements Screen {
 		
 		if (clique >= 1) {
 			batch.draw(AsCoeur, 950f, 140f, 103f, 138f);
-		}
-		
-		if (clique >=2) {
-			batch.draw(AsCoeur, 980f, 110f, 103f, 138f);
-		}
-
-		if (clique >= 3) {
-			batch.draw(AsCoeur, 1010f, 80f, 103f, 138f);
-		}
-
-		if (clique >= 4) {
-			batch.draw(AsCoeur, 1120f, 172f, 103f, 138f);
-		}
-		
-		if (clique >= 5) {
-			batch.draw(AsCoeur, 1150f, 140f, 103f, 138f);
-		}
-		
-		if (clique >= 6) {
-			batch.draw(AsCoeur, 1180f, 110f, 103f, 138f);
-		}
-		
-		if (clique >= 7) {
-			batch.draw(AsCoeur, 1210f, 80f, 103f, 138f);
-		}
-		
-		if (clique >= 8) {
-			batch.draw(AsCoeur, 1320f, 172f, 103f, 138f);
-		}
-		
-		if (clique >= 9){
-			batch.draw(AsCoeur, 1350f, 140f, 103f, 138f);
-		}
-		
-		if (clique >= 10) {
-			batch.draw(AsCoeur, 1380f, 110f, 103f, 138f);
+			if (clique >=2) {
+				batch.draw(AsCoeur, 980f, 110f, 103f, 138f);
+				if (clique >= 3) {
+					batch.draw(AsCoeur, 1010f, 80f, 103f, 138f);
+					if (clique >= 4) {
+						batch.draw(AsCoeur, 1120f, 172f, 103f, 138f);
+						if (clique >= 5) {
+							batch.draw(AsCoeur, 1150f, 140f, 103f, 138f);
+							if (clique >= 6) {
+								batch.draw(AsCoeur, 1180f, 110f, 103f, 138f);
+								if (clique >= 7) {
+									batch.draw(AsCoeur, 1210f, 80f, 103f, 138f);
+									if (clique >= 8) {
+										batch.draw(AsCoeur, 1320f, 172f, 103f, 138f);
+										if (clique >= 9){
+											batch.draw(AsCoeur, 1350f, 140f, 103f, 138f);
+											if (clique >= 10) {
+												batch.draw(AsCoeur, 1380f, 110f, 103f, 138f);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		batch.end();
 		
