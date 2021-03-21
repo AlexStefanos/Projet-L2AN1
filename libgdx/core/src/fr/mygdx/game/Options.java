@@ -23,8 +23,8 @@ import fr.mygdx.game.splashscreen.MainMenu;
 public class Options implements Screen {
 
 	private Stage stage;
-	private Table table, tableFullscreen, tableVolume;
-	private TextButton buttonBack, buttonFullscreenOn, buttonFullscreenOff, buttonVolume25, buttonVolume50, buttonVolume75, buttonVolume100, buttonVolume0;
+	private Table table, tableFullscreen, tableVolume, tableAudio;
+	private TextButton buttonBack, buttonFullscreenOn, buttonFullscreenOff, buttonVolume25, buttonVolume50, buttonVolume75, buttonVolume100, buttonVolume0, buttonAudio;
 	private Texture Background;
 	private Skin skin;
 	private BitmapFont black, white;
@@ -32,10 +32,16 @@ public class Options implements Screen {
 	private SpriteBatch batch;
 	private Music music;
 	private Sound pressbutton;
-	public static float VOLUME = 0.25f;
+	private  BLACKJACKCity parent;
+	
+	
+	public Options(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
 	
 	@Override
 	public void show() {
+		
 		batch = new SpriteBatch();
 		Background = new Texture("Background.png");
 		atlas = new TextureAtlas("ui/button.pack");
@@ -48,6 +54,8 @@ public class Options implements Screen {
 		tableFullscreen.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableVolume = new Table(skin);
 		tableVolume.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableAudio = new Table(skin);
+		tableAudio.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
@@ -61,7 +69,7 @@ public class Options implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(VOLUME);
+		music.setVolume(Audio.VOLUME);
 		music.play();
 		
 		
@@ -69,7 +77,7 @@ public class Options implements Screen {
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -112,7 +120,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume50);
 				tableVolume.getCell(buttonVolume50).spaceBottom(20f);
 				music.setVolume(0.50f);
-				VOLUME = 0.50f;
+				Audio.VOLUME = 0.50f;
 			}
 		});
 		buttonVolume50.addListener(new ClickListener() {
@@ -123,7 +131,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume75);
 				tableVolume.getCell(buttonVolume75).spaceBottom(20f);
 				music.setVolume(0.75f);
-				VOLUME = 0.75f;
+				Audio.VOLUME = 0.75f;
 			}
 		});
 		buttonVolume75.addListener(new ClickListener() {
@@ -134,7 +142,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume100);
 				tableVolume.getCell(buttonVolume100).spaceBottom(20f);
 				music.setVolume(1.00f);
-				VOLUME = 1.00f;
+				Audio.VOLUME = 1.00f;
 			}
 		});
 		buttonVolume100.addListener(new ClickListener() {
@@ -145,7 +153,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume0);
 				tableVolume.getCell(buttonVolume0).spaceBottom(20f);
 				music.setVolume(0.00f);
-				VOLUME = 0.00f;
+				Audio.VOLUME = 0.00f;
 			}
 		});
 		buttonVolume0.addListener(new ClickListener() {
@@ -156,7 +164,16 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume25);
 				tableVolume.getCell(buttonVolume25).spaceBottom(20f);
 				music.setVolume(0.25f);
-				VOLUME = 0.25f;
+				Audio.VOLUME = 0.25f;
+			}
+		});
+		buttonAudio = new TextButton("Audio", textButtonStyle);
+		buttonAudio.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				parent.changeScreen(BLACKJACKCity.AUDIO);
+				pressbutton.play();
+				music.dispose();
 			}
 		});
 		buttonVolume25.pad(15f, 41f, 15f, 41f);
@@ -164,6 +181,8 @@ public class Options implements Screen {
 		buttonVolume75.pad(15f, 41f, 15f, 41f);
 		buttonVolume100.pad(15f, 41f, 15f, 41f);
 		buttonVolume0.pad(15f, 41f, 15f, 41f);
+		buttonAudio.pad(15f, 41f, 15f, 41f);
+		
 		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
@@ -175,13 +194,19 @@ public class Options implements Screen {
 		tableFullscreen.getCell(buttonFullscreenOn).spaceBottom(20f);
 		tableFullscreen.row();
 		
-		tableVolume.setPosition(1500f, 620f, 0);
+		tableVolume.setPosition(1500f, 540f, 0);
 		tableVolume.add(buttonVolume25);
-		tableVolume.getCell(buttonVolume25).spaceBottom(20f);
+		tableVolume.getCell(buttonVolume25).spaceBottom(40f);
+		table.row();
+		
+		tableAudio.setPosition(1500f, 620f, 0);
+		tableAudio.add(buttonAudio);
+		tableAudio.getCell(buttonAudio).spaceBottom(40f);
 		
 		stage.addActor(table);
 		stage.addActor(tableFullscreen);
 		stage.addActor(tableVolume);
+		stage.addActor(tableAudio);
 	}
 
 	@Override

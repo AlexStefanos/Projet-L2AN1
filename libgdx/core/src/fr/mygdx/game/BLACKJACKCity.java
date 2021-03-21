@@ -2,20 +2,82 @@ package fr.mygdx.game;
 
 import com.badlogic.gdx.Game;
 
+import fr.mygdx.game.splashscreen.MainMenu;
 import fr.mygdx.game.splashscreen.Splash;
 
 public class BLACKJACKCity extends Game {
 	public static final String TITLE = "BLACKJACK City", VERSION="0.0.0.0";
+	private AppPreferences preferences;
+	private Options option;
+	private MainMenu mainmenu;
+	private SinglePlayer singleplayer;
+	private DuoPlayers duoplayers;
+	private QuadraPlayers quadraplayers;
+	private TrioPlayers trioplayers;
+	private Play play;
+	private Rules rules;
+	private Audio audio;
+
+	public final static int AUDIO = 1;
+	public final static int OPTION = 2;
+	public final static int MAINMENU = 3;
+	public final static int SINGLEPLAYER = 4;
+	public final static int DUOPLAYERS = 5;
+	public final static int TRIOPLAYERS = 6;
+	public final static int QUADRAPLAYERS = 7;
+	public final static int PLAY = 8;
+	public final static int RULES = 9;
 
 	@Override
 	public void create () {
-		setScreen(new Splash());
-
+		setScreen(new Splash(this));
+		preferences = new AppPreferences();
+		
 	}
 
 	@Override
 	public void render () {
 		super.render();
+	}
+	public void changeScreen(int screen){
+		switch(screen){
+			case AUDIO:
+				if(audio == null) audio = new Audio(this);
+				this.setScreen(audio);
+				break;
+			case OPTION:
+				if(option == null) option = new Options(this);
+				this.setScreen(option);
+				break;
+			case MAINMENU:
+				if(mainmenu == null) mainmenu = new MainMenu(this);
+				this.setScreen(mainmenu);
+				break;
+			case SINGLEPLAYER:
+				if(singleplayer == null) singleplayer = new SinglePlayer(this);
+				this.setScreen(singleplayer);
+				break;	
+			case DUOPLAYERS:
+				if(duoplayers == null) duoplayers = new DuoPlayers(this);
+				this.setScreen(duoplayers);
+				break;	
+			case TRIOPLAYERS:
+				if(trioplayers == null) trioplayers = new TrioPlayers(this);
+				this.setScreen(trioplayers);
+				break;	
+			case QUADRAPLAYERS:
+				if(quadraplayers == null) quadraplayers = new QuadraPlayers(this);
+				this.setScreen(quadraplayers);
+				break;	
+			case PLAY:
+				if(play == null) play = new Play(this);
+				this.setScreen(play);
+				break;	
+			case RULES:
+				if(rules == null) rules = new Rules(this);
+				this.setScreen(rules);
+				break;	
+		}
 	}
 	
 	@Override
@@ -29,6 +91,9 @@ public class BLACKJACKCity extends Game {
 	@Override
 	public void pause() {
 		super.pause();
+	}
+	public AppPreferences getPreferences(){
+		return this.preferences;
 	}
 	@Override
 	public void resume() {

@@ -25,6 +25,7 @@ import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.Options;
 import fr.mygdx.game.Play;
 import fr.mygdx.game.Rules;
+import fr.mygdx.game.Audio;
 
 public class MainMenu implements Screen {
 
@@ -38,6 +39,12 @@ public class MainMenu implements Screen {
 	private SpriteBatch batch;
 	private Music music;
 	private Sound pressbutton;
+	private  BLACKJACKCity parent;
+	
+	
+	public MainMenu(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
 	
 	@Override
 	public void show() {
@@ -62,7 +69,7 @@ public class MainMenu implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(Options.VOLUME);
+		music.setVolume(Audio.VOLUME);
 		music.play();
 		
 	
@@ -70,7 +77,7 @@ public class MainMenu implements Screen {
 		buttonPlay.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Play());
+				parent.changeScreen(BLACKJACKCity.PLAY);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -81,7 +88,7 @@ public class MainMenu implements Screen {
 		buttonRules.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Rules());
+				parent.changeScreen(BLACKJACKCity.RULES);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -91,7 +98,7 @@ public class MainMenu implements Screen {
 		buttonOptions.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new Options());
+				parent.changeScreen(BLACKJACKCity.OPTION);
 				pressbutton.play();
 				music.dispose();
 			}

@@ -33,6 +33,11 @@ public class Play implements Screen {
 	private SpriteBatch batch;
 	private Sound pressbutton;
 	private Music music;
+	private  BLACKJACKCity parent;
+	
+	public Play(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
 
 	@Override
 	public void show() {
@@ -59,7 +64,7 @@ public class Play implements Screen {
 		textButtonStyle.font = black;
 
 		music.setLooping(true);
-		music.setVolume(Options.VOLUME);
+		music.setVolume(Audio.VOLUME);
 		music.play();
 
 
@@ -67,7 +72,7 @@ public class Play implements Screen {
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -78,7 +83,7 @@ public class Play implements Screen {
 		buttonSingle.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new SinglePlayer());
+				parent.changeScreen(BLACKJACKCity.SINGLEPLAYER);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -89,7 +94,7 @@ public class Play implements Screen {
 		buttonDuo.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new DuoPlayers());
+				parent.changeScreen(BLACKJACKCity.DUOPLAYERS);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -100,7 +105,7 @@ public class Play implements Screen {
 		buttonTrio.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new TrioPlayers());
+				parent.changeScreen(BLACKJACKCity.TRIOPLAYERS);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -111,7 +116,7 @@ public class Play implements Screen {
 		buttonQuadra.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new QuadraPlayers());
+				parent.changeScreen(BLACKJACKCity.QUADRAPLAYERS);
 				pressbutton.play();
 				music.dispose();
 			}

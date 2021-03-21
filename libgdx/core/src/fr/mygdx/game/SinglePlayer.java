@@ -39,6 +39,11 @@ public class SinglePlayer implements Screen {
 	private Music music;
 	private Sound pressbutton;
 	private int clique;
+	private  BLACKJACKCity parent;
+	
+	public SinglePlayer(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
 	
 	/*int a = 1;
 	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
@@ -140,14 +145,14 @@ public class SinglePlayer implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(Options.VOLUME);
+		music.setVolume(Audio.VOLUME);
 		music.play();
 		
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
 		buttonQuit.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
 				music.dispose();
 			}

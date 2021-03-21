@@ -39,6 +39,8 @@ public class Rules implements Screen {
 	private SpriteBatch batch;
 	private Sound pressbutton;
 	private Music music;
+	private  BLACKJACKCity parent;
+	
 	
 	private static final String textrules = "REGLES PRINCIPALES :\n"
 			    		+ "Voici les regles de base a connaitre pour le Blackjack :\n"
@@ -79,6 +81,11 @@ public class Rules implements Screen {
 						+ "de 'Split', cela consiste a s�parer ses deux cartes pour avoir 2 mains et en meme temps doubler la mise(la mise initiale par main) Il pourra\n"
 						+ "ainsi jouer ses deux mains dans le meme tour, avec les memes r�gles que pr�c�demment, sauf une :\n"
 						+ "Si le joueur d�cide de Split deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
+	
+	public Rules(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
+	
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -105,7 +112,7 @@ public class Rules implements Screen {
 		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
 		
 		music.setLooping(true);
-		music.setVolume(Options.VOLUME);
+		music.setVolume(Audio.VOLUME);
 		music.play();
 		
 		
@@ -113,7 +120,7 @@ public class Rules implements Screen {
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
 				pressbutton.play();
 				music.dispose();

@@ -12,6 +12,7 @@ import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenManager;
+import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.splashengine.SpriteAccessor;
 
 
@@ -19,6 +20,13 @@ public class Splash implements Screen{
 	private SpriteBatch batch;
 	private Sprite splash;
 	private TweenManager tweenManager;
+	private  BLACKJACKCity parent;
+	
+	public Splash(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
+	
+	
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -33,7 +41,7 @@ public class Splash implements Screen{
 		Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 1).setCallback(new TweenCallback() {
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
-				((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenu());
+				parent.changeScreen(BLACKJACKCity.MAINMENU);
 			}
 			
 				
