@@ -7,9 +7,12 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -17,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 
 import fr.mygdx.game.splashscreen.MainMenu;
 import fr.mygdx.game.blackjack.*;
@@ -34,12 +38,19 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
 	private Table table, tableJeu;
-	private TextureAtlas atlas;
+	
+	private TextureAtlas atlas, atlas2;
+	private Array<AtlasRegion> animationFrames;
+	public static Animation <TextureRegion> anim1;
+	
 	private Skin skin;
 	private Music music;
 	private Sound pressbutton;
 	private int clique;
 	private  BLACKJACKCity parent;
+	
+	private float animTime;
+	private float totalAnimTime;
 	
 	public SinglePlayer(BLACKJACKCity box2dTutorial){
 		parent = box2dTutorial;
@@ -56,9 +67,20 @@ public class SinglePlayer implements Screen {
 	
 	@Override
 	public void show() {
+		totalAnimTime = 0.1f;
+		
 		batch = new SpriteBatch();
+		
 		BlackjackTable = new Texture("BlackjackTable SinglePlayer.png");
+		
 		atlas = new TextureAtlas("ui/button.pack");
+		atlas2 = new TextureAtlas(Gdx.files.internal("AsTrefle/test.pack"));
+		
+		animationFrames = atlas2.getRegions();
+		anim1 = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		anim1.setPlayMode(Animation.PlayMode.NORMAL);
+		animTime = 0f;
+		
 		stage = new Stage();
 		skin = new Skin(atlas);
 		clique = 0;
@@ -198,7 +220,7 @@ public class SinglePlayer implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
@@ -245,6 +267,11 @@ public class SinglePlayer implements Screen {
 			}
 		}
 		batch.end();
+
+		batch.begin();
+		animTime += Gdx.graphics.getDeltaTime();
+			batch.draw(anim1.getKeyFrame(animTime, true), 150 ,150 );
+		batch.end();	
 		
 		stage.act(delta);
 		stage.draw();
@@ -277,7 +304,7 @@ public class SinglePlayer implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
