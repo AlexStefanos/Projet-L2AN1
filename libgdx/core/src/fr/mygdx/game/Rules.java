@@ -37,7 +37,7 @@ public class Rules implements Screen {
 	private Label rules;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	private Sound pressbutton;
+	private Music pressbutton;
 	private Music music;
 	private  BLACKJACKCity parent;
 	
@@ -108,20 +108,19 @@ public class Rules implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
 		
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
-		
+		pressbutton.setVolume(AppPreferences.SVOLUME);
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
 		buttonBack.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
-				pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
 				pressbutton.play();
 				music.dispose();
 			}

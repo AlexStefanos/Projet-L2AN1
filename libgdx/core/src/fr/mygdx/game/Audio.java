@@ -41,8 +41,7 @@ public class Audio implements Screen {
 	private Texture Background;
 	private BitmapFont black, white;
 	private SpriteBatch batch;
-	private Sound pressbutton;
-	public static float VOLUME = 0.25f;
+	private Music pressbutton;
 	
 	public Audio(BLACKJACKCity blackjackcity){
 		parent = blackjackcity;
@@ -65,7 +64,7 @@ public class Audio implements Screen {
 		Background = new Texture("Background.png");
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skinButton.getDrawable("button.up");
@@ -82,15 +81,18 @@ public class Audio implements Screen {
 		
 		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
+		pressbutton.setVolume(AppPreferences.SVOLUME);
+	
 
 	
-		Skin skin = new Skin(Gdx.files.internal("skin/neon-ui.json"));
+		Skin skin = new Skin(Gdx.files.internal("skin/golden-ui-skin.json"));
 
 		
 		final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
-		volumeMusicSlider.setValue(parent.getPreferences().getMusicVolume());
+		parent.getPreferences();
+		volumeMusicSlider.setValue(AppPreferences.getMusicVolume());
 		volumeMusicSlider.addListener(new EventListener() {
 			@Override
 			public boolean handle(Event event) {
@@ -100,7 +102,8 @@ public class Audio implements Screen {
 		});
 		
 		final Slider soundMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
-		soundMusicSlider.setValue(parent.getPreferences().getSoundVolume()); 
+		parent.getPreferences();
+		soundMusicSlider.setValue(AppPreferences.getSoundVolume()); 
 		soundMusicSlider.addListener(new EventListener() {
 			@Override
 			public boolean handle(Event event) {
@@ -128,16 +131,16 @@ public class Audio implements Screen {
 						return false;
 					}
 				});
-				buttonBack = new TextButton("Back", textButtonStyle);
+				buttonBack = new TextButton("Save", textButtonStyle);
 				buttonBack.addListener(new ClickListener() {
 					@Override
 					public void clicked(InputEvent event, float x, float y) {
-						parent.changeScreen(BLACKJACKCity.OPTION);
+						parent.changeScreen(BLACKJACKCity.OPTION); 
 						pressbutton.play();
 						music.dispose();
 					}
 				});
-				
+		
 				titleLabel = new Label( "Audio", skin );
 				volumeMusicLabel = new Label( "Music Volume", skin );
 				volumeSoundLabel = new Label( "Sound Volume", skin );

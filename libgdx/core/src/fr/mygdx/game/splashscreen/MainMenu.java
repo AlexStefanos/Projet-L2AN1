@@ -25,6 +25,7 @@ import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.Options;
 import fr.mygdx.game.Play;
 import fr.mygdx.game.Rules;
+import fr.mygdx.game.AppPreferences;
 import fr.mygdx.game.Audio;
 
 public class MainMenu implements Screen {
@@ -38,7 +39,7 @@ public class MainMenu implements Screen {
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music music;
-	private Sound pressbutton;
+	private Music pressbutton;
 	private  BLACKJACKCity parent;
 	
 	
@@ -54,7 +55,7 @@ public class MainMenu implements Screen {
 		skin = new Skin(atlas);
 		stage = new Stage();
 		music = Gdx.audio.newMusic(Gdx.files.internal("Mainmusic.mp3"));
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -69,9 +70,9 @@ public class MainMenu implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
-		
+		pressbutton.setVolume(AppPreferences.SVOLUME);
 	
 		buttonPlay = new TextButton("Play", textButtonStyle);
 		buttonPlay.addListener(new ClickListener() {

@@ -31,7 +31,7 @@ public class Play implements Screen {
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	private Sound pressbutton;
+	private Music pressbutton;
 	private Music music;
 	private  BLACKJACKCity parent;
 	
@@ -53,7 +53,7 @@ public class Play implements Screen {
 		tablePlay.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
@@ -64,8 +64,9 @@ public class Play implements Screen {
 		textButtonStyle.font = black;
 
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
+		pressbutton.setVolume(AppPreferences.SVOLUME);
 
 
 		buttonBack = new TextButton("Back", textButtonStyle);

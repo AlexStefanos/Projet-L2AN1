@@ -36,7 +36,7 @@ public class DuoPlayers implements Screen{
 	private TextureAtlas atlas;
 	private Skin skin;
 	private Music music;
-	private Sound pressbutton;
+	private Music pressbutton;
 	private int cliqueJ1, cliqueJ2;
 	private  BLACKJACKCity parent;
 	
@@ -73,7 +73,7 @@ public class DuoPlayers implements Screen{
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 			
 		FondCarteBleu = new Texture("Large/Back Blue 2.png");
@@ -147,8 +147,9 @@ public class DuoPlayers implements Screen{
 		textButtonStyle.font = black;
 			
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
+		pressbutton.setVolume(AppPreferences.SVOLUME);
 			
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
 		buttonQuit.addListener(new ClickListener() {

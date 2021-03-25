@@ -31,7 +31,7 @@ public class Options implements Screen {
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music music;
-	private Sound pressbutton;
+	private Music pressbutton;
 	private  BLACKJACKCity parent;
 	
 	
@@ -59,7 +59,7 @@ public class Options implements Screen {
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
-		pressbutton = Gdx.audio.newSound(Gdx.files.internal("pressbutton.mp3"));
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 	
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -69,8 +69,9 @@ public class Options implements Screen {
 		textButtonStyle.font = black;
 		
 		music.setLooping(true);
-		music.setVolume(Audio.VOLUME);
+		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
+		pressbutton.setVolume(AppPreferences.SVOLUME);
 		
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
@@ -120,7 +121,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume50);
 				tableVolume.getCell(buttonVolume50).spaceBottom(20f);
 				music.setVolume(0.50f);
-				Audio.VOLUME = 0.50f;
+				AppPreferences.MVOLUME = 0.50f;
 			}
 		});
 		buttonVolume50.addListener(new ClickListener() {
@@ -131,7 +132,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume75);
 				tableVolume.getCell(buttonVolume75).spaceBottom(20f);
 				music.setVolume(0.75f);
-				Audio.VOLUME = 0.75f;
+				AppPreferences.MVOLUME = 0.75f;
 			}
 		});
 		buttonVolume75.addListener(new ClickListener() {
@@ -142,7 +143,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume100);
 				tableVolume.getCell(buttonVolume100).spaceBottom(20f);
 				music.setVolume(1.00f);
-				Audio.VOLUME = 1.00f;
+				AppPreferences.MVOLUME = 1.00f;
 			}
 		});
 		buttonVolume100.addListener(new ClickListener() {
@@ -153,7 +154,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume0);
 				tableVolume.getCell(buttonVolume0).spaceBottom(20f);
 				music.setVolume(0.00f);
-				Audio.VOLUME = 0.00f;
+				AppPreferences.MVOLUME = 0.00f;
 			}
 		});
 		buttonVolume0.addListener(new ClickListener() {
@@ -164,7 +165,7 @@ public class Options implements Screen {
 				tableVolume.add(buttonVolume25);
 				tableVolume.getCell(buttonVolume25).spaceBottom(20f);
 				music.setVolume(0.25f);
-				Audio.VOLUME = 0.25f;
+				AppPreferences.MVOLUME = 0.25f;
 			}
 		});
 		buttonAudio = new TextButton("Audio", textButtonStyle);
