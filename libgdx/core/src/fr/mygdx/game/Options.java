@@ -23,8 +23,8 @@ import fr.mygdx.game.splashscreen.MainMenu;
 public class Options implements Screen {
 
 	private Stage stage;
-	private Table table, tableFullscreen, tableVolume, tableAudio;
-	private TextButton buttonBack, buttonFullscreenOn, buttonFullscreenOff, buttonVolume25, buttonVolume50, buttonVolume75, buttonVolume100, buttonVolume0, buttonAudio;
+	private Table table, tableFullscreen, tableAudio;
+	private TextButton buttonBack, buttonFullscreenOn, buttonFullscreenOff, buttonAudio;
 	private Texture Background;
 	private Skin skin;
 	private BitmapFont black, white;
@@ -52,8 +52,6 @@ public class Options implements Screen {
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableFullscreen = new Table(skin);
 		tableFullscreen.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableVolume = new Table(skin);
-		tableVolume.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableAudio = new Table(skin);
 		tableAudio.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
@@ -108,66 +106,7 @@ public class Options implements Screen {
 		});
 		buttonFullscreenOn.pad(15f, 41f, 15f, 41f);
 		buttonFullscreenOff.pad(15f, 41f, 15f, 41f);
-		buttonVolume25 = new TextButton("Volume 25%", textButtonStyle);
-		buttonVolume50 = new TextButton("Volume 50%", textButtonStyle);
-		buttonVolume75 = new TextButton("Volume 75%", textButtonStyle);
-		buttonVolume100 = new TextButton("Volume 100%", textButtonStyle);
-		buttonVolume0 = new TextButton("Volume 0%", textButtonStyle);
-		buttonVolume25.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-				tableVolume.removeActor(buttonVolume25);
-				tableVolume.add(buttonVolume50);
-				tableVolume.getCell(buttonVolume50).spaceBottom(20f);
-				music.setVolume(0.50f);
-				AppPreferences.MVOLUME = 0.50f;
-			}
-		});
-		buttonVolume50.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-				tableVolume.removeActor(buttonVolume50);
-				tableVolume.add(buttonVolume75);
-				tableVolume.getCell(buttonVolume75).spaceBottom(20f);
-				music.setVolume(0.75f);
-				AppPreferences.MVOLUME = 0.75f;
-			}
-		});
-		buttonVolume75.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-				tableVolume.removeActor(buttonVolume75);
-				tableVolume.add(buttonVolume100);
-				tableVolume.getCell(buttonVolume100).spaceBottom(20f);
-				music.setVolume(1.00f);
-				AppPreferences.MVOLUME = 1.00f;
-			}
-		});
-		buttonVolume100.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-				tableVolume.removeActor(buttonVolume100);
-				tableVolume.add(buttonVolume0);
-				tableVolume.getCell(buttonVolume0).spaceBottom(20f);
-				music.setVolume(0.00f);
-				AppPreferences.MVOLUME = 0.00f;
-			}
-		});
-		buttonVolume0.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-				tableVolume.removeActor(buttonVolume0);
-				tableVolume.add(buttonVolume25);
-				tableVolume.getCell(buttonVolume25).spaceBottom(20f);
-				music.setVolume(0.25f);
-				AppPreferences.MVOLUME = 0.25f;
-			}
-		});
+	
 		buttonAudio = new TextButton("Audio", textButtonStyle);
 		buttonAudio.addListener(new ClickListener() {
 			@Override
@@ -177,11 +116,7 @@ public class Options implements Screen {
 				music.dispose();
 			}
 		});
-		buttonVolume25.pad(15f, 41f, 15f, 41f);
-		buttonVolume50.pad(15f, 41f, 15f, 41f);
-		buttonVolume75.pad(15f, 41f, 15f, 41f);
-		buttonVolume100.pad(15f, 41f, 15f, 41f);
-		buttonVolume0.pad(15f, 41f, 15f, 41f);
+
 		buttonAudio.pad(15f, 41f, 15f, 41f);
 		
 		
@@ -195,18 +130,12 @@ public class Options implements Screen {
 		tableFullscreen.getCell(buttonFullscreenOn).spaceBottom(20f);
 		tableFullscreen.row();
 		
-		tableVolume.setPosition(1500f, 540f, 0);
-		tableVolume.add(buttonVolume25);
-		tableVolume.getCell(buttonVolume25).spaceBottom(40f);
-		table.row();
-		
 		tableAudio.setPosition(1500f, 620f, 0);
 		tableAudio.add(buttonAudio);
 		tableAudio.getCell(buttonAudio).spaceBottom(40f);
 		
 		stage.addActor(table);
 		stage.addActor(tableFullscreen);
-		stage.addActor(tableVolume);
 		stage.addActor(tableAudio);
 	}
 
