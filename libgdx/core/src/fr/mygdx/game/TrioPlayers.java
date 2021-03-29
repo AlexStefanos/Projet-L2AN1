@@ -19,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.splashscreen.MainMenu;
-import fr.mygdx.game.blackjack.*;
 
 public class TrioPlayers implements Screen {
 	private Stage stage;

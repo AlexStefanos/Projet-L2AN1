@@ -23,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 import fr.mygdx.game.splashscreen.MainMenu;
-import fr.mygdx.game.blackjack.*;
 
 public class SinglePlayer implements Screen {
 
@@ -38,6 +37,7 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
 	private Table table, tableJeu;
+	private int lancement = 0;
 	
 	private TextureAtlas atlas, atlas2;
 	private Array<AtlasRegion> animationFrames;
@@ -56,14 +56,9 @@ public class SinglePlayer implements Screen {
 		parent = box2dTutorial;
 	}
 	
-	/*int a = 1;
-	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
 	Deck paquet = new Deck();
-	Cartes p1 = new Cartes(a, paquet);
-	Cartes p2 = new Cartes(a, paquet);
-	Cartes p3 = new Cartes(a, paquet);
-	Cartes p4 = new Cartes(a, paquet);
-	Cartes croupier = new Cartes(a, paquet);*/
+	Deck paquetnom = new Deck();
+	Cartes p1 = new Cartes(paquet);
 	
 	@Override
 	public void show() {
@@ -189,11 +184,6 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				tableJeu.removeActor(buttonJouer);
 				tableJeu.add(buttonTirer);
-				/*paquet.generateur();		|
-				paquet.conversion();		|
-				paquet.shuffle();			| Lancer la generation de paquet et des mains de depart lorsque l'on appuie sur Jouer  
-				croupier.croupierdep(); 	|
-				p1.maindep();				| */
 			}
 		});
 		buttonJouer.pad(15f, 40f, 15f, 40f);
@@ -222,11 +212,64 @@ public class SinglePlayer implements Screen {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		if (lancement == 0) {
+			paquet.generateur();
+    		paquet.shuffle();
+    		paquetnom = paquet;
+    		paquet.conversion();
+    		paquetnom.creation();
+			p1.initialisation();
+			p1.croupierdep(); 
+			p1.tirerjoueur();
+			p1.croupiertirer();
+	    	p1.gagnant();
+		}
+		lancement++;
+		
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 920f, 172f, 103f, 138f); //1ere Carte J1
+			if (buttonJouer.isChecked()) {
+				if (p1.uneCarte(0) == "AsCoeur") {
+					batch.draw(AsCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "DeuxCoeur") {
+					batch.draw(DeuxCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "TroisCoeur") {
+					batch.draw(TroisCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "QuatreCoeur") {
+					batch.draw(QuatreCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "CinqCoeur") {
+					batch.draw(CinqCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "SixCoeur") {
+					batch.draw(SixCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "SeptCoeur") {
+					batch.draw(SeptCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "HuitCoeur") {
+					batch.draw(HuitCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "NeufCoeur") {
+					batch.draw(NeufCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "DixCoeur") {
+					batch.draw(DixCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "ValetCoeur") {
+					batch.draw(ValetCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "DameCoeur") {
+					batch.draw(DameCoeur, 920f, 172f, 103f, 138f);
+				}
+				else if (p1.uneCarte(0) == "RoiCoeur") {
+					batch.draw(RoiCoeur, 920f, 172f, 103f, 138f);
+				}
+			}
 			batch.draw(AsCoeur, 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
@@ -238,7 +281,45 @@ public class SinglePlayer implements Screen {
 		}
 		
 		if (clique >= 1) {
-			batch.draw(AsCoeur, 950f, 140f, 103f, 138f);
+			if (p1.uneCarte(1) == "AsCoeur") {
+				batch.draw(AsCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "DeuxCoeur") {
+				batch.draw(DeuxCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "TroisCoeur") {
+				batch.draw(TroisCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "QuatreCoeur") {
+				batch.draw(QuatreCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "CinqCoeur") {
+				batch.draw(CinqCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "SixCoeur") {
+				batch.draw(SixCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "SeptCoeur") {
+				batch.draw(SeptCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "HuitCoeur") {
+				batch.draw(HuitCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "NeufCoeur") {
+				batch.draw(NeufCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "DixCoeur") {
+				batch.draw(DixCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "ValetCoeur") {
+				batch.draw(ValetCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "DameCoeur") {
+				batch.draw(DameCoeur, 950f, 140f, 103f, 138f);
+			}
+			else if (p1.uneCarte(1) == "RoiCoeur") {
+				batch.draw(RoiCoeur, 950f, 140f, 103f, 138f);
+			}
 			if (clique >=2) {
 				batch.draw(AsCoeur, 980f, 110f, 103f, 138f);
 				if (clique >= 3) {

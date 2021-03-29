@@ -1,4 +1,4 @@
-package fr.mygdx.game.blackjack;
+package fr.mygdx.game;
 import java.io.*;
 public class Saisie {
 	//M�thodes

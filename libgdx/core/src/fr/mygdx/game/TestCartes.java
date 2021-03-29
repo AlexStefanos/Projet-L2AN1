@@ -1,4 +1,5 @@
-package fr.mygdx.game.blackjack;
+package fr.mygdx.game;
+
 import java.util.ArrayList;
 
 public class TestCartes {
@@ -17,6 +18,7 @@ public class TestCartes {
     	
     	
     	
+    	
     	//Cartes croupier = new Cartes(paquet);
     	//Cartes croupiernom = new Cartes (paquet);
     	
@@ -26,8 +28,10 @@ public class TestCartes {
     	
     	paquet.afficher();
     	//ArrayList<String> b = croupier.croupierdep();
+    	
     	//croupiernom.croupierdepNom();
-    	//p1.maindep();
+        //ArrayList<String> temp = p1.maindep(); // Peut �tre utile
+    
     	//p1.maindepnom();
     	
     	//p3.maindep();

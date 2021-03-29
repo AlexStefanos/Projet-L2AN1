@@ -1,4 +1,4 @@
-package fr.mygdx.game.blackjack;
+package fr.mygdx.game;
 
 import java.util.*;
 
@@ -61,24 +61,68 @@ private int nbparticipants;
 	}
 	
 	
-	 /*public void maindep() {
-		    for (int j=0;j<nbparticipants;j++) {
-	            for (int i =0;i<2;i++) {
-		            mains.add(i, paquet.getPaquet().get(0));
-		            mainsnom.add(i, paquet.getPaquetNom().get(0));
-	    	        joueurs[j].piocher(mains);
-	    	        joueurs[j].piocherStr(mainsnom);
-	    	        paquet.getPaquet().remove(0);
-	    	        paquet.getPaquetNom().remove(0);
-	    	        
-	            }
-	            System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainStr() );
-	            mains.clear();
-	            mainsnom.clear();
-	            
-		    }
-	       
-	 }*/
+	 public ArrayList<String> maindep() {
+		 for (int j=0;j<nbparticipants;j++) {
+			 
+			 for (int i =0;i<2;i++) {		            
+				 joueurs[j].addint(paquet.getPaquet().get(0));
+				 joueurs[j].addstr(paquet.getPaquetNom().get(0));
+		            
+	    	     paquet.getPaquet().remove(0);
+	    	     paquet.getPaquetNom().remove(0); 
+	    	     System.out.println(joueurs[j].getMainStr());
+	        }	           
+	        System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainStr() );
+		 }
+		 for (int i = 0; i<2;i++) {
+				if (joueurs[0].getMain().get(i) == 1) {
+					joueurs[0].getMainStr().set(i, "AsCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 2) {
+					joueurs[0].getMainStr().set(i, "DeuxCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 3) {
+					joueurs[0].getMainStr().set(i, "TroisCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 4) {
+					joueurs[0].getMainStr().set(i, "QuatreCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 5) {
+					joueurs[0].getMainStr().set(i, "CinqCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 6) {
+					joueurs[0].getMainStr().set(i, "SixCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 7) {
+					joueurs[0].getMainStr().set(i, "SeptCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 8) {
+					joueurs[0].getMainStr().set(i, "HuitCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 9) {
+					joueurs[0].getMainStr().set(i, "NeufCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 10) {
+					joueurs[0].getMainStr().set(i, "DixCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 11) {
+					joueurs[0].getMainStr().set(i, "ValetCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 12) {
+					joueurs[0].getMainStr().set(i, "DameCoeur");
+				}
+				else if (joueurs[0].getMain().get(i) == 13) {
+					joueurs[0].getMainStr().set(i, "RoiCoeur");
+				}
+	    	}
+		 return joueurs[0].getMainStr();
+	 }
+	 
+	 
+	 public String uneCarte(int k) {
+		 return joueurs[0].getMainStr().get(k);
+	 }
+	
 	 /*public void maindepnom() {
 			
 	        for (int i =0;i<2;i++) {
@@ -89,8 +133,8 @@ private int nbparticipants;
 	 }*/
 	        
 	public void tirerjoueur() {
-		for (int j=0;j<nbparticipants;j++) {
-            for (int i =0;i<2;i++) {
+		/* for (int j=0;j<nbparticipants;j++) {
+           for (int i =0;i<2;i++) {
 	            
     	        joueurs[j].addint(paquet.getPaquet().get(0));
     	        joueurs[j].addstr(paquet.getPaquetNom().get(0));
@@ -101,7 +145,7 @@ private int nbparticipants;
             }
            
             System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainStr() );
-	    }
+	    }*/
        
  
 		for (int i=0;i<nbparticipants;i++) {
@@ -118,7 +162,7 @@ private int nbparticipants;
 	    	 
 	             System.out.println("Au tour de " + joueurs[i].getNom());
 	    	     int a;
-	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + joueurs[i].getMainStr() + " )");
+	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + maindep() + " )");
 	    	     if (a == 1) {
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
 	    	    	
@@ -182,7 +226,7 @@ private int nbparticipants;
 		     //mainsnom.add(paquet.getPaquetNom().get(0));
 		     paquet.getPaquet().remove(0);
 		     paquet.getPaquetNom().remove(0);
-		     System.out.println("\nMain du croupier après tirage : " + mainsnom);
+		     System.out.println("\nMain du croupier aprï¿½s tirage : " + mainsnom);
 	     }
 		 if (total() > 17) {
 			 System.out.println("\nMain du croupier final : " + mainsnom);
@@ -194,10 +238,10 @@ private int nbparticipants;
 		 for (int i=0;i<nbparticipants;i++) {
 		    
 		     if (total() > 21 && joueurs[i].total() < 22 ) {
-			     System.out.println("\nLe croupier à un score de " + total() + " " +   joueurs[i].getNom() +" à un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
+			     System.out.println("\nLe croupier ï¿½ un score de " + total() + " " +   joueurs[i].getNom() +" ï¿½ un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
 		     }
 		     else if (total() < 22 && total() == joueurs[i].total()) {
-			     System.out.println( "\n" + joueurs[i].getNom() + "a le même score que le croupier "  + joueurs[i].getNom() + " récupère sa mise");
+			     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
 		     }
 		     else if (joueurs[i].total() > 21 ) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
