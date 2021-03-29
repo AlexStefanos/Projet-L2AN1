@@ -147,21 +147,22 @@ public class Audio implements Screen {
 				musicOnOffLabel = new Label( "Music", skin );
 				soundOnOffLabel = new Label( "Sound Effect", skin );
 				
-				table.add(titleLabel).colspan(2);
+				table.setPosition(500f, -50f, 0);
+				table.add(titleLabel);
 				table.row().pad(10,0,0,10);
-				table.add(volumeMusicLabel).left();
+				table.add(volumeMusicLabel);
 				table.add(volumeMusicSlider);
 				table.row().pad(10,0,0,10);
-				table.add(musicOnOffLabel).left();
+				table.add(musicOnOffLabel);
 				table.add(musicCheckbox);
 				table.row().pad(10,0,0,10);
-				table.add(volumeSoundLabel).left();
+				table.add(volumeSoundLabel);
 				table.add(soundMusicSlider);
 				table.row().pad(10,0,0,10);
-				table.add(soundOnOffLabel).left();
+				table.add(soundOnOffLabel);
 				table.add(soundEffectsCheckbox);
 				table.row().pad(10,0,0,10);
-				table.add(buttonBack).colspan(2);
+				table.add(buttonBack);
 
 	}
 
