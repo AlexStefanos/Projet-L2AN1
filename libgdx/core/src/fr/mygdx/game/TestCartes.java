@@ -6,13 +6,15 @@ public class TestCartes {
 	public static void main(String[] args) {
     	
 		Deck paquet = new Deck();
-		Deck paquetnom = new Deck();
+		//Deck paquetnom = new Deck();
     	
-		paquet.generateur();
-    	paquet.shuffle();
-    	paquetnom = paquet;
+		//paquet.generateur();
+		
+		paquet.creationn();
+		paquet.shuffle();
+    	
     	paquet.conversion();
-    	paquetnom.creation();
+    	
     	Cartes p1 = new Cartes(paquet);
     	p1.initialisation();
     	
@@ -23,10 +25,10 @@ public class TestCartes {
     	//Cartes croupiernom = new Cartes (paquet);
     	
     	
-    	
-    	paquetnom.affichernoms();
-    	
     	paquet.afficher();
+    	paquet.affichernoms();
+    	
+    	
     	//ArrayList<String> b = croupier.croupierdep();
     	
     	//croupiernom.croupierdepNom();

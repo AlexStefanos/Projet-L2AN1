@@ -29,8 +29,8 @@ public class SinglePlayer implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
 	private Texture BlackjackTable, FondCarteBleu, AsTrefle, DeuxTrefle, TroisTrefle, QuatreTrefle, CinqTrefle, SixTrefle, 
-	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarrot, DeuxCarrot, TroisCarrot, QuatreCarrot, 
-	CinqCarrot, SixCarrot, SeptCarrot, HuitCarrot, NeufCarrot, DixCarrot, ValetCarrot, DameCarrot, RoiCarrot, AsCoeur, DeuxCoeur, TroisCoeur,
+	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarreau, DeuxCarreau, TroisCarreau, QuatreCarreau, 
+	CinqCarreau, SixCarreau, SeptCarreau, HuitCarreau, NeufCarreau, DixCarreau, ValetCarreau, DameCarreau, RoiCarreau, AsCoeur, DeuxCoeur, TroisCoeur,
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
@@ -105,19 +105,19 @@ public class SinglePlayer implements Screen {
 		ValetTrefle = new Texture("Large/Clubs 11.png");
 		DameTrefle = new Texture("Large/Clubs 12.png");
 		RoiTrefle = new Texture("Large/Clubs 13.png");
-		AsCarrot = new Texture("Large/Diamond 1.png");
-		DeuxCarrot = new Texture("Large/Diamond 2.png");
-		TroisCarrot = new Texture("Large/Diamond 3.png");
-		QuatreCarrot = new Texture("Large/Diamond 4.png");
-		CinqCarrot = new Texture("Large/Diamond 5.png");
-		SixCarrot = new Texture("Large/Diamond 6.png");
-		SeptCarrot = new Texture("Large/Diamond 7.png");
-		HuitCarrot = new Texture("Large/Diamond 8.png");
-		NeufCarrot = new Texture("Large/Diamond 9.png");
-		DixCarrot = new Texture("Large/Diamond 10.png");
-		ValetCarrot = new Texture("Large/Diamond 11.png");
-		DameCarrot = new Texture("Large/Diamond 12.png");
-		RoiCarrot = new Texture("Large/Diamond 13.png");
+		AsCarreau = new Texture("Large/Diamond 1.png");
+		DeuxCarreau = new Texture("Large/Diamond 2.png");
+		TroisCarreau = new Texture("Large/Diamond 3.png");
+		QuatreCarreau = new Texture("Large/Diamond 4.png");
+		CinqCarreau = new Texture("Large/Diamond 5.png");
+		SixCarreau = new Texture("Large/Diamond 6.png");
+		SeptCarreau = new Texture("Large/Diamond 7.png");
+		HuitCarreau = new Texture("Large/Diamond 8.png");
+		NeufCarreau = new Texture("Large/Diamond 9.png");
+		DixCarreau = new Texture("Large/Diamond 10.png");
+		ValetCarreau = new Texture("Large/Diamond 11.png");
+		DameCarreau = new Texture("Large/Diamond 12.png");
+		RoiCarreau = new Texture("Large/Diamond 13.png");
 		AsCoeur = new Texture("Large/Hearts 1.png");
 		DeuxCoeur = new Texture("Large/Hearts 2.png");
 		TroisCoeur = new Texture("Large/Hearts 3.png");

@@ -74,7 +74,7 @@ private int nbparticipants;
 	        }	           
 	        System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainStr() );
 		 }
-		 for (int i = 0; i<2;i++) {
+		 /*for (int i = 0; i<2;i++) {
 				if (joueurs[0].getMain().get(i) == 1) {
 					joueurs[0].getMainStr().set(i, "AsCoeur");
 				}
@@ -114,7 +114,7 @@ private int nbparticipants;
 				else if (joueurs[0].getMain().get(i) == 13) {
 					joueurs[0].getMainStr().set(i, "RoiCoeur");
 				}
-	    	}
+	    	}*/
 		 return joueurs[0].getMainStr();
 	 }
 	 
