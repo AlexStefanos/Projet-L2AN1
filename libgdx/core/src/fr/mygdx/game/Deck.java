@@ -221,7 +221,7 @@ public class Deck {
 	}
 }
 		
-		public void creation() {
+		/*public void creation() {
 			for (int i = 0; i<312;i++) {
 				
 				if (jeu.get(i) == 1) {
@@ -267,7 +267,7 @@ public class Deck {
 			
 			
 			
-		}
+		}*/
 		
 		
 		
