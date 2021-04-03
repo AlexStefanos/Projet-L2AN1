@@ -12,7 +12,7 @@ public class CardsTextures {
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
-	ArrayList<Texture> texturespack;
+	private ArrayList<Texture> texturespack;
 	
 	public CardsTextures(ArrayList<Texture> texturespack) {
 		this.texturespack = texturespack;

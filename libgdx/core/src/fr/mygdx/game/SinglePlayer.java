@@ -59,11 +59,12 @@ public class SinglePlayer implements Screen {
 	}
 	
 	Deck paquet = new Deck();
-	Deck paquetnom = new Deck();
+	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
 	private int p1Carte = 0;
-	CardsTextures hey = new CardsTextures(null);
-	ArrayList<Texture> texturespack;
+	private ArrayList<Texture> texturespack = new ArrayList<Texture>();
+	private CardsTextures hey = new CardsTextures(texturespack);
+	
 	
 	@Override
 	public void show() {
@@ -218,12 +219,12 @@ public class SinglePlayer implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		if (lancement == 0) {
-			paquet.generateur();
-    		paquet.shuffle();
-    		paquetnom = paquet;
-    		paquet.conversion();
+			paquet.creationn();
+			paquet.shuffle();
+			paquet.conversion();
+    		//paquetnom = paquet;
     		//paquetnom.creation();
-    		paquetnom.creationn();
+    		//paquetnom.creationn();
 			p1.initialisation();
 			p1.croupierdep(); 
 			p1.tirerjoueur();
