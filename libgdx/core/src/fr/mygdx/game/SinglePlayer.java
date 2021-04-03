@@ -54,7 +54,7 @@ public class SinglePlayer implements Screen {
 	private float animTime;
 	private float totalAnimTime;
 	
-	public SinglePlayer(BLACKJACKCity box2dTutorial){
+	public SinglePlayer(BLACKJACKCity box2dTutorial) {
 		parent = box2dTutorial;
 	}
 	
@@ -63,6 +63,7 @@ public class SinglePlayer implements Screen {
 	Cartes p1 = new Cartes(paquet);
 	private int p1Carte = 0;
 	private ArrayList<Texture> texturespack = new ArrayList<Texture>();
+	private CardsTextures hey = new CardsTextures(texturespack);
 	static int pushButton = 0;
 	
 	@Override
@@ -235,7 +236,7 @@ public class SinglePlayer implements Screen {
 		lancement++;
 		
 		batch.begin();
-		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
 			batch.draw(texturespack.get(p1Carte), 920f, 172f, 103f, 138f);

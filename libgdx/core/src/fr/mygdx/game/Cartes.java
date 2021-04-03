@@ -26,7 +26,7 @@ private int nbparticipants;
 	public void initialisation() {
 	    do {
 		System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
-		nbparticipants = alpha.nextInt();
+		nbparticipants = 1;//alpha.nextInt();
 	
 	    } while (nbparticipants > 6 || nbparticipants < 0);
 	    joueurs = new Joueur[nbparticipants];
@@ -35,8 +35,8 @@ private int nbparticipants;
 	    	String nom;
 	    	int v = i+1;
 	    	System.out.println("\nNom du joueur " + v);
-	    	nom = alpha.next();
-	    	joueurs[i]  = new Joueur();
+	    	nom = "A";//alpha.next();
+	    	joueurs[i] = new Joueur();
 	    	joueurs[i].nomJoueur(nom);
 	    }
 	

@@ -38,8 +38,6 @@ public class Deck {
 				if (jeu.get(i) > 10) {
 					jeu.set(i, 10);
 				}
-				
-				
 			}
 		}
 		public void creationn() {
