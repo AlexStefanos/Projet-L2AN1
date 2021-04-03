@@ -220,10 +220,12 @@ public class SinglePlayer implements Screen {
 		if (lancement == 0) {
 			paquet.creationn();
 			paquet.shuffle();
+			paquet.toNb();
 			paquet.conversion();
     		//paquetnom = paquet;
     		//paquetnom.creation();
     		//paquetnom.creationn();
+			p1.maindep();
 			p1.initialisation();
 			p1.croupierdep(); 
 			p1.tirerjoueur();

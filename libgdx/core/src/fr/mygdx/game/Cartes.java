@@ -26,7 +26,7 @@ private int nbparticipants;
 	public void initialisation() {
 	    do {
 		System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
-		nbparticipants = 1; //alpha.nextInt();
+		nbparticipants = alpha.nextInt();
 	
 	    } while (nbparticipants > 6 || nbparticipants < 0);
 	    joueurs = new Joueur[nbparticipants];
@@ -35,7 +35,7 @@ private int nbparticipants;
 	    	String nom;
 	    	int v = i+1;
 	    	System.out.println("\nNom du joueur " + v);
-	    	nom = "A";//alpha.next();
+	    	nom = alpha.next();
 	    	joueurs[i]  = new Joueur();
 	    	joueurs[i].nomJoueur(nom);
 	    }
@@ -67,7 +67,7 @@ private int nbparticipants;
 			 for (int i =0;i<2;i++) {		            
 				 joueurs[j].addint(paquet.getPaquet().get(0));
 				 joueurs[j].addstr(paquet.getPaquetNom().get(0));
-		            
+				   
 	    	     paquet.getPaquet().remove(0);
 	    	     paquet.getPaquetNom().remove(0); 
 	    	     System.out.println(joueurs[j].getMainStr());
@@ -154,34 +154,42 @@ private int nbparticipants;
  
 		for (int i=0;i<nbparticipants;i++) {
 			System.out.println("La main du croupier est [" + mainsnom.get(0) + ", ?]");
+			System.out.println(joueurs[i].total());
 			tirer = true;
 			while (tirer && joueurs[i].total() < 21) {
-	        	/*String reponse;
+	        	/*int reponse;
 	    	    Scanner clavier = new Scanner(System.in);
 	    	    System.out.print("Voulez vous tirer une carte : \n");
-	    	    reponse = clavier.nextLine();*/
+	    	    reponse = clavier.nextInt();
+	    	    if (reponse != 1) {
+	    	    	tirer = false;
+	    	    }*/
 	        	    
 	     
 	     
 	    	 
 	             System.out.println("Au tour de " + joueurs[i].getNom());
-	    	     int a = 0;
-	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + maindep() + " )");
+	    	     int a;
+	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + joueurs[i].getMainStr() + " )");
 	    	     if (a == 1) {
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
-	    	    	 joueurs[i].addstr(paquet.getPaquetNom().get(0));
-	    	    	 joueurs[i].addint(paquet.getPaquet().get(0));
-	    	    	 paquet.getPaquetNom().remove(0);
-	    	    	 paquet.getPaquet().remove(0);
-	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
-	    	    }
+	    	    	
+	    	    	joueurs[i].addstr(paquet.getPaquetNom().get(0));
+	    	    	joueurs[i].addint(paquet.getPaquet().get(0));
+	    	        paquet.getPaquetNom().remove(0);
+	    	        paquet.getPaquet().remove(0);
+	    	    	
+	    	        
+	    	        System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
+	    	        }
 	    	    if (a != 1) {
 	    	    	tirer = false;
-	    	    	}   
-	    	    }
-			}
+	    	    }   
+	        
+	     }
+	    }
 	       
-	}
+	 }
 	public ArrayList<String> getMainsNom(){
 		return mainsnom;
 	}
@@ -226,7 +234,7 @@ private int nbparticipants;
 		     //mainsnom.add(paquet.getPaquetNom().get(0));
 		     paquet.getPaquet().remove(0);
 		     paquet.getPaquetNom().remove(0);
-		     System.out.println("\nMain du croupier apr�s tirage : " + mainsnom);
+		     System.out.println("\nMain du croupier apres tirage : " + mainsnom);
 	     }
 		 if (total() > 17) {
 			 System.out.println("\nMain du croupier final : " + mainsnom);
@@ -238,7 +246,7 @@ private int nbparticipants;
 		 for (int i=0;i<nbparticipants;i++) {
 		    
 		     if (total() > 21 && joueurs[i].total() < 22 ) {
-			     System.out.println("\nLe croupier � un score de " + total() + " " +   joueurs[i].getNom() +" � un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
+			     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
 		     }
 		     else if (total() < 22 && total() == joueurs[i].total()) {
 			     System.out.println( "\n" + joueurs[i].getNom() + "a le m�me score que le croupier "  + joueurs[i].getNom() + " r�cup�re sa mise");
@@ -269,6 +277,8 @@ private int nbparticipants;
 		 }
 		return somme;
 	}
+	 
+	 
 	public void conversion() {
 		for (int i = 0; i<312;i++) {
 			if (paquet.getPaquet().get(i) > 10) {
@@ -286,3 +296,4 @@ private int nbparticipants;
 		return mains.size();
 	}
 	}
+

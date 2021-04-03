@@ -45,7 +45,7 @@ public class Deck {
 		public void creationn() {
 			for (int i = 0;i<24;i++) {
 				for (int j = 1;j<14;j++) {
-					jeu.add(j);
+					
 					if (i<6) {
 						if (j == 1) {
 							jeunoms.add("AsCoeur");
@@ -128,7 +128,9 @@ public class Deck {
 						}
 						else if (j == 13) {
 							jeunoms.add("RoiTrefle");
-						}
+						
+					
+					}
 					}
 						else if (i>=12 && i<18) {
 							if (j == 1) {
@@ -168,10 +170,11 @@ public class Deck {
 								jeunoms.add("DameCarreau");
 							}
 							else if (j == 13) {
-								jeunoms.add("RoiCarreau");		
-							}
+								jeunoms.add("RoiCarreau");
+							
+					}
 						
-						}
+				}
 						else if (i>=18 && i<24) {
 							if (j == 1) {
 								jeunoms.add("AsPique");
@@ -211,11 +214,56 @@ public class Deck {
 							}
 							else if (j == 13) {
 								jeunoms.add("RoiPique");		
-							}
-						}
-				}	
+			}
+		}
+			}
+			
 	}
 }
+		public void toNb() {
+			for (int i =0;i<312;i++) {
+				if (jeunoms.get(i) == "AsPique" || jeunoms.get(i) == "AsCoeur" || jeunoms.get(i) == "AsTrefle" || jeunoms.get(i) == "AsCarreau") {
+					jeu.add(1);
+				}
+				else if (jeunoms.get(i) == "DeuxPique" || jeunoms.get(i) == "DeuxCoeur" || jeunoms.get(i) == "DeuxTrefle" || jeunoms.get(i) == "DeuxCarreau") {
+					jeu.add(2);
+				}
+				else if (jeunoms.get(i) == "TroisPique" || jeunoms.get(i) == "TroisCoeur" || jeunoms.get(i) == "TroisTrefle" || jeunoms.get(i) == "TroisCarreau") {
+					jeu.add(3);
+				}
+				else if (jeunoms.get(i) == "QuatrePique" || jeunoms.get(i) == "QuatreCoeur" || jeunoms.get(i) == "QuatreTrefle" || jeunoms.get(i) == "QuatreCarreau") {
+					jeu.add(4);
+				}
+				else if (jeunoms.get(i) == "CinqPique" || jeunoms.get(i) == "CinqCoeur" || jeunoms.get(i) == "CinqTrefle" || jeunoms.get(i) == "CinqCarreau") {
+					jeu.add(5);
+				}
+				else if (jeunoms.get(i) == "SixPique" || jeunoms.get(i) == "SixCoeur" || jeunoms.get(i) == "SixTrefle" || jeunoms.get(i) == "SixCarreau") {
+					jeu.add(6);
+				}
+				else if (jeunoms.get(i) == "SeptPique" || jeunoms.get(i) == "SeptCoeur" || jeunoms.get(i) == "SeptTrefle" || jeunoms.get(i) == "SeptCarreau") {
+					jeu.add(7);
+				}
+				else if (jeunoms.get(i) == "HuitPique" || jeunoms.get(i) == "HuitCoeur" || jeunoms.get(i) == "HuitTrefle" || jeunoms.get(i) == "HuitCarreau") {
+					jeu.add(8);
+				}
+				else if (jeunoms.get(i) == "NeufPique" || jeunoms.get(i) == "NeufCoeur" || jeunoms.get(i) == "NeufTrefle" || jeunoms.get(i) == "NeufCarreau") {
+					jeu.add(9);
+				}
+				else if (jeunoms.get(i) == "DixPique" || jeunoms.get(i) == "DixCoeur" || jeunoms.get(i) == "DixTrefle" || jeunoms.get(i) == "DixCarreau") {
+					jeu.add(10);
+				}
+				else if (jeunoms.get(i) == "ValetPique" || jeunoms.get(i) == "ValetCoeur" || jeunoms.get(i) == "ValetTrefle" || jeunoms.get(i) == "ValetCarreau") {
+					jeu.add(10);
+				}
+				else if (jeunoms.get(i) == "DamePique" || jeunoms.get(i) == "DameCoeur" || jeunoms.get(i) == "DameTrefle" || jeunoms.get(i) == "DameCarreau") {
+					jeu.add(10);
+				}
+				else if (jeunoms.get(i) == "RoiPique" || jeunoms.get(i) == "RoiCoeur" || jeunoms.get(i) == "RoiTrefle" || jeunoms.get(i) == "RoiCarreau") {
+					jeu.add(10);
+				}
+				
+			}
+		}
 		
 		/*public void creation() {
 			for (int i = 0; i<312;i++) {
@@ -268,8 +316,8 @@ public class Deck {
 		
 		
 		public void shuffle() {
-			Collections.shuffle(jeu);
 			Collections.shuffle(jeunoms);
+			
 		}
 		public ArrayList<Integer> getPaquet() {
 			return jeu;

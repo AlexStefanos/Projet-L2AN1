@@ -12,8 +12,9 @@ public class TestCartes {
 		
 		paquet.creationn();
 		paquet.shuffle();
+		paquet.toNb();
     	
-    	paquet.conversion();
+    	//paquet.conversion();
     	
     	Cartes p1 = new Cartes(paquet);
     	p1.initialisation();
@@ -38,6 +39,7 @@ public class TestCartes {
     	
     	//p3.maindep();
     	//p4.maindep();
+    	p1.maindep();
     	p1.croupierdep(); 
     	p1.tirerjoueur();
     	//p1.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
