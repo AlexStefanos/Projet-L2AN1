@@ -128,9 +128,7 @@ public class Deck {
 						}
 						else if (j == 13) {
 							jeunoms.add("RoiTrefle");
-						
-					
-					}
+						}
 					}
 						else if (i>=12 && i<18) {
 							if (j == 1) {
@@ -170,11 +168,10 @@ public class Deck {
 								jeunoms.add("DameCarreau");
 							}
 							else if (j == 13) {
-								jeunoms.add("RoiCarreau");
-							
-					}
+								jeunoms.add("RoiCarreau");		
+							}
 						
-				}
+						}
 						else if (i>=18 && i<24) {
 							if (j == 1) {
 								jeunoms.add("AsPique");
@@ -214,10 +211,9 @@ public class Deck {
 							}
 							else if (j == 13) {
 								jeunoms.add("RoiPique");		
-			}
-		}
-			}
-			
+							}
+						}
+				}	
 	}
 }
 		

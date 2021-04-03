@@ -26,7 +26,7 @@ private int nbparticipants;
 	public void initialisation() {
 	    do {
 		System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
-		nbparticipants = alpha.nextInt();
+		nbparticipants = 1; //alpha.nextInt();
 	
 	    } while (nbparticipants > 6 || nbparticipants < 0);
 	    joueurs = new Joueur[nbparticipants];
@@ -35,7 +35,7 @@ private int nbparticipants;
 	    	String nom;
 	    	int v = i+1;
 	    	System.out.println("\nNom du joueur " + v);
-	    	nom = alpha.next();
+	    	nom = "A";//alpha.next();
 	    	joueurs[i]  = new Joueur();
 	    	joueurs[i].nomJoueur(nom);
 	    }
@@ -165,27 +165,23 @@ private int nbparticipants;
 	     
 	    	 
 	             System.out.println("Au tour de " + joueurs[i].getNom());
-	    	     int a;
+	    	     int a = 0;
 	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + maindep() + " )");
 	    	     if (a == 1) {
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
-	    	    	
-	    	    	joueurs[i].addstr(paquet.getPaquetNom().get(0));
-	    	    	joueurs[i].addint(paquet.getPaquet().get(0));
-	    	        paquet.getPaquetNom().remove(0);
-	    	        paquet.getPaquet().remove(0);
-	    	    	
-	    	        
-	    	        System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
-	    	        }
+	    	    	 joueurs[i].addstr(paquet.getPaquetNom().get(0));
+	    	    	 joueurs[i].addint(paquet.getPaquet().get(0));
+	    	    	 paquet.getPaquetNom().remove(0);
+	    	    	 paquet.getPaquet().remove(0);
+	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
+	    	    }
 	    	    if (a != 1) {
 	    	    	tirer = false;
-	    	    }   
-	        
-	     }
-	    }
+	    	    	}   
+	    	    }
+			}
 	       
-	 }
+	}
 	public ArrayList<String> getMainsNom(){
 		return mainsnom;
 	}
