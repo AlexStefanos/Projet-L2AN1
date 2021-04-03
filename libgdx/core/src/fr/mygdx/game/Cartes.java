@@ -123,6 +123,10 @@ private int nbparticipants;
 		 return joueurs[0].getMainStr().get(k);
 	 }
 	
+	 public int uneCartev2(int k) {
+		 return joueurs[0].getMain().get(k);
+	 }
+	 
 	 /*public void maindepnom() {
 			
 	        for (int i =0;i<2;i++) {

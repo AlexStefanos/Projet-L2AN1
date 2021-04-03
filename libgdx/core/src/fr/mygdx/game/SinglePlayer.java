@@ -1,5 +1,7 @@
 package fr.mygdx.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -59,6 +61,9 @@ public class SinglePlayer implements Screen {
 	Deck paquet = new Deck();
 	Deck paquetnom = new Deck();
 	Cartes p1 = new Cartes(paquet);
+	private int p1Carte = 0;
+	CardsTextures hey = new CardsTextures(null);
+	ArrayList<Texture> texturespack;
 	
 	@Override
 	public void show() {
@@ -230,7 +235,9 @@ public class SinglePlayer implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			if (buttonJouer.isChecked()) {
+			/*texturespack.getTexturespack();
+			p1Carte = p1.uneCartev2(0);
+			batch.draw(, 920f, 172f, 103f, 138f);*/
 				if (p1.uneCarte(0) == "AsCoeur") {
 					batch.draw(AsCoeur, 920f, 172f, 103f, 138f);
 				}
@@ -396,7 +403,6 @@ public class SinglePlayer implements Screen {
 			batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
 			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
-		}
 		
 		if (clique >= 1) {
 			if (p1.uneCarte(1) == "AsCoeur") {
@@ -1480,7 +1486,7 @@ public class SinglePlayer implements Screen {
 										batch.draw(SeptCarreau, 1230f, 80f, 103f, 138f);
 									}
 									else if (p1.uneCarte(7) == "HuitCarreau") {
-										b80f.draw(HuitCarreau, 1230f, 80f, 103f, 138f);
+										batch.draw(HuitCarreau, 1230f, 80f, 103f, 138f);
 									}
 									else if (p1.uneCarte(7) == "NeufCarreau") {
 										batch.draw(NeufCarreau, 1230f, 80f, 103f, 138f);
