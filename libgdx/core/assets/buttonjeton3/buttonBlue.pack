@@ -1,0 +1,20 @@
+
+buttonBlue.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+buttonblue.down
+  rotate: false
+  xy: 0, 0
+  size: 91, 91
+  split: 0, 0, 0, 0
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+buttonblue.up
+  rotate: false
+  xy: 0, 0
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1

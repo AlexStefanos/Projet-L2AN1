@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -29,14 +30,15 @@ public class DuoPlayers implements Screen{
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
 	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
 	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
-	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser;
+	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
-	private Table table, tableJeu, tableJeu2;
-	private TextureAtlas atlas;
-	private Skin skin;
+	private Table table, tableJeu, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
+	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel;
+	private Skin skin, skin2, skin3, skin4, skin5,skinLabel;
 	private Music music;
 	private Music pressbutton;
-	private int cliqueJ1, cliqueJ2;
+	private Label miseLabel;
+	private int cliqueJ1, cliqueJ2, mise;
 	private  BLACKJACKCity parent;
 	
 	public DuoPlayers(BLACKJACKCity box2dTutorial){
@@ -56,11 +58,21 @@ public class DuoPlayers implements Screen{
 	public void show() {
 		batch = new SpriteBatch();
 		BlackjackTable = new Texture("BlackjackTable DuoPlayers.png");
+		atlas3 = new TextureAtlas("buttonjeton2/buttonGreen.pack");
+		atlas4 = new TextureAtlas("buttonjeton3/buttonBlue.pack");
+		atlas5 = new TextureAtlas("buttonjeton4/buttonYellow.pack");
+		atlas2 = new TextureAtlas("buttonjeton/Buttonred.pack");
 		atlas = new TextureAtlas("ui/button.pack");
 		stage = new Stage();
 		skin = new Skin(atlas);
+		skin2 = new Skin(atlas2);
+		skin3 = new Skin(atlas3);
+		skin4 = new Skin(atlas4);
+		skin5 = new Skin(atlas5);
+		skinLabel = new Skin(Gdx.files.internal("skindefault/uiskin.json"));
 		cliqueJ1 = 0;
 		cliqueJ2 = 0;
+		mise = 0;
 		Gdx.input.setInputProcessor(stage);
 		
 		table = new Table(skin);
@@ -69,6 +81,14 @@ public class DuoPlayers implements Screen{
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu2 = new Table(skin);
 		tableJeu2.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableRedJeton = new Table(skin2);
+		tableRedJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableGreenJeton = new Table(skin3);
+		tableGreenJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableBlueJeton = new Table(skin4);
+		tableBlueJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableYellowJeton = new Table(skin5);
+		tableYellowJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
@@ -144,6 +164,34 @@ public class DuoPlayers implements Screen{
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
+		
+		TextButtonStyle textButtonStyle2 = new TextButtonStyle();
+		textButtonStyle2.down = skin2.getDrawable("buttonrouge.down");
+		textButtonStyle2.up = skin2.getDrawable("buttonrouge.up");
+		textButtonStyle2.pressedOffsetX = 1;
+		textButtonStyle2.pressedOffsetY = -1;
+		textButtonStyle2.font = black;
+		
+		TextButtonStyle textButtonStyle3 = new TextButtonStyle();
+		textButtonStyle3.down = skin3.getDrawable("buttongreen.down");
+		textButtonStyle3.up = skin3.getDrawable("buttongreen.up");
+		textButtonStyle3.pressedOffsetX = 1;
+		textButtonStyle3.pressedOffsetY = -1;
+		textButtonStyle3.font = black;
+		
+		TextButtonStyle textButtonStyle4 = new TextButtonStyle();
+		textButtonStyle4.down = skin4.getDrawable("buttonblue.down");
+		textButtonStyle4.up = skin4.getDrawable("buttonblue.up");
+		textButtonStyle4.pressedOffsetX = 1;
+		textButtonStyle4.pressedOffsetY = -1;
+		textButtonStyle4.font = black;
+		
+		TextButtonStyle textButtonStyle5 = new TextButtonStyle();
+		textButtonStyle5.down = skin5.getDrawable("buttonyellow.down");
+		textButtonStyle5.up = skin5.getDrawable("buttonyellow.up");
+		textButtonStyle5.pressedOffsetX = 1;
+		textButtonStyle5.pressedOffsetY = -1;
+		textButtonStyle5.font = black;
 			
 		music.setLooping(true);
 		music.setVolume(AppPreferences.MVOLUME);
@@ -194,18 +242,92 @@ public class DuoPlayers implements Screen{
 				cliqueJ2++;
 			}
 		});
+		
+		buttonRedJeton = new TextButton("500", textButtonStyle2);
+		buttonRedJeton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				mise += 500; 
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonRedJeton.pad(15f, 40f, 15f, 40f);
+		
+		buttonYellowJeton = new TextButton("100", textButtonStyle5);
+		buttonYellowJeton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				mise += 100; 
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonYellowJeton.pad(15f, 40f, 15f, 40f);
+		
+		buttonGreenJeton = new TextButton("200", textButtonStyle3);
+		buttonGreenJeton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				mise += 200; 
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonGreenJeton.pad(15f, 40f, 15f, 40f);
+		
+		buttonBlueJeton = new TextButton("50", textButtonStyle4);
+		buttonBlueJeton.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				mise += 50; 
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		miseLabel = new Label( "Mise = "+mise , skinLabel );
+		
+		table.setPosition(500f, -50f, 0);
+		table.add(miseLabel);
+		table.row().pad(10,0,0,10);
+		
+		
+		buttonBlueJeton.pad(15f, 40f, 15f, 40f);
 			
 		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
+		table.row();
 			
 		tableJeu.setPosition(220f, 600f, 0);
 		tableJeu.add(buttonJouer);
+		table.row();
 			
 		tableJeu2.setPosition(220f, 600f, 0);
+		
+		tableRedJeton.setPosition(100f,700f, 0);
+		tableRedJeton.add(buttonRedJeton);
+		table.row();
+		
+		tableGreenJeton.setPosition(200f,100f, 0);
+		tableGreenJeton.add(buttonGreenJeton);
+		table.row();
+		
+		tableBlueJeton.setPosition(300f,100f, 0);
+		tableBlueJeton.add(buttonBlueJeton);
+		table.row();
+		
+		tableYellowJeton.setPosition(2000f,1000f, 0);
+		tableYellowJeton.add(buttonYellowJeton);
+		table.row();
+		
 		
 		stage.addActor(table);
 		stage.addActor(tableJeu);
 		stage.addActor(tableJeu2);
+		stage.addActor(buttonRedJeton);
+		stage.addActor(buttonGreenJeton);
+		stage.addActor(buttonBlueJeton);
+		stage.addActor(buttonYellowJeton);
 	}
 
 	@Override
