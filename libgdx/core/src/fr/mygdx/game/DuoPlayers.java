@@ -43,14 +43,13 @@ public class DuoPlayers implements Screen{
 		parent = box2dTutorial;
 	}
 	
-	Deck paquet = new Deck();
+	private ArrayList<Texture> texturespack;
+	private Joueur[] joueurs = new Joueur[1];
+	Deck paquet = new Deck(texturespack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
 	Cartes p2 = new Cartes(paquet);
-	private int p1Carte, p2Carte;
-	private ArrayList<Texture> texturespack = new ArrayList<Texture>();
-	private CardsTextures hey = new CardsTextures(texturespack);
-	static int pushButton = 0;
+	private int p1Carte = 0, p2Carte = 0;
 	
 	@Override
 	public void show() {
@@ -303,10 +302,10 @@ public class DuoPlayers implements Screen{
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
-			batch.draw(texturespack.get(p1Carte), 920f, 172f, 103f, 138f);
+			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
 			p2Carte = p2.uneCartev2(0);
-			batch.draw(texturespack.get(p2Carte), 713f, 172f, 103f, 138f); 
-			batch.draw(texturespack.get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
+			batch.draw(p2.getMainJoueur0().get(0), 713f, 172f, 103f, 138f); 
+			batch.draw(p1.getMainJoueur0().get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -318,34 +317,34 @@ public class DuoPlayers implements Screen{
 		
 		if (cliqueJ1 >= 1) {
 			p1Carte = p1.uneCartev2(1);
-			batch.draw(texturespack.get(p1Carte), 1155f, 140f, 103f, 138f);
+			batch.draw(p1.getMainJoueur0().get(1), 1155f, 140f, 103f, 138f);
 			if (cliqueJ1 >= 2) {
 				p1Carte = p1.uneCartev2(2);
-				batch.draw(texturespack.get(p1Carte), 1185f, 110f, 103f, 138f);
+				batch.draw(p1.getMainJoueur0().get(2), 1185f, 110f, 103f, 138f);
 				if (cliqueJ1 >= 3) {
 					p1Carte = p1.uneCartev2(3);
-					batch.draw(texturespack.get(p1Carte), 1215f, 80f, 103f, 138f);
+					batch.draw(p1.getMainJoueur0().get(3), 1215f, 80f, 103f, 138f);
 					if (cliqueJ1 >= 4) {
 						p1Carte = p1.uneCartev2(4);
-						batch.draw(texturespack.get(p1Carte), 1345f, 172f, 103f, 138f);
+						batch.draw(p1.getMainJoueur0().get(4), 1345f, 172f, 103f, 138f);
 						if (cliqueJ1 >= 5) {
 							p1Carte = p1.uneCartev2(5);
-							batch.draw(texturespack.get(p1Carte), 1375f, 140f, 103f, 138f);
+							batch.draw(p1.getMainJoueur0().get(5), 1375f, 140f, 103f, 138f);
 							if (cliqueJ1 >= 6) {
 								p1Carte = p1.uneCartev2(6);
-								batch.draw(texturespack.get(p1Carte), 1405f, 110f, 103f, 138f);
+								batch.draw(p1.getMainJoueur0().get(6), 1405f, 110f, 103f, 138f);
 								if (cliqueJ1 >= 7) {
 									p1Carte = p1.uneCartev2(7);
-									batch.draw(texturespack.get(p1Carte), 1435f, 80f, 103f, 138f);
+									batch.draw(p1.getMainJoueur0().get(7), 1435f, 80f, 103f, 138f);
 									if (cliqueJ1 >= 8) {
 										p1Carte = p1.uneCartev2(8);
-										batch.draw(texturespack.get(p1Carte), 1565f, 172f, 103f, 138f);
+										batch.draw(p1.getMainJoueur0().get(8), 1565f, 172f, 103f, 138f);
 										if (cliqueJ1 >= 9) {
 											p1Carte = p1.uneCartev2(9);
-											batch.draw(texturespack.get(p1Carte), 1595f, 140f, 103f, 138f);
+											batch.draw(p1.getMainJoueur0().get(9), 1595f, 140f, 103f, 138f);
 											if (cliqueJ1 >= 10) {
 												p1Carte = p1.uneCartev2(10);
-												batch.draw(texturespack.get(p1Carte), 1625f, 110f, 103f, 138f);
+												batch.draw(p1.getMainJoueur0().get(10), 1625f, 110f, 103f, 138f);
 												tableJeu.removeActor(buttonTirerJ1);
 												tableJeu2.add(buttonTirerJ2);
 											}
@@ -361,34 +360,34 @@ public class DuoPlayers implements Screen{
 		
 		if (cliqueJ2 >= 1) {
 			p2Carte = p2.uneCartev2(1);
-			batch.draw(texturespack.get(p2Carte), 740f, 140f, 103f, 138f);
+			batch.draw(p2.getMainJoueur0().get(1), 740f, 140f, 103f, 138f);
 			if (cliqueJ2 >= 2) {
 				p2Carte = p2.uneCartev2(2);
-				batch.draw(texturespack.get(p2Carte), 770f, 110f, 103f, 138f);
+				batch.draw(p2.getMainJoueur0().get(2), 770f, 110f, 103f, 138f);
 				if (cliqueJ2 >= 3) {
 					p2Carte = p2.uneCartev2(3);
-					batch.draw(texturespack.get(p2Carte), 800f, 80f, 103f, 138f);
+					batch.draw(p2.getMainJoueur0().get(3), 800f, 80f, 103f, 138f);
 					if (cliqueJ2 >= 4) {
 						p2Carte = p2.uneCartev2(4);
-						batch.draw(texturespack.get(p2Carte), 520f, 172f, 103f, 138f);
+						batch.draw(p2.getMainJoueur0().get(4), 520f, 172f, 103f, 138f);
 						if (cliqueJ2 >= 5) {
 							p2Carte = p2.uneCartev2(5);
-							batch.draw(texturespack.get(p2Carte), 550f, 140f, 103f, 138f);
+							batch.draw(p2.getMainJoueur0().get(5), 550f, 140f, 103f, 138f);
 							if (cliqueJ2 >= 6) {
 								p2Carte = p2.uneCartev2(6);
-								batch.draw(texturespack.get(p2Carte), 580f, 110f, 103f, 138f);	
+								batch.draw(p2.getMainJoueur0().get(6), 580f, 110f, 103f, 138f);	
 								if (cliqueJ2 >= 7) {
 									p2Carte = p2.uneCartev2(7);
-									batch.draw(texturespack.get(p2Carte), 610f, 80f, 103f, 138f);
+									batch.draw(p2.getMainJoueur0().get(7), 610f, 80f, 103f, 138f);
 									if (cliqueJ2 >= 8) {
 										p2Carte = p2.uneCartev2(8);
-										batch.draw(texturespack.get(p2Carte), 350f, 172f, 103f, 138f);
+										batch.draw(p2.getMainJoueur0().get(8), 350f, 172f, 103f, 138f);
 										if (cliqueJ2 >= 9) {
 											p2Carte = p2.uneCartev2(9);
-											batch.draw(texturespack.get(p2Carte), 380f, 140f, 103f, 138f);
+											batch.draw(p2.getMainJoueur0().get(9), 380f, 140f, 103f, 138f);
 											if (cliqueJ2 >= 10) {
 												p2Carte = p2.uneCartev2(10);
-												batch.draw(texturespack.get(p2Carte), 410f, 110f, 103f, 138f);
+												batch.draw(p2.getMainJoueur0().get(10), 410f, 110f, 103f, 138f);
 											}
 										}
 									}
