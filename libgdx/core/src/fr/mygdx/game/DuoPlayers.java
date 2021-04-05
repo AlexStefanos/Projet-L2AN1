@@ -34,16 +34,16 @@ public class DuoPlayers implements Screen{
 	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, Lunes;
 	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
-	private Table table, tableJeu, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
-	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ, cards1;
+	private Table table, tableJeu, tableQuit, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
+	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ, cards1,atlasAura;
 	private Skin skin, skin2, skin3, skin4, skin5,skinLabel;
 	private Music music;
 	private Music pressbutton;
 	private Label miseLabel;
 	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow;
 	
-	private Array<AtlasRegion> animationFrames , animationFramesCartes;
-	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes;
+	private Array<AtlasRegion> animationFrames , animationFramesCartes,animationFramesAura;
+	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
 	
 	private Vector2 screenposRed = new Vector2(650f,380f);
 	private Vector2 screenposGreen = new Vector2(850f,380f);
@@ -52,7 +52,7 @@ public class DuoPlayers implements Screen{
 	private Vector2 screenPos = new Vector2(500f,500f);
 
 	
-	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeCartes1;
+	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeCartes1,animTimeAura;
 	private float totalAnimTime;
 	
 	private  BLACKJACKCity parent;
@@ -76,6 +76,7 @@ public class DuoPlayers implements Screen{
 		BlackjackTable = new Texture("BlackjackTable DuoPlayers.png");
 		Lunes = new Texture("shieldWhite_Edit.png");
 		
+		atlasAura = new TextureAtlas("AuraJetons/AnimAuraJetons.pack");
 		atlasAnimRedJ = new TextureAtlas("ANIMREDJ/AnimRedJ.pack");
 		atlasAnimGreenJ = new TextureAtlas("ANIMGREENJ/AnimGreenJ.pack");
 		atlasAnimBlueJ = new TextureAtlas("ANIMBLUEJ/AnimBlueJ.pack");
@@ -117,6 +118,7 @@ public class DuoPlayers implements Screen{
 		animTimeJetons3 = 0f;
 		animTimeJetons4 = 0f;
 		animTimeCartes1 = 0f;
+		animTimeAura = 0f;
 		
 		animationFrames = atlasAnimGreenJ.getRegions();
 		animGreenJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
@@ -130,9 +132,15 @@ public class DuoPlayers implements Screen{
 		animYellowJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
 		animYellowJ.setPlayMode(Animation.PlayMode.NORMAL);
 		
+		animationFramesAura = atlasAura.getRegions();
+		animAura = new Animation<TextureRegion> (totalAnimTime, animationFramesAura);
+		animAura.setPlayMode(Animation.PlayMode.NORMAL);
+		
 		
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableQuit = new Table(skin);
+		tableQuit.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu = new Table(skin);
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableJeu2 = new Table(skin);
@@ -292,15 +300,15 @@ public class DuoPlayers implements Screen{
 		});
 		miseLabel = new Label( "Mise = "+mise , skinLabel );
 		
-		table.setPosition(500f, -50f, 0);
+		table.setPosition(500f, 500f, 0);
 		table.add(miseLabel);
 		table.row().pad(10,0,0,10);	
 		
 		buttonBlueJeton.pad(20f, 20f, 20f, 20f);
 			
-		table.setPosition(1700f, 600f, 0);
-		table.add(buttonQuit);
-		table.row();
+		tableQuit.setPosition(1700f, 600f, 0);
+		tableQuit.add(buttonQuit);
+		tableQuit.row();
 			
 		tableJeu.setPosition(220f, 600f, 0);
 		tableJeu.add(buttonJouer);
@@ -324,6 +332,7 @@ public class DuoPlayers implements Screen{
 		
 		
 		stage.addActor(table);
+		stage.addActor(tableQuit);
 		stage.addActor(tableJeu);
 		stage.addActor(tableJeu2);
 		stage.addActor(tableRedJeton);
@@ -361,6 +370,13 @@ public class DuoPlayers implements Screen{
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(Lunes,990f,330f, 110, 110);
+		for(int i=0; i<=red; i++) {
+			table.removeActor(miseLabel);
+			miseLabel = new Label( "Mise = "+mise , skinLabel );
+			table.add(miseLabel);
+			table.setPosition(1000f, 1000f, 0);
+			table.row().pad(10,0,0,10);	
+		}
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
 			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
@@ -375,6 +391,8 @@ public class DuoPlayers implements Screen{
 			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
 		}
+		
+			
 		
 		if (cliqueJ1 >= 1) {
 			p1Carte = p1.uneCartev2(1);
@@ -464,6 +482,8 @@ public class DuoPlayers implements Screen{
 		batch.end();
 		for(int i=0; i < red;i++){
 		batch.begin();
+		animTimeAura += Gdx.graphics.getDeltaTime();
+		batch.draw(animAura.getKeyFrame(animTimeAura,false) ,500f ,500f);
 		animTimeJetons1 += Gdx.graphics.getDeltaTime();
 		batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);
 		batch.end();	
