@@ -258,6 +258,11 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 500; 
 				red += 1;
+				table.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+mise , skinLabel );
+				table.setPosition(500f, 500f, 0);
+				table.add(miseLabel);
+				table.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -270,6 +275,11 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 100; 
 				yellow += 1;
+				table.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+mise , skinLabel );
+				table.setPosition(500f, 500f, 0);
+				table.add(miseLabel);
+				table.pad(10,0,0,10);	
 				pressbutton.play();
 				music.dispose();
 			}
@@ -282,6 +292,11 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 200; 
 				green += 1;
+				table.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+mise , skinLabel );
+				table.setPosition(500f, 500f, 0);
+				table.add(miseLabel);
+				table.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -294,6 +309,11 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 50; 
 				blue += 1;
+				table.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+mise , skinLabel );
+				table.setPosition(500f, 500f, 0);
+				table.add(miseLabel);
+				table.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -302,7 +322,7 @@ public class DuoPlayers implements Screen{
 		
 		table.setPosition(500f, 500f, 0);
 		table.add(miseLabel);
-		table.row().pad(10,0,0,10);	
+		table.pad(10,0,0,10);	
 		
 		buttonBlueJeton.pad(20f, 20f, 20f, 20f);
 			
@@ -370,13 +390,6 @@ public class DuoPlayers implements Screen{
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(Lunes,990f,330f, 110, 110);
-		for(int i=0; i<=red; i++) {
-			table.removeActor(miseLabel);
-			miseLabel = new Label( "Mise = "+mise , skinLabel );
-			table.add(miseLabel);
-			table.setPosition(1000f, 1000f, 0);
-			table.row().pad(10,0,0,10);	
-		}
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
 			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
