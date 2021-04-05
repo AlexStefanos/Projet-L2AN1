@@ -290,6 +290,9 @@ private int nbparticipants;
 		}
 		
 	}
+	public ArrayList<Texture> getMainJoueur0(){
+		return joueurs[0].getMainStr();
+	}
 	public ArrayList<Integer> getMain(){
 		return mains;
 	}
