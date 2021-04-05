@@ -1,0 +1,54 @@
+
+AnimAuraJetons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FondJetons1
+  rotate: false
+  xy: 0, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons2
+  rotate: false
+  xy: 120, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons3
+  rotate: false
+  xy: 240, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons4
+  rotate: false
+  xy: 360, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons5
+  rotate: false
+  xy: 480, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons6
+  rotate: false
+  xy: 600, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1
+FondJetons7
+  rotate: false
+  xy: 720, 0
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1

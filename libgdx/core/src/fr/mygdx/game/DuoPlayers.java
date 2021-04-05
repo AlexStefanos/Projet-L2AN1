@@ -294,8 +294,7 @@ public class DuoPlayers implements Screen{
 		
 		table.setPosition(500f, -50f, 0);
 		table.add(miseLabel);
-		table.row().pad(10,0,0,10);
-		
+		table.row().pad(10,0,0,10);	
 		
 		buttonBlueJeton.pad(20f, 20f, 20f, 20f);
 			
