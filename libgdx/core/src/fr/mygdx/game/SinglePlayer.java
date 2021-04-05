@@ -30,12 +30,7 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, FondCarteBleu, AsTrefle, DeuxTrefle, TroisTrefle, QuatreTrefle, CinqTrefle, SixTrefle, 
-	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarreau, DeuxCarreau, TroisCarreau, QuatreCarreau, 
-	CinqCarreau, SixCarreau, SeptCarreau, HuitCarreau, NeufCarreau, DixCarreau, ValetCarreau, DameCarreau, RoiCarreau, AsCoeur, DeuxCoeur, TroisCoeur,
-	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
-	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
-	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
+	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
 	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser;
 	private BitmapFont black, white;
 	private Table table, tableJeu;
@@ -97,61 +92,6 @@ public class SinglePlayer implements Screen {
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
-		FondCarteBleu = new Texture("Large/Back Blue 2.png");
-		AsTrefle = new Texture("Large/Clubs 1.png");
-		DeuxTrefle = new Texture("Large/Clubs 2.png"); 
-		TroisTrefle = new Texture("Large/Clubs 3.png");
-		QuatreTrefle = new Texture("Large/Clubs 4.png");
-		CinqTrefle = new Texture("Large/Clubs 5.png");
-		SixTrefle = new Texture("Large/Clubs 6.png");
-		SeptTrefle = new Texture("Large/Clubs 7.png");
-		HuitTrefle = new Texture("Large/Clubs 8.png");
-		NeufTrefle = new Texture("Large/Clubs 9.png");
-		DixTrefle = new Texture("Large/Clubs 10.png");
-		ValetTrefle = new Texture("Large/Clubs 11.png");
-		DameTrefle = new Texture("Large/Clubs 12.png");
-		RoiTrefle = new Texture("Large/Clubs 13.png");
-		AsCarreau = new Texture("Large/Diamond 1.png");
-		DeuxCarreau = new Texture("Large/Diamond 2.png");
-		TroisCarreau = new Texture("Large/Diamond 3.png");
-		QuatreCarreau = new Texture("Large/Diamond 4.png");
-		CinqCarreau = new Texture("Large/Diamond 5.png");
-		SixCarreau = new Texture("Large/Diamond 6.png");
-		SeptCarreau = new Texture("Large/Diamond 7.png");
-		HuitCarreau = new Texture("Large/Diamond 8.png");
-		NeufCarreau = new Texture("Large/Diamond 9.png");
-		DixCarreau = new Texture("Large/Diamond 10.png");
-		ValetCarreau = new Texture("Large/Diamond 11.png");
-		DameCarreau = new Texture("Large/Diamond 12.png");
-		RoiCarreau = new Texture("Large/Diamond 13.png");
-		AsCoeur = new Texture("Large/Hearts 1.png");
-		DeuxCoeur = new Texture("Large/Hearts 2.png");
-		TroisCoeur = new Texture("Large/Hearts 3.png");
-		QuatreCoeur = new Texture("Large/Hearts 4.png");
-		CinqCoeur = new Texture("Large/Hearts 5.png");
-		SixCoeur = new Texture("Large/Hearts 6.png");
-		SeptCoeur = new Texture("Large/Hearts 7.png");
-		HuitCoeur = new Texture("Large/Hearts 8.png");
-		NeufCoeur = new Texture("Large/Hearts 9.png");
-		DixCoeur = new Texture("Large/Hearts 10.png");
-		ValetCoeur = new Texture("Large/Hearts 11.png");
-		DameCoeur = new Texture("Large/Hearts 12.png");
-		RoiCoeur = new Texture("Large/Hearts 13.png");
-		AsPique = new Texture("Large/Spades 1.png");
-		DeuxPique = new Texture("Large/Spades 2.png");
-		TroisPique = new Texture("Large/Spades 3.png");
-		QuatrePique = new Texture("Large/Spades 4.png");
-		CinqPique = new Texture("Large/Spades 5.png");
-		SixPique = new Texture("Large/Spades 6.png");
-		SeptPique = new Texture("Large/Spades 7.png");
-		HuitPique = new Texture("Large/Spades 8.png");
-		NeufPique = new Texture("Large/Spades 9.png");
-		DixPique = new Texture("Large/Spades 10.png");
-		ValetPique = new Texture("Large/Spades 11.png");
-		DamePique = new Texture("Large/Spades 12.png");
-		RoiPique = new Texture("Large/Spades 13.png");
-		JokerBlack = new Texture("Large/Joker Black.png");
-		JokerRed = new Texture("Large/Joker Red.png");
 		JetonBleu = new Texture("LargeChips/chip_blue.png");
 		JetonBleuClair = new Texture("LargeChips/chip_lightblue.png");
 		JetonRouge = new Texture("LargeChips/chip_red.png");
@@ -222,12 +162,12 @@ public class SinglePlayer implements Screen {
 			paquet.creationn();
 			paquet.shuffle();
 			paquet.toNb();
-			paquet.conversion();
+			//paquet.conversion();
     		//paquetnom = paquet;
     		//paquetnom.creation();
     		//paquetnom.creationn();
-			p1.maindep();
 			p1.initialisation();
+			p1.maindep();
 			p1.croupierdep(); 
 			p1.tirerjoueur();
 			p1.croupiertirer();
@@ -241,7 +181,7 @@ public class SinglePlayer implements Screen {
 			p1Carte = p1.uneCartev2(0);
 			batch.draw(texturespack.get(p1Carte), 920f, 172f, 103f, 138f);
 		}
-		batch.draw(AsCoeur, 800f, 500f, 103f, 138f); //1ere Carte Croupier
+		batch.draw(texturespack.get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 		batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 		batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 		batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -252,7 +192,7 @@ public class SinglePlayer implements Screen {
 		if (clique >= 1) {
 			p1Carte = p1.uneCartev2(1);
 			batch.draw(texturespack.get(p1Carte), 950f, 140f, 103f, 138f);
-			if (clique >=2) {
+			if (clique >= 2 /*&& p1.uneCartev2(2) pour verifier l'existence de la carte => gestionnaire d'erreurs*/) {
 				p1Carte = p1.uneCartev2(2);
 				batch.draw(texturespack.get(p1Carte), 980f, 110f, 103f, 138f);
 				if (clique >= 3) {

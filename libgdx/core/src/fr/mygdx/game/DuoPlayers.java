@@ -1,5 +1,7 @@
 package fr.mygdx.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,12 +26,7 @@ import fr.mygdx.game.splashscreen.MainMenu;
 public class DuoPlayers implements Screen{
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, FondCarteBleu, AsTrefle, DeuxTrefle, TroisTrefle, QuatreTrefle, CinqTrefle, SixTrefle, 
-	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarreau, DeuxCarreau, TroisCarreau, QuatreCarreau, 
-	CinqCarreau, SixCarreau, SeptCarreau, HuitCarreau, NeufCarreau, DixCarreau, ValetCarreau, DameCarreau, RoiCarreau, AsCoeur, DeuxCoeur, TroisCoeur,
-	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
-	TroisPique, QuatrePique, CinqPique, SixPique, SeptPique, HuitPique, NeufPique, DixPique, ValetPique, DamePique, RoiPique, JokerBlack, 
-	JokerRed, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
+	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
 	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
@@ -40,20 +37,21 @@ public class DuoPlayers implements Screen{
 	private Label miseLabel;
 	private int cliqueJ1, cliqueJ2, mise;
 	private  BLACKJACKCity parent;
+	private int lancement = 0;
 	
 	public DuoPlayers(BLACKJACKCity box2dTutorial){
 		parent = box2dTutorial;
 	}
-		
-	/*int a = 1;
-	//Saisie.lireEntier("Nombre de joueurs à la table ? \n");
+	
 	Deck paquet = new Deck();
-	Cartes p1 = new Cartes(a, paquet);
-	Cartes p2 = new Cartes(a, paquet);
-	Cartes p3 = new Cartes(a, paquet);
-	Cartes p4 = new Cartes(a, paquet);
-	Cartes croupier = new Cartes(a, paquet);*/
-		
+	//Deck paquetnom = new Deck(); Inutile pour l'instant
+	Cartes p1 = new Cartes(paquet);
+	Cartes p2 = new Cartes(paquet);
+	private int p1Carte, p2Carte;
+	private ArrayList<Texture> texturespack = new ArrayList<Texture>();
+	private CardsTextures hey = new CardsTextures(texturespack);
+	static int pushButton = 0;
+	
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -95,61 +93,6 @@ public class DuoPlayers implements Screen{
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 			
-		FondCarteBleu = new Texture("Large/Back Blue 2.png");
-		AsTrefle = new Texture("Large/Clubs 1.png");
-		DeuxTrefle = new Texture("Large/Clubs 2.png"); 
-		TroisTrefle = new Texture("Large/Clubs 3.png");
-		QuatreTrefle = new Texture("Large/Clubs 4.png");
-		CinqTrefle = new Texture("Large/Clubs 5.png");
-		SixTrefle = new Texture("Large/Clubs 6.png");
-		SeptTrefle = new Texture("Large/Clubs 7.png");
-		HuitTrefle = new Texture("Large/Clubs 8.png");
-		NeufTrefle = new Texture("Large/Clubs 9.png");
-		DixTrefle = new Texture("Large/Clubs 10.png");
-		ValetTrefle = new Texture("Large/Clubs 11.png");
-		DameTrefle = new Texture("Large/Clubs 12.png");
-		RoiTrefle = new Texture("Large/Clubs 13.png");
-		AsCarreau = new Texture("Large/Diamond 1.png");
-		DeuxCarreau = new Texture("Large/Diamond 2.png");
-		TroisCarreau = new Texture("Large/Diamond 3.png");
-		QuatreCarreau = new Texture("Large/Diamond 4.png");
-		CinqCarreau = new Texture("Large/Diamond 5.png");
-		SixCarreau = new Texture("Large/Diamond 6.png");
-		SeptCarreau = new Texture("Large/Diamond 7.png");
-		HuitCarreau = new Texture("Large/Diamond 8.png");
-		NeufCarreau = new Texture("Large/Diamond 9.png");
-		DixCarreau = new Texture("Large/Diamond 10.png");
-		ValetCarreau = new Texture("Large/Diamond 11.png");
-		DameCarreau = new Texture("Large/Diamond 12.png");
-		RoiCarreau = new Texture("Large/Diamond 13.png");
-		AsCoeur = new Texture("Large/Hearts 1.png");
-		DeuxCoeur = new Texture("Large/Hearts 2.png");
-		TroisCoeur = new Texture("Large/Hearts 3.png");
-		QuatreCoeur = new Texture("Large/Hearts 4.png");
-		CinqCoeur = new Texture("Large/Hearts 5.png");
-		SixCoeur = new Texture("Large/Hearts 6.png");
-		SeptCoeur = new Texture("Large/Hearts 7.png");
-		HuitCoeur = new Texture("Large/Hearts 8.png");
-		NeufCoeur = new Texture("Large/Hearts 9.png");
-		DixCoeur = new Texture("Large/Hearts 10.png");
-		ValetCoeur = new Texture("Large/Hearts 11.png");
-		DameCoeur = new Texture("Large/Hearts 12.png");
-		RoiCoeur = new Texture("Large/Hearts 13.png");
-		AsPique = new Texture("Large/Spades 1.png");
-		DeuxPique = new Texture("Large/Spades 2.png");
-		TroisPique = new Texture("Large/Spades 3.png");
-		QuatrePique = new Texture("Large/Spades 4.png");
-		CinqPique = new Texture("Large/Spades 5.png");
-		SixPique = new Texture("Large/Spades 6.png");
-		SeptPique = new Texture("Large/Spades 7.png");
-		HuitPique = new Texture("Large/Spades 8.png");
-		NeufPique = new Texture("Large/Spades 9.png");
-		DixPique = new Texture("Large/Spades 10.png");
-		ValetPique = new Texture("Large/Spades 11.png");
-		DamePique = new Texture("Large/Spades 12.png");
-		RoiPique = new Texture("Large/Spades 13.png");
-		JokerBlack = new Texture("Large/Joker Black.png");
-		JokerRed = new Texture("Large/Joker Red.png");
 		JetonBleu = new Texture("LargeChips/chip_blue.png");
 		JetonBleuClair = new Texture("LargeChips/chip_lightblue.png");
 		JetonRouge = new Texture("LargeChips/chip_red.png");
@@ -157,7 +100,7 @@ public class DuoPlayers implements Screen{
 		JetonVert = new Texture("LargeChips/chip_green.png");
 		JetonBeige = new Texture("LargeChips/chip_biege.png");
 		JetonJaune = new Texture("LargeChips/chip_yellow.png");
-			
+		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
 		textButtonStyle.down = skin.getDrawable("button.down");
@@ -304,19 +247,19 @@ public class DuoPlayers implements Screen{
 			
 		tableJeu2.setPosition(220f, 600f, 0);
 		
-		tableRedJeton.setPosition(100f,700f, 0);
+		tableRedJeton.setPosition(100f,100f, 0);
 		tableRedJeton.add(buttonRedJeton);
 		table.row();
 		
-		tableGreenJeton.setPosition(200f,100f, 0);
+		tableGreenJeton.setPosition(300f,100f, 0);
 		tableGreenJeton.add(buttonGreenJeton);
 		table.row();
 		
-		tableBlueJeton.setPosition(300f,100f, 0);
+		tableBlueJeton.setPosition(500f,100f, 0);
 		tableBlueJeton.add(buttonBlueJeton);
 		table.row();
 		
-		tableYellowJeton.setPosition(2000f,1000f, 0);
+		tableYellowJeton.setPosition(700f,100f, 0);
 		tableYellowJeton.add(buttonYellowJeton);
 		table.row();
 		
@@ -324,10 +267,10 @@ public class DuoPlayers implements Screen{
 		stage.addActor(table);
 		stage.addActor(tableJeu);
 		stage.addActor(tableJeu2);
-		stage.addActor(buttonRedJeton);
-		stage.addActor(buttonGreenJeton);
-		stage.addActor(buttonBlueJeton);
-		stage.addActor(buttonYellowJeton);
+		stage.addActor(tableRedJeton);
+		stage.addActor(tableGreenJeton);
+		stage.addActor(tableBlueJeton);
+		stage.addActor(tableYellowJeton);
 	}
 
 	@Override
@@ -335,13 +278,35 @@ public class DuoPlayers implements Screen{
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 			
+		if (lancement == 0) {
+			paquet.creationn();
+			paquet.shuffle();
+			paquet.toNb();
+			//paquet.conversion();
+    		//paquetnom = paquet;
+    		//paquetnom.creation();
+    		//paquetnom.creationn();
+			p1.initialisation();
+			p2.initialisation();
+			p1.maindep();
+			p2.maindep();
+			p1.croupierdep();
+			p1.tirerjoueur();
+			p2.maindep();
+			p1.croupiertirer();
+	    	p1.gagnant();
+	    	p2.gagnant();
+		}
+		lancement++;
+		
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			//if (Cartes.mains) 		si la 1ere carte est un as de coeur par exemple, batch.draw(AsCoeur)
-			batch.draw(AsCoeur, 1125f, 172f, 103f, 138f); //1ere Carte J1
-			batch.draw(AsCoeur, 713f, 172f, 103f, 138f); //1ere Carte J2
-			batch.draw(AsCoeur, 800f, 500f, 103f, 138f); //1ere Carte Croupier
+			p1Carte = p1.uneCartev2(0);
+			batch.draw(texturespack.get(p1Carte), 920f, 172f, 103f, 138f);
+			p2Carte = p2.uneCartev2(0);
+			batch.draw(texturespack.get(p2Carte), 713f, 172f, 103f, 138f); 
+			batch.draw(texturespack.get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -352,25 +317,35 @@ public class DuoPlayers implements Screen{
 		}
 		
 		if (cliqueJ1 >= 1) {
-			batch.draw(AsCoeur, 1155f, 140f, 103f, 138f);
+			p1Carte = p1.uneCartev2(1);
+			batch.draw(texturespack.get(p1Carte), 1155f, 140f, 103f, 138f);
 			if (cliqueJ1 >= 2) {
-				batch.draw(AsCoeur, 1185f, 110f, 103f, 138f);
+				p1Carte = p1.uneCartev2(2);
+				batch.draw(texturespack.get(p1Carte), 1185f, 110f, 103f, 138f);
 				if (cliqueJ1 >= 3) {
-					batch.draw(AsCoeur, 1215f, 80f, 103f, 138f);
+					p1Carte = p1.uneCartev2(3);
+					batch.draw(texturespack.get(p1Carte), 1215f, 80f, 103f, 138f);
 					if (cliqueJ1 >= 4) {
-						batch.draw(AsCoeur, 1345f, 172f, 103f, 138f);
+						p1Carte = p1.uneCartev2(4);
+						batch.draw(texturespack.get(p1Carte), 1345f, 172f, 103f, 138f);
 						if (cliqueJ1 >= 5) {
-							batch.draw(AsCoeur, 1375f, 140f, 103f, 138f);
+							p1Carte = p1.uneCartev2(5);
+							batch.draw(texturespack.get(p1Carte), 1375f, 140f, 103f, 138f);
 							if (cliqueJ1 >= 6) {
-								batch.draw(AsCoeur, 1405f, 110f, 103f, 138f);
+								p1Carte = p1.uneCartev2(6);
+								batch.draw(texturespack.get(p1Carte), 1405f, 110f, 103f, 138f);
 								if (cliqueJ1 >= 7) {
-									batch.draw(AsCoeur, 1435f, 80f, 103f, 138f);
+									p1Carte = p1.uneCartev2(7);
+									batch.draw(texturespack.get(p1Carte), 1435f, 80f, 103f, 138f);
 									if (cliqueJ1 >= 8) {
-										batch.draw(AsCoeur, 1565f, 172f, 103f, 138f);
+										p1Carte = p1.uneCartev2(8);
+										batch.draw(texturespack.get(p1Carte), 1565f, 172f, 103f, 138f);
 										if (cliqueJ1 >= 9) {
-											batch.draw(AsCoeur, 1595f, 140f, 103f, 138f);
+											p1Carte = p1.uneCartev2(9);
+											batch.draw(texturespack.get(p1Carte), 1595f, 140f, 103f, 138f);
 											if (cliqueJ1 >= 10) {
-												batch.draw(AsCoeur, 1625f, 110f, 103f, 138f);
+												p1Carte = p1.uneCartev2(10);
+												batch.draw(texturespack.get(p1Carte), 1625f, 110f, 103f, 138f);
 												tableJeu.removeActor(buttonTirerJ1);
 												tableJeu2.add(buttonTirerJ2);
 											}
@@ -385,25 +360,35 @@ public class DuoPlayers implements Screen{
 		}
 		
 		if (cliqueJ2 >= 1) {
-			batch.draw(AsCoeur, 740f, 140f, 103f, 138f);
+			p2Carte = p2.uneCartev2(1);
+			batch.draw(texturespack.get(p2Carte), 740f, 140f, 103f, 138f);
 			if (cliqueJ2 >= 2) {
-				batch.draw(AsCoeur, 770f, 110f, 103f, 138f);
+				p2Carte = p2.uneCartev2(2);
+				batch.draw(texturespack.get(p2Carte), 770f, 110f, 103f, 138f);
 				if (cliqueJ2 >= 3) {
-					batch.draw(AsCoeur, 800f, 80f, 103f, 138f);
+					p2Carte = p2.uneCartev2(3);
+					batch.draw(texturespack.get(p2Carte), 800f, 80f, 103f, 138f);
 					if (cliqueJ2 >= 4) {
-						batch.draw(AsCoeur, 520f, 172f, 103f, 138f);
+						p2Carte = p2.uneCartev2(4);
+						batch.draw(texturespack.get(p2Carte), 520f, 172f, 103f, 138f);
 						if (cliqueJ2 >= 5) {
-							batch.draw(AsCoeur, 550f, 140f, 103f, 138f);
+							p2Carte = p2.uneCartev2(5);
+							batch.draw(texturespack.get(p2Carte), 550f, 140f, 103f, 138f);
 							if (cliqueJ2 >= 6) {
-								batch.draw(AsCoeur, 580f, 110f, 103f, 138f);	
+								p2Carte = p2.uneCartev2(6);
+								batch.draw(texturespack.get(p2Carte), 580f, 110f, 103f, 138f);	
 								if (cliqueJ2 >= 7) {
-									batch.draw(AsCoeur, 610f, 80f, 103f, 138f);
+									p2Carte = p2.uneCartev2(7);
+									batch.draw(texturespack.get(p2Carte), 610f, 80f, 103f, 138f);
 									if (cliqueJ2 >= 8) {
-										batch.draw(AsCoeur, 350f, 172f, 103f, 138f);
-										if (cliqueJ2 >= 9){
-											batch.draw(AsCoeur, 380f, 140f, 103f, 138f);
+										p2Carte = p2.uneCartev2(8);
+										batch.draw(texturespack.get(p2Carte), 350f, 172f, 103f, 138f);
+										if (cliqueJ2 >= 9) {
+											p2Carte = p2.uneCartev2(9);
+											batch.draw(texturespack.get(p2Carte), 380f, 140f, 103f, 138f);
 											if (cliqueJ2 >= 10) {
-												batch.draw(AsCoeur, 410f, 110f, 103f, 138f);
+												p2Carte = p2.uneCartev2(10);
+												batch.draw(texturespack.get(p2Carte), 410f, 110f, 103f, 138f);
 											}
 										}
 									}
