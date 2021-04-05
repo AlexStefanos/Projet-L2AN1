@@ -224,12 +224,7 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				tableJeu.removeActor(buttonJouer);
-				tableJeu.add(buttonTirerJ1);
-				/*paquet.generateur();		|
-				paquet.conversion();		|
-				paquet.shuffle();			| Lancer la generation de paquet et des mains de depart lorsque l'on appuie sur Jouer  
-				croupier.croupierdep(); 	|
-				p1.maindep();				| */
+				tableJeu.add(buttonTirerJ1); 
 			}
 		});
 		buttonJouer.pad(15f, 40f, 15f, 40f);
@@ -392,9 +387,9 @@ public class DuoPlayers implements Screen{
 		batch.draw(Lunes,990f,330f, 110, 110);
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
-			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
+			batch.draw(p1.getMainJoueur0().get(0), 713f, 168f, 103f, 138f);
 			p2Carte = p2.uneCartev2(0);
-			batch.draw(p2.getMainJoueur0().get(0), 713f, 172f, 103f, 138f); 
+			batch.draw(p2.getMainJoueur0().get(0), 1125f, 168f, 103f, 138f); 
 			batch.draw(p1.getMainJoueur0().get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
@@ -419,7 +414,7 @@ public class DuoPlayers implements Screen{
 					batch.draw(p1.getMainJoueur0().get(3), 1215f, 80f, 103f, 138f);
 					if (cliqueJ1 >= 4) {
 						p1Carte = p1.uneCartev2(4);
-						batch.draw(p1.getMainJoueur0().get(4), 1345f, 172f, 103f, 138f);
+						batch.draw(p1.getMainJoueur0().get(4), 1345f, 168f, 103f, 138f);
 						if (cliqueJ1 >= 5) {
 							p1Carte = p1.uneCartev2(5);
 							batch.draw(p1.getMainJoueur0().get(5), 1375f, 140f, 103f, 138f);
@@ -431,7 +426,7 @@ public class DuoPlayers implements Screen{
 									batch.draw(p1.getMainJoueur0().get(7), 1435f, 80f, 103f, 138f);
 									if (cliqueJ1 >= 8) {
 										p1Carte = p1.uneCartev2(8);
-										batch.draw(p1.getMainJoueur0().get(8), 1565f, 172f, 103f, 138f);
+										batch.draw(p1.getMainJoueur0().get(8), 1565f, 168f, 103f, 138f);
 										if (cliqueJ1 >= 9) {
 											p1Carte = p1.uneCartev2(9);
 											batch.draw(p1.getMainJoueur0().get(9), 1595f, 140f, 103f, 138f);
@@ -462,7 +457,7 @@ public class DuoPlayers implements Screen{
 					batch.draw(p2.getMainJoueur0().get(3), 800f, 80f, 103f, 138f);
 					if (cliqueJ2 >= 4) {
 						p2Carte = p2.uneCartev2(4);
-						batch.draw(p2.getMainJoueur0().get(4), 520f, 172f, 103f, 138f);
+						batch.draw(p2.getMainJoueur0().get(4), 520f, 168f, 103f, 138f);
 						if (cliqueJ2 >= 5) {
 							p2Carte = p2.uneCartev2(5);
 							batch.draw(p2.getMainJoueur0().get(5), 550f, 140f, 103f, 138f);
@@ -474,7 +469,7 @@ public class DuoPlayers implements Screen{
 									batch.draw(p2.getMainJoueur0().get(7), 610f, 80f, 103f, 138f);
 									if (cliqueJ2 >= 8) {
 										p2Carte = p2.uneCartev2(8);
-										batch.draw(p2.getMainJoueur0().get(8), 350f, 172f, 103f, 138f);
+										batch.draw(p2.getMainJoueur0().get(8), 350f, 168f, 103f, 138f);
 										if (cliqueJ2 >= 9) {
 											p2Carte = p2.uneCartev2(9);
 											batch.draw(p2.getMainJoueur0().get(9), 380f, 140f, 103f, 138f);
