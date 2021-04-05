@@ -1,17 +1,18 @@
 package fr.mygdx.game;
 import java.util.*;
+import com.badlogic.gdx.graphics.Texture;
 
 public class Croupier {
     
     private ArrayList<Integer> mains;
     
-    private ArrayList<String> mainstr;
-    Deck paquet = new Deck();
+    private ArrayList<Texture> mainstr;
+    Deck paquet = new Deck(mainstr);
     
     public Croupier() {
     	
     	mains = new ArrayList<Integer>(15);
-    	mainstr = new ArrayList<String>(15);
+    	mainstr = new ArrayList<Texture>(15);
     }
     
     public int total() {
@@ -32,14 +33,14 @@ public class Croupier {
     public ArrayList<Integer> getMain() {
 		return mains;
 	}
-	public ArrayList<String> getMainStr(){
+	public ArrayList<Texture> getMainStr(){
 		return mainstr;
 	}
 	
 	public void addint(int card) {
 		mains.add(card);
 	}
-	public void addstr(String card) {
+	public void addstr(Texture card) {
 	    mainstr.add(card);
 	}
 }

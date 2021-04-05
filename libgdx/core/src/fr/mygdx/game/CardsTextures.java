@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class CardsTextures {
 	
-	private Texture BlackjackTable, FondCarteBleu, AsTrefle, DeuxTrefle, TroisTrefle, QuatreTrefle, CinqTrefle, SixTrefle, 
+	public Texture BlackjackTable, FondCarteBleu, AsTrefle, DeuxTrefle, TroisTrefle, QuatreTrefle, CinqTrefle, SixTrefle, 
 	SeptTrefle, HuitTrefle, NeufTrefle, DixTrefle, ValetTrefle, DameTrefle, RoiTrefle, AsCarreau, DeuxCarreau, TroisCarreau, QuatreCarreau, 
 	CinqCarreau, SixCarreau, SeptCarreau, HuitCarreau, NeufCarreau, DixCarreau, ValetCarreau, DameCarreau, RoiCarreau, AsCoeur, DeuxCoeur, TroisCoeur,
 	QuatreCoeur, CinqCoeur, SixCoeur, SeptCoeur, HuitCoeur, NeufCoeur, DixCoeur, ValetCoeur, DameCoeur, RoiCoeur, AsPique, DeuxPique, 
@@ -80,7 +80,9 @@ public class CardsTextures {
 		JetonBeige = new Texture("LargeChips/chip_biege.png");
 		JetonJaune = new Texture("LargeChips/chip_yellow.png");
 
-		texturespack.add(0, AsCoeur);
+		
+		
+		/*texturespack.add(0, AsCoeur);
 		texturespack.add(1, DeuxCoeur);
 		texturespack.add(2, TroisCoeur);
 		texturespack.add(3, QuatreCoeur);
@@ -124,18 +126,25 @@ public class CardsTextures {
 		texturespack.add(41, TroisPique);
 		texturespack.add(42, QuatrePique);
 		texturespack.add(43, CinqPique);
-		texturespack.add(44, SeptPique);
-		texturespack.add(45, HuitPique);
-		texturespack.add(46, NeufPique);
-		texturespack.add(47, DixPique);
-		texturespack.add(48, ValetPique);
-		texturespack.add(49, DamePique);
-		texturespack.add(50, RoiPique);
-		texturespack.add(51, JokerRed);
-		texturespack.add(52, JokerBlack);
+		texturespack.add(44,SixPique);
+		texturespack.add(45, SeptPique);
+		texturespack.add(46, HuitPique);
+		texturespack.add(47, NeufPique);
+		texturespack.add(48, DixPique);
+		texturespack.add(49, ValetPique);
+		texturespack.add(50, DamePique);
+		texturespack.add(51, RoiPique);
+		texturespack.add(52, JokerRed);
+		texturespack.add(53, JokerBlack);*/
 	}
 	
 	public ArrayList<Texture> getTexturespack() {
 		return texturespack;
+	}
+	
+	public void creaTextures(ArrayList<Texture> p1) {
+		for (int i =0;i<p1.size();i++) {
+			texturespack.add(p1.get(i));
+		}
 	}
 }

@@ -1,4 +1,5 @@
 package fr.mygdx.game;
+import com.badlogic.gdx.graphics.Texture;
 import java.util.*;
 
 public class Joueur {
@@ -6,13 +7,13 @@ public class Joueur {
     private ArrayList<Integer> mains;
     private int mise;
     private int banque;
-    private ArrayList<String> mainstr;
-    Deck paquet = new Deck();
+    private ArrayList<Texture> mainstr;
+    Deck paquet = new Deck(mainstr);
     
     public Joueur() {
     	banque = 100;
     	mains = new ArrayList<Integer>(15);
-    	mainstr = new ArrayList<String>(15);
+    	mainstr = new ArrayList<Texture>(15);
     }
     public int total() {
 		 int somme = 0;
@@ -61,14 +62,14 @@ public class Joueur {
 	public ArrayList<Integer> getMain() {
 		return mains;
 	}
-	public ArrayList<String> getMainStr(){
+	public ArrayList<Texture> getMainStr(){
 		return mainstr;
 	}
 	
 	public void addint(int card) {
 		mains.add(card);
 	}
-	public void addstr(String card) {
+	public void addstr(Texture card) {
 	    mainstr.add(card);
 	}
 }

@@ -1,4 +1,5 @@
 package fr.mygdx.game;
+import com.badlogic.gdx.graphics.Texture;
 
 import java.util.*;
 
@@ -6,7 +7,7 @@ public class Cartes {
 
 private Scanner alpha = new Scanner(System.in);
 private ArrayList<Integer> mains;
-private ArrayList<String> mainsnom;
+private ArrayList<Texture> mainsnom;
 private Joueur[] joueurs;
 private Croupier croupier;
 private Deck paquet;
@@ -16,7 +17,7 @@ private int nbparticipants;
 	public Cartes(Deck paquet) {
 		
 		mains = new ArrayList<Integer>(5);
-		mainsnom = new ArrayList<String>(5);
+		mainsnom = new ArrayList<Texture>(5);
 		joueurs = new Joueur[6];
 		croupier = new Croupier();
 		this.paquet = paquet;
@@ -61,7 +62,7 @@ private int nbparticipants;
 	}
 	
 	
-	 public ArrayList<String> maindep() {
+	 public ArrayList<Texture> maindep() {
 		 for (int j=0;j<nbparticipants;j++) {
 			 
 			 for (int i =0;i<2;i++) {		            
@@ -119,7 +120,7 @@ private int nbparticipants;
 	 }
 	 
 	 
-	 public String uneCarte(int k) {
+	 public Texture uneCarte(int k) {
 		 return joueurs[0].getMainStr().get(k);
 	 }
 	
@@ -190,7 +191,7 @@ private int nbparticipants;
 	    }
 	       
 	 }
-	public ArrayList<String> getMainsNom(){
+	public ArrayList<Texture> getMainsNom(){
 		return mainsnom;
 	}
 	
@@ -222,10 +223,10 @@ private int nbparticipants;
 	 public ArrayList<Integer> afficheMainCroupier(){
 		 return mains;
 	 }
-	public ArrayList<String> afficheMainCroupierNom(){
+	public ArrayList<Texture> afficheMainCroupierNom(){
 			 return mainsnom;
 	 }
-	 public String croupiertirer() {
+	 public Texture croupiertirer() {
 		 while (total() < 17) {
 	    	 mains.add((paquet.getPaquet().get(0)));
 		     mainsnom.add(paquet.getPaquetNom().get(0));
