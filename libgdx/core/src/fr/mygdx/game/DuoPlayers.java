@@ -9,9 +9,13 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -20,22 +24,31 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 
 import fr.mygdx.game.splashscreen.MainMenu;
 
 public class DuoPlayers implements Screen{
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
+	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, Lunes;
 	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
-	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel;
+	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ;;
 	private Skin skin, skin2, skin3, skin4, skin5,skinLabel;
 	private Music music;
 	private Music pressbutton;
 	private Label miseLabel;
-	private int cliqueJ1, cliqueJ2, mise;
+	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow;
+	private Array<AtlasRegion> animationFrames;
+	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ;
+	Vector2 screenposRed = new Vector2(650f,380f);
+	Vector2 screenposGreen = new Vector2(850f,380f);
+	Vector2 screenposBlue = new Vector2(1250f,380f);
+	Vector2 screenposYellow = new Vector2(1050f,380f);
+	private float animTime;
+	private float totalAnimTime;
 	private  BLACKJACKCity parent;
 	private int lancement = 0;
 	
@@ -55,6 +68,11 @@ public class DuoPlayers implements Screen{
 	public void show() {
 		batch = new SpriteBatch();
 		BlackjackTable = new Texture("BlackjackTable DuoPlayers.png");
+		Lunes = new Texture("shieldWhite_Edit.png");
+		atlasAnimRedJ = new TextureAtlas("ANIMREDJ/AnimRedJ.pack");
+		atlasAnimGreenJ = new TextureAtlas("ANIMGREENJ/AnimGreenJ.pack");
+		atlasAnimBlueJ = new TextureAtlas("ANIMBLUEJ/AnimBlueJ.pack");
+		atlasAnimYellowJ = new TextureAtlas("ANIMYELLOWJ/AnimYellowJ.pack");
 		atlas3 = new TextureAtlas("buttonjeton2/buttonGreen.pack");
 		atlas4 = new TextureAtlas("buttonjeton3/buttonBlue.pack");
 		atlas5 = new TextureAtlas("buttonjeton4/buttonYellow.pack");
@@ -70,7 +88,36 @@ public class DuoPlayers implements Screen{
 		cliqueJ1 = 0;
 		cliqueJ2 = 0;
 		mise = 0;
+		red = 0;
+		green = 0;
+		blue = 0;
+		yellow = 0;
 		Gdx.input.setInputProcessor(stage);
+		
+		totalAnimTime = 0.2f;
+		animationFrames = atlasAnimRedJ.getRegions();
+		animRedJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animRedJ.setPlayMode(Animation.PlayMode.NORMAL);
+		animTime = 0f;
+		
+		totalAnimTime = 0.2f;
+		animationFrames = atlasAnimGreenJ.getRegions();
+		animGreenJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animGreenJ.setPlayMode(Animation.PlayMode.NORMAL);
+		animTime = 0f;
+		
+		totalAnimTime = 0.2f;
+		animationFrames = atlasAnimBlueJ.getRegions();
+		animBlueJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animBlueJ.setPlayMode(Animation.PlayMode.NORMAL);
+		animTime = 0f;
+		
+		totalAnimTime = 0.2f;
+		animationFrames = atlasAnimYellowJ.getRegions();
+		animYellowJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animYellowJ.setPlayMode(Animation.PlayMode.NORMAL);
+		animTime = 0f;
+		
 		
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -190,39 +237,43 @@ public class DuoPlayers implements Screen{
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 500; 
+				red += 1;
 				pressbutton.play();
 				music.dispose();
 			}
 		});
-		buttonRedJeton.pad(15f, 40f, 15f, 40f);
+		buttonRedJeton.pad(20f, 20f, 20f, 20f);
 		
 		buttonYellowJeton = new TextButton("100", textButtonStyle5);
 		buttonYellowJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 100; 
+				yellow += 1;
 				pressbutton.play();
 				music.dispose();
 			}
 		});
-		buttonYellowJeton.pad(15f, 40f, 15f, 40f);
+		buttonYellowJeton.pad(20f, 20f, 20f, 20f);
 		
 		buttonGreenJeton = new TextButton("200", textButtonStyle3);
 		buttonGreenJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 200; 
+				green += 1;
 				pressbutton.play();
 				music.dispose();
 			}
 		});
-		buttonGreenJeton.pad(15f, 40f, 15f, 40f);
+		buttonGreenJeton.pad(20f, 20f, 20f, 20f);
 		
 		buttonBlueJeton = new TextButton("50", textButtonStyle4);
 		buttonBlueJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				mise += 50; 
+				blue += 1;
 				pressbutton.play();
 				music.dispose();
 			}
@@ -234,7 +285,7 @@ public class DuoPlayers implements Screen{
 		table.row().pad(10,0,0,10);
 		
 		
-		buttonBlueJeton.pad(15f, 40f, 15f, 40f);
+		buttonBlueJeton.pad(20f, 20f, 20f, 20f);
 			
 		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
@@ -246,21 +297,19 @@ public class DuoPlayers implements Screen{
 			
 		tableJeu2.setPosition(220f, 600f, 0);
 		
-		tableRedJeton.setPosition(100f,100f, 0);
+		tableRedJeton.setPosition(650f,380f, 0);
 		tableRedJeton.add(buttonRedJeton);
-		table.row();
+
 		
-		tableGreenJeton.setPosition(300f,100f, 0);
+		tableGreenJeton.setPosition(850f,380f, 0);
 		tableGreenJeton.add(buttonGreenJeton);
-		table.row();
+	
 		
-		tableBlueJeton.setPosition(500f,100f, 0);
+		tableBlueJeton.setPosition(1250f,380f, 0);
 		tableBlueJeton.add(buttonBlueJeton);
-		table.row();
 		
-		tableYellowJeton.setPosition(700f,100f, 0);
+		tableYellowJeton.setPosition(1050f,380f, 0);
 		tableYellowJeton.add(buttonYellowJeton);
-		table.row();
 		
 		
 		stage.addActor(table);
@@ -300,6 +349,7 @@ public class DuoPlayers implements Screen{
 		
 		batch.begin();
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(Lunes,990f,330f, 110, 110);
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
 			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
@@ -400,6 +450,61 @@ public class DuoPlayers implements Screen{
 		}
 
 		batch.end();
+		for(int i=0; i < red;i++){
+		batch.begin();
+		animTime += Gdx.graphics.getDeltaTime();
+		batch.draw(animRedJ.getKeyFrame(animTime, false), screenposRed.x, screenposRed.y);
+		batch.end();	
+		}
+		
+		if(red >= 1 && screenposRed.x <= 660) {
+			screenposRed.x += 5;
+		}
+		if(red >= 1 && screenposRed.y <= 660) {
+			screenposRed.y += 5;
+		}
+
+		for(int i=0; i < green;i++){
+			batch.begin();
+			animTime += Gdx.graphics.getDeltaTime();
+			batch.draw(animGreenJ.getKeyFrame(animTime, false), screenposGreen.x, screenposGreen.y);
+			batch.end();	
+		}
+		
+		if(green >= 1 && screenposGreen.x <= 660) {
+			screenposGreen.x += 5;
+		}
+		if(green >= 1 && screenposGreen.y <= 660) {
+				screenposGreen.y += 5;
+		}
+	
+		for(int i=0; i < blue;i++){
+			batch.begin();
+			animTime += Gdx.graphics.getDeltaTime();
+			batch.draw(animBlueJ.getKeyFrame(animTime, false), screenposBlue.x, screenposBlue.y);
+			batch.end();	
+		}
+			
+		if(blue >= 1 && screenposBlue.x <= 660) {
+			screenposBlue.x += 5;
+		}
+		if(blue >= 1 && screenposBlue.y <= 660) {
+			screenposBlue.y += 5;
+		}
+		
+		for(int i=0; i < yellow;i++){
+		batch.begin();
+		animTime += Gdx.graphics.getDeltaTime();
+		batch.draw(animYellowJ.getKeyFrame(animTime, false), screenposYellow.x, screenposYellow.y);
+		batch.end();	
+		}
+				
+		if(yellow >= 1 && screenposYellow.x <= 660) {
+			screenposYellow.x += 5;
+		}
+		if(yellow >= 1 && screenposYellow.y <= 660) {
+			screenposYellow.y += 5;
+		}		
 			
 		stage.act(delta);
 		stage.draw();
