@@ -35,20 +35,26 @@ public class DuoPlayers implements Screen{
 	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
-	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ;;
+	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ, cards1;
 	private Skin skin, skin2, skin3, skin4, skin5,skinLabel;
 	private Music music;
 	private Music pressbutton;
 	private Label miseLabel;
 	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow;
-	private Array<AtlasRegion> animationFrames;
-	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ;
-	Vector2 screenposRed = new Vector2(650f,380f);
-	Vector2 screenposGreen = new Vector2(850f,380f);
-	Vector2 screenposBlue = new Vector2(1250f,380f);
-	Vector2 screenposYellow = new Vector2(1050f,380f);
-	private float animTime;
+	
+	private Array<AtlasRegion> animationFrames , animationFramesCartes;
+	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes;
+	
+	private Vector2 screenposRed = new Vector2(650f,380f);
+	private Vector2 screenposGreen = new Vector2(850f,380f);
+	private Vector2 screenposBlue = new Vector2(1250f,380f);
+	private Vector2 screenposYellow = new Vector2(1050f,380f);
+	private Vector2 screenPos = new Vector2(500f,500f);
+
+	
+	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeCartes1;
 	private float totalAnimTime;
+	
 	private  BLACKJACKCity parent;
 	private int lancement = 0;
 	
@@ -69,6 +75,7 @@ public class DuoPlayers implements Screen{
 		batch = new SpriteBatch();
 		BlackjackTable = new Texture("BlackjackTable DuoPlayers.png");
 		Lunes = new Texture("shieldWhite_Edit.png");
+		
 		atlasAnimRedJ = new TextureAtlas("ANIMREDJ/AnimRedJ.pack");
 		atlasAnimGreenJ = new TextureAtlas("ANIMGREENJ/AnimGreenJ.pack");
 		atlasAnimBlueJ = new TextureAtlas("ANIMBLUEJ/AnimBlueJ.pack");
@@ -78,12 +85,15 @@ public class DuoPlayers implements Screen{
 		atlas5 = new TextureAtlas("buttonjeton4/buttonYellow.pack");
 		atlas2 = new TextureAtlas("buttonjeton/Buttonred.pack");
 		atlas = new TextureAtlas("ui/button.pack");
+		cards1 = new TextureAtlas("Anim/AsCarreau/AnimAsCarreau.pack");
+		
 		stage = new Stage();
 		skin = new Skin(atlas);
 		skin2 = new Skin(atlas2);
 		skin3 = new Skin(atlas3);
 		skin4 = new Skin(atlas4);
 		skin5 = new Skin(atlas5);
+		
 		skinLabel = new Skin(Gdx.files.internal("skindefault/uiskin.json"));
 		cliqueJ1 = 0;
 		cliqueJ2 = 0;
@@ -95,28 +105,30 @@ public class DuoPlayers implements Screen{
 		Gdx.input.setInputProcessor(stage);
 		
 		totalAnimTime = 0.2f;
+		animationFramesCartes = cards1.getRegions();
 		animationFrames = atlasAnimRedJ.getRegions();
+		animCartes = new Animation<TextureRegion> (totalAnimTime, animationFramesCartes);
 		animRedJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animCartes.setPlayMode(Animation.PlayMode.NORMAL);
 		animRedJ.setPlayMode(Animation.PlayMode.NORMAL);
-		animTime = 0f;
 		
-		totalAnimTime = 0.2f;
+		animTimeJetons1 = 0f;
+		animTimeJetons2 = 0f;
+		animTimeJetons3 = 0f;
+		animTimeJetons4 = 0f;
+		animTimeCartes1 = 0f;
+		
 		animationFrames = atlasAnimGreenJ.getRegions();
 		animGreenJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
 		animGreenJ.setPlayMode(Animation.PlayMode.NORMAL);
-		animTime = 0f;
 		
-		totalAnimTime = 0.2f;
 		animationFrames = atlasAnimBlueJ.getRegions();
 		animBlueJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
 		animBlueJ.setPlayMode(Animation.PlayMode.NORMAL);
-		animTime = 0f;
 		
-		totalAnimTime = 0.2f;
 		animationFrames = atlasAnimYellowJ.getRegions();
 		animYellowJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
 		animYellowJ.setPlayMode(Animation.PlayMode.NORMAL);
-		animTime = 0f;
 		
 		
 		table = new Table(skin);
@@ -367,7 +379,8 @@ public class DuoPlayers implements Screen{
 		
 		if (cliqueJ1 >= 1) {
 			p1Carte = p1.uneCartev2(1);
-			batch.draw(p1.getMainJoueur0().get(1), 1155f, 140f, 103f, 138f);
+			animTimeCartes1 += Gdx.graphics.getDeltaTime();
+			batch.draw(animCartes.getKeyFrame(animTimeCartes1, false),  screenPos.x ,screenPos.y);
 			if (cliqueJ1 >= 2) {
 				p1Carte = p1.uneCartev2(2);
 				batch.draw(p1.getMainJoueur0().get(2), 1185f, 110f, 103f, 138f);
@@ -452,8 +465,8 @@ public class DuoPlayers implements Screen{
 		batch.end();
 		for(int i=0; i < red;i++){
 		batch.begin();
-		animTime += Gdx.graphics.getDeltaTime();
-		batch.draw(animRedJ.getKeyFrame(animTime, false), screenposRed.x, screenposRed.y);
+		animTimeJetons1 += Gdx.graphics.getDeltaTime();
+		batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);
 		batch.end();	
 		}
 		
@@ -466,8 +479,8 @@ public class DuoPlayers implements Screen{
 
 		for(int i=0; i < green;i++){
 			batch.begin();
-			animTime += Gdx.graphics.getDeltaTime();
-			batch.draw(animGreenJ.getKeyFrame(animTime, false), screenposGreen.x, screenposGreen.y);
+			animTimeJetons2 += Gdx.graphics.getDeltaTime();
+			batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);
 			batch.end();	
 		}
 		
@@ -480,8 +493,8 @@ public class DuoPlayers implements Screen{
 	
 		for(int i=0; i < blue;i++){
 			batch.begin();
-			animTime += Gdx.graphics.getDeltaTime();
-			batch.draw(animBlueJ.getKeyFrame(animTime, false), screenposBlue.x, screenposBlue.y);
+			animTimeJetons3 += Gdx.graphics.getDeltaTime();
+			batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);
 			batch.end();	
 		}
 			
@@ -494,8 +507,8 @@ public class DuoPlayers implements Screen{
 		
 		for(int i=0; i < yellow;i++){
 		batch.begin();
-		animTime += Gdx.graphics.getDeltaTime();
-		batch.draw(animYellowJ.getKeyFrame(animTime, false), screenposYellow.x, screenposYellow.y);
+		animTimeJetons4 += Gdx.graphics.getDeltaTime();
+		batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);
 		batch.end();	
 		}
 				
@@ -505,6 +518,15 @@ public class DuoPlayers implements Screen{
 		if(yellow >= 1 && screenposYellow.y <= 660) {
 			screenposYellow.y += 5;
 		}		
+		
+		if(cliqueJ1 >= 1 && screenPos.x <= 1125f ) {
+			screenPos.x += 8;
+		}
+		
+		if(cliqueJ1 >= 1 && screenPos.y >= 140f) {
+			screenPos.y -= 5;
+		}
+
 			
 		stage.act(delta);
 		stage.draw();
