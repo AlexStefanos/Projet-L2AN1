@@ -7,7 +7,8 @@ public class Cartes {
 
 private Scanner alpha = new Scanner(System.in);
 private ArrayList<Integer> mains;
-private ArrayList<Texture> mainsnom;
+private ArrayList<Texture> mainstext;
+private ArrayList<String> mainsnom;
 private Joueur[] joueurs;
 private Croupier croupier;
 private Deck paquet;
@@ -16,8 +17,9 @@ private int nbparticipants;
 	
 	public Cartes(Deck paquet) {
 		
-		mains = new ArrayList<Integer>(5);
-		mainsnom = new ArrayList<Texture>(5);
+		mains = new ArrayList<Integer>(11);
+		mainstext = new ArrayList<Texture>(11);
+		mainsnom = new ArrayList<String>(11);
 		joueurs = new Joueur[6];
 		croupier = new Croupier();
 		this.paquet = paquet;
@@ -73,13 +75,15 @@ private int nbparticipants;
 			 
 			 for (int i =0;i<2;i++) {		            
 				 joueurs[j].addint(paquet.getPaquet().get(0));
+				 joueurs[j].addtext(paquet.getPaquetText().get(0));
 				 joueurs[j].addstr(paquet.getPaquetNom().get(0));
 				   
 	    	     paquet.getPaquet().remove(0);
-	    	     paquet.getPaquetNom().remove(0); 
-	    	     System.out.println(joueurs[j].getMainStr());
+	    	     paquet.getPaquetText().remove(0); 
+	    	     paquet.getPaquetNom().remove(0);
+	    	     System.out.println(joueurs[j].getMainText());
 	        }	           
-	        System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainStr() );
+	        System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainstr() );
 		 }
 		 /*for (int i = 0; i<2;i++) {
 				if (joueurs[0].getMain().get(i) == 1) {
@@ -122,12 +126,12 @@ private int nbparticipants;
 					joueurs[0].getMainStr().set(i, "RoiCoeur");
 				}
 	    	}*/
-		 return joueurs[0].getMainStr();
+		 return joueurs[0].getMainText();
 	 }
 	 
 	 
 	 public Texture uneCarte(int k) {
-		 return joueurs[0].getMainStr().get(k);
+		 return joueurs[0].getMainText().get(k);
 	 }
 	
 	 public int uneCartev2(int k) {
@@ -160,7 +164,7 @@ private int nbparticipants;
        
  
 		for (int i=0;i<nbparticipants;i++) {
-			System.out.println("La main du croupier est [" + mainsnom.get(0) + ", ?]");
+			System.out.println("La main du croupier est [" + mainstext.get(0) + ", ?]");
 			System.out.println(joueurs[i].total());
 			tirer = true;
 			while (tirer && joueurs[i].total() < 21) {
@@ -177,17 +181,19 @@ private int nbparticipants;
 	    	 
 	             System.out.println("Au tour de " + joueurs[i].getNom());
 	    	     int a;
-	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + joueurs[i].getMainStr() + " )");
+	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + joueurs[i].getMainText() + " )");
 	    	     if (a == 1) {
-	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
+	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainText() + "\n");
 	    	    	
-	    	    	joueurs[i].addstr(paquet.getPaquetNom().get(0));
+	    	    	joueurs[i].addtext(paquet.getPaquetText().get(0));
 	    	    	joueurs[i].addint(paquet.getPaquet().get(0));
+	    	    	joueurs[i].addstr(paquet.getPaquetNom().get(0));
 	    	        paquet.getPaquetNom().remove(0);
+	    	        paquet.getPaquetText().remove(0);
 	    	        paquet.getPaquet().remove(0);
 	    	    	
 	    	        
-	    	        System.out.print("\nVotre main : " + joueurs[i].getMainStr() + "\n");
+	    	        System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
 	    	        }
 	    	    if (a != 1) {
 	    	    	tirer = false;
@@ -197,19 +203,23 @@ private int nbparticipants;
 	    }
 	       
 	 }
-	public ArrayList<Texture> getMainsNom(){
-		return mainsnom;
+	public ArrayList<Texture> getMainsText(){
+		return mainstext;
+	}
+	public ArrayList<String> getMainsJoueurNom(int i){
+		return joueurs[i].getMainstr();
 	}
 	
 	
 	 public void croupierdep() {
 		 for (int i =0;i<2;i++) {
 		        mains.add((paquet.getPaquet().get(0)));
+		        mainstext.add(paquet.getPaquetText().get(0));
 		        mainsnom.add(paquet.getPaquetNom().get(0));
 		        
-	    	    
-	    	    paquet.getPaquet().remove(0);
 	    	    paquet.getPaquetNom().remove(0);
+	    	    paquet.getPaquet().remove(0);
+	    	    paquet.getPaquetText().remove(0);
 		 }
 		 
 		
@@ -230,23 +240,25 @@ private int nbparticipants;
 		 return mains;
 	 }
 	public ArrayList<Texture> afficheMainCroupierNom(){
-			 return mainsnom;
+			 return mainstext;
 	 }
 	 public Texture croupiertirer() {
 		 while (total() < 17) {
 	    	 mains.add((paquet.getPaquet().get(0)));
+		     mainstext.add(paquet.getPaquetText().get(0));
 		     mainsnom.add(paquet.getPaquetNom().get(0));
 	    	 //mains.add(paquet.getPaquet().get(0));
 		     //mainsnom.add(paquet.getPaquetNom().get(0));
 		     //mainsnom.add(paquet.getPaquetNom().get(0));
-		     paquet.getPaquet().remove(0);
 		     paquet.getPaquetNom().remove(0);
-		     System.out.println("\nMain du croupier apres tirage : " + mainsnom);
+		     paquet.getPaquet().remove(0);
+		     paquet.getPaquetText().remove(0);
+		     System.out.println("\nMain du croupier apres tirage : " + mainstext);
 	     }
 		 if (total() > 17) {
-			 System.out.println("\nMain du croupier final : " + mainsnom);
+			 System.out.println("\nMain du croupier final : " + mainstext);
 		 }
-		 return mainsnom.get(0);
+		 return mainstext.get(0);
 	 }
 	 public void gagnant() {
 		 
@@ -301,7 +313,7 @@ private int nbparticipants;
 		
 	}
 	public ArrayList<Texture> getMainJoueur0(){
-		return joueurs[0].getMainStr();
+		return joueurs[0].getMainText();
 	}
 	public ArrayList<Integer> getMain(){
 		return mains;
@@ -310,4 +322,3 @@ private int nbparticipants;
 		return mains.size();
 	}
 	}
-

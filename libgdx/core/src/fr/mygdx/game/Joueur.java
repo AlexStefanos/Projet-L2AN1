@@ -7,13 +7,14 @@ public class Joueur {
     private ArrayList<Integer> mains;
     private int mise;
     private int banque;
-    private ArrayList<Texture> mainstr;
-    Deck paquet = new Deck(mainstr);
+    private ArrayList<Texture> mainstext;
+    private ArrayList<String> mainstr;
+    Deck paquet = new Deck(mainstext);
     
     public Joueur() {
     	banque = 100;
     	mains = new ArrayList<Integer>(15);
-    	mainstr = new ArrayList<Texture>(15);
+    	mainstext = new ArrayList<Texture>(15);
     }
     public int total() {
 		 int somme = 0;
@@ -62,14 +63,22 @@ public class Joueur {
 	public ArrayList<Integer> getMain() {
 		return mains;
 	}
-	public ArrayList<Texture> getMainStr(){
+	
+	public ArrayList<String> getMainstr() {
 		return mainstr;
+	}
+	public ArrayList<Texture> getMainText(){
+		return mainstext;
 	}
 	
 	public void addint(int card) {
 		mains.add(card);
 	}
-	public void addstr(Texture card) {
-	    mainstr.add(card);
+	public void addtext(Texture card) {
+	    mainstext.add(card);
 	}
+	public void addstr(String card) {
+		mainstr.add(card);
+	}
+	
 }
