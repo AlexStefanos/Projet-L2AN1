@@ -17,6 +17,7 @@ public class BLACKJACKCity extends Game {
 	private Play play;
 	private Rules rules;
 	private Audio audio;
+	private History history;
 
 	public final static int AUDIO = 1;
 	public final static int OPTION = 2;
@@ -27,6 +28,7 @@ public class BLACKJACKCity extends Game {
 	public final static int QUADRAPLAYERS = 7;
 	public final static int PLAY = 8;
 	public final static int RULES = 9;
+	public final static int HISTORY = 10;
 
 	@Override
 	public void create () {
@@ -76,6 +78,10 @@ public class BLACKJACKCity extends Game {
 			case RULES:
 				if(rules == null) rules = new Rules(this);
 				this.setScreen(rules);
+				break;	
+			case HISTORY:
+				if(history == null) history = new History(this);
+				this.setScreen(history);
 				break;	
 		}
 	}

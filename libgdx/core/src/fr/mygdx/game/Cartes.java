@@ -40,8 +40,14 @@ private int nbparticipants;
 	    	joueurs[i] = new Joueur();
 	    	joueurs[i].nomJoueur(nom);
 	    }
-	
 	}
+	 
+	 public String getJoueur(int i) {
+		 return joueurs[i].getNom();
+	 }
+	
+	
+	
 	
 	
 	public void generateur() {
@@ -277,6 +283,10 @@ private int nbparticipants;
 			 somme += 10;
 		 }
 		return somme;
+	}
+	
+	public int getTotal(int i){
+		    return joueurs[i].total();
 	}
 	 
 	 

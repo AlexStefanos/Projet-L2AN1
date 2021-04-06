@@ -25,7 +25,7 @@ public class Play implements Screen {
 
 	private Stage stage;
 	private Table table, tablePlay;
-	private TextButton buttonBack, buttonSingle, buttonDuo, buttonTrio, buttonQuadra;
+	private TextButton buttonBack, buttonSingle, buttonDuo, buttonTrio, buttonQuadra, buttonHistory;
 	private Texture Background;
 	private Skin skin;
 	private BitmapFont black, white;
@@ -33,7 +33,7 @@ public class Play implements Screen {
 	private SpriteBatch batch;
 	private Music pressbutton;
 	private Music music;
-	private  BLACKJACKCity parent;
+	private BLACKJACKCity parent;
 	
 	public Play(BLACKJACKCity box2dTutorial){
 		parent = box2dTutorial;
@@ -122,7 +122,16 @@ public class Play implements Screen {
 				music.dispose();
 			}
 		});
-		buttonQuadra.pad(15f, 40f, 15f, 40f);
+		buttonHistory = new TextButton("History", textButtonStyle);
+		buttonHistory.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				parent.changeScreen(BLACKJACKCity.HISTORY);
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonHistory.pad(15f, 40f, 15f, 40f);
 		
 		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
@@ -141,6 +150,9 @@ public class Play implements Screen {
 		tablePlay.row();
 		tablePlay.add(buttonQuadra);
 		tablePlay.getCell(buttonQuadra).spaceBottom(20f);
+		tablePlay.row();
+		tablePlay.add(buttonHistory);
+		tablePlay.getCell(buttonHistory).spaceBottom(20f);
 		tablePlay.row();
 		
 		stage.addActor(table);

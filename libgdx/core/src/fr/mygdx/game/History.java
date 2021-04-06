@@ -1,0 +1,143 @@
+package fr.mygdx.game;
+
+import java.util.ArrayList;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
+public class History implements Screen{
+	
+	private  BLACKJACKCity parent;
+	private Stage stage;
+	private Texture Background;
+	private Skin skin;
+	private BitmapFont black, white;
+	private TextureAtlas atlas;
+	private SpriteBatch batch;
+	private Music pressbutton;
+	private Music music;
+	private TextButton buttonBack;
+	private Table table;
+	
+	private ArrayList<Texture> texturespack;
+	private Joueur[] joueurs = new Joueur[1];
+	Deck paquet = new Deck(texturespack);
+	//Deck paquetnom = new Deck(); Inutile pour l'instant
+	Cartes p1 = new Cartes(paquet);
+	Cartes p2 = new Cartes(paquet);
+	private int p1Carte = 0, p2Carte = 0;
+	
+	public History(BLACKJACKCity box2dTutorial){
+		parent = box2dTutorial;
+	}
+	
+	@Override
+	public void show() {
+		
+		batch = new SpriteBatch();
+		Background = new Texture("Background.png");
+		atlas = new TextureAtlas("ui/button.pack");
+		skin = new Skin(atlas);
+		stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
+		table = new Table(skin);
+		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
+		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
+		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
+		
+		TextButtonStyle textButtonStyle = new TextButtonStyle();
+		textButtonStyle.up = skin.getDrawable("button.up");
+		textButtonStyle.down = skin.getDrawable("button.down");
+		textButtonStyle.pressedOffsetX = 1;
+		textButtonStyle.pressedOffsetY = -1;
+		textButtonStyle.font = black;
+
+		music.setLooping(true);
+		music.setVolume(AppPreferences.MVOLUME);
+		music.play();
+		pressbutton.setVolume(AppPreferences.SVOLUME);
+		
+
+		
+		
+		
+		
+		
+		buttonBack = new TextButton("Back", textButtonStyle);
+		buttonBack.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				parent.changeScreen(BLACKJACKCity.PLAY);
+				pressbutton.play();
+				music.dispose();
+			}
+		});
+		buttonBack.pad(15f, 40f, 15f, 40f);
+		
+		table.setPosition(1700f, 150f, 0);
+		table.add(buttonBack);
+		
+		stage.addActor(table);
+	}
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(2, 2, 2, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		batch.begin();
+		batch.draw(Background,0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.end();
+		
+		stage.act(delta);
+		stage.draw();
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
