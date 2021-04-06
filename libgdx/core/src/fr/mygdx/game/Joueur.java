@@ -15,6 +15,7 @@ public class Joueur {
     	banque = 100;
     	mains = new ArrayList<Integer>(15);
     	mainstext = new ArrayList<Texture>(15);
+    	mainstr = new ArrayList<String>(15);
     }
     public int total() {
 		 int somme = 0;

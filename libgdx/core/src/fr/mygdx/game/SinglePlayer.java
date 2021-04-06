@@ -57,7 +57,7 @@ public class SinglePlayer implements Screen {
 	Deck paquet = new Deck(texturespack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
-	private int p1Carte = 0;
+	static int ADDCARTE = 0;
 	
 	//private CardsTextures hey = new CardsTextures(texturespack); On s'en sert jamais mais Alex l'a peut être mis pour quelque chose donc je supprime pas (c'est beaucoup trop long comme explication)
 	static int pushButton = 0;
@@ -168,7 +168,6 @@ public class SinglePlayer implements Screen {
     		//paquetnom.creation();
     		//paquetnom.creationn();
 			p1.initialisation();
-			p1.maindep();
 			p1.croupierdep(); 
 			p1.tirerjoueur();
 			p1.croupiertirer();
@@ -179,7 +178,8 @@ public class SinglePlayer implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			p1Carte = p1.uneCartev2(0);
+			ADDCARTE = 1;
+			p1.tirerjoueur();
 			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
 		}
 		batch.draw(p1.afficheMainCroupierNom().get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
@@ -190,45 +190,37 @@ public class SinglePlayer implements Screen {
 		batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
 		batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 		batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);	
-		if (clique >= 1) {
-			p1Carte = p1.uneCartev2(1);
+		if (clique >= 1 && p1.getSize() >= 1) {
+			ADDCARTE = 1;
+			p1.tirerjoueur();
 			batch.draw(p1.getMainJoueur0().get(1), 950f, 140f, 103f, 138f);
-			if (clique >= 2 /*&& p1.uneCartev2(2) pour verifier l'existence de la carte => gestionnaire d'erreurs*/) {
-				p1Carte = p1.uneCartev2(2);
-				batch.draw(p1.getMainJoueur0().get(2), 980f, 110f, 103f, 138f);
-				if (clique >= 3) {
-					p1Carte = p1.uneCartev2(3);
-					batch.draw(p1.getMainJoueur0().get(3), 1010f, 80f, 103f, 138f);
-					if (clique >= 4) {
-						p1Carte = p1.uneCartev2(4);
-						batch.draw(p1.getMainJoueur0().get(4), 1200f, 172f, 103f, 138f);
-						if (clique >= 5) {
-							p1Carte = p1.uneCartev2(5);
-							batch.draw(p1.getMainJoueur0().get(5), 1230f, 140f, 103f, 138f);
-							if (clique >= 6) {
-								p1Carte = p1.uneCartev2(6);
-								batch.draw(p1.getMainJoueur0().get(6), 1260f, 110f, 103f, 138f);
-								if (clique >= 7) {
-									p1Carte = p1.uneCartev2(7);
-									batch.draw(p1.getMainJoueur0().get(7), 1290f, 80f, 103f, 138f);
-									if (clique >= 8) {
-										p1Carte = p1.uneCartev2(8);
-										batch.draw(p1.getMainJoueur0().get(8), 1480f, 172f, 103f, 138f);
-										if (clique >= 9){
-											p1Carte = p1.uneCartev2(9);
-											batch.draw(p1.getMainJoueur0().get(9), 1510f, 140f, 103f, 138f);
-											if (clique >= 10) {
-												p1Carte = p1.uneCartev2(10);
-												batch.draw(p1.getMainJoueur0().get(10), 1540f, 110f, 103f, 138f);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+		}
+		if (clique >= 2 && p1.getSize() >= 2) {
+			batch.draw(p1.getMainJoueur0().get(2), 980f, 110f, 103f, 138f);
+		}
+		if (clique >= 3 && p1.getSize() >= 3) {
+			batch.draw(p1.getMainJoueur0().get(3), 1010f, 80f, 103f, 138f);
+		}
+		if (clique >= 4 && p1.getSize() >= 4) {
+			batch.draw(p1.getMainJoueur0().get(4), 1200f, 172f, 103f, 138f);
+		}
+		if (clique >= 5 && p1.getSize() >= 5) {
+			batch.draw(p1.getMainJoueur0().get(5), 1230f, 140f, 103f, 138f);
+		}
+		if (clique >= 6 && p1.getSize() >= 6) {
+			batch.draw(p1.getMainJoueur0().get(6), 1260f, 110f, 103f, 138f);
+		}
+		if (clique >= 7 && p1.getSize() >= 7) {
+			batch.draw(p1.getMainJoueur0().get(7), 1290f, 80f, 103f, 138f);
+		}
+		if (clique >= 8 && p1.getSize() >= 8) {
+			batch.draw(p1.getMainJoueur0().get(8), 1480f, 172f, 103f, 138f);
+		}
+		if (clique >= 9 && p1.getSize() >= 9){
+			batch.draw(p1.getMainJoueur0().get(9), 1510f, 140f, 103f, 138f);
+		}
+		if (clique >= 10 && p1.getSize() >= 10) {
+			batch.draw(p1.getMainJoueur0().get(10), 1540f, 110f, 103f, 138f);
 		}
 		batch.end();
 

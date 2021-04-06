@@ -164,8 +164,8 @@ private int nbparticipants;
        
  
 		for (int i=0;i<nbparticipants;i++) {
-			System.out.println("La main du croupier est [" + mainstext.get(0) + ", ?]");
-			System.out.println(joueurs[i].total());
+			//System.out.println("La main du croupier est [" + mainstext.get(0) + ", ?]");
+			//System.out.println(joueurs[i].total());
 			tirer = true;
 			while (tirer && joueurs[i].total() < 21) {
 	        	/*int reponse;
@@ -180,9 +180,7 @@ private int nbparticipants;
 	     
 	    	 
 	             System.out.println("Au tour de " + joueurs[i].getNom());
-	    	     int a;
-	             a = Saisie.lireEntier("\n Voulez vous tirer une carte (rappel de votre main : " + joueurs[i].getMainText() + " )");
-	    	     if (a == 1) {
+	    	     if (SinglePlayer.ADDCARTE == 1) {
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainText() + "\n");
 	    	    	
 	    	    	joueurs[i].addtext(paquet.getPaquetText().get(0));
@@ -193,9 +191,10 @@ private int nbparticipants;
 	    	        paquet.getPaquet().remove(0);
 	    	    	
 	    	        
-	    	        System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
+	    	        //System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
+	    	        SinglePlayer.ADDCARTE = 0;
 	    	        }
-	    	    if (a != 1) {
+	    	     else {
 	    	    	tirer = false;
 	    	    }   
 	        
