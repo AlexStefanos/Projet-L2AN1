@@ -129,6 +129,8 @@ public class SinglePlayer implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
+				ADDCARTE = 1;
+				p1.tirerjoueur(0);
 				tableJeu.removeActor(buttonJouer);
 				tableJeu.add(buttonTirer);
 			}
@@ -141,6 +143,8 @@ public class SinglePlayer implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				clique++;
+				ADDCARTE = 1;
+				p1.tirerjoueur(0);
 			}
 		});
 			
@@ -168,8 +172,7 @@ public class SinglePlayer implements Screen {
     		//paquetnom.creation();
     		//paquetnom.creationn();
 			p1.initialisation();
-			p1.croupierdep(); 
-			p1.tirerjoueur();
+			p1.croupierdep();
 			p1.croupiertirer();
 	    	p1.gagnant();
 		}
@@ -178,8 +181,6 @@ public class SinglePlayer implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			ADDCARTE = 1;
-			p1.tirerjoueur();
 			batch.draw(p1.getMainJoueur0().get(0), 920f, 172f, 103f, 138f);
 		}
 		batch.draw(p1.afficheMainCroupierNom().get(0), 800f, 500f, 103f, 138f); //1ere Carte Croupier
@@ -190,36 +191,34 @@ public class SinglePlayer implements Screen {
 		batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
 		batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 		batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);	
-		if (clique >= 1 && p1.getSize() > 1) {
-			ADDCARTE = 1;
-			p1.tirerjoueur();
+		if (clique >= 1 && p1.getSize() > 0) {
 			batch.draw(p1.getMainJoueur0().get(1), 950f, 140f, 103f, 138f);
 		}
-		if (clique >= 2 && p1.getSize() > 2) {
+		if (clique >= 2 && p1.getSize() > 1) {
 			batch.draw(p1.getMainJoueur0().get(2), 980f, 110f, 103f, 138f);
 		}
-		if (clique >= 3 && p1.getSize() > 3) {
+		if (clique >= 3 && p1.getSize() > 2) {
 			batch.draw(p1.getMainJoueur0().get(3), 1010f, 80f, 103f, 138f);
 		}
-		if (clique >= 4 && p1.getSize() > 4) {
+		if (clique >= 4 && p1.getSize() > 3) {
 			batch.draw(p1.getMainJoueur0().get(4), 1200f, 172f, 103f, 138f);
 		}
-		if (clique >= 5 && p1.getSize() > 5) {
+		if (clique >= 5 && p1.getSize() > 4) {
 			batch.draw(p1.getMainJoueur0().get(5), 1230f, 140f, 103f, 138f);
 		}
-		if (clique >= 6 && p1.getSize() > 6) {
+		if (clique >= 6 && p1.getSize() > 5) {
 			batch.draw(p1.getMainJoueur0().get(6), 1260f, 110f, 103f, 138f);
 		}
-		if (clique >= 7 && p1.getSize() > 7) {
+		if (clique >= 7 && p1.getSize() > 6) {
 			batch.draw(p1.getMainJoueur0().get(7), 1290f, 80f, 103f, 138f);
 		}
-		if (clique >= 8 && p1.getSize() > 8) {
+		if (clique >= 8 && p1.getSize() > 7) {
 			batch.draw(p1.getMainJoueur0().get(8), 1480f, 172f, 103f, 138f);
 		}
-		if (clique >= 9 && p1.getSize() > 9) {
+		if (clique >= 9 && p1.getSize() > 8) {
 			batch.draw(p1.getMainJoueur0().get(9), 1510f, 140f, 103f, 138f);
 		}
-		if (clique >= 10 && p1.getSize() >	 10) {
+		if (clique >= 10 && p1.getSize() > 9) {
 			batch.draw(p1.getMainJoueur0().get(10), 1540f, 110f, 103f, 138f);
 		}
 		batch.end();

@@ -147,7 +147,7 @@ private int nbparticipants;
 	        }
 	 }*/
 	        
-	public void tirerjoueur() {
+	public void tirerjoueur(int i) {
 		/* for (int j=0;j<nbparticipants;j++) {
            for (int i =0;i<2;i++) {
 	            
@@ -163,12 +163,12 @@ private int nbparticipants;
 	    }*/
        
  
-		for (int i=0;i<nbparticipants;i++) {
-			//System.out.println("La main du croupier est [" + mainstext.get(0) + ", ?]");
-			//System.out.println(joueurs[i].total());
+		/*for (int i=0;i<nbparticipants;i++) {
+			System.out.println("La main du croupier est [" + mainstext.get(0) + ", ?]");
+			System.out.println(joueurs[i].total());
 			tirer = true;
-			while (tirer && joueurs[i].total() < 21) {
-	        	/*int reponse;
+		while (joueurs[i].total() < 21) {
+	        	int reponse;
 	    	    Scanner clavier = new Scanner(System.in);
 	    	    System.out.print("Voulez vous tirer une carte : \n");
 	    	    reponse = clavier.nextInt();
@@ -179,7 +179,7 @@ private int nbparticipants;
 	     
 	     
 	    	 
-	             System.out.println("Au tour de " + joueurs[i].getNom());
+	            // System.out.println("Au tour de " + joueurs[i].getNom());
 	    	     if (SinglePlayer.ADDCARTE == 1) {
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainText() + "\n");
 	    	    	
@@ -194,14 +194,12 @@ private int nbparticipants;
 	    	        //System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
 	    	        SinglePlayer.ADDCARTE = 0;
 	    	        }
-	    	     else {
+	    	    /* else {
 	    	    	tirer = false;
-	    	    }   
+	    	    } */  
 	        
 	     }
-	    }
 	       
-	 }
 	public ArrayList<Texture> getMainsText(){
 		return mainstext;
 	}
