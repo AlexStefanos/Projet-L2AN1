@@ -47,7 +47,7 @@ public class Animations {
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
 	
-	private float animTimeCarte = 0f;
+	//private float animTimeCarte = 0f;
 	private float totalAnimTime = 0.1f;
 	
 	public Animations(ArrayList<Animation<TextureRegion>> animationPack) {

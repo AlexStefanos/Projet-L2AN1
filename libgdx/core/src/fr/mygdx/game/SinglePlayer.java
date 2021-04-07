@@ -46,7 +46,8 @@ public class SinglePlayer implements Screen {
 	private int clique;
 	private  BLACKJACKCity parent;
 	
-	private float animTimeBis, animTime , animTimeCroupier;
+	private float animTimeBis = 0f , animTime1 = 0f  , animTime2 = 0f  , animTime3 = 0f  , animTime4 = 0f  , animTimeCroupier = 0f ,
+			animTime5 = 0f  ,animTime6 = 0f  ,animTime7 = 0f  ,animTime8 = 0f  ,animTime9 = 0f ,animTime10 = 0f,animTime11 = 0f ;
 	private float totalAnimTime;
 	
 	public SinglePlayer(BLACKJACKCity box2dTutorial) {
@@ -76,9 +77,9 @@ public class SinglePlayer implements Screen {
 		animationFrames = atlas2.getRegions();
 		anim1 = new Animation<TextureRegion> (totalAnimTime,animationFrames);
 		anim1.setPlayMode(Animation.PlayMode.NORMAL);
-		animTime = 0f;
-		animTimeBis = 0f;
-		animTimeCroupier = 0f;
+		//animTime = 0f;
+		//animTimeBis = 0f;
+		//animTimeCroupier = 0f;
 		
 		stage = new Stage();
 		skin = new Skin(atlas);
@@ -183,12 +184,11 @@ public class SinglePlayer implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTime, true), 920f, 172f, 103f, 138f);
-			animTime = 0f;
+			animTime1 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTime1, false), 920f, 172f, 103f, 138f);
 		}
 		animTimeCroupier = Gdx.graphics.getDeltaTime();
-		batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTime, true), 800f, 500f, 103f, 138f); //1ere Carte Croupier
+		batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, true), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 		batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 		batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 		batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -197,60 +197,50 @@ public class SinglePlayer implements Screen {
 		batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 		batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);	
 		if (clique >= 1 && p1.getSize() > 0) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(1).getKeyFrame(animTime, true), 950f, 140f, 103f, 138f);
-			animTime = 0f;
+			animTime2 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
 		}
 		if (clique >= 2 && p1.getSize() > 1) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(2).getKeyFrame(animTime, true), 980f, 110f, 103f, 138f);
-			animTime = 0f;
+			animTime3 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(2).getKeyFrame(animTime3, false), 980f, 110f, 103f, 138f);
 		}
 		if (clique >= 3 && p1.getSize() > 2) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(3).getKeyFrame(animTime, true), 1010f, 80f, 103f, 138f);
-			animTime = 0f;
+			animTime4 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(3).getKeyFrame(animTime4, false), 1010f, 80f, 103f, 138f);
 		}
 		if (clique >= 4 && p1.getSize() > 3) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(4).getKeyFrame(animTime, true), 1200f, 172f, 103f, 138f);
-			animTime = 0f;
+			animTime5 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(4).getKeyFrame(animTime5, false), 1200f, 172f, 103f, 138f);
 		}
 		if (clique >= 5 && p1.getSize() > 4) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(5).getKeyFrame(animTime, true), 1230f, 140f, 103f, 138f);
-			animTime = 0f;
+			animTime6 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(5).getKeyFrame(animTime6, false), 1230f, 140f, 103f, 138f);
 		}
 		if (clique >= 6 && p1.getSize() > 5) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(6).getKeyFrame(animTime, true), 1260f, 110f, 103f, 138f);
-			animTime = 0f;
+			animTime7 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(6).getKeyFrame(animTime7, false), 1260f, 110f, 103f, 138f);
 		}
 		if (clique >= 7 && p1.getSize() > 6) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(7).getKeyFrame(animTime, true), 1290f, 80f, 103f, 138f);
-			animTime = 0f;
+			animTime8 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(7).getKeyFrame(animTime8, false), 1290f, 80f, 103f, 138f);
 		}
 		if (clique >= 8 && p1.getSize() > 7) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(8).getKeyFrame(animTime, true), 1480f, 172f, 103f, 138f);
-			animTime = 0f;
+			animTime9 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(8).getKeyFrame(animTime9, false), 1480f, 172f, 103f, 138f);
 		}
 		if (clique >= 9 && p1.getSize() > 8) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(9).getKeyFrame(animTime, true), 1510f, 140f, 103f, 138f);
-			animTime = 0f;
+			animTime10 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(9).getKeyFrame(animTime10, false), 1510f, 140f, 103f, 138f);
 		}
 		if (clique >= 10 && p1.getSize() > 9) {
-			animTime = Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(10).getKeyFrame(animTime, true), 1540f, 110f, 103f, 138f);
-			animTime = 0f;
+			animTime11 += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(10).getKeyFrame(animTime11, false), 1540f, 110f, 103f, 138f);
 		}
 		batch.end();
 
 		batch.begin();
 		animTimeBis += Gdx.graphics.getDeltaTime();
-		batch.draw(anim1.getKeyFrame(animTime, true), 150 ,150 );
+		batch.draw(anim1.getKeyFrame(animTimeBis, true), 150 ,150 );
 		batch.end();	
 		
 		stage.act(delta);
