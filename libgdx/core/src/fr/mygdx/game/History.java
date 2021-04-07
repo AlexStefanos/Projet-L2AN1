@@ -7,9 +7,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -32,9 +34,9 @@ public class History implements Screen{
 	private TextButton buttonBack;
 	private Table table;
 	
-	private ArrayList<Texture> texturespack;
+	private ArrayList<Animation<TextureRegion>> animationPack;
 	private Joueur[] joueurs = new Joueur[1];
-	Deck paquet = new Deck(texturespack);
+	Deck paquet = new Deck(animationPack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
 	Cartes p2 = new Cartes(paquet);

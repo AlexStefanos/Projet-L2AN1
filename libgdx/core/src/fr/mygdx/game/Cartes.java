@@ -1,5 +1,7 @@
 package fr.mygdx.game;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.*;
 
@@ -7,7 +9,7 @@ public class Cartes {
 
 private Scanner alpha = new Scanner(System.in);
 private ArrayList<Integer> mains;
-private ArrayList<Texture> mainstext;
+private ArrayList<Animation<TextureRegion>> mainstext;
 private ArrayList<String> mainsnom;
 private Joueur[] joueurs;
 private Croupier croupier;
@@ -18,7 +20,7 @@ private int nbparticipants;
 	public Cartes(Deck paquet) {
 		
 		mains = new ArrayList<Integer>(11);
-		mainstext = new ArrayList<Texture>(11);
+		mainstext = new ArrayList<Animation<TextureRegion>>(11);
 		mainsnom = new ArrayList<String>(11);
 		joueurs = new Joueur[6];
 		croupier = new Croupier();
@@ -70,7 +72,7 @@ private int nbparticipants;
 	}
 	
 	
-	 public ArrayList<Texture> maindep() {
+	 public ArrayList<Animation<TextureRegion>> maindep() {
 		 for (int j=0;j<nbparticipants;j++) {
 			 
 			 for (int i =0;i<2;i++) {		            
@@ -130,7 +132,7 @@ private int nbparticipants;
 	 }
 	 
 	 
-	 public Texture uneCarte(int k) {
+	 public Animation<TextureRegion> uneCarte(int k) {
 		 return joueurs[0].getMainText().get(k);
 	 }
 	
@@ -200,7 +202,7 @@ private int nbparticipants;
 	        
 	     }
 	       
-	public ArrayList<Texture> getMainsText(){
+	public ArrayList<Animation<TextureRegion>> getMainsText(){
 		return mainstext;
 	}
 	public ArrayList<String> getMainsJoueurNom(int i){
@@ -236,10 +238,10 @@ private int nbparticipants;
 	 public ArrayList<Integer> afficheMainCroupier(){
 		 return mains;
 	 }
-	public ArrayList<Texture> afficheMainCroupierNom(){
+	public ArrayList<Animation<TextureRegion>> afficheMainCroupierNom(){
 			 return mainstext;
 	 }
-	 public Texture croupiertirer() {
+	 public Animation<TextureRegion> croupiertirer() {
 		 while (total() < 17) {
 	    	 mains.add((paquet.getPaquet().get(0)));
 		     mainstext.add(paquet.getPaquetText().get(0));
@@ -309,7 +311,7 @@ private int nbparticipants;
 		}
 		
 	}
-	public ArrayList<Texture> getMainJoueur0(){
+	public ArrayList<Animation<TextureRegion>> getMainJoueur0(){
 		return joueurs[0].getMainText();
 	}
 	public ArrayList<Integer> getMain(){

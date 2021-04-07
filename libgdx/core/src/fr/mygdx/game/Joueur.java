@@ -1,5 +1,8 @@
 package fr.mygdx.game;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import java.util.*;
 
 public class Joueur {
@@ -7,14 +10,14 @@ public class Joueur {
     private ArrayList<Integer> mains;
     private int mise;
     private int banque;
-    private ArrayList<Texture> mainstext;
+    private ArrayList<Animation<TextureRegion>> mainstext;
     private ArrayList<String> mainstr;
     Deck paquet = new Deck(mainstext);
     
     public Joueur() {
     	banque = 100;
     	mains = new ArrayList<Integer>(15);
-    	mainstext = new ArrayList<Texture>(15);
+    	mainstext = new ArrayList<Animation<TextureRegion>>(15);
     	mainstr = new ArrayList<String>(15);
     }
     public int total() {
@@ -68,14 +71,14 @@ public class Joueur {
 	public ArrayList<String> getMainstr() {
 		return mainstr;
 	}
-	public ArrayList<Texture> getMainText(){
+	public ArrayList<Animation<TextureRegion>> getMainText(){
 		return mainstext;
 	}
 	
 	public void addint(int card) {
 		mains.add(card);
 	}
-	public void addtext(Texture card) {
+	public void addtext(Animation<TextureRegion> card) {
 	    mainstext.add(card);
 	}
 	public void addstr(String card) {

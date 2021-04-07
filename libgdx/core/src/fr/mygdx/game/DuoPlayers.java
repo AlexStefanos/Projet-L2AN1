@@ -62,9 +62,9 @@ public class DuoPlayers implements Screen{
 		parent = box2dTutorial;
 	}
 	
-	private ArrayList<Texture> texturespack;
+	private ArrayList<Animation<TextureRegion>> animationPack;
 	private Joueur[] joueurs = new Joueur[1];
-	Deck paquet = new Deck(texturespack);
+	Deck paquet = new Deck(animationPack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
 	Cartes p2 = new Cartes(paquet);

@@ -1,18 +1,20 @@
 package fr.mygdx.game;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Deck extends CardsTextures{
+public class Deck extends Animations{
 	private ArrayList<Integer> jeu;
-	private ArrayList<Texture> jeutext;
+	private ArrayList<Animation<TextureRegion>> jeutext;
 	private ArrayList<String>  jeunoms;
 		
-		public Deck(ArrayList<Texture> texturespack) {
-			super(texturespack);
+		public Deck(ArrayList<Animation<TextureRegion>> animationPack) {
+			super(animationPack);
 			jeu = new ArrayList<Integer>(312);
-			jeutext = new ArrayList<Texture>(312);
+			jeutext = new ArrayList<Animation<TextureRegion>>(312);
 			jeunoms = new ArrayList<String>(312);
 		}
 
@@ -51,54 +53,54 @@ public class Deck extends CardsTextures{
 					
 					if (i<6) {
 						if (j == 1) {
-							jeutext.add(AsCoeur);
+							jeutext.add(animAsCoeur);
 							jeunoms.add("AsCoeur");
 						}
 						else if (j == 2) {
-							jeutext.add(DeuxCoeur);
+							jeutext.add(animDeuxCoeur);
 							jeunoms.add("DeuxCoeur");
 						}
 						else if (j == 3) {
-							jeutext.add(TroisCoeur);
+							jeutext.add(animTroisCoeur);
 							jeunoms.add("TroisCoeur");
 						}
 						else if (j == 4) {
-							jeutext.add(QuatreCoeur);
+							jeutext.add(animQuatreCoeur);
 							jeunoms.add("QuatreCoeur");
 						}
 						else if (j == 5) {
-							jeutext.add(CinqCoeur);
+							jeutext.add(animCinqCoeur);
 							jeunoms.add("CinqCoeur");
 						}
 						else if (j == 6) {
-							jeutext.add(SixCoeur);
+							jeutext.add(animSixCoeur);
 							jeunoms.add("SixCoeur");
 						}
 						else if (j == 7) {
-							jeutext.add(SeptCoeur);
+							jeutext.add(animSeptCoeur);
 							jeunoms.add("SeptCoeur");
 						}
 						else if (j == 8) {
-							jeutext.add(HuitCoeur);
+							jeutext.add(animHuitCoeur);
 							jeunoms.add("HuitCoeur");
 						}
 						else if (j == 9) {
-							jeutext.add(NeufCoeur);
+							jeutext.add(animNeufCoeur);
 							jeunoms.add("NeufCoeur");
 						}
 						else if (j == 10) {
-							jeutext.add(DixCoeur);
+							jeutext.add(animDixCoeur);
 							jeunoms.add("DixCoeur");
 						}
 						else if (j == 11) {
-							jeutext.add(ValetCoeur);
+							jeutext.add(animValetCoeur);
 							jeunoms.add("ValetCoeur");
 						}
 						else if (j == 12) {
-							jeutext.add(DameCoeur);
+							jeutext.add(animDameCoeur);
 							jeunoms.add("DameCoeur");}
 						else if (j == 13) {
-							jeutext.add(RoiCoeur);
+							jeutext.add(animRoiCoeur);
 							jeunoms.add("RoiCoeur");
 						
 					}
@@ -106,55 +108,55 @@ public class Deck extends CardsTextures{
 				}
 					else if (i>=6 && i<12) {
 						if (j == 1) {
-							jeutext.add(AsTrefle);
+							jeutext.add(animAsTrefle);
 							jeunoms.add("AsTrefle");
 						}
 						else if (j == 2) {
-							jeutext.add(DeuxTrefle);
+							jeutext.add(animDeuxTrefle);
 							jeunoms.add("DeuxTrefle");
 						}
 						else if (j == 3) {
-							jeutext.add(TroisTrefle);
+							jeutext.add(animTroisTrefle);
 							jeunoms.add("TroisTrefle");
 						}
 						else if (j == 4) {
-							jeutext.add(QuatreTrefle);
+							jeutext.add(animQuatreTrefle);
 							jeunoms.add("QuatreTrefle");
 						}
 						else if (j == 5) {
-							jeutext.add(CinqTrefle);
+							jeutext.add(animCinqTrefle);
 							jeunoms.add("CinqTrefle");
 						}
 						else if (j == 6) {
-							jeutext.add(SixTrefle);
+							jeutext.add(animSixTrefle);
 							jeunoms.add("SixTrefle");
 						}
 						else if (j == 7) {
-							jeutext.add(SeptTrefle);
+							jeutext.add(animSeptTrefle);
 							jeunoms.add("SeptTrefle");
 						}
 						else if (j == 8) {
-							jeutext.add(HuitTrefle);
+							jeutext.add(animHuitTrefle);
 							jeunoms.add("HuitTrefle");
 						}
 						else if (j == 9) {
-							jeutext.add(NeufTrefle);
+							jeutext.add(animNeufTrefle);
 							jeunoms.add("NeufTrefle");
 						}
 						else if (j == 10) {
-							jeutext.add(DixTrefle);
+							jeutext.add(animDixTrefle);
 							jeunoms.add("DixTrefle");
 						}
 						else if (j == 11) {
-							jeutext.add(ValetTrefle);
+							jeutext.add(animValetTrefle);
 							jeunoms.add("ValetTrefle");
 						}
 						else if (j == 12) {
-							jeutext.add(DameTrefle);
+							jeutext.add(animDameTrefle);
 							jeunoms.add("DameTrefle");
 						}
 						else if (j == 13) {
-							jeutext.add(RoiTrefle);
+							jeutext.add(animRoiTrefle);
 							jeunoms.add("RoiTrefle");
 						
 					
@@ -162,55 +164,55 @@ public class Deck extends CardsTextures{
 					}
 						else if (i>=12 && i<18) {
 							if (j == 1) {
-								jeutext.add(AsCarreau);
+								jeutext.add(animAsCarreau);
 								jeunoms.add("AsCarreau");
 							}
 							else if (j == 2) {
-								jeutext.add(DeuxCarreau);
+								jeutext.add(animDeuxCarreau);
 								jeunoms.add("DeuxCarreau");
 							}
 							else if (j == 3) {
-								jeutext.add(TroisCarreau);
+								jeutext.add(animTroisCarreau);
 								jeunoms.add("TroisCarreau");
 							}
 							else if (j == 4) {
-								jeutext.add(QuatreCarreau);
+								jeutext.add(animQuatreCarreau);
 								jeunoms.add("QuatreCarreau");
 							}
 							else if (j == 5) {
-								jeutext.add(CinqCarreau);
+								jeutext.add(animCinqCarreau);
 								jeunoms.add("CinqCarreau");
 							}
 							else if (j == 6) {
-								jeutext.add(SixCarreau);
+								jeutext.add(animSixCarreau);
 								jeunoms.add("SixCarreau");
 							}
 							else if (j == 7) {
-								jeutext.add(SeptCarreau);
+								jeutext.add(animSeptCarreau);
 								jeunoms.add("SeptCarreau");
 							}
 							else if (j == 8) {
-								jeutext.add(HuitCarreau);
+								jeutext.add(animHuitCarreau);
 								jeunoms.add("HuitCarreau");
 							}
 							else if (j == 9) {
-								jeutext.add(NeufCarreau);
+								jeutext.add(animNeufCarreau);
 								jeunoms.add("NeufCarreau");
 							}
 							else if (j == 10) {
-								jeutext.add(DixCarreau);
+								jeutext.add(animDixCarreau);
 								jeunoms.add("DixCarreau");
 							}
 							else if (j == 11) {
-								jeutext.add(ValetCarreau);
+								jeutext.add(animValetCarreau);
 								jeunoms.add("ValetCarreau");
 							}
 							else if (j == 12) {
-								jeutext.add(DameCarreau);
+								jeutext.add(animDameCarreau);
 								jeunoms.add("DameCarreau");
 							}
 							else if (j == 13) {
-								jeutext.add(RoiCarreau);
+								jeutext.add(animRoiCarreau);
 								jeunoms.add("RoiCarreau");
 							
 					}
@@ -218,55 +220,55 @@ public class Deck extends CardsTextures{
 				}
 						else if (i>=18 && i<24) {
 							if (j == 1) {
-								jeutext.add(AsPique);
+								jeutext.add(animAsPique);
 								jeunoms.add("AsPique");
 							}
 							else if (j == 2) {
-								jeutext.add(DeuxPique);
+								jeutext.add(animDeuxPique);
 								jeunoms.add("DeuxPique");
 							}
 							else if (j == 3) {
-								jeutext.add(TroisPique);
+								jeutext.add(animTroisPique);
 								jeunoms.add("TroisPique");
 							}
 							else if (j == 4) {
-								jeutext.add(QuatrePique);
+								jeutext.add(animQuatrePique);
 								jeunoms.add("QuatrePique");
 							}
 							else if (j == 5) {
-								jeutext.add(CinqPique);
+								jeutext.add(animCinqPique);
 								jeunoms.add("CinqPique");
 							}
 							else if (j == 6) {
-								jeutext.add(SixPique);
+								jeutext.add(animSixPique);
 								jeunoms.add("SixPique");
 							}
 							else if (j == 7) {
-								jeutext.add(SeptPique);
+								jeutext.add(animSeptPique);
 								jeunoms.add("SeptPique");
 							}
 							else if (j == 8) {
-								jeutext.add(HuitPique);
+								jeutext.add(animHuitPique);
 								jeunoms.add("(HuitPique");
 							}
 							else if (j == 9) {
-								jeutext.add(NeufPique);
+								jeutext.add(animNeufPique);
 								jeunoms.add("NeufPique");
 							}
 							else if (j == 10) {
-								jeutext.add(DixPique);
+								jeutext.add(animDixPique);
 								jeunoms.add("DixPique");
 							}
 							else if (j == 11) {
-								jeutext.add(ValetPique);
+								jeutext.add(animValetPique);
 								jeunoms.add("ValetPique");
 							}
 							else if (j == 12) {
-								jeutext.add(DamePique);
+								jeutext.add(animDamePique);
 								jeunoms.add("DamePique");
 							}
 							else if (j == 13) {
-								jeutext.add(RoiPique);		
+								jeutext.add(animRoiPique);		
 								jeunoms.add("RoiPique");
 			}
 		}
@@ -276,204 +278,204 @@ public class Deck extends CardsTextures{
 }
 		public void toNb() {
 			for (int i =0;i<312;i++) {
-				if (jeutext.get(i) == AsPique || jeutext.get(i) == AsCoeur || jeutext.get(i) == AsTrefle || jeutext.get(i) == AsCarreau) {
+				if (jeutext.get(i) == animAsPique || jeutext.get(i) == animAsCoeur || jeutext.get(i) == animAsTrefle || jeutext.get(i) == animAsCarreau) {
 					jeu.add(1);
 				}
-				else if (jeutext.get(i) == DeuxPique || jeutext.get(i) == DeuxCoeur || jeutext.get(i) == DeuxTrefle || jeutext.get(i) == DeuxCarreau) {
+				else if (jeutext.get(i) == animDeuxPique || jeutext.get(i) == animDeuxCoeur || jeutext.get(i) == animDeuxTrefle || jeutext.get(i) == animDeuxCarreau) {
 					jeu.add(2);
 				}
-				else if (jeutext.get(i) == TroisPique || jeutext.get(i) == TroisCoeur || jeutext.get(i) == TroisTrefle || jeutext.get(i) == TroisCarreau) {
+				else if (jeutext.get(i) == animTroisPique || jeutext.get(i) == animTroisCoeur || jeutext.get(i) == animTroisTrefle || jeutext.get(i) == animTroisCarreau) {
 					jeu.add(3);
 				}
-				else if (jeutext.get(i) == QuatrePique || jeutext.get(i) == QuatreCoeur || jeutext.get(i) == QuatreTrefle || jeutext.get(i) == QuatreCarreau) {
+				else if (jeutext.get(i) == animQuatrePique || jeutext.get(i) == animQuatreCoeur || jeutext.get(i) == animQuatreTrefle || jeutext.get(i) == animQuatreCarreau) {
 					jeu.add(4);
 				}
-				else if (jeutext.get(i) == CinqPique || jeutext.get(i) == CinqCoeur || jeutext.get(i) == CinqTrefle || jeutext.get(i) == CinqCarreau) {
+				else if (jeutext.get(i) == animCinqPique || jeutext.get(i) == animCinqCoeur || jeutext.get(i) == animCinqTrefle || jeutext.get(i) == animCinqCarreau) {
 					jeu.add(5);
 				}
-				else if (jeutext.get(i) == SixPique || jeutext.get(i) == SixCoeur || jeutext.get(i) == SixTrefle || jeutext.get(i) == SixCarreau) {
+				else if (jeutext.get(i) == animSixPique || jeutext.get(i) == animSixCoeur || jeutext.get(i) == animSixTrefle || jeutext.get(i) == animSixCarreau) {
 					jeu.add(6);
 				}
-				else if (jeutext.get(i) == SeptPique || jeutext.get(i) == SeptCoeur || jeutext.get(i) == SeptTrefle || jeutext.get(i) == SeptCarreau) {
+				else if (jeutext.get(i) == animSeptPique || jeutext.get(i) == animSeptCoeur || jeutext.get(i) == animSeptTrefle || jeutext.get(i) == animSeptCarreau) {
 					jeu.add(7);
 				}
-				else if (jeutext.get(i) == HuitPique || jeutext.get(i) == HuitCoeur || jeutext.get(i) == HuitTrefle || jeutext.get(i) == HuitCarreau) {
+				else if (jeutext.get(i) == animHuitPique || jeutext.get(i) == animHuitCoeur || jeutext.get(i) == animHuitTrefle || jeutext.get(i) == animHuitCarreau) {
 					jeu.add(8);
 				}
-				else if (jeutext.get(i) == NeufPique || jeutext.get(i) == NeufCoeur || jeutext.get(i) == NeufTrefle || jeutext.get(i) == NeufCarreau) {
+				else if (jeutext.get(i) == animNeufPique || jeutext.get(i) == animNeufCoeur || jeutext.get(i) == animNeufTrefle || jeutext.get(i) == animNeufCarreau) {
 					jeu.add(9);
 				}
-				else if (jeutext.get(i) == DixPique || jeutext.get(i) == DixCoeur || jeutext.get(i) == DixTrefle || jeutext.get(i) == DixCarreau) {
+				else if (jeutext.get(i) == animDixPique || jeutext.get(i) == animDixCoeur || jeutext.get(i) == animDixTrefle || jeutext.get(i) == animDixCarreau) {
 					jeu.add(10);
 				}
-				else if (jeutext.get(i) == ValetPique || jeutext.get(i) == ValetCoeur || jeutext.get(i) == ValetTrefle || jeutext.get(i) == ValetCarreau) {
+				else if (jeutext.get(i) == animValetPique || jeutext.get(i) == animValetCoeur || jeutext.get(i) == animValetTrefle || jeutext.get(i) == animValetCarreau) {
 					jeu.add(10);
 				}
-				else if (jeutext.get(i) == DamePique || jeutext.get(i) == DameCoeur || jeutext.get(i) == DameTrefle || jeutext.get(i) == DameCarreau) {
+				else if (jeutext.get(i) == animDamePique || jeutext.get(i) == animDameCoeur || jeutext.get(i) == animDameTrefle || jeutext.get(i) == animDameCarreau) {
 					jeu.add(10);
 				}
-				else if (jeutext.get(i) == RoiPique || jeutext.get(i) == RoiCoeur || jeutext.get(i) == RoiTrefle || jeutext.get(i) == RoiCarreau) {
+				else if (jeutext.get(i) == animRoiPique || jeutext.get(i) == animRoiCoeur || jeutext.get(i) == animRoiTrefle || jeutext.get(i) == animRoiCarreau) {
 					jeu.add(10);
 				}
 				
 			}
 			for (int i =0;i<312;i++) {
 				
-				if (jeutext.get(i) == AsPique ) {
+				if (jeutext.get(i) == animAsPique ) {
 					jeunoms.add("Aspique");
 				}
-				else if ( jeutext.get(i) == AsCoeur) {
+				else if ( jeutext.get(i) == animAsCoeur) {
 					jeunoms.add("AsCoeur");
 				}
-				else if (jeutext.get(i) == AsTrefle) {
+				else if (jeutext.get(i) == animAsTrefle) {
 					jeunoms.add("AsTrefle");
 				}
-				else if ( jeutext.get(i) == AsCarreau) {
+				else if ( jeutext.get(i) == animAsCarreau) {
 					jeunoms.add("AsCarreau");
 				}
-				else if (jeutext.get(i) == DeuxPique) {
+				else if (jeutext.get(i) == animDeuxPique) {
 					jeunoms.add("DeuxPique");
 				}
 				
-				else if ( jeutext.get(i) == DeuxCoeur) {
+				else if ( jeutext.get(i) == animDeuxCoeur) {
 					jeunoms.add(" DeuxCoeur");
 				}
-				else if (jeutext.get(i) == DeuxTrefle) {
+				else if (jeutext.get(i) == animDeuxTrefle) {
 					jeunoms.add("DeuxTrefle");
 				}
-				else if (jeutext.get(i) == DeuxCarreau) {
+				else if (jeutext.get(i) == animDeuxCarreau) {
 					jeunoms.add("DeuxCarreau");
 				}
 				
-				else if (jeutext.get(i) == DeuxPique) {
+				else if (jeutext.get(i) == animDeuxPique) {
 					jeunoms.add("DeuxPique");
 				}
 				
-				else if ( jeutext.get(i) == TroisCoeur) {
+				else if ( jeutext.get(i) == animTroisCoeur) {
 					jeunoms.add("TroisCoeur");
 				}
-				else if (jeutext.get(i) == TroisTrefle) {
+				else if (jeutext.get(i) == animTroisTrefle) {
 					jeunoms.add("TroisTrefle");
 				}
-				else if (jeutext.get(i) == TroisCarreau) {
+				else if (jeutext.get(i) == animTroisCarreau) {
 					jeunoms.add("TroisCarreau");
 				}
-				else if (jeutext.get(i) == QuatrePique) {
+				else if (jeutext.get(i) == animQuatrePique) {
 					jeunoms.add("QuatrePique");
 				}
-				else if (jeutext.get(i) == QuatreCoeur) {
+				else if (jeutext.get(i) == animQuatreCoeur) {
 					jeunoms.add("QuatreCoeur");
 				}
-				else if (jeutext.get(i) == QuatreTrefle) {
+				else if (jeutext.get(i) == animQuatreTrefle) {
 					jeunoms.add(" QuatreTrefle");
 				}
-				else if (jeutext.get(i) == QuatreCarreau) {
+				else if (jeutext.get(i) == animQuatreCarreau) {
 					jeunoms.add("QuatreCarreau");
 				}
-				else if (jeutext.get(i) == CinqPique) {
+				else if (jeutext.get(i) == animCinqPique) {
 					jeunoms.add("CinqPique");
 				}
-				else if ( jeutext.get(i) == CinqCoeur) {
+				else if ( jeutext.get(i) == animCinqCoeur) {
 					jeunoms.add("CinqCoeur");
 				}
-				else if (jeutext.get(i) == CinqTrefle) {
+				else if (jeutext.get(i) == animCinqTrefle) {
 					jeunoms.add(" CinqTrefle");
 				}
-				else if ( jeutext.get(i) == CinqCarreau) {
+				else if ( jeutext.get(i) == animCinqCarreau) {
 					jeunoms.add("CinqCarreau");
 				}
 				
-				else if (jeutext.get(i) == SixPique) {
+				else if (jeutext.get(i) == animSixPique) {
 					jeunoms.add("SixPique");
 				}
-				else if ( jeutext.get(i) == SixCoeur) {
+				else if ( jeutext.get(i) == animSixCoeur) {
 					jeunoms.add("SixCoeur");
 				}
-				else if (jeutext.get(i) == SixTrefle) {
+				else if (jeutext.get(i) == animSixTrefle) {
 					jeunoms.add("SixTrefle");
 				}
-				else if (jeutext.get(i) == SixCarreau) {
+				else if (jeutext.get(i) == animSixCarreau) {
 					jeunoms.add("SixCarreau");
 				}
-				else if (jeutext.get(i) == SeptPique) {
+				else if (jeutext.get(i) == animSeptPique) {
 					jeunoms.add("SeptPique");
 				}
-				else if (jeutext.get(i) == SeptCoeur) {
+				else if (jeutext.get(i) == animSeptCoeur) {
 					jeunoms.add("SeptCoeur");
 				}
-				else if (jeutext.get(i) == SeptTrefle) {
+				else if (jeutext.get(i) == animSeptTrefle) {
 					jeunoms.add("SeptTrefle");
 				}
-				else if ( jeutext.get(i) == SeptCarreau) {
+				else if ( jeutext.get(i) == animSeptCarreau) {
 					jeunoms.add("SeptCarreau");
 				}
-				else if (jeutext.get(i) == HuitPique) {
+				else if (jeutext.get(i) == animHuitPique) {
 					jeunoms.add(" HuitPique");
 				}
-				else if ( jeutext.get(i) == HuitCoeur) {
+				else if ( jeutext.get(i) == animHuitCoeur) {
 					jeunoms.add("HuitCoeur");
 				}
-				else if (jeutext.get(i) == HuitTrefle) {
+				else if (jeutext.get(i) == animHuitTrefle) {
 					jeunoms.add("HuitTrefle");
 				}
-				else if ( jeutext.get(i) == HuitCarreau) {
+				else if ( jeutext.get(i) == animHuitCarreau) {
 					jeunoms.add("HuitCarreau");
 				}
-				else if (jeutext.get(i) == NeufPique) {
+				else if (jeutext.get(i) == animNeufPique) {
 					jeunoms.add("NeufPique");
 				}
-				else if (jeutext.get(i) == NeufCoeur) {
+				else if (jeutext.get(i) == animNeufCoeur) {
 					jeunoms.add("NeufCoeur");
 				}
-				else if ( jeutext.get(i) == NeufTrefle) {
+				else if ( jeutext.get(i) == animNeufTrefle) {
 					jeunoms.add("NeufTrefle");
 				}
-				else if (jeutext.get(i) == NeufCarreau) {
+				else if (jeutext.get(i) == animNeufCarreau) {
 					jeunoms.add("NeufCarreau");
 				}
-				else if (jeutext.get(i) == DixPique) {
+				else if (jeutext.get(i) == animDixPique) {
 					jeunoms.add("DixPique");
 				}
-				else if ( jeutext.get(i) == DixTrefle) {
+				else if ( jeutext.get(i) == animDixTrefle) {
 					jeunoms.add("DixTrefle");
 				}
-				else if (jeutext.get(i) == DixCarreau) {
+				else if (jeutext.get(i) == animDixCarreau) {
 					jeunoms.add("DixCarreau");
 				}
-				else if ( jeutext.get(i) == ValetPique) {
+				else if ( jeutext.get(i) == animValetPique) {
 					jeunoms.add("ValetPique");
 				}
-				else if (jeutext.get(i) == ValetCoeur) {
+				else if (jeutext.get(i) == animValetCoeur) {
 					jeunoms.add("ValetCoeur");
 				}
-				else if (  jeutext.get(i) == ValetTrefle) {
+				else if (  jeutext.get(i) == animValetTrefle) {
 					jeunoms.add("ValetTrefle");
 				}
-				else if (jeutext.get(i) == ValetCarreau) {
+				else if (jeutext.get(i) == animValetCarreau) {
 					jeunoms.add("ValetCarreau");
 				}
-				else if ( jeutext.get(i) == DamePique) {
+				else if ( jeutext.get(i) == animDamePique) {
 					jeunoms.add("DamePique");
 				}
-				else if (jeutext.get(i) == DameCoeur) {
+				else if (jeutext.get(i) == animDameCoeur) {
 					jeunoms.add("DameCoeur");
 				}
-				else if ( jeutext.get(i) == DameTrefle) {
+				else if ( jeutext.get(i) == animDameTrefle) {
 					jeunoms.add("DameTrefle");
 				}
-				else if ( jeutext.get(i) == DameCarreau) {
+				else if ( jeutext.get(i) == animDameCarreau) {
 					jeunoms.add("DameCarreau");
 				}
-				else if (jeutext.get(i) == RoiPique) {
+				else if (jeutext.get(i) == animRoiPique) {
 					jeunoms.add("RoiPique");
 				}
-				else if (jeutext.get(i) == RoiCoeur) {
+				else if (jeutext.get(i) == animRoiCoeur) {
 					jeunoms.add("RoiCoeur");
 				}
-				else if ( jeutext.get(i) == RoiTrefle) {
+				else if ( jeutext.get(i) == animRoiTrefle) {
 					jeunoms.add("RoiTrefle");
 				}
-				else if (jeutext.get(i) == RoiCarreau) {
+				else if (jeutext.get(i) == animRoiCarreau) {
 					jeunoms.add("RoiCarreau");
 				}
 				
@@ -538,7 +540,7 @@ public class Deck extends CardsTextures{
 		public ArrayList<Integer> getPaquet() {
 			return jeu;
 		}
-		public ArrayList<Texture> getPaquetText(){
+		public ArrayList<Animation<TextureRegion>> getPaquetText(){
 			return jeutext;
 		}
 		public ArrayList<String> getPaquetNom(){
