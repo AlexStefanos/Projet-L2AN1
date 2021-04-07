@@ -1,11 +1,16 @@
 package fr.mygdx.game;
 
-import java.util.ArrayList;
+import java.util.*;
+
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class TestCartes {
+	
 	public static void main(String[] args) {
     	
-		Deck paquet = new Deck();
+		final ArrayList<Animation<TextureRegion>> animationPack = new ArrayList<Animation<TextureRegion>>(312);
+		Deck paquet = new Deck(animationPack);
 		//Deck paquetnom = new Deck();
     	
 		//paquet.generateur();
@@ -41,7 +46,7 @@ public class TestCartes {
     	//p4.maindep();
     	p1.maindep();
     	p1.croupierdep(); 
-    	p1.tirerjoueur();
+    	p1.tirerjoueur(1);
     	//p1.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
     	//p2.tirerjoueur(b,croupier.total());
     	//p3.tirerjoueur(croupier.afficheMainCroupier(),croupier.total());
@@ -49,5 +54,6 @@ public class TestCartes {
     	//croupier.croupiertirer();  	
     	p1.croupiertirer();
     	p1.gagnant();
+    	p1.afficheBanque();
     }
 }

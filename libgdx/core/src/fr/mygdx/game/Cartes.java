@@ -16,6 +16,7 @@ private Croupier croupier;
 private Deck paquet;
 private boolean tirer;
 private int nbparticipants;
+private boolean hasbj;
 	
 	public Cartes(Deck paquet) {
 		
@@ -50,7 +51,13 @@ private int nbparticipants;
 		 return joueurs[i].getNom();
 	 }
 	
-	
+	public void mise() {
+		for (int i = 0;i<joueurs.length;i++) {
+			System.out.println(joueurs[i].getNom() + " combien voulez vous miser ? ");
+			int mise = alpha.nextInt();
+			joueurs[i].miser(mise);
+		}
+	}
 	
 	
 	
@@ -84,7 +91,9 @@ private int nbparticipants;
 	    	     paquet.getPaquetText().remove(0); 
 	    	     paquet.getPaquetNom().remove(0);
 	    	     System.out.println(joueurs[j].getMainText());
-	        }	           
+	        }	
+			
+			joueurs[j].hasBJ(joueurs[j].total());
 	        System.out.println("Main de " + joueurs[j].getNom() + " " + joueurs[j].getMainstr() );
 		 }
 		 /*for (int i = 0; i<2;i++) {
@@ -265,18 +274,35 @@ private int nbparticipants;
 		    
 		     if (total() > 21 && joueurs[i].total() < 22 ) {
 			     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
+			     if (joueurs[i].getHasBJ()) {
+			    	 joueurs[i].blackjack();
+			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			     }
+			     else {
+			    	 joueurs[i].victoire();
+			     }
 		     }
 		     else if (total() < 22 && total() == joueurs[i].total()) {
 			     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
+			     
 		     }
 		     else if (joueurs[i].total() > 21 ) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
+			     joueurs[i].defaite();
 		     }
 		     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
+			     if (joueurs[i].getHasBJ()) {
+			    	 joueurs[i].blackjack();
+			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			     }
+			     else {
+			    	 joueurs[i].victoire();
+			     }
 		     }
 		     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
+			     joueurs[i].defaite();
 		     }
 	     }
 	 }
@@ -320,4 +346,11 @@ private int nbparticipants;
 	public int getSize() {
 		return mains.size();
 	}
+	
+	public void afficheBanque() {
+		for (int i=0;i<joueurs.length;i++) {
+			System.out.println(joueurs[i].getBanque());
+		}
 	}
+}
+	

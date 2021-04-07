@@ -13,12 +13,15 @@ public class Joueur {
     private ArrayList<Animation<TextureRegion>> mainstext;
     private ArrayList<String> mainstr;
     Deck paquet = new Deck(mainstext);
+    private ArrayList<Integer> maindep;
+    boolean hasBJ;
     
     public Joueur() {
     	banque = 100;
     	mains = new ArrayList<Integer>(15);
     	mainstext = new ArrayList<Animation<TextureRegion>>(15);
     	mainstr = new ArrayList<String>(15);
+    	hasBJ = false;
     }
     public int total() {
 		 int somme = 0;
@@ -84,5 +87,16 @@ public class Joueur {
 	public void addstr(String card) {
 		mainstr.add(card);
 	}
+	public void hasBJ(int i) {
+		
+		if (i == 21) {
+			hasBJ = true;
+		}
+		
+	}
 	
+	
+	public boolean getHasBJ() {
+		return hasBJ;
+	}
 }
