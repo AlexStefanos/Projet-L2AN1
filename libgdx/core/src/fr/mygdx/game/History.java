@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -14,25 +15,28 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 
 public class History implements Screen{
 	
 	private  BLACKJACKCity parent;
 	private Stage stage;
 	private Texture Background;
-	private Skin skin;
+	private Skin skin, skinLabel;
 	private BitmapFont black, white;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music pressbutton;
 	private Music music;
 	private TextButton buttonBack;
-	private Table table;
+	private Table table,tableLabel;
+	private Label scoreLabel;
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
 	private Joueur[] joueurs = new Joueur[1];
@@ -57,11 +61,14 @@ public class History implements Screen{
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableLabel = new Table(skin);
+		tableLabel.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
+		skinLabel = new Skin(Gdx.files.internal("skindefault/uiskin.json"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -69,6 +76,22 @@ public class History implements Screen{
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
+		
+		p1.initialisation();
+		
+		int row_height = Gdx.graphics.getWidth() / 12;
+	    int col_width = Gdx.graphics.getWidth() / 12;
+		
+		Label.LabelStyle label1Style = new Label.LabelStyle();
+	    BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+	    label1Style.font = myFont;
+	    label1Style.fontColor = Color.GREEN;
+	    
+	    Label label1 = new Label("Score = "+p1.getTotal(0),label1Style);
+	    label1.setSize(Gdx.graphics.getWidth(),row_height);
+	    label1.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
+	    label1.setAlignment(Align.center);
+	    stage.addActor(label1);
 
 		music.setLooping(true);
 		music.setVolume(AppPreferences.MVOLUME);
@@ -90,6 +113,7 @@ public class History implements Screen{
 				music.dispose();
 			}
 		});
+		p1.initialisation();
 		buttonBack.pad(15f, 40f, 15f, 40f);
 		
 		table.setPosition(1700f, 150f, 0);

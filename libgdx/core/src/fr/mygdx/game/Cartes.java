@@ -1,4 +1,6 @@
 package fr.mygdx.game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -8,25 +10,29 @@ import java.util.*;
 public class Cartes {
 
 private Scanner alpha = new Scanner(System.in);
-private ArrayList<Integer> mains;
+private ArrayList<Integer> mains,scores;
 private ArrayList<Animation<TextureRegion>> mainstext;
 private ArrayList<String> mainsnom;
 private Joueur[] joueurs;
 private Croupier croupier;
 private Deck paquet;
 private boolean tirer;
-private int nbparticipants;
+private Preferences prefs;
+private int nbparticipants, score0, score1, score2, score3, score4, score5, score6, score7, score8, score9, j;
 private boolean hasbj;
 	
 	public Cartes(Deck paquet) {
 		
 		mains = new ArrayList<Integer>(11);
+		scores = new ArrayList<Integer>(10);
 		mainstext = new ArrayList<Animation<TextureRegion>>(11);
 		mainsnom = new ArrayList<String>(11);
 		joueurs = new Joueur[6];
 		croupier = new Croupier();
 		this.paquet = paquet;
 		tirer = true;
+		prefs = Gdx.app.getPreferences("Les Scores");
+		j = prefs.getInteger("J",0);
 	}
 	
 	public void initialisation() {
@@ -347,9 +353,190 @@ private boolean hasbj;
 		return somme;
 	}
 	
-	public int getTotal(int i){
-		    return joueurs[i].total();
-	}
+	 public int getTotal(int i) {
+			j=0;
+			if (j==0) {
+				prefs.putInteger("Score0", joueurs[i].total());
+				prefs.flush();
+				score0 = prefs.getInteger("Score0");
+				scores.add(score0);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score0);
+				return scores.get(0);
+			}
+			if (j==1) {
+				prefs.putInteger("Score1", joueurs[i].total());
+				prefs.flush();
+				score1 = prefs.getInteger("Score1");
+				scores.add(score1);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score1);
+				return scores.get(1);
+			}
+			if (j==2) {
+				prefs.putInteger("Score2", joueurs[i].total());
+				prefs.flush();
+				score2 = prefs.getInteger("Score2");
+				scores.add(score2);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score2);
+				return scores.get(2);
+			}
+			if (j==3) {
+				prefs.putInteger("Score3", joueurs[i].total());
+				prefs.flush();
+				score3 = prefs.getInteger("Score3");
+				scores.add(score3);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score3);
+				return scores.get(3);
+			}
+			if (j==4) {
+				prefs.putInteger("Score4", joueurs[i].total());
+				prefs.flush();
+				score4 = prefs.getInteger("Score4");
+				scores.add(score4);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score4);
+				return scores.get(4);
+			}
+			if (j==5) {
+				prefs.putInteger("Score5", joueurs[i].total());
+				prefs.flush();
+				score5 = prefs.getInteger("Score5");
+				scores.add(score5);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score5);
+				return scores.get(5);
+			}
+			if (j==6) {
+				prefs.putInteger("Score6", joueurs[i].total());
+				prefs.flush();
+				score6 = prefs.getInteger("Score6");
+				scores.add(score6);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score6);
+				return scores.get(6);
+			}
+			if (j==7) {
+				prefs.putInteger("Score7", joueurs[i].total());
+				prefs.flush();
+				score7 = prefs.getInteger("Score7");
+				scores.add(score7);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score7);
+				return scores.get(7);
+			}
+			if (j==8) {
+				prefs.putInteger("Score8", joueurs[i].total());
+				prefs.flush();
+				score8 = prefs.getInteger("Score8");
+				scores.add(score8);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score8);
+				return scores.get(8);
+			}
+			if(j==9) {
+				prefs.putInteger("Score9", joueurs[i].total());
+				prefs.flush();
+				score9 = prefs.getInteger("Score9");
+				scores.add(score9);
+				prefs.putInteger("J", j++);
+				prefs.flush();
+				System.out.println("score = "+score9);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score0){
+				scores.remove(0);
+				prefs.putInteger("Score0", joueurs[i].total());
+				prefs.flush();
+				score0 = prefs.getInteger("Score0");
+				scores.add(score0);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score1){
+				scores.remove(0);
+				prefs.putInteger("Score1", joueurs[i].total());
+				prefs.flush();
+				score1 = prefs.getInteger("Score1");
+				scores.add(score1);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score2){
+				scores.remove(0);
+				prefs.putInteger("Score2", joueurs[i].total());
+				prefs.flush();
+				score2 = prefs.getInteger("Score2");
+				scores.add(score2);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score3){
+				scores.remove(0);
+				prefs.putInteger("Score3", joueurs[i].total());
+				prefs.flush();
+				score3 = prefs.getInteger("Score3");
+				scores.add(score3);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score4){
+				scores.remove(0);
+				prefs.putInteger("Score4", joueurs[i].total());
+				prefs.flush();
+				score4 = prefs.getInteger("Score4");
+				scores.add(score4);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score5){
+				scores.remove(0);
+				prefs.putInteger("Score5", joueurs[i].total());
+				prefs.flush();
+				score5 = prefs.getInteger("Score5");
+				scores.add(score5);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score6){
+				scores.remove(0);
+				prefs.putInteger("Score6", joueurs[i].total());
+				prefs.flush();
+				score6 = prefs.getInteger("Score6");
+				scores.add(score6);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score7){
+				scores.remove(0);
+				prefs.putInteger("Score7", joueurs[i].total());
+				prefs.flush();
+				score7 = prefs.getInteger("Score7");
+				scores.add(score7);
+				return scores.get(9);
+			}
+			else if(scores.get(0) == score8){
+				scores.remove(0);
+				prefs.putInteger("Score8", joueurs[i].total());
+				prefs.flush();
+				score8 = prefs.getInteger("Score8");
+				scores.add(score8);
+				return scores.get(9);
+			}
+			else {
+				scores.remove(0);
+				prefs.putInteger("Score9", joueurs[i].total());
+				prefs.flush();
+				score9 = prefs.getInteger("Score9");
+				scores.add(score9);
+				return scores.get(9);
+			}			
+		}
+		 
 	 
 	 
 	public void conversion() {
