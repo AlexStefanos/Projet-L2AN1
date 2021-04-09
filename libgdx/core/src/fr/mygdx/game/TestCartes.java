@@ -9,8 +9,10 @@ public class TestCartes {
 	
 	public static void main(String[] args) {
     	
-		final ArrayList<Animation<TextureRegion>> animationPack = new ArrayList<Animation<TextureRegion>>(312);
+		private ArrayList<Animation<TextureRegion>> animationPack;
+		
 		Deck paquet = new Deck(animationPack);
+		
 		//Deck paquetnom = new Deck();
     	
 		//paquet.generateur();

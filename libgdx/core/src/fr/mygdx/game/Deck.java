@@ -54,54 +54,55 @@ public class Deck extends Animations{
 					if (i<6) {
 						if (j == 1) {
 							jeutext.add(animAsCoeur);
-							jeunoms.add("AsCoeur");
+							//jeunoms.add("AsCoeur");
 						}
 						else if (j == 2) {
 							jeutext.add(animDeuxCoeur);
-							jeunoms.add("DeuxCoeur");
+							//jeunoms.add("DeuxCoeur");
 						}
 						else if (j == 3) {
 							jeutext.add(animTroisCoeur);
-							jeunoms.add("TroisCoeur");
+							//jeunoms.add("TroisCoeur");
 						}
 						else if (j == 4) {
 							jeutext.add(animQuatreCoeur);
-							jeunoms.add("QuatreCoeur");
+							//jeunoms.add("QuatreCoeur");
 						}
 						else if (j == 5) {
 							jeutext.add(animCinqCoeur);
-							jeunoms.add("CinqCoeur");
+							//jeunoms.add("CinqCoeur");
 						}
 						else if (j == 6) {
 							jeutext.add(animSixCoeur);
-							jeunoms.add("SixCoeur");
+							//jeunoms.add("SixCoeur");
 						}
 						else if (j == 7) {
 							jeutext.add(animSeptCoeur);
-							jeunoms.add("SeptCoeur");
+							//jeunoms.add("SeptCoeur");
 						}
 						else if (j == 8) {
 							jeutext.add(animHuitCoeur);
-							jeunoms.add("HuitCoeur");
+							//jeunoms.add("HuitCoeur");
 						}
 						else if (j == 9) {
 							jeutext.add(animNeufCoeur);
-							jeunoms.add("NeufCoeur");
+							//jeunoms.add("NeufCoeur");
 						}
 						else if (j == 10) {
 							jeutext.add(animDixCoeur);
-							jeunoms.add("DixCoeur");
+							//jeunoms.add("DixCoeur");
 						}
 						else if (j == 11) {
 							jeutext.add(animValetCoeur);
-							jeunoms.add("ValetCoeur");
+							//jeunoms.add("ValetCoeur");
 						}
 						else if (j == 12) {
 							jeutext.add(animDameCoeur);
-							jeunoms.add("DameCoeur");}
+							//jeunoms.add("DameCoeur");}
+						}
 						else if (j == 13) {
 							jeutext.add(animRoiCoeur);
-							jeunoms.add("RoiCoeur");
+							//jeunoms.add("RoiCoeur");
 						
 					}
 						
@@ -109,55 +110,55 @@ public class Deck extends Animations{
 					else if (i>=6 && i<12) {
 						if (j == 1) {
 							jeutext.add(animAsTrefle);
-							jeunoms.add("AsTrefle");
+							//jeunoms.add("AsTrefle");
 						}
 						else if (j == 2) {
 							jeutext.add(animDeuxTrefle);
-							jeunoms.add("DeuxTrefle");
+							//jeunoms.add("DeuxTrefle");
 						}
 						else if (j == 3) {
 							jeutext.add(animTroisTrefle);
-							jeunoms.add("TroisTrefle");
+							//jeunoms.add("TroisTrefle");
 						}
 						else if (j == 4) {
 							jeutext.add(animQuatreTrefle);
-							jeunoms.add("QuatreTrefle");
+							//jeunoms.add("QuatreTrefle");
 						}
 						else if (j == 5) {
 							jeutext.add(animCinqTrefle);
-							jeunoms.add("CinqTrefle");
+							//jeunoms.add("CinqTrefle");
 						}
 						else if (j == 6) {
 							jeutext.add(animSixTrefle);
-							jeunoms.add("SixTrefle");
+							//jeunoms.add("SixTrefle");
 						}
 						else if (j == 7) {
 							jeutext.add(animSeptTrefle);
-							jeunoms.add("SeptTrefle");
+							//jeunoms.add("SeptTrefle");
 						}
 						else if (j == 8) {
 							jeutext.add(animHuitTrefle);
-							jeunoms.add("HuitTrefle");
+							//jeunoms.add("HuitTrefle");
 						}
 						else if (j == 9) {
 							jeutext.add(animNeufTrefle);
-							jeunoms.add("NeufTrefle");
+							//jeunoms.add("NeufTrefle");
 						}
 						else if (j == 10) {
 							jeutext.add(animDixTrefle);
-							jeunoms.add("DixTrefle");
+							//jeunoms.add("DixTrefle");
 						}
 						else if (j == 11) {
 							jeutext.add(animValetTrefle);
-							jeunoms.add("ValetTrefle");
+							//jeunoms.add("ValetTrefle");
 						}
 						else if (j == 12) {
 							jeutext.add(animDameTrefle);
-							jeunoms.add("DameTrefle");
+							//jeunoms.add("DameTrefle");
 						}
 						else if (j == 13) {
 							jeutext.add(animRoiTrefle);
-							jeunoms.add("RoiTrefle");
+							//jeunoms.add("RoiTrefle");
 						
 					
 					}
@@ -165,55 +166,55 @@ public class Deck extends Animations{
 						else if (i>=12 && i<18) {
 							if (j == 1) {
 								jeutext.add(animAsCarreau);
-								jeunoms.add("AsCarreau");
+								//jeunoms.add("AsCarreau");
 							}
 							else if (j == 2) {
 								jeutext.add(animDeuxCarreau);
-								jeunoms.add("DeuxCarreau");
+								//jeunoms.add("DeuxCarreau");
 							}
 							else if (j == 3) {
 								jeutext.add(animTroisCarreau);
-								jeunoms.add("TroisCarreau");
+								//jeunoms.add("TroisCarreau");
 							}
 							else if (j == 4) {
 								jeutext.add(animQuatreCarreau);
-								jeunoms.add("QuatreCarreau");
+								//jeunoms.add("QuatreCarreau");
 							}
 							else if (j == 5) {
 								jeutext.add(animCinqCarreau);
-								jeunoms.add("CinqCarreau");
+								//jeunoms.add("CinqCarreau");
 							}
 							else if (j == 6) {
 								jeutext.add(animSixCarreau);
-								jeunoms.add("SixCarreau");
+								//jeunoms.add("SixCarreau");
 							}
 							else if (j == 7) {
 								jeutext.add(animSeptCarreau);
-								jeunoms.add("SeptCarreau");
+								//jeunoms.add("SeptCarreau");
 							}
 							else if (j == 8) {
 								jeutext.add(animHuitCarreau);
-								jeunoms.add("HuitCarreau");
+								//jeunoms.add("HuitCarreau");
 							}
 							else if (j == 9) {
 								jeutext.add(animNeufCarreau);
-								jeunoms.add("NeufCarreau");
+								//jeunoms.add("NeufCarreau");
 							}
 							else if (j == 10) {
 								jeutext.add(animDixCarreau);
-								jeunoms.add("DixCarreau");
+								//jeunoms.add("DixCarreau");
 							}
 							else if (j == 11) {
 								jeutext.add(animValetCarreau);
-								jeunoms.add("ValetCarreau");
+								//jeunoms.add("ValetCarreau");
 							}
 							else if (j == 12) {
 								jeutext.add(animDameCarreau);
-								jeunoms.add("DameCarreau");
+								//jeunoms.add("DameCarreau");
 							}
 							else if (j == 13) {
 								jeutext.add(animRoiCarreau);
-								jeunoms.add("RoiCarreau");
+								//jeunoms.add("RoiCarreau");
 							
 					}
 						
@@ -221,55 +222,55 @@ public class Deck extends Animations{
 						else if (i>=18 && i<24) {
 							if (j == 1) {
 								jeutext.add(animAsPique);
-								jeunoms.add("AsPique");
+								//jeunoms.add("AsPique");
 							}
 							else if (j == 2) {
 								jeutext.add(animDeuxPique);
-								jeunoms.add("DeuxPique");
+								//jeunoms.add("DeuxPique");
 							}
 							else if (j == 3) {
 								jeutext.add(animTroisPique);
-								jeunoms.add("TroisPique");
+								//jeunoms.add("TroisPique");
 							}
 							else if (j == 4) {
 								jeutext.add(animQuatrePique);
-								jeunoms.add("QuatrePique");
+								//jeunoms.add("QuatrePique");
 							}
 							else if (j == 5) {
 								jeutext.add(animCinqPique);
-								jeunoms.add("CinqPique");
+								//jeunoms.add("CinqPique");
 							}
 							else if (j == 6) {
 								jeutext.add(animSixPique);
-								jeunoms.add("SixPique");
+								//jeunoms.add("SixPique");
 							}
 							else if (j == 7) {
 								jeutext.add(animSeptPique);
-								jeunoms.add("SeptPique");
+								//jeunoms.add("SeptPique");
 							}
 							else if (j == 8) {
 								jeutext.add(animHuitPique);
-								jeunoms.add("(HuitPique");
+								//jeunoms.add("(HuitPique");
 							}
 							else if (j == 9) {
 								jeutext.add(animNeufPique);
-								jeunoms.add("NeufPique");
+								//jeunoms.add("NeufPique");
 							}
 							else if (j == 10) {
 								jeutext.add(animDixPique);
-								jeunoms.add("DixPique");
+								//jeunoms.add("DixPique");
 							}
 							else if (j == 11) {
 								jeutext.add(animValetPique);
-								jeunoms.add("ValetPique");
+								//jeunoms.add("ValetPique");
 							}
 							else if (j == 12) {
 								jeutext.add(animDamePique);
-								jeunoms.add("DamePique");
+								//jeunoms.add("DamePique");
 							}
 							else if (j == 13) {
 								jeutext.add(animRoiPique);		
-								jeunoms.add("RoiPique");
+								//jeunoms.add("RoiPique");
 			}
 		}
 			}

@@ -67,12 +67,12 @@ public class DuoPlayers implements Screen{
 	}
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
-	private Joueur[] joueurs = new Joueur[1];
+	private Joueur[] joueurs = new Joueur[2];
 	Deck paquet = new Deck(animationPack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
 	Cartes p1 = new Cartes(paquet);
-	Cartes p2 = new Cartes(paquet);
-	private int p1Carte = 0, p2Carte = 0;
+	
+	private int p1Carte = 0;//, p2Carte = 0;
 	
 	@Override
 	public void show() {
@@ -373,16 +373,16 @@ public class DuoPlayers implements Screen{
     		//paquetnom = paquet;
     		//paquetnom.creation();
     		//paquetnom.creationn();
-			p1.initialisation();
-			p2.initialisation();
+			p1.initialisation2();
+			//p2.initialisation();
 			p1.maindep();
-			p2.maindep();
+			//p2.maindep();
 			p1.croupierdep();
 			//p1.tirerjoueur();
-			p2.maindep();
+			//p2.maindep();
 			p1.croupiertirer();
 	    	p1.gagnant();
-	    	p2.gagnant();
+	    	//p2.gagnant();
 		}
 		lancement++;
 		
@@ -390,13 +390,13 @@ public class DuoPlayers implements Screen{
 		batch.draw(BlackjackTable, 0,   0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(Lunes,990f,330f, 110, 110);
 		if (buttonJouer.isChecked()) {
-			p1Carte = p1.uneCartev2(0);
+			//p1Carte = p1.uneCartev2(0);
 			animTimeDebut += Gdx.graphics.getDeltaTime();
 			animTimeCroupier += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTimeDebut, false), 713f, 168f, 103f, 138f);
-			p2Carte = p2.uneCartev2(0);
-			batch.draw(p2.getMainJoueur0().get(0).getKeyFrame(animTimeDebut, false), 1125f, 168f, 103f, 138f); 
-			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
+			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTimeDebut, false), 713f, 168f, 103f, 138f);
+			//p2Carte = p2.uneCartev2(0);
+			batch.draw(p1.getMainJoueur(1).get(0).getKeyFrame(animTimeDebut, false), 1125f, 168f, 103f, 138f); 
+			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -409,45 +409,45 @@ public class DuoPlayers implements Screen{
 			
 		
 		if (cliqueJ1 >= 1) {
-			p1Carte = p1.uneCartev2(1);
+			//p1Carte = p1.joueuri(0).get(1);
 			animTime1 += Gdx.graphics.getDeltaTime();
-			batch.draw(animCartes.getKeyFrame(animTime1, false),  screenPos.x ,screenPos.y);
+			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime1, false),  screenPos.x ,screenPos.y);
 			if (cliqueJ1 >= 2) {
-				p1Carte = p1.uneCartev2(2);
+				//p1Carte = p1.uneCartev2(2);
 				animTime2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.getMainJoueur0().get(2).getKeyFrame(animTime2, false), 1185f, 110f, 103f, 138f);
+				batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime2, false), 1185f, 110f, 103f, 138f);
 				if (cliqueJ1 >= 3) {
-					p1Carte = p1.uneCartev2(3);
+					//p1Carte = p1.uneCartev2(3);
 					animTime3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.getMainJoueur0().get(3).getKeyFrame(animTime3, false), 1215f, 80f, 103f, 138f);
+					batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime3, false), 1215f, 80f, 103f, 138f);
 					if (cliqueJ1 >= 4) {
-						p1Carte = p1.uneCartev2(4);
+						//p1Carte = p1.uneCartev2(4);
 						animTime4 += Gdx.graphics.getDeltaTime();
-						batch.draw(p1.getMainJoueur0().get(4).getKeyFrame(animTime4, false), 1345f, 168f, 103f, 138f);
+						batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime4, false), 1345f, 168f, 103f, 138f);
 						if (cliqueJ1 >= 5) {
-							p1Carte = p1.uneCartev2(5);
+							//p1Carte = p1.uneCartev2(5);
 							animTime5 += Gdx.graphics.getDeltaTime();
-							batch.draw(p1.getMainJoueur0().get(5).getKeyFrame(animTime5, false), 1375f, 140f, 103f, 138f);
+							batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime5, false), 1375f, 140f, 103f, 138f);
 							if (cliqueJ1 >= 6) {
-								p1Carte = p1.uneCartev2(6);
+								//p1Carte = p1.uneCartev2(6);
 								animTime6 += Gdx.graphics.getDeltaTime();
-								batch.draw(p1.getMainJoueur0().get(6).getKeyFrame(animTime6, false), 1405f, 110f, 103f, 138f);
+								batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime6, false), 1405f, 110f, 103f, 138f);
 								if (cliqueJ1 >= 7) {
-									p1Carte = p1.uneCartev2(7);
+									//p1Carte = p1.uneCartev2(7);
 									animTime7 += Gdx.graphics.getDeltaTime();
-									batch.draw(p1.getMainJoueur0().get(7).getKeyFrame(animTime7, false), 1435f, 80f, 103f, 138f);
+									batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime7, false), 1435f, 80f, 103f, 138f);
 									if (cliqueJ1 >= 8) {
-										p1Carte = p1.uneCartev2(8);
+										//p1Carte = p1.uneCartev2(8);
 										animTime8 += Gdx.graphics.getDeltaTime();
-										batch.draw(p1.getMainJoueur0().get(8).getKeyFrame(animTime8, false), 1565f, 168f, 103f, 138f);
+										batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime8, false), 1565f, 168f, 103f, 138f);
 										if (cliqueJ1 >= 9) {
-											p1Carte = p1.uneCartev2(9);
+											//p1Carte = p1.uneCartev2(9);
 											animTime9 += Gdx.graphics.getDeltaTime();
-											batch.draw(p1.getMainJoueur0().get(9).getKeyFrame(animTime9, false), 1595f, 140f, 103f, 138f);
+											batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime9, false), 1595f, 140f, 103f, 138f);
 											if (cliqueJ1 >= 10) {
-												p1Carte = p1.uneCartev2(10);
+												//p1Carte = p1.uneCartev2(10);
 												animTime10 += Gdx.graphics.getDeltaTime();
-												batch.draw(p1.getMainJoueur0().get(10).getKeyFrame(animTime10, false), 1625f, 110f, 103f, 138f);
+												batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime10, false), 1625f, 110f, 103f, 138f);
 												tableJeu.removeActor(buttonTirerJ1);
 												tableJeu2.add(buttonTirerJ2);
 											}
@@ -462,35 +462,35 @@ public class DuoPlayers implements Screen{
 		}
 		
 		if (cliqueJ2 >= 1) {
-			p2Carte = p2.uneCartev2(1);
-			batch.draw(p2.getMainJoueur0().get(1).getKeyFrame(animTime11, false), 740f, 140f, 103f, 138f);
+			//p2Carte = p2.uneCartev2(1);
+			batch.draw(p1.getMainJoueur(1).get(1).getKeyFrame(animTime11, false), 740f, 140f, 103f, 138f);
 			if (cliqueJ2 >= 2) {
-				p2Carte = p2.uneCartev2(2);
-				batch.draw(p2.getMainJoueur0().get(2).getKeyFrame(animTime12, false), 770f, 110f, 103f, 138f);
+				//p2Carte = p2.uneCartev2(2);
+				batch.draw(p1.getMainJoueur(1).get(2).getKeyFrame(animTime12, false), 770f, 110f, 103f, 138f);
 				if (cliqueJ2 >= 3) {
-					p2Carte = p2.uneCartev2(3);
-					batch.draw(p2.getMainJoueur0().get(3).getKeyFrame(animTime13, false), 800f, 80f, 103f, 138f);
+					//p2Carte = p2.uneCartev2(3);
+					batch.draw(p1.getMainJoueur(1).get(3).getKeyFrame(animTime13, false), 800f, 80f, 103f, 138f);
 					if (cliqueJ2 >= 4) {
-						p2Carte = p2.uneCartev2(4);
-						batch.draw(p2.getMainJoueur0().get(4).getKeyFrame(animTime14, false), 520f, 168f, 103f, 138f);
+						//p2Carte = p2.uneCartev2(4);
+						batch.draw(p1.getMainJoueur(1).get(4).getKeyFrame(animTime14, false), 520f, 168f, 103f, 138f);
 						if (cliqueJ2 >= 5) {
-							p2Carte = p2.uneCartev2(5);
-							batch.draw(p2.getMainJoueur0().get(5).getKeyFrame(animTime15, false), 550f, 140f, 103f, 138f);
+							//p2Carte = p2.uneCartev2(5);
+							batch.draw(p1.getMainJoueur(1).get(5).getKeyFrame(animTime15, false), 550f, 140f, 103f, 138f);
 							if (cliqueJ2 >= 6) {
-								p2Carte = p2.uneCartev2(6);
-								batch.draw(p2.getMainJoueur0().get(6).getKeyFrame(animTime16, false), 580f, 110f, 103f, 138f);	
+								//p2Carte = p2.uneCartev2(6);
+								batch.draw(p1.getMainJoueur(1).get(6).getKeyFrame(animTime16, false), 580f, 110f, 103f, 138f);	
 								if (cliqueJ2 >= 7) {
-									p2Carte = p2.uneCartev2(7);
-									batch.draw(p2.getMainJoueur0().get(7).getKeyFrame(animTime17, false), 610f, 80f, 103f, 138f);
+									//p2Carte = p2.uneCartev2(7);
+									batch.draw(p1.getMainJoueur(1).get(7).getKeyFrame(animTime17, false), 610f, 80f, 103f, 138f);
 									if (cliqueJ2 >= 8) {
-										p2Carte = p2.uneCartev2(8);
-										batch.draw(p2.getMainJoueur0().get(8).getKeyFrame(animTime18, false), 350f, 168f, 103f, 138f);
+										//p2Carte = p2.uneCartev2(8);
+										batch.draw(p1.getMainJoueur(1).get(8).getKeyFrame(animTime18, false), 350f, 168f, 103f, 138f);
 										if (cliqueJ2 >= 9) {
-											p2Carte = p2.uneCartev2(9);
-											batch.draw(p2.getMainJoueur0().get(9).getKeyFrame(animTime19, false), 380f, 140f, 103f, 138f);
+											//p2Carte = p2.uneCartev2(9);
+											batch.draw(p1.getMainJoueur(1).get(9).getKeyFrame(animTime19, false), 380f, 140f, 103f, 138f);
 											if (cliqueJ2 >= 10) {
-												p2Carte = p2.uneCartev2(10);
-												batch.draw(p2.getMainJoueur0().get(10).getKeyFrame(animTime20, false), 410f, 110f, 103f, 138f);
+												//p2Carte = p2.uneCartev2(10);
+												batch.draw(p1.getMainJoueur(1).get(10).getKeyFrame(animTime20, false), 410f, 110f, 103f, 138f);
 											}
 										}
 									}

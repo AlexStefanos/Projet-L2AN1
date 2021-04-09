@@ -46,6 +46,25 @@ private boolean hasbj;
 	    	joueurs[i].nomJoueur(nom);
 	    }
 	}
+	public void initialisation2() {
+	    do {
+		System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
+		nbparticipants = 2;//alpha.nextInt();
+	
+	    } while (nbparticipants > 6 || nbparticipants < 0);
+	    joueurs = new Joueur[nbparticipants];
+	    
+	    for (int i =0; i<nbparticipants;i++) {
+	    	
+	    	
+	    	
+	    	
+	    	joueurs[i] = new Joueur();
+	    	
+	    }
+	    joueurs[0].nomJoueur("Arthur");
+	    joueurs[1].nomJoueur("Samuel");
+	}
 	 
 	 public String getJoueur(int i) {
 		 return joueurs[i].getNom();
@@ -90,7 +109,7 @@ private boolean hasbj;
 	    	     paquet.getPaquet().remove(0);
 	    	     paquet.getPaquetText().remove(0); 
 	    	     paquet.getPaquetNom().remove(0);
-	    	     System.out.println(joueurs[j].getMainText());
+	    	     System.out.println(joueurs[j].getMainstr());
 	        }	
 			
 			joueurs[j].hasBJ(joueurs[j].total());
@@ -148,6 +167,12 @@ private boolean hasbj;
 	 public int uneCartev2(int k) {
 		 return joueurs[0].getMain().get(k);
 	 }
+	 public ArrayList<Animation<TextureRegion>> carteJoueuri(int i){
+		 return joueurs[i].getMainText();
+	 }
+	 public ArrayList<Integer> joueuri(int i) {
+		 return joueurs[0].getMain();
+	 }
 	 
 	 /*public void maindepnom() {
 			
@@ -192,7 +217,7 @@ private boolean hasbj;
 	    	 
 	            // System.out.println("Au tour de " + joueurs[i].getNom());
 	    	     if (SinglePlayer.ADDCARTE == 1) {
-	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainText() + "\n");
+	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
 	    	    	
 	    	    	joueurs[i].addtext(paquet.getPaquetText().get(0));
 	    	    	joueurs[i].addint(paquet.getPaquet().get(0));
@@ -261,10 +286,10 @@ private boolean hasbj;
 		     paquet.getPaquetNom().remove(0);
 		     paquet.getPaquet().remove(0);
 		     paquet.getPaquetText().remove(0);
-		     System.out.println("\nMain du croupier apres tirage : " + mainstext);
+		     System.out.println("\nMain du croupier apres tirage : " + mainsnom);
 	     }
 		 if (total() > 17) {
-			 System.out.println("\nMain du croupier final : " + mainstext);
+			 System.out.println("\nMain du croupier final : " + mainsnom);
 		 }
 		 return mainstext.get(0);
 	 }
@@ -337,8 +362,8 @@ private boolean hasbj;
 		}
 		
 	}
-	public ArrayList<Animation<TextureRegion>> getMainJoueur0(){
-		return joueurs[0].getMainText();
+	public ArrayList<Animation<TextureRegion>> getMainJoueur(int i){
+		return joueurs[i].getMainText();
 	}
 	public ArrayList<Integer> getMain(){
 		return mains;
