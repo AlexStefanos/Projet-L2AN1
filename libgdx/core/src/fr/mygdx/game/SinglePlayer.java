@@ -36,9 +36,9 @@ public class SinglePlayer implements Screen {
 	private Table table, tableJeu;
 	private int lancement = 0;
 	
-	private TextureAtlas atlas, atlas2;
-	private Array<AtlasRegion> animationFrames;
-	public static Animation <TextureRegion> anim1;
+	private TextureAtlas atlas/*, atlas2*/;
+	//private Array<AtlasRegion> animationFrames;
+	//public static Animation <TextureRegion> anim1;
 	
 	private Skin skin;
 	private Music music;
@@ -46,9 +46,9 @@ public class SinglePlayer implements Screen {
 	private int clique;
 	private  BLACKJACKCity parent;
 	
-	private float animTimeBis = 0f , animTime1 = 0f  , animTime2 = 0f  , animTime3 = 0f  , animTime4 = 0f  , animTimeCroupier = 0f ,
+	private float /*animTimeBis = 0f ,*/ animTime1 = 0f  , animTime2 = 0f  , animTime3 = 0f  , animTime4 = 0f  , animTimeCroupier = 0f ,
 			animTime5 = 0f  ,animTime6 = 0f  ,animTime7 = 0f  ,animTime8 = 0f  ,animTime9 = 0f ,animTime10 = 0f,animTime11 = 0f ;
-	private float totalAnimTime;
+	//private float totalAnimTime;
 	
 	public SinglePlayer(BLACKJACKCity box2dTutorial) {
 		parent = box2dTutorial;
@@ -65,18 +65,18 @@ public class SinglePlayer implements Screen {
 	
 	@Override
 	public void show() {
-		totalAnimTime = 0.1f;
+		//totalAnimTime = 0.1f;
 		
 		batch = new SpriteBatch();
 		
 		BlackjackTable = new Texture("BlackjackTable SinglePlayer.png");
 		
 		atlas = new TextureAtlas("ui/button.pack");
-		atlas2 = new TextureAtlas(Gdx.files.internal("AsTrefle/test.pack"));
+		//atlas2 = new TextureAtlas(Gdx.files.internal("AsTrefle/test.pack"));
 		
-		animationFrames = atlas2.getRegions();
-		anim1 = new Animation<TextureRegion> (totalAnimTime,animationFrames);
-		anim1.setPlayMode(Animation.PlayMode.NORMAL);
+		//animationFrames = atlas2.getRegions();
+		//anim1 = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		//anim1.setPlayMode(Animation.PlayMode.NORMAL);
 		//animTime = 0f;
 		//animTimeBis = 0f;
 		//animTimeCroupier = 0f;
@@ -185,10 +185,14 @@ public class SinglePlayer implements Screen {
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if (buttonJouer.isChecked()) {
 			animTime1 += Gdx.graphics.getDeltaTime();
+			//animTimeCroupier = Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTime1, false), 920f, 172f, 103f, 138f);
+			//batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 		}
+		//afficheMainCroupierNom()
 		animTimeCroupier = Gdx.graphics.getDeltaTime();
 		batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, true), 800f, 500f, 103f, 138f); //1ere Carte Croupier
+		
 		batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 		batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 		batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
@@ -199,6 +203,7 @@ public class SinglePlayer implements Screen {
 		if (clique >= 1 && p1.getSize() > 0) {
 			animTime2 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur0().get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
+			
 		}
 		if (clique >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
@@ -236,12 +241,15 @@ public class SinglePlayer implements Screen {
 			animTime11 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur0().get(10).getKeyFrame(animTime11, false), 1540f, 110f, 103f, 138f);
 		}
+		
+		
+
 		batch.end();
 
-		batch.begin();
-		animTimeBis += Gdx.graphics.getDeltaTime();
-		batch.draw(anim1.getKeyFrame(animTimeBis, true), 150 ,150 );
-		batch.end();	
+		//batch.begin();
+		//animTimeBis += Gdx.graphics.getDeltaTime();
+		//batch.draw(anim1.getKeyFrame(animTimeBis, true), 150 ,150 );
+		//batch.end();	
 		
 		stage.act(delta);
 		stage.draw();

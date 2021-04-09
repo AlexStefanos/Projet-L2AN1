@@ -55,7 +55,8 @@ public class DuoPlayers implements Screen{
 	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura , animTime1= 0f, animTime2= 0f,
 	 animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
 	animTime11= 0f, animTime12= 0f, animTime13= 0f, animTime14= 0f, animTime15= 0f, animTime16= 0f,
-	animTime17= 0f, animTime18= 0f, animTime19= 0f ,animTime20= 0f;
+	animTime17= 0f, animTime18= 0f, animTime19= 0f ,animTime20= 0f,
+	animTimeCroupier = 0f , animTimeDebut = 0f;
 	private float totalAnimTime;
 	
 	private  BLACKJACKCity parent;
@@ -377,7 +378,7 @@ public class DuoPlayers implements Screen{
 			p1.maindep();
 			p2.maindep();
 			p1.croupierdep();
-			p1.tirerjoueur();
+			//p1.tirerjoueur();
 			p2.maindep();
 			p1.croupiertirer();
 	    	p1.gagnant();
@@ -390,10 +391,12 @@ public class DuoPlayers implements Screen{
 		batch.draw(Lunes,990f,330f, 110, 110);
 		if (buttonJouer.isChecked()) {
 			p1Carte = p1.uneCartev2(0);
-			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTime, false), 713f, 168f, 103f, 138f);
+			animTimeDebut += Gdx.graphics.getDeltaTime();
+			animTimeCroupier += Gdx.graphics.getDeltaTime();
+			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTimeDebut, false), 713f, 168f, 103f, 138f);
 			p2Carte = p2.uneCartev2(0);
-			batch.draw(p2.getMainJoueur0().get(0).getKeyFrame(animTime, false), 1125f, 168f, 103f, 138f); 
-			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTime, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
+			batch.draw(p2.getMainJoueur0().get(0).getKeyFrame(animTimeDebut, false), 1125f, 168f, 103f, 138f); 
+			batch.draw(p1.getMainJoueur0().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
 			batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
 			batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
