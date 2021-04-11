@@ -14,7 +14,11 @@ public class Joueur {
     private ArrayList<String> mainstr;
     Deck paquet = new Deck(mainstext);
     private ArrayList<Integer> maindep;
-    boolean hasBJ;
+    private boolean hasBJ;
+    private ArrayList<String> mainstrsplit;
+    private ArrayList<Integer> mainsintsplit;
+    private ArrayList<Animation<TextureRegion>> mainstextsplit;
+    private boolean hassplit = false;
     
     public Joueur() {
     	banque = 100;
@@ -71,21 +75,49 @@ public class Joueur {
 		return mains;
 	}
 	
+	public ArrayList<Integer> getMainSplit() {
+		return mainsintsplit;
+	}
+	
 	public ArrayList<String> getMainstr() {
 		return mainstr;
 	}
+	
+	public ArrayList<String> getMainSplitstr() {
+		return mainstrsplit;
+	}
+	
 	public ArrayList<Animation<TextureRegion>> getMainText(){
 		return mainstext;
+	}
+	
+	public ArrayList<Animation<TextureRegion>> getMainSplitText(){
+		return mainstextsplit;
 	}
 	
 	public void addint(int card) {
 		mains.add(card);
 	}
+	
+	public void addintSplit(int card) {
+		mainsintsplit.add(card);
+	}
+	
 	public void addtext(Animation<TextureRegion> card) {
 	    mainstext.add(card);
 	}
+	
+	public void addtextSplit(Animation<TextureRegion> card) {
+	    mainstextsplit.add(card);
+	}
+	
+	
 	public void addstr(String card) {
 		mainstr.add(card);
+	}
+	
+	public void addstrSplit(String card) {
+		mainstrsplit.add(card);
 	}
 	public void hasBJ(int i) {
 		
@@ -95,8 +127,15 @@ public class Joueur {
 		
 	}
 	
+	public void hassplit() {
+		hassplit = true;
+	}
 	
 	public boolean getHasBJ() {
 		return hasBJ;
 	}
+	public boolean getHassplit() {
+		return hassplit;
+	}
+	
 }

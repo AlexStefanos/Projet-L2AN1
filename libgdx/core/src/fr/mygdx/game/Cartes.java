@@ -19,7 +19,9 @@ private Deck paquet;
 private boolean tirer;
 private Preferences prefs;
 private int nbparticipants, score0, score1, score2, score3, score4, score5, score6, score7, score8, score9, j;
-private boolean hasbj;
+
+int mise = 0;
+
 	
 	public Cartes(Deck paquet) {
 		
@@ -79,7 +81,7 @@ private boolean hasbj;
 	public void mise() {
 		for (int i = 0;i<joueurs.length;i++) {
 			System.out.println(joueurs[i].getNom() + " combien voulez vous miser ? ");
-			int mise = alpha.nextInt();
+			mise = alpha.nextInt();
 			joueurs[i].miser(mise);
 		}
 	}
@@ -101,6 +103,27 @@ private boolean hasbj;
 		for (int i = 0;i<120;i++) {
 	    System.out.println(paquet.getPaquet().get(i)+ " ");
 		}
+	}
+	
+	public void doubler(int i) {
+		joueurs[i].addint(paquet.getPaquet().get(0));
+		joueurs[i].addtext(paquet.getPaquetText().get(0));
+		joueurs[i].addstr(paquet.getPaquetNom().get(0));
+		paquet.getPaquet().remove(0);
+	    paquet.getPaquetText().remove(0); 
+	    paquet.getPaquetNom().remove(0);
+	    joueurs[i].miser(mise*2);
+	}
+	
+	public void split(int i) {
+		joueurs[i].addintSplit(joueurs[i].getMain().get(1));
+		joueurs[i].addtextSplit(joueurs[i].getMainText().get(1));
+		joueurs[i].addstrSplit(joueurs[i].getMainstr().get(1));
+		joueurs[i].getMain().remove(1);
+		joueurs[i].getMainText().remove(1);
+		joueurs[i].getMainstr().remove(1);
+		joueurs[i].hassplit();
+		
 	}
 	
 	
@@ -223,6 +246,7 @@ private boolean hasbj;
 	    	 
 	            // System.out.println("Au tour de " + joueurs[i].getNom());
 	    	     if (SinglePlayer.ADDCARTE == 1) {
+	    	    	 
 	    	    	 System.out.print("\nVotre main : " + joueurs[i].getMainstr() + "\n");
 	    	    	
 	    	    	joueurs[i].addtext(paquet.getPaquetText().get(0));
