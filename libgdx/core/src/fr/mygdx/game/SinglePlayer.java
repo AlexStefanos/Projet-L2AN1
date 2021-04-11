@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -46,6 +47,8 @@ public class SinglePlayer implements Screen {
 	private Music pressbutton;
 	private int clique;
 	private  BLACKJACKCity parent;
+	private static int score;
+	private Preferences prefs;
 	
 	private float /*animTimeBis = 0f ,*/ animTime1 = 0f  , animTime2 = 0f  , animTime3 = 0f  , animTime4 = 0f  , animTimeCroupier = 0f ,
 			animTime5 = 0f  ,animTime6 = 0f  ,animTime7 = 0f  ,animTime8 = 0f  ,animTime9 = 0f ,animTime10 = 0f,animTime11 = 0f ;
@@ -67,6 +70,7 @@ public class SinglePlayer implements Screen {
 	@Override
 	public void show() {
 		//totalAnimTime = 0.1f;
+		prefs = Gdx.app.getPreferences("Les Scores");
 		
 		batch = new SpriteBatch();
 		
@@ -200,6 +204,9 @@ public class SinglePlayer implements Screen {
 			p1.croupiertirer();
 	    	//p1.gagnant();
 	    	p1.afficheBanque();
+	    	prefs.putInteger("Score1321", p1.getTotal(0));
+	    	prefs.flush();
+	    	score = prefs.getInteger("Score1321");
 		}
 		lancement++;
 		
@@ -287,6 +294,9 @@ public class SinglePlayer implements Screen {
 		
 		stage.act(delta);
 		stage.draw();
+	}
+	public static int getoto(){
+		return score;
 	}
 
 	@Override

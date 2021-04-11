@@ -87,7 +87,7 @@ public class History implements Screen{
 	    label1Style.font = myFont;
 	    label1Style.fontColor = Color.GREEN;
 	    
-	    Label label1 = new Label("Score = "+p1.getTotal(0),label1Style);
+	    Label label1 = new Label("Score = "+SinglePlayer.getoto(),label1Style);
 	    label1.setSize(Gdx.graphics.getWidth(),row_height);
 	    label1.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
 	    label1.setAlignment(Align.center);
