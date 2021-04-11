@@ -299,43 +299,51 @@ private boolean hasbj;
 		 }
 		 return mainstext.get(0);
 	 }
-	 public void gagnant() {
+	 public int gagnant(int i) { //0 = a gagné, 1 = nul, 2 = défaite
 		 
-		 for (int i=0;i<nbparticipants;i++) {
+		 //for (int i=0;i<nbparticipants;i++) {
 		    
 		     if (total() > 21 && joueurs[i].total() < 22 ) {
 			     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
 			     if (joueurs[i].getHasBJ()) {
 			    	 joueurs[i].blackjack();
 			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			    	 return (0); 
 			     }
 			     else {
 			    	 joueurs[i].victoire();
+			    	 return (0);
 			     }
 		     }
 		     else if (total() < 22 && total() == joueurs[i].total()) {
 			     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
+			     return (1);
 			     
 		     }
 		     else if (joueurs[i].total() > 21 ) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
 			     joueurs[i].defaite();
+			     return (2);
 		     }
 		     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
 			     if (joueurs[i].getHasBJ()) {
 			    	 joueurs[i].blackjack();
 			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			    	 return (0);
 			     }
 			     else {
 			    	 joueurs[i].victoire();
+			    	 return (0);
 			     }
 		     }
 		     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
 			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
 			     joueurs[i].defaite();
+			     return (2);
 		     }
-	     }
+	     //}
+			return (1);
 	 }
 	 public int total() {
 		 int somme = 0;

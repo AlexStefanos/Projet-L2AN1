@@ -193,12 +193,12 @@ public class Options implements Screen {
 		});
 		buttonResolution5.pad(15f, 41f, 15f, 41f);
 		
-		table.setPosition(1700f*MULTIWEIGHT0, 150f, 0);
+		table.setPosition(1700f, 150f, 0);
 		table.add(buttonBack);
 		table.getCell(buttonBack).spaceBottom(35f);
 		table.row();
 		
-		tableFullscreen.setPosition(1500f*MULTIWEIGHT0, 700f, 0);
+		tableFullscreen.setPosition(1500f, 700f, 0);
 		if (FULLSCREEN == true ) {
 			tableFullscreen.add(buttonFullscreenOn);
 			tableFullscreen.getCell(buttonFullscreenOn).spaceBottom(20f);
@@ -210,12 +210,12 @@ public class Options implements Screen {
 			tableFullscreen.row();
 		}
 		
-		tableAudio.setPosition(1500f*MULTIWEIGHT0, 500f, 0);
+		tableAudio.setPosition(1500f, 620f, 0);
 		tableAudio.add(buttonAudio);
 		tableAudio.getCell(buttonAudio).spaceBottom(40f);
 		
-		tableResolution.setPosition(1500f*MULTIWEIGHT0, 600f, 0);
-		tableResolution.add(buttonResolution0);
+		/*tableResolution.setPosition(1500f*MULTIWEIGHT0, 600f, 0);
+		tableResolution.add(buttonResolution0);*/
 		
 		stage.addActor(table);
 		stage.addActor(tableFullscreen);

@@ -30,11 +30,12 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc;
+	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, YOUWIN, TIE, YOULOSE;
 	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser, buttonStop;
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableStop;
 	private int lancement = 0;
+	private int cliqueStop = 0;
 	
 	private TextureAtlas atlas/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
@@ -98,6 +99,9 @@ public class SinglePlayer implements Screen {
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
+		YOUWIN = new Texture("YOUWIN.png");
+		TIE = new Texture("TIE.png");
+		YOULOSE = new Texture("YOULOSE.png");
 		JetonBleu = new Texture("LargeChips/chip_blue.png");
 		JetonBleuClair = new Texture("LargeChips/chip_lightblue.png");
 		JetonRouge = new Texture("LargeChips/chip_red.png");
@@ -159,6 +163,8 @@ public class SinglePlayer implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				tableJeu.removeActor(buttonTirer);
+				tableStop.removeActor(buttonStop);
+				cliqueStop++;
 			}
 		});
 			
@@ -167,6 +173,8 @@ public class SinglePlayer implements Screen {
 		
 		tableJeu.setPosition(220f, 600f, 0);
 		tableJeu.add(buttonJouer);
+		
+		tableStop.setPosition(220f, 500f, 0);
 		
 		stage.addActor(table);
 		stage.addActor(tableJeu);
@@ -190,7 +198,7 @@ public class SinglePlayer implements Screen {
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
-	    	p1.gagnant();
+	    	//p1.gagnant();
 	    	p1.afficheBanque();
 		}
 		lancement++;
@@ -202,8 +210,19 @@ public class SinglePlayer implements Screen {
 			//animTimeCroupier = Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 920f, 172f, 103f, 138f);
 			//batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
-			tableStop.setPosition(220f, 500f, 0);
 			tableStop.add(buttonStop);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				batch.draw(TIE, 550f, 440f, 208f, 243f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+				cliqueStop = 0;
+			}
 		}
 		//afficheMainCroupierNom()
 		animTimeCroupier = Gdx.graphics.getDeltaTime();
@@ -219,6 +238,9 @@ public class SinglePlayer implements Screen {
 		if (clique >= 1 && p1.getSize() > 0) {
 			animTime2 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
+			if (cliqueStop == 1) {
+				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+			}
 		}
 		if (clique >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
