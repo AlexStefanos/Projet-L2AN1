@@ -73,6 +73,12 @@ int mise = 0;
 	    joueurs[0].nomJoueur("Arthur");
 	    joueurs[1].nomJoueur("Samuel");
 	}
+	
+	public void reinitialisation() {
+		for (int i =0;i<nbparticipants;i++) {
+			joueurs[i].clearHands();
+		}
+	}
 	 
 	 public String getJoueur(int i) {
 		 return joueurs[i].getNom();

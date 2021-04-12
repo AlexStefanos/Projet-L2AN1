@@ -127,6 +127,12 @@ public class Joueur {
 		
 	}
 	
+	public void clearHands() {
+		mainstext.clear();
+		mainstr.clear();
+		mains.clear();
+	}
+	
 	public void hassplit() {
 		hassplit = true;
 	}

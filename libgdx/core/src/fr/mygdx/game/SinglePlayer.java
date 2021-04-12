@@ -180,14 +180,30 @@ public class SinglePlayer implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				buttonJouer.clearActions();
+				
 				nbVictoire = 0;
 				nbNul = 0;
 				nbDefaite = 0;
 				clique = 0;
 				cliqueStop = 0;
-				//il faudrait un reset de p1
+				p1.reinitialisation();
 				tableRejouer.removeActor(buttonRejouer);
+				paquet.creationn();
+				paquet.shuffle();
+				paquet.toNb();
+				//paquet.conversion();
+	    		//paquetnom = paquet;
+	    		//paquetnom.creation();
+	    		//paquetnom.creationn();
+				p1.initialisation();
+				p1.maindep();
+				p1.croupierdep();
+				p1.croupiertirer();
+		    	//p1.gagnant();
+		    	p1.afficheBanque();
+		    	prefs.putInteger("Score1321", p1.getTotal(0));
+		    	prefs.flush();
+		    	score = prefs.getInteger("Score1321");
 				tableJeu.add(buttonJouer);
 			}
 		});
