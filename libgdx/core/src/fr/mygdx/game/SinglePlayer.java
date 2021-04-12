@@ -32,11 +32,10 @@ public class SinglePlayer implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
 	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, YOUWIN, TIE, YOULOSE;
-	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser, buttonStop;
+	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser, buttonStop, buttonRejouer;
 	private BitmapFont black, white;
-	private Table table, tableJeu, tableStop;
-	private int lancement = 0;
-	private int cliqueStop = 0;
+	private Table table, tableJeu, tableStop, tableRejouer;
+	private int lancement = 0, cliqueStop = 0, nbVictoire = 0, nbNul = 0, nbDefaite = 0;
 	
 	private TextureAtlas atlas/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
@@ -97,6 +96,8 @@ public class SinglePlayer implements Screen {
 		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableStop = new Table(skin);
 		tableStop.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableRejouer = new Table(skin);
+		tableRejouer.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
@@ -160,6 +161,7 @@ public class SinglePlayer implements Screen {
 				p1.tirerjoueur(0);
 			}
 		});
+		buttonTirer.pad(15f, 40f, 15f, 40f);
 		
 		buttonStop = new TextButton("Stop", textButtonStyle);
 		buttonStop.addListener(new ClickListener() {
@@ -171,7 +173,26 @@ public class SinglePlayer implements Screen {
 				cliqueStop++;
 			}
 		});
-			
+		buttonStop.pad(15f, 40f, 15f, 40f);
+		
+		buttonRejouer = new TextButton("Rejouer", textButtonStyle);
+		buttonRejouer.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				pressbutton.play();
+				buttonJouer.clearActions();
+				nbVictoire = 0;
+				nbNul = 0;
+				nbDefaite = 0;
+				clique = 0;
+				cliqueStop = 0;
+				//il faudrait un reset de p1
+				tableRejouer.removeActor(buttonRejouer);
+				tableJeu.add(buttonJouer);
+			}
+		});
+		buttonRejouer.pad(15f, 40f, 15f, 40f);
+		
 		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
 		
@@ -180,9 +201,12 @@ public class SinglePlayer implements Screen {
 		
 		tableStop.setPosition(220f, 500f, 0);
 		
+		tableRejouer.setPosition(220f, 500f, 0);
+		
 		stage.addActor(table);
 		stage.addActor(tableJeu);
 		stage.addActor(tableStop);
+		stage.addActor(tableRejouer);
 	}
 
 	@Override
@@ -219,16 +243,16 @@ public class SinglePlayer implements Screen {
 			//batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 			tableStop.add(buttonStop);
 			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
 				cliqueStop = 0;
+				nbVictoire++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				batch.draw(TIE, 550f, 440f, 208f, 243f);
 				cliqueStop = 0;
+				nbNul++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
 				cliqueStop = 0;
+				nbDefaite++;
 			}
 		}
 		//afficheMainCroupierNom()
@@ -246,65 +270,177 @@ public class SinglePlayer implements Screen {
 			animTime2 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
 			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
 				cliqueStop = 0;
+				nbVictoire++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				batch.draw(TIE, 550f, 440f, 208f, 243f);
 				cliqueStop = 0;
+				nbNul++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
 				cliqueStop = 0;
+				nbDefaite++;
 			}
 		}
 		if (clique >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 980f, 110f, 103f, 138f);
 			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
 				cliqueStop = 0;
+				nbVictoire++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				batch.draw(TIE, 550f, 440f, 208f, 243f);
 				cliqueStop = 0;
+				nbNul++;
 			}
 			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
 				cliqueStop = 0;
+				nbDefaite++;
 			}
 		}
 		if (clique >= 3 && p1.getSize() > 2) {
 			animTime4 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 1010f, 80f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 4 && p1.getSize() > 3) {
 			animTime5 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 5 && p1.getSize() > 4) {
 			animTime6 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+				
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 6 && p1.getSize() > 5) {
 			animTime7 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 7 && p1.getSize() > 6) {
 			animTime8 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 8 && p1.getSize() > 7) {
 			animTime9 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 9 && p1.getSize() > 8) {
 			animTime10 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				cliqueStop = 0;
+				nbDefaite++;
+			}
 		}
 		if (clique >= 10 && p1.getSize() > 9) {
 			animTime11 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+				cliqueStop = 0;
+				nbVictoire++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				batch.draw(TIE, 550f, 440f, 208f, 243f);
+				cliqueStop = 0;
+				nbNul++;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+				cliqueStop = 0;
+				nbDefaite++;
+			}
+		}
+		if (nbVictoire == 1) {
+			batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+			tableRejouer.add(buttonRejouer);
+		}
+		else if (nbNul == 1) {
+			batch.draw(TIE, 550f, 440f, 208f, 243f);
+			tableRejouer.add(buttonRejouer);
+		}
+		else if (nbDefaite == 1) {
+			batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+			tableRejouer.add(buttonRejouer);
 		}
 		batch.end();
 
