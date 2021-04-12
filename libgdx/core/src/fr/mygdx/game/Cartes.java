@@ -369,6 +369,44 @@ int mise = 0;
 	     //}
 			return (1);
 	 }
+	 public void gagnantbis() { 
+		 
+		 for (int i=0;i<nbparticipants;i++) {
+		    
+		     if (total() > 21 && joueurs[i].total() < 22 ) {
+			     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
+			     if (joueurs[i].getHasBJ()) {
+			    	 joueurs[i].blackjack();
+			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			     }
+			     else {
+			    	 joueurs[i].victoire();
+			     }
+		     }
+		     else if (total() < 22 && total() == joueurs[i].total()) {
+			     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
+			     
+		     }
+		     else if (joueurs[i].total() > 21 ) {
+			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
+			     joueurs[i].defaite();
+		     }
+		     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
+			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
+			     if (joueurs[i].getHasBJ()) {
+			    	 joueurs[i].blackjack();
+			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+			     }
+			     else {
+			    	 joueurs[i].victoire();
+			     }
+		     }
+		     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
+			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
+			     joueurs[i].defaite();
+		     }
+	     }
+	 }
 	 public int total() {
 		 int somme = 0;
 		 boolean flag = false;

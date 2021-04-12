@@ -245,13 +245,34 @@ public class SinglePlayer implements Screen {
 		if (clique >= 1 && p1.getSize() > 0) {
 			animTime2 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
-			if (cliqueStop == 1) {
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
 				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				batch.draw(TIE, 550f, 440f, 208f, 243f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+				cliqueStop = 0;
 			}
 		}
 		if (clique >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 980f, 110f, 103f, 138f);
+			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				batch.draw(TIE, 550f, 440f, 208f, 243f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+				cliqueStop = 0;
+			}
 		}
 		if (clique >= 3 && p1.getSize() > 2) {
 			animTime4 += Gdx.graphics.getDeltaTime();

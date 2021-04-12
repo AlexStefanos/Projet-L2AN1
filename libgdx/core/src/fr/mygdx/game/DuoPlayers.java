@@ -31,8 +31,8 @@ import fr.mygdx.game.splashscreen.MainMenu;
 public class DuoPlayers implements Screen{
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, Lunes;
-	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser,buttonRedJeton,buttonGreenJeton,buttonBlueJeton, buttonYellowJeton;
+	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, Lunes, YOUWIN, TIE, YOULOSE;
+	private TextButton buttonQuit, buttonTirerJ1, buttonTirerJ2, buttonJouer, buttonMiser, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableQuit, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ, cards1,atlasAura;
@@ -40,7 +40,7 @@ public class DuoPlayers implements Screen{
 	private Music music;
 	private Music pressbutton;
 	private Label miseLabel;
-	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow;
+	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow, cliqueStop = 0;
 	
 	private Array<AtlasRegion> animationFrames , animationFramesCartes,animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
@@ -140,7 +140,9 @@ public class DuoPlayers implements Screen{
 		animAura = new Animation<TextureRegion> (totalAnimTime, animationFramesAura);
 		animAura.setPlayMode(Animation.PlayMode.NORMAL);
 		
-		
+		YOUWIN = new Texture("YOUWIN.png");
+		TIE = new Texture("TIE.png");
+		YOULOSE = new Texture("YOULOSE.png");
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableQuit = new Table(skin);
@@ -381,7 +383,7 @@ public class DuoPlayers implements Screen{
 			//p1.tirerjoueur();
 			//p2.maindep();
 			p1.croupiertirer();
-	    	p1.gagnant();
+	    	p1.gagnantbis();
 	    	//p2.gagnant();
 		}
 		lancement++;
@@ -404,6 +406,18 @@ public class DuoPlayers implements Screen{
 			batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
 			batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
 			batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);
+			/*if (cliqueStop == 1 && p1.gagnant(0) == 0) {
+				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
+				batch.draw(TIE, 550f, 440f, 208f, 243f);
+				cliqueStop = 0;
+			}
+			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
+				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
+				cliqueStop = 0;
+			}*/
 		}
 		
 			
