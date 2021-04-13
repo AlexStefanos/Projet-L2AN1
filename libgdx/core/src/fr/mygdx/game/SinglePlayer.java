@@ -36,6 +36,7 @@ public class SinglePlayer implements Screen {
 	private BitmapFont black, white;
 	private Table table, tableJeu, tableStop, tableRejouer;
 	private int lancement = 0, cliqueStop = 0, nbVictoire = 0, nbNul = 0, nbDefaite = 0;
+	private boolean cliqueJouer = false;
 	
 	private TextureAtlas atlas/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
@@ -145,8 +146,10 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				ADDCARTE = 1;
 				p1.tirerjoueur(0);
+				cliqueJouer = true;
 				tableJeu.removeActor(buttonJouer);
 				tableJeu.add(buttonTirer);
+				tableStop.add(buttonStop);
 			}
 		});
 		buttonJouer.pad(15f, 40f, 15f, 40f);
@@ -158,7 +161,7 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				clique++;
 				ADDCARTE = 1;
-				p1.tirerjoueur(0);
+				p1.tirerjoueur(0);	
 			}
 		});
 		buttonTirer.pad(15f, 40f, 15f, 40f);
@@ -171,6 +174,8 @@ public class SinglePlayer implements Screen {
 				tableJeu.removeActor(buttonTirer);
 				tableStop.removeActor(buttonStop);
 				cliqueStop++;
+				tableRejouer.add(buttonRejouer);
+				cliqueJouer = false;
 			}
 		});
 		buttonStop.pad(15f, 40f, 15f, 40f);
@@ -180,31 +185,21 @@ public class SinglePlayer implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				
 				nbVictoire = 0;
 				nbNul = 0;
 				nbDefaite = 0;
 				clique = 0;
 				cliqueStop = 0;
+				lancement = 0;
+				cliqueJouer = true;
 				p1.reinitialisation();
-				tableRejouer.removeActor(buttonRejouer);
-				paquet.creationn();
-				paquet.shuffle();
-				paquet.toNb();
-				//paquet.conversion();
-	    		//paquetnom = paquet;
-	    		//paquetnom.creation();
-	    		//paquetnom.creationn();
-				p1.initialisation();
-				p1.maindep();
-				p1.croupierdep();
-				p1.croupiertirer();
-		    	//p1.gagnant();
 		    	p1.afficheBanque();
 		    	prefs.putInteger("Score1321", p1.getTotal(0));
 		    	prefs.flush();
 		    	score = prefs.getInteger("Score1321");
-				tableJeu.add(buttonJouer);
+		    	tableRejouer.removeActor(buttonRejouer);
+				tableJeu.add(buttonTirer);
+				tableStop.add(buttonStop);
 			}
 		});
 		buttonRejouer.pad(15f, 40f, 15f, 40f);
@@ -252,12 +247,11 @@ public class SinglePlayer implements Screen {
 		
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		if (buttonJouer.isChecked()) {
+		if (cliqueJouer == true) {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			//animTimeCroupier = Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 920f, 172f, 103f, 138f);
 			//batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
-			tableStop.add(buttonStop);
 			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
 				cliqueStop = 0;
 				nbVictoire++;
@@ -448,15 +442,12 @@ public class SinglePlayer implements Screen {
 		}
 		if (nbVictoire == 1) {
 			batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
-			tableRejouer.add(buttonRejouer);
 		}
 		else if (nbNul == 1) {
 			batch.draw(TIE, 550f, 440f, 208f, 243f);
-			tableRejouer.add(buttonRejouer);
 		}
 		else if (nbDefaite == 1) {
 			batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
-			tableRejouer.add(buttonRejouer);
 		}
 		batch.end();
 

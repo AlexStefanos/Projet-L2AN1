@@ -142,6 +142,5 @@ public class Joueur {
 	}
 	public boolean getHassplit() {
 		return hassplit;
-	}
-	
+	}	
 }
