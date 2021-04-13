@@ -20,8 +20,10 @@ public class Joueur {
     private ArrayList<Animation<TextureRegion>> mainstextsplit;
     private boolean hassplit = false;
     
+    
+    
     public Joueur() {
-    	banque = 100;
+    	
     	mains = new ArrayList<Integer>(15);
     	mainstext = new ArrayList<Animation<TextureRegion>>(15);
     	mainstr = new ArrayList<String>(15);
@@ -44,6 +46,7 @@ public class Joueur {
     }
     
     public int getBanque() {
+    	banque = 5000;
     	return banque;
     }
 	public void bust() {
@@ -64,6 +67,7 @@ public class Joueur {
 	}
 	public void miser(int bet) {
 		mise = bet;
+		banque = banque - bet;
 	}
 	public void nomJoueur(String name) {
 		nom = name;
@@ -143,4 +147,7 @@ public class Joueur {
 	public boolean getHassplit() {
 		return hassplit;
 	}	
+	public void setBanque(int i) {
+		banque = i;
+	}
 }

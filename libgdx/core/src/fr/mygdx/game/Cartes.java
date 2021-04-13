@@ -19,6 +19,7 @@ private Deck paquet;
 private boolean tirer;
 private Preferences prefs;
 private int nbparticipants, score0, score1, score2, score3, score4, score5, score6, score7, score8, score9, j;
+private int banque = 5000;
 
 int mise = 0;
 
@@ -84,11 +85,10 @@ int mise = 0;
 		 return joueurs[i].getNom();
 	 }
 	
-	public void mise() {
+	public void mise(int bet) {
 		for (int i = 0;i<joueurs.length;i++) {
-			System.out.println(joueurs[i].getNom() + " combien voulez vous miser ? ");
-			mise = alpha.nextInt();
-			joueurs[i].miser(mise);
+			
+			joueurs[i].miser(bet);
 		}
 	}
 	
@@ -635,10 +635,24 @@ int mise = 0;
 		return mains.size();
 	}
 	
-	public void afficheBanque() {
-		for (int i=0;i<joueurs.length;i++) {
-			System.out.println(joueurs[i].getBanque());
-		}
+	public int getBanque(int i) {
+		return banque;
+	}
+	public void miser(int i, int bet) {
+		joueurs[i].miser(bet);
+	}
+	
+	public void gagneMise(int i) {
+		banque += mise*2;
+	}
+	public void perdMise(int i) {
+		joueurs[i].defaite();
+	}
+	public void setBanque(int i) {
+		banque = i;
+	}
+	public void setMise(int i) {
+		mise = i;
 	}
 }
 	
