@@ -53,10 +53,9 @@ public class DuoPlayers implements Screen{
 
 	
 	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura , animTime1= 0f, animTime2= 0f,
-	 animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
-	animTime11= 0f, animTime12= 0f, animTime13= 0f, animTime14= 0f, animTime15= 0f, animTime16= 0f,
-	animTime17= 0f, animTime18= 0f, animTime19= 0f ,animTime20= 0f,
-	animTimeCroupier = 0f , animTimeDebut = 0f;
+			animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
+			animTime11= 0f, animTime12= 0f, animTime13= 0f, animTime14= 0f, animTime15= 0f, animTime16= 0f,
+			animTime17= 0f, animTime18= 0f, animTime19= 0f ,animTime20= 0f,animTimeCroupier = 0f , animTimeDebut = 0f;
 	private float totalAnimTime;
 	
 	private  BLACKJACKCity parent;
