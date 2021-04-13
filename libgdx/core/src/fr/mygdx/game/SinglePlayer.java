@@ -33,28 +33,28 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, JetonBleu, JetonRouge, JetonVert, JetonJaune, JetonBleuClair, JetonBeige, JetonBlanc, YOUWIN, TIE, YOULOSE;
-	private TextButton buttonQuit, buttonTirer, buttonJouer, buttonMiser, buttonStop, buttonRejouer, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
+	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, youWin, tie, youLose;
+	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
-	private Table table, tableJeu, tableStop, tableRejouer, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton,tableMise;
-	private int lancement = 0, cliqueStop = 0, nbVictoire = 0, nbNul = 0, nbDefaite = 0;
-	private boolean cliqueJouer = false;
+	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw;
+	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0;
+	private boolean clickStop = false, clickPlay = false, launchVictory = false, launchTie = false, launchDefeat = false, clickJouer = false, 
+					displayChips = false;
 	private Label miseLabel;
 	private Label banque;
-	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
+	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
 	//public static Animation <TextureRegion> anim1;
 	
 	private Skin skin,  skin2, skin3, skin4, skin5,skinLabel;;
 	private Music music;
 	private Music pressbutton;
-	private int clique,mise,argent,red,yellow,green,blue;
 	private  BLACKJACKCity parent;
 	private static int score;
 	private Preferences prefs;
 	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura , animTime1= 0f, animTime2= 0f,
-			animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
-			animTime11= 0f,animTimeCroupier = 0f , animTimeDebut = 0f;
+				  animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
+				  animTime11= 0f,animTimeCroupier = 0f , animTimeDebut = 0f;
 	private float totalAnimTime;
 	private Array<AtlasRegion> animationFrames , animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
@@ -113,12 +113,6 @@ public class SinglePlayer implements Screen {
 		skinLabel = new Skin(Gdx.files.internal("skindefault/uiskin.json"));
 		stage = new Stage();
 		skin = new Skin(atlas);
-		clique = 0;
-		mise = 0;
-		red = 0;
-		green = 0;
-		blue = 0;
-		yellow = 0;
 		Gdx.input.setInputProcessor(stage);
 		
 		totalAnimTime = 0.2f;
@@ -152,12 +146,12 @@ public class SinglePlayer implements Screen {
 	
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableJeu = new Table(skin);
-		tableJeu.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableGame = new Table(skin);
+		tableGame.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableStop = new Table(skin);
 		tableStop.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableRejouer = new Table(skin);
-		tableRejouer.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tablePlayAgain = new Table(skin);
+		tablePlayAgain.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableRedJeton = new Table(skin2);
 		tableRedJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableGreenJeton = new Table(skin3);
@@ -166,24 +160,24 @@ public class SinglePlayer implements Screen {
 		tableBlueJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableYellowJeton = new Table(skin5);
 		tableYellowJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		tableMise = new Table(skin);
-		tableMise.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableDraw = new Table(skin);
+		tableDraw.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
-		YOUWIN = new Texture("YOUWIN.png");
-		TIE = new Texture("TIE.png");
-		YOULOSE = new Texture("YOULOSE.png");
-		JetonBleu = new Texture("LargeChips/chip_blue.png");
-		JetonBleuClair = new Texture("LargeChips/chip_lightblue.png");
-		JetonRouge = new Texture("LargeChips/chip_red.png");
-		JetonBlanc = new Texture("LargeChips/chip_white.png");
-		JetonVert = new Texture("LargeChips/chip_green.png");
-		JetonBeige = new Texture("LargeChips/chip_biege.png");
-		JetonJaune = new Texture("LargeChips/chip_yellow.png");
+		youWin = new Texture("YOUWIN.png");
+		tie = new Texture("TIE.png");
+		youLose = new Texture("YOULOSE.png");
+		chipBlue = new Texture("LargeChips/chip_blue.png");
+		chipLightBlue = new Texture("LargeChips/chip_lightblue.png");
+		chipRed = new Texture("LargeChips/chip_red.png");
+		chipWhite = new Texture("LargeChips/chip_white.png");
+		chipGreen = new Texture("LargeChips/chip_green.png");
+		chipBeige = new Texture("LargeChips/chip_biege.png");
+		chipYellow = new Texture("LargeChips/chip_yellow.png");
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -236,67 +230,70 @@ public class SinglePlayer implements Screen {
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
 		
-		buttonJouer = new TextButton("Jouer", textButtonStyle);
-		buttonJouer.addListener(new ClickListener() {
+		buttonPlay = new TextButton("Jouer", textButtonStyle);
+		buttonPlay.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
 				ADDCARTE = 1;
 				p1.tirerjoueur(0);
-				cliqueJouer = true;
-				tableJeu.removeActor(buttonJouer);
-				tableJeu.add(buttonTirer);
+				clickJouer = true;
+				displayChips = true;
+				tableGame.removeActor(buttonPlay);
+				tableGame.add(buttonDraw);
 				tableStop.add(buttonStop);
 			}
 		});
-		buttonJouer.pad(15f, 40f, 15f, 40f);
+		buttonPlay.pad(15f, 40f, 15f, 40f);
 		
-		buttonTirer = new TextButton("Tirer", textButtonStyle);
-		buttonTirer.addListener(new ClickListener() {
+		buttonDraw = new TextButton("Tirer", textButtonStyle);
+		buttonDraw.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				clique++;
+				click++;
 				ADDCARTE = 1;
 				p1.tirerjoueur(0);	
 			}
 		});
-		buttonTirer.pad(15f, 40f, 15f, 40f);
+		buttonDraw.pad(15f, 40f, 15f, 40f);
 		
 		buttonStop = new TextButton("Stop", textButtonStyle);
 		buttonStop.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				tableJeu.removeActor(buttonTirer);
+				tableGame.removeActor(buttonDraw);
 				tableStop.removeActor(buttonStop);
-				cliqueStop++;
-				tableRejouer.add(buttonRejouer);
-				cliqueJouer = false;
+				clickStop = true;
+				tablePlayAgain.add(buttonPlayAgain);
+				clickJouer = false;
+				displayChips = false;
 			}
 		});
 		buttonStop.pad(15f, 40f, 15f, 40f);
 		
-		buttonRejouer = new TextButton("Rejouer", textButtonStyle);
-		buttonRejouer.addListener(new ClickListener() {
+		buttonPlayAgain = new TextButton("Rejouer", textButtonStyle);
+		buttonPlayAgain.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				nbVictoire = 0;
-				nbNul = 0;
-				nbDefaite = 0;
-				clique = 0;
-				cliqueStop = 0;
-				lancement = 6;
-				cliqueJouer = true;
+				launchVictory = false;
+				launchTie = false;
+				launchDefeat = false;
+				click = 0;
+				clickStop = false;
+				launch = 6;
+				clickJouer = true;
+				displayChips = true;
 				p1.reinitialisation();
 		    	//p1.afficheBanque();
 				
 		    	prefs.putInteger("Score1321", p1.getTotal(0));
 		    	prefs.flush();
 		    	score = prefs.getInteger("Score1321");
-		    	tableRejouer.removeActor(buttonRejouer);
-				tableJeu.add(buttonTirer);
+		    	tablePlayAgain.removeActor(buttonPlayAgain);
+				tableGame.add(buttonDraw);
 				tableStop.add(buttonStop);
 			}
 		});
@@ -304,18 +301,18 @@ public class SinglePlayer implements Screen {
 		buttonRedJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				mise += 500; 
+				bet += 500; 
 				p1.setMise(500);
-				argent = p1.getBanque(0)-500;
+				money = p1.getBanque(0)-500;
 				p1.setBanque(p1.getBanque(0)-500);
 				red += 1;
-				tableMise.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = "+mise + " Banque "+argent, skinLabel );
-				//banque = new Label("Banque ="+argent+ " "+argent, skinLabel);
-				tableMise.setPosition(500f, 500f, 0);
-				tableMise.add(miseLabel);
-				tableMise.add(banque);
-				tableMise.pad(10,0,0,10);
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
+				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				tableDraw.add(banque);
+				tableDraw.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -326,18 +323,18 @@ public class SinglePlayer implements Screen {
 		buttonYellowJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				mise += 100; 
+				bet += 100; 
 				p1.setMise(100);
-				argent = p1.getBanque(0)-100;
+				money = p1.getBanque(0)-100;
 				p1.setBanque(p1.getBanque(0)-100);
 				yellow += 1;
-				tableMise.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = "+mise+ " Banque "+argent , skinLabel );
-				//banque = new Label("Banque ="+argent+ " "+argent, skinLabel);
-				tableMise.setPosition(500f, 500f, 0);
-				tableMise.add(miseLabel);
-				tableMise.add(banque);
-				tableMise.pad(10,0,0,10);	
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
+				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				tableDraw.add(banque);
+				tableDraw.pad(10,0,0,10);	
 				pressbutton.play();
 				music.dispose();
 			}
@@ -348,18 +345,18 @@ public class SinglePlayer implements Screen {
 		buttonGreenJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				mise += 200; 
+				bet += 200; 
 				p1.setMise(200);
-				argent = p1.getBanque(0)-200;
+				money = p1.getBanque(0)-200;
 				p1.setBanque(p1.getBanque(0)-200);
 				green += 1;
-				tableMise.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = "+mise+ " Banque "+argent , skinLabel );
-				//banque = new Label("Banque ="+argent, skinLabel);
-				tableMise.setPosition(500f, 500f, 0);
-				tableMise.add(miseLabel);
-				tableMise.add(banque);
-				tableMise.pad(10,0,0,10);
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
+				//banque = new Label("Banque ="+money, skinLabel);
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				tableDraw.add(banque);
+				tableDraw.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
@@ -370,47 +367,45 @@ public class SinglePlayer implements Screen {
 		buttonBlueJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				mise += 50; 
+				bet += 50; 
 				p1.setMise(50);
-				argent = p1.getBanque(0)-50;
+				money = p1.getBanque(0)-50;
 				p1.setBanque(p1.getBanque(0)-50);
 				blue += 1;
-				tableMise.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = "+mise + " Banque "+argent, skinLabel );
-				//banque = new Label("Banque ="+argent, skinLabel);
-				tableMise.setPosition(500f, 500f, 0);
-				tableMise.add(miseLabel);
-				tableMise.add(banque);
-				tableMise.pad(10,0,0,10);
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				//banque = new Label("Banque ="+money, skinLabel);
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				tableDraw.add(banque);
+				tableDraw.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
 			}
 		});
-		miseLabel = new Label( "Mise = "+mise + "Banque = "+argent , skinLabel );
+		miseLabel = new Label( "Mise = "+ bet + "Banque = " + money , skinLabel );
 		//banque = new Label("Banque = "+banque, skinLabel);
 		
-		tableMise.setPosition(500f, 500f, 0);
-		tableMise.add(miseLabel);
-		tableMise.add(banque);
-		tableMise.pad(10,0,0,10);
-		//tableMise.pad
-		buttonRejouer.pad(15f, 40f, 15f, 40f);
+		tableDraw.setPosition(500f, 500f, 0);
+		tableDraw.add(miseLabel);
+		tableDraw.add(banque);
+		tableDraw.pad(10,0,0,10);
+		//tableDraw.pad
+		buttonPlayAgain.pad(15f, 40f, 15f, 40f);
 		
 		table.setPosition(1700f, 600f, 0);
 		table.add(buttonQuit);
 		
-		tableJeu.setPosition(220f, 600f, 0);
-		tableJeu.add(buttonJouer);
+		tableGame.setPosition(220f, 600f, 0);
+		tableGame.add(buttonPlay);
 		
 		tableStop.setPosition(220f, 500f, 0);
 		
-		tableRejouer.setPosition(220f, 500f, 0);
-		
+		tablePlayAgain.setPosition(220f, 500f, 0);
 
 		tableRedJeton.setPosition(650f,380f, 0);
 		tableRedJeton.add(buttonRedJeton);
 
-		
 		tableGreenJeton.setPosition(850f,380f, 0);
 		tableGreenJeton.add(buttonGreenJeton);
 	
@@ -421,16 +416,15 @@ public class SinglePlayer implements Screen {
 		tableYellowJeton.setPosition(1050f,380f, 0);
 		tableYellowJeton.add(buttonYellowJeton);
 		
-		
 		stage.addActor(table);
-		stage.addActor(tableJeu);
+		stage.addActor(tableGame);
 		stage.addActor(tableStop);
-		stage.addActor(tableRejouer);
+		stage.addActor(tablePlayAgain);
 		stage.addActor(tableRedJeton);
 		stage.addActor(tableGreenJeton);
 		stage.addActor(tableBlueJeton);
 		stage.addActor(tableYellowJeton);
-		stage.addActor(tableMise);
+		stage.addActor(tableDraw);
 	}
 
 	@Override
@@ -438,7 +432,7 @@ public class SinglePlayer implements Screen {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		if (lancement == 0) {
+		if (launch == 0) {
 			paquet.creationn();
 			paquet.shuffle();
 			paquet.toNb();
@@ -456,8 +450,8 @@ public class SinglePlayer implements Screen {
 	    	prefs.flush();
 	    	score = prefs.getInteger("Score1321");
 		}
-		lancement++;
-		if (lancement == 7) {
+		launch++;
+		if (launch == 7) {
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
@@ -465,317 +459,317 @@ public class SinglePlayer implements Screen {
 	    	prefs.flush();
 	    	score = prefs.getInteger("Score1321");
 		}
-		lancement++;
+		launch++;
 		
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		
-		if (cliqueJouer == true) {
+		if (clickJouer == true) {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			//animTimeCroupier = Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 920f, 172f, 103f, 138f);
 			//batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 103f, 138f); //1ere Carte Croupier
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
-				nbDefaite++;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
+				launchDefeat = true;
 			}
 		}
 		//afficheMainCroupierNom()
 		animTimeCroupier = Gdx.graphics.getDeltaTime();
 		batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, true), 800f, 500f, 103f, 138f); //1ere Carte Croupier
 		
-		batch.draw(JetonVert, 737f, 1005f, 65f, 29f);
-		batch.draw(JetonRouge, 807f, 1005f, 65f, 29f);
-		batch.draw(JetonBeige, 880f, 1005f, 65f, 29f);
-		batch.draw(JetonBleu, 953f, 1005f, 65f, 29f);
-		batch.draw(JetonBleuClair, 1026f, 1005f, 65f, 29f);
-		batch.draw(JetonJaune, 1103f, 1005f, 65f, 29f);
-		batch.draw(JetonBlanc, 1175f, 1005f, 65f, 29f);	
-		if (clique >= 1 && p1.getSize() > 0) {
+		batch.draw(chipGreen, 737f, 1005f, 65f, 29f);
+		batch.draw(chipRed, 807f, 1005f, 65f, 29f);
+		batch.draw(chipBeige, 880f, 1005f, 65f, 29f);
+		batch.draw(chipBlue, 953f, 1005f, 65f, 29f);
+		batch.draw(chipLightBlue, 1026f, 1005f, 65f, 29f);
+		batch.draw(chipYellow, 1103f, 1005f, 65f, 29f);
+		batch.draw(chipWhite, 1175f, 1005f, 65f, 29f);	
+		if (click >= 1 && p1.getSize() > 0) {
 			animTime2 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 2 && p1.getSize() > 1) {
+		
+		if (click >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 980f, 110f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 3 && p1.getSize() > 2) {
+		
+		if (click >= 3 && p1.getSize() > 2) {
 			animTime4 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 1010f, 80f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 4 && p1.getSize() > 3) {
+		
+		if (click >= 4 && p1.getSize() > 3) {
 			animTime5 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 5 && p1.getSize() > 4) {
+		
+		if (click >= 5 && p1.getSize() > 4) {
 			animTime6 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 				
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 6 && p1.getSize() > 5) {
+		
+		if (click >= 6 && p1.getSize() > 5) {
 			animTime7 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 7 && p1.getSize() > 6) {
+		
+		if (click >= 7 && p1.getSize() > 6) {
 			animTime8 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 8 && p1.getSize() > 7) {
+		
+		if (click >= 8 && p1.getSize() > 7) {
 			animTime9 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 9 && p1.getSize() > 8) {
+		
+		if (click >= 9 && p1.getSize() > 8) {
 			animTime10 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				cliqueStop = 0;
-				p1.gagneMise(mise);
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				clickStop = false;
+				p1.gagneMise(bet);
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				cliqueStop = 0;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				clickStop = false;
 				p1.perdMise(0);
-				nbDefaite++;
+				launchDefeat = true;
 			}
-			mise = 0;
+			bet = 0;
 		}
-		if (clique >= 10 && p1.getSize() > 9) {
+		
+		if (click >= 10 && p1.getSize() > 9) {
 			animTime11 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 103f, 138f);
-			if (cliqueStop == 1 && p1.gagnant(0) == 0) {
-				batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
-				cliqueStop = 0;
-				
-				nbVictoire++;
+			if (clickStop == true && p1.gagnant(0) == 0) {
+				batch.draw(youWin, 550f, 400f, 840f, 411f);
+				clickStop = false;
+				launchVictory = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 1) {
-				batch.draw(TIE, 550f, 440f, 208f, 243f);
-				cliqueStop = 0;
-				nbNul++;
+			else if (clickStop == true && p1.gagnant(0) == 1) {
+				batch.draw(tie, 550f, 440f, 208f, 243f);
+				clickStop = false;
+				launchTie = true;
 			}
-			else if (cliqueStop == 1 && p1.gagnant(0) == 2) {
-				batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
-				cliqueStop = 0;
-				
-				nbDefaite++;
+			else if (clickStop == true && p1.gagnant(0) == 2) {
+				batch.draw(youLose, 550f, 440f, 860f, 401f);
+				clickStop = false;
+				launchDefeat = true;
 			}
 		}
-		if (nbVictoire == 1) {
-			batch.draw(YOUWIN, 550f, 400f, 840f, 411f);
-		}
-		else if (nbNul == 1) {
-			batch.draw(TIE, 550f, 440f, 208f, 243f);
-		}
-		else if (nbDefaite == 1) {
-			batch.draw(YOULOSE, 550f, 440f, 860f, 401f);
-		}
-		batch.end();
 		
+		if (launchVictory == true) {
+			batch.draw(youWin, 550f, 400f, 840f, 411f);
+		}
+		else if (launchTie == true) {
+			batch.draw(tie, 550f, 440f, 208f, 243f);
+		}
+		else if (launchDefeat == true) {
+			batch.draw(youLose, 550f, 440f, 860f, 401f);
+		}
 		
-		for(int i=0; i < red;i++){
-			batch.begin();
-			animTimeAura += Gdx.graphics.getDeltaTime();
-			batch.draw(animAura.getKeyFrame(animTimeAura,false) ,500f ,500f);
-			animTimeJetons1 += Gdx.graphics.getDeltaTime();
-			batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);
-			batch.end();	
+		if (displayChips == true) {
+			for (int i=0; i < red; i++) {
+				animTimeAura += Gdx.graphics.getDeltaTime();
+				batch.draw(animAura.getKeyFrame(animTimeAura,false) , 500f ,500f);
+				animTimeJetons1 += Gdx.graphics.getDeltaTime();
+				batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);	
 			}
 			
-			if(red >= 1 && screenposRed.x <= 660) {
-				screenposRed.x += 5;
+			if (red >= 1 && screenposRed.x <= 660) {
+			screenposRed.x += 5;
 			}
-			if(red >= 1 && screenposRed.y <= 660) {
+			if (red >= 1 && screenposRed.y <= 660) {
 				screenposRed.y += 5;
 			}
-
-			for(int i=0; i < green;i++){
-				batch.begin();
+			for (int i=0; i < green; i++) {
 				animTimeJetons2 += Gdx.graphics.getDeltaTime();
-				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);
-				batch.end();	
+				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);	
 			}
 			
-			if(green >= 1 && screenposGreen.x <= 660) {
+			if (green >= 1 && screenposGreen.x <= 660) {
 				screenposGreen.x += 5;
 			}
-			if(green >= 1 && screenposGreen.y <= 660) {
-					screenposGreen.y += 5;
+		
+			if (green >= 1 && screenposGreen.y <= 660) {
+				screenposGreen.y += 5;
 			}
 		
-			for(int i=0; i < blue;i++){
-				batch.begin();
+			for (int i=0; i < blue; i++) {
 				animTimeJetons3 += Gdx.graphics.getDeltaTime();
-				batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);
-				batch.end();	
+				batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);	
 			}
 				
-			if(blue >= 1 && screenposBlue.x <= 660) {
+			if (blue >= 1 && screenposBlue.x <= 660) {
 				screenposBlue.x += 5;
 			}
-			if(blue >= 1 && screenposBlue.y <= 660) {
+		
+			if (blue >= 1 && screenposBlue.y <= 660) {
 				screenposBlue.y += 5;
 			}
 			
-			for(int i=0; i < yellow;i++){
-			batch.begin();
-			animTimeJetons4 += Gdx.graphics.getDeltaTime();
-			batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);
-			batch.end();	
+			for (int i=0; i < yellow; i++) {
+				animTimeJetons4 += Gdx.graphics.getDeltaTime();
+				batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);	
 			}
 					
-			if(yellow >= 1 && screenposYellow.x <= 660) {
+			if (yellow >= 1 && screenposYellow.x <= 660) {
 				screenposYellow.x += 5;
 			}
-			if(yellow >= 1 && screenposYellow.y <= 660) {
+		
+			if (yellow >= 1 && screenposYellow.y <= 660) {
 				screenposYellow.y += 5;
 			}		
-			
-			if(clique >= 1 && screenPos.x <= 1125f ) {
+
+			if (click >= 1 && screenPos.x <= 1125f ) {
 				screenPos.x += 8;
 			}
-			
-			if(clique >= 1 && screenPos.y >= 140f) {
+		
+			if (click >= 1 && screenPos.y >= 140f) {
 				screenPos.y -= 5;
 			}
-
+		}
 
 		//batch.begin();
 		//animTimeBis += Gdx.graphics.getDeltaTime();
 		//batch.draw(anim1.getKeyFrame(animTimeBis, true), 150 ,150 );
-		//batch.end();	
+		batch.end();	
 		
 		stage.act(delta);
 		stage.draw();
@@ -786,31 +780,26 @@ public class SinglePlayer implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		
 	}
 
