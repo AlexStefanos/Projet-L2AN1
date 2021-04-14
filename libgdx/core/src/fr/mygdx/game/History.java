@@ -82,18 +82,40 @@ public class History implements Screen{
 		int row_height = Gdx.graphics.getWidth() / 12;
 	    int col_width = Gdx.graphics.getWidth() / 12;
 		
-	    for(int z = 0; z <= AppPreferences.J; z++){
+	    
 		Label.LabelStyle label0Style = new Label.LabelStyle();
 	    BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
 	    label0Style.font = myFont;
 	    label0Style.fontColor = Color.GREEN;
 	    
-	    Label label0 = new Label("Mode de jeu : "+Cartes.getotoS(AppPreferences.J)+" Score = "+Cartes.getoto(AppPreferences.J),label0Style);
+	    Label label0 = new Label("Mode de jeu : "+Cartes.getotoS(0)+" Score = "+((Cartes.getoto(0) == 0)? 000 : Cartes.getoto(0)),label0Style);
 	    label0.setSize(Gdx.graphics.getWidth(),row_height);
 	    label0.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
 	    label0.setAlignment(Align.center);
 	    stage.addActor(label0);
-	    }
+	    
+	    Label.LabelStyle label1Style = new Label.LabelStyle();
+	    label1Style.font = myFont;
+	    label1Style.fontColor = Color.GREEN;
+	    
+	    Label label1 = new Label("Mode de jeu : "+Cartes.getotoS(1)+" Score = "+((Cartes.getoto(1) == 0)? 000 : Cartes.getoto(1)),label1Style);
+	    label1.setSize(Gdx.graphics.getWidth(),row_height);
+	    label1.setPosition(0,300);
+	    label1.setAlignment(Align.center);
+	    stage.addActor(label1);
+	    
+	    Label.LabelStyle label2Style = new Label.LabelStyle();
+	    label2Style.font = myFont;
+	    label2Style.fontColor = Color.GREEN;
+	    
+	    Label label2 = new Label("Mode de jeu : "+Cartes.getotoS(2)+" Score = "+ ((Cartes.getoto(2) == 0)? 000 : Cartes.getoto(2)),label0Style);
+	    label2.setSize(Gdx.graphics.getWidth(),row_height);
+	    label2.setPosition(0,100);
+	    label2.setAlignment(Align.center);
+	    stage.addActor(label2);
+	    
+	    
+
 	    
 		music.setLooping(true);
 		music.setVolume(AppPreferences.MVOLUME);

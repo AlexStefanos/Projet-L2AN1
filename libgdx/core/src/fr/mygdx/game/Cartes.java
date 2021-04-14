@@ -444,7 +444,7 @@ int mise = 0;
 			prefs.flush();
 			prefs.putString("State"+j, state);
 			prefs.flush();
-			//System.out.println("score"+j+" = "+prefs.getInteger("Score"+j)+" et state"+j+" = "+prefs.getString("State"+j));
+			System.out.println("score"+j+" = "+prefs.getInteger("Score"+j)+" et state"+j+" = "+prefs.getString("State"+j));
 	 }
 			/*if (j==0) {
 				prefs.putInteger("Score0", joueurs[i].total());
