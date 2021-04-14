@@ -12,9 +12,12 @@ public class AppPreferences {
 	private static final String PREF_MUSIC_ENABLED = "music.enabled";
 	private static final String PREF_SOUND_ENABLED = "sound.enabled";
 	private static final String PREF_SOUND_VOL = "sound";
+	private static final String JJ = "JJ";
 	public static final String PREFS_NAME = "AudioSettings";
 	public static float MVOLUME = getMusicVolume();
 	public static float SVOLUME = getSoundVolume();
+	public static int J = getJ();
+	
 	
 	
 	protected static Preferences getPrefs() {
@@ -79,7 +82,13 @@ public class AppPreferences {
 		getPrefs().putFloat(PREF_SOUND_VOL, volume);
 		getPrefs().flush();
 	}
-	public void constantVolumeMusic() {
+	public static int getJ() {
+		return getPrefs().getInteger(JJ, 0);
+	}
+	public void setJ(int i) {
+		J = getPrefs().getInteger(JJ)+i;
+		getPrefs().putInteger(JJ,getPrefs().getInteger(JJ)+i );
+		getPrefs().flush();
 		
 	}
 }

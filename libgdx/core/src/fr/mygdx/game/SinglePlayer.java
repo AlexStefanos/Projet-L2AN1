@@ -82,7 +82,6 @@ public class SinglePlayer implements Screen {
 	@Override
 	public void show() {
 		//totalAnimTime = 0.1f;
-		prefs = Gdx.app.getPreferences("Les Scores");
 		
 		batch = new SpriteBatch();
 		
@@ -289,9 +288,6 @@ public class SinglePlayer implements Screen {
 				p1.reinitialisation();
 		    	//p1.afficheBanque();
 				
-		    	prefs.putInteger("Score1321", p1.getTotal(0));
-		    	prefs.flush();
-		    	score = prefs.getInteger("Score1321");
 		    	tablePlayAgain.removeActor(buttonPlayAgain);
 				tableGame.add(buttonDraw);
 				tableStop.add(buttonStop);
@@ -446,18 +442,14 @@ public class SinglePlayer implements Screen {
 			p1.croupiertirer();
 	    	//p1.gagnant();
 	    	//p1.afficheBanque();
-	    	prefs.putInteger("Score1321", p1.getTotal(0));
-	    	prefs.flush();
-	    	score = prefs.getInteger("Score1321");
+			p1.getTotal(0,"SinglePlayer",AppPreferences.J);
+			parent.getPreferences().setJ(1);
 		}
 		launch++;
 		if (launch == 7) {
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
-			prefs.putInteger("Score1321", p1.getTotal(0));
-	    	prefs.flush();
-	    	score = prefs.getInteger("Score1321");
 		}
 		launch++;
 		

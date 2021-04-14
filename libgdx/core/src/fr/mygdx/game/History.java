@@ -82,17 +82,19 @@ public class History implements Screen{
 		int row_height = Gdx.graphics.getWidth() / 12;
 	    int col_width = Gdx.graphics.getWidth() / 12;
 		
-		Label.LabelStyle label1Style = new Label.LabelStyle();
+	    for(int z = 0; z <= AppPreferences.J; z++){
+		Label.LabelStyle label0Style = new Label.LabelStyle();
 	    BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
-	    label1Style.font = myFont;
-	    label1Style.fontColor = Color.GREEN;
+	    label0Style.font = myFont;
+	    label0Style.fontColor = Color.GREEN;
 	    
-	    Label label1 = new Label("Score = "+SinglePlayer.getoto(),label1Style);
-	    label1.setSize(Gdx.graphics.getWidth(),row_height);
-	    label1.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
-	    label1.setAlignment(Align.center);
-	    stage.addActor(label1);
-
+	    Label label0 = new Label("Mode de jeu : "+Cartes.getotoS(AppPreferences.J)+" Score = "+Cartes.getoto(AppPreferences.J),label0Style);
+	    label0.setSize(Gdx.graphics.getWidth(),row_height);
+	    label0.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
+	    label0.setAlignment(Align.center);
+	    stage.addActor(label0);
+	    }
+	    
 		music.setLooping(true);
 		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
