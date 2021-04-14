@@ -37,6 +37,8 @@ public class History implements Screen{
 	private TextButton buttonBack;
 	private Table table,tableLabel;
 	private Label scoreLabel;
+	private Label label0;
+	private int i,e,p;
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
 	private Joueur[] joueurs = new Joueur[1];
@@ -81,20 +83,32 @@ public class History implements Screen{
 		
 		int row_height = Gdx.graphics.getWidth() / 12;
 	    int col_width = Gdx.graphics.getWidth() / 12;
-		
+	    e = 0;
+	    p = 0;
+	    for(int z = 0; z < AppPreferences.J || z <= 10; z++) {
+	    	Label.LabelStyle label0Style = new Label.LabelStyle();
+	    	BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+	    	label0Style.font = myFont;
+	    	label0Style.fontColor = Color.GREEN;
 	    
-		Label.LabelStyle label0Style = new Label.LabelStyle();
-	    BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
-	    label0Style.font = myFont;
-	    label0Style.fontColor = Color.GREEN;
+	    	label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getoto(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+	    	label0.setSize(Gdx.graphics.getWidth(),row_height);
+	    	label0.setPosition(200,200+e);
+	    	stage.addActor(label0);
+	    	e = e + 70;
+	    	if(AppPreferences.J >= 10) {
+	    		i = AppPreferences.J -10;
+	    		if(z <= i) {
+		    		label0.remove();
+		    	}
+	    		label0.setPosition(200,100+p);
+	    		p = p + 70;
+	    		
+	    	}
+	    }
 	    
-	    Label label0 = new Label("Mode de jeu : "+Cartes.getotoS(0)+" Score = "+((Cartes.getoto(0) == 0)? 000 : Cartes.getoto(0)),label0Style);
-	    label0.setSize(Gdx.graphics.getWidth(),row_height);
-	    label0.setPosition(0,Gdx.graphics.getHeight()-row_height*2);
-	    label0.setAlignment(Align.center);
-	    stage.addActor(label0);
 	    
-	    Label.LabelStyle label1Style = new Label.LabelStyle();
+	   /* Label.LabelStyle label1Style = new Label.LabelStyle();
 	    label1Style.font = myFont;
 	    label1Style.fontColor = Color.GREEN;
 	    
@@ -112,7 +126,7 @@ public class History implements Screen{
 	    label2.setSize(Gdx.graphics.getWidth(),row_height);
 	    label2.setPosition(0,100);
 	    label2.setAlignment(Align.center);
-	    stage.addActor(label2);
+	    stage.addActor(label2);*/
 	    
 	    
 
