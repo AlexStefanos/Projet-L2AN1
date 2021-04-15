@@ -33,7 +33,7 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, youWin, tie, youLose;
+	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, youWin, tie, youLose , buttonGreenFinal;
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw;
@@ -46,6 +46,8 @@ public class SinglePlayer implements Screen {
 	//private Array<AtlasRegion> animationFrames;
 	//public static Animation <TextureRegion> anim1;
 	
+	private float x = 0f , y = 0f;
+
 	private Skin skin,  skin2, skin3, skin4, skin5,skinLabel;;
 	private Music music;
 	private Music pressbutton;
@@ -177,6 +179,7 @@ public class SinglePlayer implements Screen {
 		chipGreen = new Texture("LargeChips/chip_green.png");
 		chipBeige = new Texture("LargeChips/chip_biege.png");
 		chipYellow = new Texture("LargeChips/chip_yellow.png");
+		buttonGreenFinal = new Texture("AnimGreen7.png");
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -463,9 +466,9 @@ public class SinglePlayer implements Screen {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			animTime2 += Gdx.graphics.getDeltaTime();
 			animTimeCroupier += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 920f, 172f, 123.6f, 165.6f);
-			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 123.6f, 165.6f);
-			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 123.6f, 165.6f); //1ere Carte Croupier
+			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 920f, 172f, 206f, 276f);
+			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 950f, 140f, 206f, 276f);
+			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 206f, 276f); //1ere Carte Croupier
 			
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
@@ -512,7 +515,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 2 && p1.getSize() > 1) {
 			animTime3 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 980f, 110f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 980f, 110f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -532,7 +535,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 3 && p1.getSize() > 2) {
 			animTime4 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 1010f, 80f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 1010f, 80f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -552,7 +555,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 4 && p1.getSize() > 3) {
 			animTime5 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -572,7 +575,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 5 && p1.getSize() > 4) {
 			animTime6 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -593,7 +596,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 6 && p1.getSize() > 5) {
 			animTime7 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -613,7 +616,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 7 && p1.getSize() > 6) {
 			animTime8 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -633,7 +636,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 8 && p1.getSize() > 7) {
 			animTime9 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -653,7 +656,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 9 && p1.getSize() > 8) {
 			animTime10 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
@@ -673,7 +676,7 @@ public class SinglePlayer implements Screen {
 		
 		if (click >= 10 && p1.getSize() > 9) {
 			animTime11 += Gdx.graphics.getDeltaTime();
-			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 123.6f, 165.6f);
+			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 206f, 276f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				batch.draw(youWin, 550f, 400f, 840f, 411f);
 				clickStop = false;
@@ -705,7 +708,7 @@ public class SinglePlayer implements Screen {
 		
 		
 		
-		if (displayChips == true) {
+		//if (displayChips == true) {
 			
 			for (int i=0; i < red; i++) {
 				animTimeAura += Gdx.graphics.getDeltaTime();
@@ -724,13 +727,27 @@ public class SinglePlayer implements Screen {
 			for (int i=0; i < green; i++) {
 				animTimeJetons2 += Gdx.graphics.getDeltaTime();
 				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);	
-				if(animGreenJ.isAnimationFinished(totalAnimTime)) {
+			}
+			if(buttonGreenJeton.isPressed() && animGreenJ.isAnimationFinished(animTimeJetons2)) {
 					animTimeJetons2 = 0f;
 					screenposGreen.x = 850f;
 					screenposGreen.y = 380f;
 				}
+			
+			for(int i = 0; i< green; i++ ) {
+				batch.draw(buttonGreenFinal, 660f + x ,660f + y);
+				x += 0.2f;
+				y += 0.2f;
+
 			}
 			
+			/*if(green >= 1) {
+				batch.draw(buttonGreenFinal, 660f,660f);
+			}
+			if(green >= 2) {
+				batch.draw(buttonGreenFinal, 665f,665f);
+			}*/
+
 			if (green >= 1 && screenposGreen.x <= 660) {
 				screenposGreen.x += 5;
 			}
@@ -769,7 +786,7 @@ public class SinglePlayer implements Screen {
 			if (click >= 1 && screenPos.y >= 140f) {
 				screenPos.y -= 5;
 			}
-		}
+		//}
 
 		//batch.begin();
 		//animTimeBis += Gdx.graphics.getDeltaTime();
