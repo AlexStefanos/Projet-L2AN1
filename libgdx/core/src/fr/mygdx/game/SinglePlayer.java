@@ -54,10 +54,10 @@ public class SinglePlayer implements Screen {
 	private  BLACKJACKCity parent;
 	private static int score;
 	private Preferences prefs;
-	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura , animTime1= 0f, animTime2= 0f,
+	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura1 , animTime1= 0f, animTime2= 0f,
 				  animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
-				  animTime11= 0f,animTimeCroupier = 0f , animTimeDebut = 0f;
-	private float totalAnimTime;
+				  animTime11= 0f,animTimeCroupier = 0f , animTimeDebut = 0f, animTimeAura2 , animTimeAura3 , animTimeAura4;
+	private float totalAnimTime , totalAnimTimeAura , totalAnimTimeJetons;
 	private Array<AtlasRegion> animationFrames , animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
 	private Vector2 screenposRed = new Vector2(650f,380f);
@@ -117,32 +117,38 @@ public class SinglePlayer implements Screen {
 		Gdx.input.setInputProcessor(stage);
 		
 		totalAnimTime = 0.2f;
+		totalAnimTimeJetons = 0.1f;
+		totalAnimTimeAura = 0.05f;
 		
 		animTimeJetons1 = 0f;
 		animTimeJetons2 = 0f;
 		animTimeJetons3 = 0f;
 		animTimeJetons4 = 0f;
 		animTime1 = 0f;
-		animTimeAura = 0f;
+		animTimeAura1 = 0f;
+		animTimeAura2 = 0f;
+		animTimeAura3 = 0f;
+		animTimeAura4 = 0f;
+
 		
 		animationFrames = atlasAnimRedJ.getRegions();
-		animRedJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animRedJ = new Animation<TextureRegion> (totalAnimTimeJetons,animationFrames);
 		animRedJ.setPlayMode(Animation.PlayMode.NORMAL);
 		
 		animationFrames = atlasAnimGreenJ.getRegions();
-		animGreenJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animGreenJ = new Animation<TextureRegion> (totalAnimTimeJetons,animationFrames);
 		animGreenJ.setPlayMode(Animation.PlayMode.NORMAL);
 		
 		animationFrames = atlasAnimBlueJ.getRegions();
-		animBlueJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animBlueJ = new Animation<TextureRegion> (totalAnimTimeJetons,animationFrames);
 		animBlueJ.setPlayMode(Animation.PlayMode.NORMAL);
 		
 		animationFrames = atlasAnimYellowJ.getRegions();
-		animYellowJ = new Animation<TextureRegion> (totalAnimTime,animationFrames);
+		animYellowJ = new Animation<TextureRegion> (totalAnimTimeJetons,animationFrames);
 		animYellowJ.setPlayMode(Animation.PlayMode.NORMAL);
 		
 		animationFramesAura = atlasAura.getRegions();
-		animAura = new Animation<TextureRegion> (totalAnimTime, animationFramesAura);
+		animAura = new Animation<TextureRegion> (totalAnimTimeAura, animationFramesAura);
 		animAura.setPlayMode(Animation.PlayMode.NORMAL);
 	
 		table = new Table(skin);
@@ -711,20 +717,28 @@ public class SinglePlayer implements Screen {
 		//if (displayChips == true) {
 			
 			for (int i=0; i < red; i++) {
-				animTimeAura += Gdx.graphics.getDeltaTime();
-				batch.draw(animAura.getKeyFrame(animTimeAura,false) , 500f ,500f);
+				animTimeAura1 += Gdx.graphics.getDeltaTime();
+				batch.draw(animAura.getKeyFrame(animTimeAura1,false) , 650f ,380f);
 				animTimeJetons1 += Gdx.graphics.getDeltaTime();
 				batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);	
 			}
 			
+			if(buttonRedJeton.isPressed() && animRedJ.isAnimationFinished(animTimeJetons1)) {
+				animTimeJetons1 = 0f;
+				screenposRed.x = 650f;
+				screenposRed.y = 380f;
+			}
+			
 			if (red >= 1 && screenposRed.x <= 660) {
-			screenposRed.x += 5;
+			screenposRed.x += 10;
 			}
 			if (red >= 1 && screenposRed.y <= 660) {
-				screenposRed.y += 5;
+				screenposRed.y += 10;
 			}
 			/*-------------------------------------------*/
 			for (int i=0; i < green; i++) {
+				animTimeAura2 += Gdx.graphics.getDeltaTime();
+				batch.draw(animAura.getKeyFrame(animTimeAura2,false) , 850f ,380f);
 				animTimeJetons2 += Gdx.graphics.getDeltaTime();
 				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);	
 			}
@@ -732,51 +746,53 @@ public class SinglePlayer implements Screen {
 					animTimeJetons2 = 0f;
 					screenposGreen.x = 850f;
 					screenposGreen.y = 380f;
-				}
-			
-			for(int i = 0; i< green; i++ ) {
-				batch.draw(buttonGreenFinal, 660f + x ,660f + y);
-				x += 0.2f;
-				y += 0.2f;
-
 			}
-			
-			/*if(green >= 1) {
-				batch.draw(buttonGreenFinal, 660f,660f);
-			}
-			if(green >= 2) {
-				batch.draw(buttonGreenFinal, 665f,665f);
-			}*/
 
 			if (green >= 1 && screenposGreen.x <= 660) {
-				screenposGreen.x += 5;
+				screenposGreen.x += 10;
 			}
 			if (green >= 1 && screenposGreen.y <= 660) {
-				screenposGreen.y += 5;
+				screenposGreen.y += 10;
 			}
 			/*-------------------------------------------*/
 			for (int i=0; i < blue; i++) {
+				animTimeAura3 += Gdx.graphics.getDeltaTime();
+				batch.draw(animAura.getKeyFrame(animTimeAura3,false) , 1250f ,380f);
 				animTimeJetons3 += Gdx.graphics.getDeltaTime();
 				batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);	
 			}
+			if(buttonBlueJeton.isPressed() && animBlueJ.isAnimationFinished(animTimeJetons3)) {
+				animTimeJetons3 = 0f;
+				screenposBlue.x = 1250f;
+				screenposBlue.y = 380f;
+			}
+
 				
 			if (blue >= 1 && screenposBlue.x <= 660) {
-				screenposBlue.x += 5;
+				screenposBlue.x += 10;
 			}
 			if (blue >= 1 && screenposBlue.y <= 660) {
-				screenposBlue.y += 5;
+				screenposBlue.y += 10;
 			}
 			/*-------------------------------------------*/
 			for (int i=0; i < yellow; i++) {
+				animTimeAura4 += Gdx.graphics.getDeltaTime();
+				batch.draw(animAura.getKeyFrame(animTimeAura4,false) , 1050f ,380f);
 				animTimeJetons4 += Gdx.graphics.getDeltaTime();
 				batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);	
 			}
+			if(buttonYellowJeton.isPressed() && animYellowJ.isAnimationFinished(animTimeJetons4)) {
+				animTimeJetons4 = 0f;
+				screenposYellow.x = 1050f;
+				screenposYellow.y = 380f;
+			}
+
 					
 			if (yellow >= 1 && screenposYellow.x <= 660) {
-				screenposYellow.x += 5;
+				screenposYellow.x += 10;
 			}
 			if (yellow >= 1 && screenposYellow.y <= 660) {
-				screenposYellow.y += 5;
+				screenposYellow.y += 10;
 			}		
 			/*-------------------------------------------*/
 			
