@@ -79,6 +79,9 @@ int mise = 0;
 		for (int i =0;i<nbparticipants;i++) {
 			joueurs[i].clearHands();
 		}
+		mains.clear();
+		mainstext.clear();
+		mainsnom.clear();
 	}
 	 
 	 public String getJoueur(int i) {
@@ -611,7 +614,7 @@ int mise = 0;
 	}
 	
 	public void gagneMise(int i) {
-		banque += mise*2;
+		banque = banque + i*2;
 	}
 	public void perdMise(int i) {
 		joueurs[i].defaite();

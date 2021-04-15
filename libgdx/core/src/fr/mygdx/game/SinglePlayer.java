@@ -295,6 +295,15 @@ public class SinglePlayer implements Screen {
 				clickPlay = true;
 				displayChips = true;
 				p1.reinitialisation();
+				bet = 0;
+			   
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
+				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				//tableDraw.add(banque);
+				tableDraw.pad(10,0,0,10);
 		    	//p1.afficheBanque();
 				
 		    	tablePlayAgain.removeActor(buttonPlayAgain);
@@ -316,7 +325,7 @@ public class SinglePlayer implements Screen {
 				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				tableDraw.add(banque);
+				//tableDraw.add(banque);
 				tableDraw.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
@@ -393,7 +402,7 @@ public class SinglePlayer implements Screen {
 		
 		tableDraw.setPosition(500f, 500f, 0);
 		tableDraw.add(miseLabel);
-		tableDraw.add(banque);
+		//tableDraw.add(banque);
 		tableDraw.pad(10,0,0,10);
 		//tableDraw.pad
 		buttonPlayAgain.pad(15f, 40f, 15f, 40f);
@@ -505,6 +514,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -516,7 +526,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 2 && p1.getSize() > 1) {
@@ -525,6 +535,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -536,7 +547,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 3 && p1.getSize() > 2) {
@@ -545,6 +556,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -556,7 +568,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 4 && p1.getSize() > 3) {
@@ -565,6 +577,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -576,7 +589,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 5 && p1.getSize() > 4) {
@@ -585,6 +598,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -597,7 +611,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 6 && p1.getSize() > 5) {
@@ -606,6 +620,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -617,7 +632,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 7 && p1.getSize() > 6) {
@@ -626,6 +641,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -637,7 +653,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 8 && p1.getSize() > 7) {
@@ -646,6 +662,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -657,7 +674,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+			
 		}
 		
 		if (click >= 9 && p1.getSize() > 8) {
@@ -666,6 +683,7 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				clickStop = false;
 				p1.gagneMise(bet);
+				money = p1.getBanque(0);
 				launchVictory = true;
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
@@ -677,7 +695,7 @@ public class SinglePlayer implements Screen {
 				p1.perdMise(0);
 				launchDefeat = true;
 			}
-			bet = 0;
+		
 		}
 		
 		if (click >= 10 && p1.getSize() > 9) {
