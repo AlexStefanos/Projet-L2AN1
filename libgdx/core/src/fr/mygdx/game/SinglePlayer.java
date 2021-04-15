@@ -37,8 +37,8 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw;
-	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0;
-	private boolean clickStop = false, clickPlay = false, launchVictory = false, launchTie = false, launchDefeat = false, clickJouer = false, 
+	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0;
+	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, 
 					displayChips = false;
 	private Label miseLabel;
 	private Label banque;
@@ -236,7 +236,7 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				ADDCARTE = 1;
 				p1.tirerjoueur(0);
-				clickJouer = true;
+				clickPlay = true;
 				displayChips = true;
 				tableGame.removeActor(buttonPlay);
 				tableGame.add(buttonDraw);
@@ -266,7 +266,7 @@ public class SinglePlayer implements Screen {
 				tableStop.removeActor(buttonStop);
 				clickStop = true;
 				tablePlayAgain.add(buttonPlayAgain);
-				clickJouer = false;
+				clickPlay = false;
 				displayChips = false;
 			}
 		});
@@ -282,8 +282,8 @@ public class SinglePlayer implements Screen {
 				launchDefeat = false;
 				click = 0;
 				clickStop = false;
-				launch = 6;
-				clickJouer = true;
+				launch = 0;
+				clickPlay = true;
 				displayChips = true;
 				p1.reinitialisation();
 		    	//p1.afficheBanque();
@@ -429,34 +429,37 @@ public class SinglePlayer implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		if (launch == 0) {
-			paquet.creationn();
-			paquet.shuffle();
-			paquet.toNb();
+			if (firstLaunch == 0) {
+				paquet.creationn();
+				paquet.shuffle();
+				paquet.toNb();
+				p1.initialisation();
+			}
 			//paquet.conversion();
     		//paquetnom = paquet;
     		//paquetnom.creation();
     		//paquetnom.creationn();
-			p1.initialisation();
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
 	    	//p1.gagnant();
 	    	//p1.afficheBanque();
-			p1.getTotal(0,"SinglePlayer",AppPreferences.J);
+			p1.getTotal(0, "SinglePlayer",AppPreferences.J);
 			parent.getPreferences().setJ(1);
+			System.out.println("J : " + AppPreferences.J);
 		}
 		launch++;
-		if (launch == 7) {
+		/*if (launch == 7) {
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
 		}
-		launch++;
+		launch++;*/
 		
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		if (clickJouer == true) {
+		if (clickPlay == true) {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			animTime2 += Gdx.graphics.getDeltaTime();
 			animTimeCroupier += Gdx.graphics.getDeltaTime();

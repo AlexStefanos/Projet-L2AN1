@@ -49,7 +49,7 @@ int mise = 0;
 	    for (int i =0; i<nbparticipants;i++) {
 	    	String nom;
 	    	int v = i+1;
-	    	System.out.println("\nNom du joueur " + v);
+	    	//System.out.println("\nNom du joueur " + v);
 	    	nom = "A";//alpha.next();
 	    	joueurs[i] = new Joueur();
 	    	joueurs[i].nomJoueur(nom);
@@ -57,7 +57,7 @@ int mise = 0;
 	}
 	public void initialisation2() {
 	    do {
-		System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
+		//System.out.println("Combien de joueurs ? (Min : 1, Max : 6)");
 		nbparticipants = 2;//alpha.nextInt();
 	
 	    } while (nbparticipants > 6 || nbparticipants < 0);
