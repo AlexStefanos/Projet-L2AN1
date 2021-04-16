@@ -296,7 +296,19 @@ public class SinglePlayer implements Screen {
 				displayChips = true;
 				p1.reinitialisation();
 				bet = 0;
+			    animTime1 = 0f;
+			    animTime2 = 0f;
+			    animTime3 = 0f;
+			    animTime4 = 0f;
+			    animTime5 = 0f;
+			    animTime6 = 0f;
+			    animTime7 = 0f;
+			    animTime8 = 0f;
+			    animTime9 = 0f;
+			    animTime10 = 0f;
+			    animTime11 = 0f;
 			   
+			    animTimeCroupier = 0f;
 				tableDraw.removeActor(miseLabel);
 				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
 				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
