@@ -86,25 +86,33 @@ public class History implements Screen{
 	    e = 0;
 	    p = 0;
 	    for(int z = 0; z < AppPreferences.J || z <= 10; z++) {
-	    	Label.LabelStyle label0Style = new Label.LabelStyle();
-	    	BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
-	    	label0Style.font = myFont;
-	    	label0Style.fontColor = Color.GREEN;
+	    	if(z <= 9 && AppPreferences.J <= 10) {
+	    		Label.LabelStyle label0Style = new Label.LabelStyle();
+	    		BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+	    		label0Style.font = myFont;
+	    		label0Style.fontColor = Color.GREEN;
 	    
-	    	label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getoto(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
-	    	label0.setSize(Gdx.graphics.getWidth(),row_height);
-	    	label0.setPosition(200,200+e);
-	    	stage.addActor(label0);
-	    	e = e + 70;
-	    	if(AppPreferences.J >= 10) {
-	    		i = AppPreferences.J -10;
-	    		if(z <= i) {
-		    		label0.remove();
-		    	}
-	    		label0.setPosition(200,100+p);
-	    		p = p + 70;
-	    		
+	    		label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+	    		label0.setSize(Gdx.graphics.getWidth(),row_height);
+	    		label0.setPosition(200,200+e);
+	    		stage.addActor(label0);
+	    		e = e + 70;
 	    	}
+	    	if(AppPreferences.J > 10) {
+	    		i = AppPreferences.J -10;
+	    		if (z >= i ) {
+		    		Label.LabelStyle label0Style = new Label.LabelStyle();
+			    	BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+			    	label0Style.font = myFont;
+			    	label0Style.fontColor = Color.GREEN;
+			    
+			    	label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+			    	label0.setSize(Gdx.graphics.getWidth(),row_height);
+			    	label0.setPosition(200,200+e);
+			    	stage.addActor(label0);
+			    	e = e + 70;
+	    		}
+		    }
 	    }
 	    
 	    
