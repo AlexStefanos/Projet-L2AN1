@@ -37,7 +37,7 @@ public class History implements Screen{
 	private TextButton buttonBack;
 	private Table table,tableLabel;
 	private Label scoreLabel;
-	private Label label0;
+	private Label label0,label1;
 	private int i,e,p;
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
@@ -56,7 +56,7 @@ public class History implements Screen{
 	public void show() {
 		
 		batch = new SpriteBatch();
-		Background = new Texture("Background.png");
+		Background = new Texture("FondHistory.png");
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
@@ -79,22 +79,36 @@ public class History implements Screen{
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 		
+		
+		
+		
 		p1.initialisation();
 		
 		int row_height = Gdx.graphics.getWidth() / 12;
 	    int col_width = Gdx.graphics.getWidth() / 12;
 	    e = 0;
 	    p = 0;
+	    
+	    Label.LabelStyle label1Style = new Label.LabelStyle();
+		BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+		label1Style.font = myFont;
+		label1Style.fontColor = Color.WHITE;
+
+		label1 = new Label("SCOREBOARDS :",label1Style);
+		label1.setSize(Gdx.graphics.getWidth(),row_height);
+		label1.setPosition(350,500);
+		stage.addActor(label1);
+	    
 	    for(int z = 0; z < AppPreferences.J || z <= 10; z++) {
 	    	if(z <= 9 && AppPreferences.J <= 10) {
 	    		Label.LabelStyle label0Style = new Label.LabelStyle();
-	    		BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
-	    		label0Style.font = myFont;
-	    		label0Style.fontColor = Color.GREEN;
+	    		BitmapFont myFont1 = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+	    		label0Style.font = myFont1;
+	    		label0Style.fontColor = Color.WHITE;
 	    
-	    		label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+	    		label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
 	    		label0.setSize(Gdx.graphics.getWidth(),row_height);
-	    		label0.setPosition(200,200+e);
+	    		label0.setPosition(820,150+e);
 	    		stage.addActor(label0);
 	    		e = e + 70;
 	    	}
@@ -102,13 +116,13 @@ public class History implements Screen{
 	    		i = AppPreferences.J -10;
 	    		if (z >= i ) {
 		    		Label.LabelStyle label0Style = new Label.LabelStyle();
-			    	BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
-			    	label0Style.font = myFont;
-			    	label0Style.fontColor = Color.GREEN;
+			    	BitmapFont myFont1 = new BitmapFont(Gdx.files.internal("font/whitescores.fnt"));
+			    	label0Style.font = myFont1;
+			    	label0Style.fontColor = Color.WHITE;
 			    
-			    	label0 = new Label("Mode de jeu : "+((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+" Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+			    	label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
 			    	label0.setSize(Gdx.graphics.getWidth(),row_height);
-			    	label0.setPosition(200,200+e);
+			    	label0.setPosition(820,150+e);
 			    	stage.addActor(label0);
 			    	e = e + 70;
 	    		}
