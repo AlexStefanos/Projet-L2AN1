@@ -79,9 +79,6 @@ public class History implements Screen{
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 		
-		
-		
-		
 		p1.initialisation();
 		
 		int row_height = Gdx.graphics.getWidth() / 12;

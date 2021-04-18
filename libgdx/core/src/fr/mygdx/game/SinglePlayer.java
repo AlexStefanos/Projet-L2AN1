@@ -8,6 +8,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -31,17 +32,16 @@ import fr.mygdx.game.splashscreen.MainMenu;
 
 public class SinglePlayer implements Screen {
 
-	private Stage stage;
+	private Stage stage, stageResult;
 	private SpriteBatch batch;
 	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, youWin, tie, youLose , buttonGreenFinal;
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
-	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw;
+	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
 	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0;
-	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, 
+	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
 					displayChips = false;
-	private Label miseLabel;
-	private Label banque;
+	private Label miseLabel, banque, result;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
 	//public static Animation <TextureRegion> anim1;
@@ -113,6 +113,7 @@ public class SinglePlayer implements Screen {
 		skin5 = new Skin(atlas5);
 		skinLabel = new Skin(Gdx.files.internal("skindefault/uiskin.json"));
 		stage = new Stage();
+		stageResult = new Stage();
 		skin = new Skin(atlas);
 		Gdx.input.setInputProcessor(stage);
 		
@@ -169,11 +170,14 @@ public class SinglePlayer implements Screen {
 		tableYellowJeton.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableDraw = new Table(skin);
 		tableDraw.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableResult = new Table(skin);
+		tableResult.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
+		result = new Label("", skinLabel);
 		
 		youWin = new Texture("YOUWIN.png");
 		tie = new Texture("TIE.png");
@@ -294,6 +298,7 @@ public class SinglePlayer implements Screen {
 				launch = 0;
 				clickPlay = true;
 				displayChips = true;
+				resultCount = true;
 				p1.reinitialisation();
 				bet = 0;
 			    animTime1 = 0f;
@@ -429,12 +434,14 @@ public class SinglePlayer implements Screen {
 		
 		tablePlayAgain.setPosition(220f, 500f, 0);
 
+		tableResult.setPosition(550f, 400f);
+		table.add(result);
+		
 		tableRedJeton.setPosition(650f,100f, 0);
 		tableRedJeton.add(buttonRedJeton);
 
 		tableGreenJeton.setPosition(850f,100f, 0);
 		tableGreenJeton.add(buttonGreenJeton);
-	
 		
 		tableBlueJeton.setPosition(1250f,100f, 0);
 		tableBlueJeton.add(buttonBlueJeton);
@@ -451,6 +458,7 @@ public class SinglePlayer implements Screen {
 		stage.addActor(tableBlueJeton);
 		stage.addActor(tableYellowJeton);
 		stage.addActor(tableDraw);
+		stage.addActor(tableResult);
 	}
 
 	@Override
@@ -730,21 +738,44 @@ public class SinglePlayer implements Screen {
 			}
 		}
 		
-		
-		
 		if (launchVictory == true) {
-			batch.draw(youWin, 550f, 400f, 840f, 411f);
+			Label.LabelStyle resultStyle = new Label.LabelStyle();
+			BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+			resultStyle.font = myFont;
+			resultStyle.fontColor = Color.WHITE;
+
+			result = new Label("Vous avez Gagné !", resultStyle);
+			result.setSize(500f, 440f);
+			result.setPosition(350,500);
+			stageResult.addActor(result);
 		}
 		else if (launchTie == true) {
-			batch.draw(tie, 550f, 440f, 208f, 243f);
+			Label.LabelStyle resultStyle = new Label.LabelStyle();
+			BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+			resultStyle.font = myFont;
+			resultStyle.fontColor = Color.WHITE;
+
+			result = new Label("C'est une égalité !", resultStyle);
+			result.setSize(500f, 440f);
+			result.setPosition(350,500);
+			stageResult.addActor(result);			
 		}
 		else if (launchDefeat == true) {
-			batch.draw(youLose, 550f, 440f, 860f, 401f);
+			Label.LabelStyle resultStyle = new Label.LabelStyle();
+			BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+			resultStyle.font = myFont;
+			resultStyle.fontColor = Color.WHITE;
+
+			result = new Label("Vous avez Perdu !", resultStyle);
+			result.setSize(500f, 440f);
+			result.setPosition(350,500);
+			stageResult.addActor(result);
 		}
 		
-		
-		
-		//if (displayChips == true) {
+		if (resultCount == true) {
+			stageResult.clear();
+			resultCount = false;
+		}
 			
 			for (int i=0; i < red; i++) {
 				animTimeAura1 += Gdx.graphics.getDeltaTime();
@@ -772,7 +803,7 @@ public class SinglePlayer implements Screen {
 				animTimeJetons2 += Gdx.graphics.getDeltaTime();
 				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);	
 			}
-			if(buttonGreenJeton.isPressed() && animGreenJ.isAnimationFinished(animTimeJetons2)) {
+			if (buttonGreenJeton.isPressed() && animGreenJ.isAnimationFinished(animTimeJetons2)) {
 					animTimeJetons2 = 0f;
 					screenposGreen.x = 850f;
 					screenposGreen.y = 380f;
@@ -841,6 +872,8 @@ public class SinglePlayer implements Screen {
 		
 		stage.act(delta);
 		stage.draw();
+		stageResult.act(delta);
+		stageResult.draw();
 	}
 	public static int getoto(){
 		return score;

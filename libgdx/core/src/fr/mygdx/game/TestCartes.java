@@ -9,7 +9,7 @@ public class TestCartes {
 	
 	public static void main(String[] args) {
     	
-		private ArrayList<Animation<TextureRegion>> animationPack;
+		/*private ArrayList<Animation<TextureRegion>> animationPack;
 		
 		Deck paquet = new Deck(animationPack);
 		
@@ -56,6 +56,6 @@ public class TestCartes {
     	//croupier.croupiertirer();  	
     	p1.croupiertirer();
     	p1.gagnant();
-    	p1.afficheBanque();
+    	p1.afficheBanque();*/
     }
 }
