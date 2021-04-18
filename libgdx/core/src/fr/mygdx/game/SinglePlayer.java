@@ -60,16 +60,16 @@ public class SinglePlayer implements Screen {
 	private float totalAnimTime , totalAnimTimeAura , totalAnimTimeJetons,animTimeCroupier2 = 0f ;
 	private Array<AtlasRegion> animationFrames , animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
-	private Vector2 screenposRed = new Vector2(650f,380f);
-	private Vector2 screenposGreen = new Vector2(850f,380f);
-	private Vector2 screenposBlue = new Vector2(1250f,380f);
-	private Vector2 screenposYellow = new Vector2(1050f,380f);
+	private Vector2 screenposRed = new Vector2(650f,100f);
+	private Vector2 screenposGreen = new Vector2(850f,100f);
+	private Vector2 screenposBlue = new Vector2(1250f,100f);
+	private Vector2 screenposYellow = new Vector2(1050f,100f);
 	private Vector2 screenPos = new Vector2(500f,500f);
 	
 	//private float totalAnimTime;
 	
-	public SinglePlayer(BLACKJACKCity box2dTutorial) {
-		parent = box2dTutorial;
+	public SinglePlayer(BLACKJACKCity blackjackcity) {
+		parent = blackjackcity;
 	}
 	private ArrayList<Animation<TextureRegion>> animationPack;
 	private Joueur[] joueurs = new Joueur[1];
@@ -779,7 +779,7 @@ public class SinglePlayer implements Screen {
 			
 			for (int i=0; i < red; i++) {
 				animTimeAura1 += Gdx.graphics.getDeltaTime();
-				batch.draw(animAura.getKeyFrame(animTimeAura1,false) , 570f ,50f);
+				batch.draw(animAura.getKeyFrame(animTimeAura1,false) , 590f ,40f);
 				animTimeJetons1 += Gdx.graphics.getDeltaTime();
 				batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);	
 			}
@@ -799,7 +799,7 @@ public class SinglePlayer implements Screen {
 			/*-------------------------------------------*/
 			for (int i=0; i < green; i++) {
 				animTimeAura2 += Gdx.graphics.getDeltaTime();
-				batch.draw(animAura.getKeyFrame(animTimeAura2,false) , 850f ,380f);
+				batch.draw(animAura.getKeyFrame(animTimeAura2,false) , 790f ,40f);
 				animTimeJetons2 += Gdx.graphics.getDeltaTime();
 				batch.draw(animGreenJ.getKeyFrame(animTimeJetons2, false), screenposGreen.x, screenposGreen.y);	
 			}
@@ -818,7 +818,7 @@ public class SinglePlayer implements Screen {
 			/*-------------------------------------------*/
 			for (int i=0; i < blue; i++) {
 				animTimeAura3 += Gdx.graphics.getDeltaTime();
-				batch.draw(animAura.getKeyFrame(animTimeAura3,false) , 1250f ,380f);
+				batch.draw(animAura.getKeyFrame(animTimeAura3,false) , 1190f ,40f);
 				animTimeJetons3 += Gdx.graphics.getDeltaTime();
 				batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);	
 			}
@@ -838,7 +838,7 @@ public class SinglePlayer implements Screen {
 			/*-------------------------------------------*/
 			for (int i=0; i < yellow; i++) {
 				animTimeAura4 += Gdx.graphics.getDeltaTime();
-				batch.draw(animAura.getKeyFrame(animTimeAura4,false) , 1050f ,380f);
+				batch.draw(animAura.getKeyFrame(animTimeAura4,false) , 990f ,40f);
 				animTimeJetons4 += Gdx.graphics.getDeltaTime();
 				batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);	
 			}

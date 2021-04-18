@@ -43,8 +43,8 @@ public class MainMenu implements Screen {
 	private  BLACKJACKCity parent;
 	
 	
-	public MainMenu(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public MainMenu(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	@Override

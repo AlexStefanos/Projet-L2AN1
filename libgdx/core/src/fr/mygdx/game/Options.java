@@ -36,8 +36,8 @@ public class Options implements Screen {
 	public static boolean FULLSCREEN = true;
 	public static float MULTIWEIGHT0 = 0.71f;
 	
-	public Options(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public Options(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	@Override

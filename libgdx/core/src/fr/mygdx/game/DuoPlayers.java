@@ -61,8 +61,8 @@ public class DuoPlayers implements Screen{
 	private  BLACKJACKCity parent;
 	private int lancement = 0;
 	
-	public DuoPlayers(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public DuoPlayers(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;

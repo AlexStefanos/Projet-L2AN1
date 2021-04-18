@@ -22,8 +22,8 @@ public class Splash implements Screen{
 	private TweenManager tweenManager;
 	private  BLACKJACKCity parent;
 	
-	public Splash(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public Splash(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	

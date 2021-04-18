@@ -3,44 +3,44 @@ AnimHuitCoeur.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Ez1
+Ez1 (2)
   rotate: false
   xy: 0, 0
-  size: 150, 152
-  orig: 150, 152
+  size: 150, 150
+  orig: 150, 150
   offset: 0, 0
   index: -1
-Ez2
+Ez2 (2)
   rotate: false
   xy: 150, 0
-  size: 150, 152
-  orig: 150, 152
+  size: 150, 150
+  orig: 150, 150
   offset: 0, 0
   index: -1
-Ez3
+Ez3 (2)
   rotate: false
   xy: 300, 0
-  size: 150, 152
-  orig: 150, 152
+  size: 150, 150
+  orig: 150, 150
   offset: 0, 0
   index: -1
-Ez5
+Ez4 (2)
   rotate: false
   xy: 450, 0
-  size: 150, 152
-  orig: 150, 152
+  size: 150, 150
+  orig: 150, 150
   offset: 0, 0
   index: -1
-Ez6
+Ez5 (2)
   rotate: false
   xy: 600, 0
-  size: 150, 152
-  orig: 150, 152
+  size: 150, 150
+  orig: 150, 150
   offset: 0, 0
   index: -1
-Ez4
+Ez6 (2)
   rotate: false
-  xy: 750, 2
+  xy: 750, 0
   size: 150, 150
   orig: 150, 150
   offset: 0, 0

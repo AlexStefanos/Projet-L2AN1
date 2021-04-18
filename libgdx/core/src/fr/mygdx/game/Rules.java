@@ -82,8 +82,8 @@ public class Rules implements Screen {
 						+ "ainsi jouer ses deux mains dans le meme tour, avec les memes r�gles que pr�c�demment, sauf une :\n"
 						+ "Si le joueur d�cide de Split deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
 	
-	public Rules(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public Rules(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	@Override

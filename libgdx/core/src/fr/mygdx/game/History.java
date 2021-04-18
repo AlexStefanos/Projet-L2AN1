@@ -48,8 +48,8 @@ public class History implements Screen{
 	Cartes p2 = new Cartes(paquet);
 	private int p1Carte = 0, p2Carte = 0;
 	
-	public History(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public History(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 	
 	@Override

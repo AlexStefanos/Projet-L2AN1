@@ -35,8 +35,8 @@ public class Play implements Screen {
 	private Music music;
 	private BLACKJACKCity parent;
 	
-	public Play(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public Play(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 
 	@Override

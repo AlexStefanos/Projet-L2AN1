@@ -39,8 +39,8 @@ public class QuadraPlayers implements Screen{
 	private int clique;
 	private  BLACKJACKCity parent;
 	
-	public QuadraPlayers(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public QuadraPlayers(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 		
 	/*int a = 1;

@@ -39,8 +39,8 @@ public class TrioPlayers implements Screen {
 	private int cliqueJ1, cliqueJ2, cliqueJ3;
 	private  BLACKJACKCity parent;
 	
-	public TrioPlayers(BLACKJACKCity box2dTutorial){
-		parent = box2dTutorial;
+	public TrioPlayers(BLACKJACKCity blackjackcity){
+		parent = blackjackcity;
 	}
 		
 	/*int a = 1;
