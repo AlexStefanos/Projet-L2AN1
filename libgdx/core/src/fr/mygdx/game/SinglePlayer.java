@@ -40,7 +40,7 @@ public class SinglePlayer implements Screen {
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
 	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
-					displayChips = false;
+					displayChips = true;
 	private Label miseLabel, banque, result;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
@@ -247,8 +247,6 @@ public class SinglePlayer implements Screen {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
-				ADDCARTE = 1;
-				p1.tirerjoueur(0);
 				clickPlay = true;
 				displayChips = true;
 				tableGame.removeActor(buttonPlay);
@@ -637,7 +635,6 @@ public class SinglePlayer implements Screen {
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
-			
 		}
 		
 		if (click >= 5 && p1.getSize() > 4) {
@@ -814,7 +811,8 @@ public class SinglePlayer implements Screen {
 			stageResult.clear();
 			resultCount = false;
 		}
-			
+		
+		if (displayChips == true) {
 			for (int i=0; i < red; i++) {
 				animTimeAura1 += Gdx.graphics.getDeltaTime();
 				batch.draw(animAura.getKeyFrame(animTimeAura1,false) , 590f ,40f);
@@ -822,19 +820,20 @@ public class SinglePlayer implements Screen {
 				batch.draw(animRedJ.getKeyFrame(animTimeJetons1, false), screenposRed.x, screenposRed.y);	
 			}
 			
-			if(buttonRedJeton.isPressed() && animRedJ.isAnimationFinished(animTimeJetons1)) {
+			if (buttonRedJeton.isPressed() && animRedJ.isAnimationFinished(animTimeJetons1)) {
 				animTimeJetons1 = 0f;
 				screenposRed.x = 650f;
 				screenposRed.y = 380f;
 			}
 			
 			if (red >= 1 && screenposRed.x <= 660) {
-			screenposRed.x += 10;
+				screenposRed.x += 10;
 			}
+			
 			if (red >= 1 && screenposRed.y <= 660) {
 				screenposRed.y += 10;
 			}
-			/*-------------------------------------------*/
+			
 			for (int i=0; i < green; i++) {
 				animTimeAura2 += Gdx.graphics.getDeltaTime();
 				batch.draw(animAura.getKeyFrame(animTimeAura2,false) , 790f ,40f);
@@ -853,13 +852,14 @@ public class SinglePlayer implements Screen {
 			if (green >= 1 && screenposGreen.y <= 660) {
 				screenposGreen.y += 10;
 			}
-			/*-------------------------------------------*/
+			
 			for (int i=0; i < blue; i++) {
 				animTimeAura3 += Gdx.graphics.getDeltaTime();
 				batch.draw(animAura.getKeyFrame(animTimeAura3,false) , 1190f ,40f);
 				animTimeJetons3 += Gdx.graphics.getDeltaTime();
 				batch.draw(animBlueJ.getKeyFrame(animTimeJetons3, false), screenposBlue.x, screenposBlue.y);	
 			}
+			
 			if(buttonBlueJeton.isPressed() && animBlueJ.isAnimationFinished(animTimeJetons3)) {
 				animTimeJetons3 = 0f;
 				screenposBlue.x = 1250f;
@@ -870,38 +870,40 @@ public class SinglePlayer implements Screen {
 			if (blue >= 1 && screenposBlue.x <= 660) {
 				screenposBlue.x += 10;
 			}
+			
 			if (blue >= 1 && screenposBlue.y <= 660) {
 				screenposBlue.y += 10;
 			}
-			/*-------------------------------------------*/
+			
 			for (int i=0; i < yellow; i++) {
 				animTimeAura4 += Gdx.graphics.getDeltaTime();
 				batch.draw(animAura.getKeyFrame(animTimeAura4,false) , 990f ,40f);
 				animTimeJetons4 += Gdx.graphics.getDeltaTime();
 				batch.draw(animYellowJ.getKeyFrame(animTimeJetons4, false), screenposYellow.x, screenposYellow.y);	
 			}
-			if(buttonYellowJeton.isPressed() && animYellowJ.isAnimationFinished(animTimeJetons4)) {
+			
+			if (buttonYellowJeton.isPressed() && animYellowJ.isAnimationFinished(animTimeJetons4)) {
 				animTimeJetons4 = 0f;
 				screenposYellow.x = 1050f;
 				screenposYellow.y = 380f;
 			}
-
-					
+		
 			if (yellow >= 1 && screenposYellow.x <= 660) {
 				screenposYellow.x += 10;
 			}
+			
 			if (yellow >= 1 && screenposYellow.y <= 660) {
 				screenposYellow.y += 10;
 			}		
-			/*-------------------------------------------*/
 			
 			if (click >= 1 && screenPos.x <= 1125f ) {
 				screenPos.x += 8;
 			}
+			
 			if (click >= 1 && screenPos.y >= 140f) {
 				screenPos.y -= 5;
 			}
-		//}
+		}
 
 		//batch.begin();
 		//animTimeBis += Gdx.graphics.getDeltaTime();
@@ -913,7 +915,8 @@ public class SinglePlayer implements Screen {
 		stageResult.act(delta);
 		stageResult.draw();
 	}
-	public static int getoto(){
+	
+	public static int getoto() {
 		return score;
 	}
 
