@@ -471,6 +471,7 @@ public class SinglePlayer implements Screen {
 				paquet.shuffle();
 				paquet.toNb();
 				p1.initialisation();
+				firstLaunch++;
 			}
 			//paquet.conversion();
     		//paquetnom = paquet;
