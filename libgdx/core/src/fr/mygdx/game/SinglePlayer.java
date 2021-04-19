@@ -277,6 +277,9 @@ public class SinglePlayer implements Screen {
 				tableStop.removeActor(buttonStop);
 				clickStop = true;
 				tablePlayAgain.add(buttonPlayAgain);
+				p1.getTotal(0, "SinglePlayer",AppPreferences.J);
+				parent.getPreferences().setJ(1);
+				System.out.println("J : " + AppPreferences.J);
 				//clickPlay = false;
 				//displayChips = false;
 			}
@@ -482,9 +485,6 @@ public class SinglePlayer implements Screen {
 			p1.croupiertirer();
 	    	//p1.gagnant();
 	    	//p1.afficheBanque();
-			p1.getTotal(0, "SinglePlayer",AppPreferences.J);
-			parent.getPreferences().setJ(1);
-			System.out.println("J : " + AppPreferences.J);
 		}
 		launch++;
 		/*if (launch == 7) {
