@@ -459,6 +459,7 @@ public class SinglePlayer implements Screen {
 		stage.addActor(tableYellowJeton);
 		stage.addActor(tableDraw);
 		stage.addActor(tableResult);
+		
 	}
 
 	@Override
@@ -527,7 +528,10 @@ public class SinglePlayer implements Screen {
 		batch.draw(chipBlue, 953f, 1005f, 65f, 29f);
 		batch.draw(chipLightBlue, 1026f, 1005f, 65f, 29f);
 		batch.draw(chipYellow, 1103f, 1005f, 65f, 29f);
-		batch.draw(chipWhite, 1175f, 1005f, 65f, 29f);	
+		batch.draw(chipWhite, 1175f, 1005f, 65f, 29f);
+		if(p1.get21(0) > 21) {
+			tableGame.removeActor(buttonDraw);
+		}
 		if (click >= 1 && p1.getSize() > 0) {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 930f, 133f, 181f, 251f);
