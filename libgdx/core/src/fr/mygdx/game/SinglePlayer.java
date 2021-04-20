@@ -315,6 +315,7 @@ public class SinglePlayer implements Screen {
 			    animTime11 = 0f;
 			   
 			    animTimeCroupier = 0f;
+			    animTimeCroupier2 = 0f;
 				tableDraw.removeActor(miseLabel);
 				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
 				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
@@ -504,19 +505,22 @@ public class SinglePlayer implements Screen {
 			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 870f, 197f, 181f, 251f);
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 900f, 165f, 181f, 251f);
 			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 181f, 251f);
-			batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);//1ere Carte Croupier
+			batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 830f, 468f, 181f, 251f);//1ere Carte Croupier
 			
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
+				//clickStop = false;
 				launchVictory = true;
+				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
+				//clickStop = false;
 				launchTie = true;
+				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
+				//clickStop = false;
 				launchDefeat = true;
+				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 			}
 		}
 		//afficheMainCroupierNom()
@@ -535,25 +539,19 @@ public class SinglePlayer implements Screen {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 930f, 133f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
 			
 		}
@@ -562,7 +560,6 @@ public class SinglePlayer implements Screen {
 			animTime4 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 960f, 101f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
@@ -570,13 +567,11 @@ public class SinglePlayer implements Screen {
 				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
