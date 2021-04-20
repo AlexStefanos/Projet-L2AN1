@@ -38,16 +38,16 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
-	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0;;
+	private int launch = 0, click = 0, bet = 0, money = 5000, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0;;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
-					displayChips = true;
+					displayChips = true,afficheMise = false,clickMise = true;
 	private Label miseLabel, banque, result, labelScorePlayer;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
 	//public static Animation <TextureRegion> anim1;
 	
 	private float x = 0f , y = 0f;
-
+   
 	private Skin skin,  skin2, skin3, skin4, skin5,skinLabel;;
 	private Music music;
 	private Music pressbutton;
@@ -257,7 +257,10 @@ public class SinglePlayer implements Screen {
 				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
 				label1Style.font = myFont;
 				label1Style.fontColor = Color.WHITE;
-
+				tableRedJeton.removeActor(buttonRedJeton);
+				tableGreenJeton.removeActor(buttonGreenJeton);
+				tableYellowJeton.removeActor(buttonYellowJeton);
+				tableBlueJeton.removeActor(buttonBlueJeton);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 				labelScorePlayer.setSize(200f,200f);
 				labelScorePlayer.setPosition(1300,200);
@@ -305,7 +308,17 @@ public class SinglePlayer implements Screen {
 				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
 				label1Style.font = myFont;
 				label1Style.fontColor = Color.WHITE;
+				tableRedJeton.setPosition(650f,100f, 0);
+				tableRedJeton.add(buttonRedJeton);
 
+				tableGreenJeton.setPosition(850f,100f, 0);
+				tableGreenJeton.add(buttonGreenJeton);
+				
+				tableBlueJeton.setPosition(1250f,100f, 0);
+				tableBlueJeton.add(buttonBlueJeton);
+				
+				tableYellowJeton.setPosition(1050f,100f, 0);
+				tableYellowJeton.add(buttonYellowJeton);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+p1.total(),label1Style);
 				labelScorePlayer.setSize(200f,300f);
 				labelScorePlayer.setPosition(1300,200);
@@ -332,7 +345,7 @@ public class SinglePlayer implements Screen {
 				displayChips = true;
 				resultCount = true;
 				p1.reinitialisation();
-				bet = 0;
+				
 			    animTime1 = 0f;
 			    animTime2 = 0f;
 			    animTime3 = 0f;
@@ -344,7 +357,10 @@ public class SinglePlayer implements Screen {
 			    animTime9 = 0f;
 			    animTime10 = 0f;
 			    animTime11 = 0f;
-			   
+			    tableRedJeton.removeActor(buttonRedJeton);
+				tableGreenJeton.removeActor(buttonGreenJeton);
+				tableYellowJeton.removeActor(buttonYellowJeton);
+				tableBlueJeton.removeActor(buttonBlueJeton);
 			    animTimeCroupier = 0f;
 			    animTimeCroupier2 = 0f;
 			    animTimeCroupier3 = 0f;
@@ -370,20 +386,23 @@ public class SinglePlayer implements Screen {
 		buttonRedJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
+
+				if (money-500 >= 0) {
 				bet += 500; 
-				p1.setMise(500);
-				money = p1.getBanque(0)-500;
-				p1.setBanque(p1.getBanque(0)-500);
+				money -= 500;
+				
+				
 				red += 1;
 				tableDraw.removeActor(miseLabel);
 				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
 				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				//tableDraw.add(banque);
+				
 				tableDraw.pad(10,0,0,10);
 				pressbutton.play();
 				music.dispose();
+			}
 			}
 		});
 		buttonRedJeton.pad(20f, 20f, 20f, 20f);
@@ -392,20 +411,20 @@ public class SinglePlayer implements Screen {
 		buttonYellowJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				bet += 100; 
-				p1.setMise(100);
-				money = p1.getBanque(0)-100;
-				p1.setBanque(p1.getBanque(0)-100);
-				yellow += 1;
-				tableDraw.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
-				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
-				tableDraw.setPosition(500f, 500f, 0);
-				tableDraw.add(miseLabel);
-				tableDraw.add(banque);
-				tableDraw.pad(10,0,0,10);	
-				pressbutton.play();
-				music.dispose();
+				if (money-100>=0) {
+					bet += 100; 
+					money -= 100;
+					yellow += 1;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
+					//banque = new Label("Banque ="+money+ " "+money, skinLabel);
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					tableDraw.add(banque);
+					tableDraw.pad(10,0,0,10);	
+					pressbutton.play();
+					music.dispose();
+				}
 			}
 		});
 		buttonYellowJeton.pad(20f, 20f, 20f, 20f);
@@ -414,20 +433,20 @@ public class SinglePlayer implements Screen {
 		buttonGreenJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				bet += 200; 
-				p1.setMise(200);
-				money = p1.getBanque(0)-200;
-				p1.setBanque(p1.getBanque(0)-200);
-				green += 1;
-				tableDraw.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
-				//banque = new Label("Banque ="+money, skinLabel);
-				tableDraw.setPosition(500f, 500f, 0);
-				tableDraw.add(miseLabel);
-				tableDraw.add(banque);
-				tableDraw.pad(10,0,0,10);
-				pressbutton.play();
-				music.dispose();
+				if (money - 200 >= 0) {
+					bet += 200; 
+					money -= 200;
+					green += 1;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = " + bet + " Banque "+money , skinLabel );
+					//banque = new Label("Banque ="+money, skinLabel);
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					tableDraw.add(banque);
+					tableDraw.pad(10,0,0,10);
+					pressbutton.play();
+					music.dispose();
+				}
 			}
 		});
 		buttonGreenJeton.pad(20f, 20f, 20f, 20f);
@@ -436,20 +455,20 @@ public class SinglePlayer implements Screen {
 		buttonBlueJeton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				bet += 50; 
-				p1.setMise(50);
-				money = p1.getBanque(0)-50;
-				p1.setBanque(p1.getBanque(0)-50);
-				blue += 1;
-				tableDraw.removeActor(miseLabel);
-				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
-				//banque = new Label("Banque ="+money, skinLabel);
-				tableDraw.setPosition(500f, 500f, 0);
-				tableDraw.add(miseLabel);
-				tableDraw.add(banque);
-				tableDraw.pad(10,0,0,10);
-				pressbutton.play();
-				music.dispose();
+				if (money-50>= 0) {
+					bet += 50; 
+					money -= 50;
+					blue += 1;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					//banque = new Label("Banque ="+money, skinLabel);
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					tableDraw.add(banque);
+					tableDraw.pad(10,0,0,10);
+					pressbutton.play();
+					music.dispose();
+				}
 			}
 		});
 		miseLabel = new Label( "Mise = "+ bet + "Banque = " + money , skinLabel );
@@ -513,27 +532,38 @@ public class SinglePlayer implements Screen {
 				p1.initialisation();
 				firstLaunch++;
 			}
-			//paquet.conversion();
-    		//paquetnom = paquet;
-    		//paquetnom.creation();
-    		//paquetnom.creationn();
+			
 			p1.maindep();
 			p1.croupierdep();
 			p1.croupiertirer();
-	    	//p1.gagnant();
-	    	//p1.afficheBanque();
+	    	
 		}
 		launch++;
-		/*if (launch == 7) {
-			p1.maindep();
-			p1.croupierdep();
-			p1.croupiertirer();
-		}
-		launch++;*/
+		
 		
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
+		if (money == 0) {
+			tableRedJeton.removeActor(buttonRedJeton);
+			tableGreenJeton.removeActor(buttonGreenJeton);
+			tableYellowJeton.removeActor(buttonYellowJeton);
+			tableBlueJeton.removeActor(buttonBlueJeton);
+			afficheMise = true;
+		}
+		if (money > 0 && afficheMise) {
+			tableRedJeton.setPosition(650f,100f, 0);
+			tableRedJeton.add(buttonRedJeton);
+
+			tableGreenJeton.setPosition(850f,100f, 0);
+			tableGreenJeton.add(buttonGreenJeton);
+			
+			tableBlueJeton.setPosition(1250f,100f, 0);
+			tableBlueJeton.add(buttonBlueJeton);
+			
+			tableYellowJeton.setPosition(1050f,100f, 0);
+			tableYellowJeton.add(buttonYellowJeton);
+			afficheMise = false;
+		}
 
 		if(clickRestart >= 1) {
 			labelScorePlayer.remove();
@@ -562,6 +592,28 @@ public class SinglePlayer implements Screen {
 			if (clickStop == true && p1.gagnant(0) == 0) {
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.HasBJ()) {
+					
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					
+					
+				}
+				else {
+				    
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				
+				    
+			    }
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -586,6 +638,14 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -610,6 +670,12 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 2) {
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
+				
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -648,10 +714,28 @@ public class SinglePlayer implements Screen {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(2).getKeyFrame(animTime3, false), 930f, 133f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.HasBJ()) {
+					clickStop = false;
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					
+					
+				}
+				else {
+				    clickStop = false;
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				}
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -677,6 +761,14 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				clickStop = false;
+				launchTie = true;
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -699,7 +791,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -730,10 +826,25 @@ public class SinglePlayer implements Screen {
 			animTime4 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(3).getKeyFrame(animTime4, false), 960f, 101f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
+				
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.HasBJ()) {
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+				}
+				else {
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+			    }
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -758,6 +869,12 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -780,7 +897,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -811,10 +932,29 @@ public class SinglePlayer implements Screen {
 			animTime5 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				
+				if (p1.HasBJ()) {
+					
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					clickMise = false;
+				}
+				else {
+				    
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				    clickMise = false;
+			    }
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -839,6 +979,12 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -861,7 +1007,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -892,10 +1042,26 @@ public class SinglePlayer implements Screen {
 			animTime6 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.HasBJ()) {
+					
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+			    }
+				else {
+				    
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				}
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -918,6 +1084,12 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -942,7 +1114,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -972,10 +1148,26 @@ public class SinglePlayer implements Screen {
 			animTime7 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.HasBJ()) {
+					
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+				}
+				else {
+				    
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				}
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -1000,6 +1192,12 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -1022,7 +1220,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1053,8 +1255,22 @@ public class SinglePlayer implements Screen {
 			animTime8 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
+				if (p1.HasBJ()) {
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+				}
+				else {
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				}
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1080,6 +1296,12 @@ public class SinglePlayer implements Screen {
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
@@ -1103,7 +1325,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1134,8 +1360,22 @@ public class SinglePlayer implements Screen {
 			animTime9 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
+				if (p1.HasBJ()) {
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					}
+				else {
+				     money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+				}
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1160,6 +1400,12 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1184,7 +1430,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1215,8 +1465,22 @@ public class SinglePlayer implements Screen {
 			animTime10 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
+				if (p1.HasBJ()) {
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+				}
+				else {
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+			    }
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1242,6 +1506,12 @@ public class SinglePlayer implements Screen {
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
@@ -1265,7 +1535,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1296,8 +1570,23 @@ public class SinglePlayer implements Screen {
 			animTime11 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				p1.gagneMise(bet);
-				money = p1.getBanque(0);
+				if (p1.HasBJ()) {
+					
+					money += bet*2.5;
+					bet = 0;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+				}
+				else {
+				    money += bet*2;
+				    bet = 0;
+				    tableDraw.removeActor(miseLabel);
+				    miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				    tableDraw.setPosition(500f, 500f, 0);
+				    tableDraw.add(miseLabel);
+			    }
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {
@@ -1324,6 +1613,12 @@ public class SinglePlayer implements Screen {
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				money += bet;
+				bet = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				if (p1.afficheMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
 					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
@@ -1346,7 +1641,11 @@ public class SinglePlayer implements Screen {
 				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				p1.perdMise(0);
+				bet  = 0;
+				tableDraw.removeActor(miseLabel);
+				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+				tableDraw.setPosition(500f, 500f, 0);
+				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
 				if (p1.afficheMainCroupierNom().size() >= 3) {

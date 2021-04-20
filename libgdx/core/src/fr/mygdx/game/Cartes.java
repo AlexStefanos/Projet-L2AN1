@@ -497,5 +497,8 @@ int mise = 0;
 	public void setMise(int i) {
 		mise = i;
 	}
+	public boolean HasBJ() {
+		return joueurs[0].getHasBJ();
+	}
 }
 	
