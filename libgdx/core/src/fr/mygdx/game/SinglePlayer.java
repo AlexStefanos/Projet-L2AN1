@@ -38,10 +38,10 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
-	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0;
+	private int launch = 0, click = 0, bet = 0, money = 0, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0;;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
 					displayChips = true;
-	private Label miseLabel, banque, result;
+	private Label miseLabel, banque, result, labelScorePlayer;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 	//private Array<AtlasRegion> animationFrames;
 	//public static Animation <TextureRegion> anim1;
@@ -253,6 +253,15 @@ public class SinglePlayer implements Screen {
 				tableGame.removeActor(buttonPlay);
 				tableGame.add(buttonDraw);
 				tableStop.add(buttonStop);
+				Label.LabelStyle label1Style = new Label.LabelStyle();
+				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+				label1Style.font = myFont;
+				label1Style.fontColor = Color.WHITE;
+
+				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
+				labelScorePlayer.setSize(200f,200f);
+				labelScorePlayer.setPosition(1300,200);
+				stage.addActor(labelScorePlayer);
 			}
 		});
 		buttonPlay.pad(15f, 40f, 15f, 40f);
@@ -265,6 +274,16 @@ public class SinglePlayer implements Screen {
 				click++;
 				ADDCARTE = 1;
 				p1.tirerjoueur(0);	
+				labelScorePlayer.remove();
+				Label.LabelStyle label1Style = new Label.LabelStyle();
+				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+				label1Style.font = myFont;
+				label1Style.fontColor = Color.WHITE;
+
+				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
+				labelScorePlayer.setSize(200f,300f);
+				labelScorePlayer.setPosition(1300,200);
+				stage.addActor(labelScorePlayer);
 			}
 		});
 		buttonDraw.pad(15f, 40f, 15f, 40f);
@@ -281,6 +300,16 @@ public class SinglePlayer implements Screen {
 				p1.getTotal(0, "SinglePlayer",AppPreferences.J);
 				parent.getPreferences().setJ(1);
 				System.out.println("J : " + AppPreferences.J);
+				labelScorePlayer.remove();
+				Label.LabelStyle label1Style = new Label.LabelStyle();
+				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+				label1Style.font = myFont;
+				label1Style.fontColor = Color.WHITE;
+
+				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+p1.total(),label1Style);
+				labelScorePlayer.setSize(200f,300f);
+				labelScorePlayer.setPosition(1300,200);
+				stage.addActor(labelScorePlayer);
 				//clickPlay = false;
 				//displayChips = false;
 			}
@@ -296,6 +325,7 @@ public class SinglePlayer implements Screen {
 				launchTie = false;
 				launchDefeat = false;
 				click = 0;
+				clickRestart ++;
 				clickStop = false;
 				launch = 0;
 				clickPlay = true;
@@ -504,6 +534,22 @@ public class SinglePlayer implements Screen {
 		batch.begin();
 		batch.draw(BlackjackTable, 0, 0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
+
+		if(clickRestart >= 1) {
+			labelScorePlayer.remove();
+			Label.LabelStyle label1Style = new Label.LabelStyle();
+			BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+			label1Style.font = myFont;
+			label1Style.fontColor = Color.WHITE;
+
+			labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
+			labelScorePlayer.setSize(200f,300f);
+			labelScorePlayer.setPosition(1300,200);
+			stage.addActor(labelScorePlayer);
+			clickRestart--;
+		}
+
+		
 		if (clickPlay == true) {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			animTime2 += Gdx.graphics.getDeltaTime();
@@ -595,7 +641,7 @@ public class SinglePlayer implements Screen {
 		batch.draw(chipLightBlue, 1026f, 1005f, 65f, 29f);
 		batch.draw(chipYellow, 1103f, 1005f, 65f, 29f);
 		batch.draw(chipWhite, 1175f, 1005f, 65f, 29f);
-		if(p1.get21(0) > 21) {
+		if(p1.getScore(0) > 21) {
 			tableGame.removeActor(buttonDraw);
 		}
 		if (click >= 1 && p1.getSize() > 0) {

@@ -453,7 +453,7 @@ int mise = 0;
 			System.out.println("score"+j+" = "+prefs.getInteger("Score"+j)+" et state"+j+" = "+prefs.getString("State"+j));
 	 }
 
-	 public int get21(int i) {
+	 public int getScore(int i) {
 		 return joueurs[i].total();
 	 }
 	 
