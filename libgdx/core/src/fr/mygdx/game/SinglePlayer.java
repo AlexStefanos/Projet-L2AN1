@@ -57,7 +57,8 @@ public class SinglePlayer implements Screen {
 	private float animTimeJetons1 , animTimeJetons2 , animTimeJetons3 , animTimeJetons4, animTimeAura1 , animTime1= 0f, animTime2= 0f,
 				  animTime3= 0f, animTime4= 0f, animTime5= 0f, animTime6= 0f, animTime7= 0f, animTime8= 0f, animTime9= 0f, animTime10= 0f, 
 				  animTime11= 0f,animTimeCroupier = 0f , animTimeDebut = 0f, animTimeAura2 , animTimeAura3 , animTimeAura4;
-	private float totalAnimTime , totalAnimTimeAura , totalAnimTimeJetons, animTimeCroupier2 = 0f ;
+	private float totalAnimTime , totalAnimTimeAura , totalAnimTimeJetons, animTimeCroupier2 = 0f , animTimeCroupier3 = 0f , animTimeCroupier4 = 0f
+			, animTimeCroupier5 = 0f , animTimeCroupier6 = 0f , animTimeCroupier7 = 0f;
 	private Array<AtlasRegion> animationFrames , animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
 	private Vector2 screenposRed = new Vector2(650f,100f);
@@ -316,6 +317,11 @@ public class SinglePlayer implements Screen {
 			   
 			    animTimeCroupier = 0f;
 			    animTimeCroupier2 = 0f;
+			    animTimeCroupier3 = 0f;
+			    animTimeCroupier4 = 0f;
+			    animTimeCroupier5 = 0f;
+			    animTimeCroupier6 = 0f;
+			    animTimeCroupier7 = 0f;
 				tableDraw.removeActor(miseLabel);
 				miseLabel = new Label( "Mise = " + bet + " Banque "+money, skinLabel );
 				//banque = new Label("Banque ="+money+ " "+money, skinLabel);
@@ -504,23 +510,80 @@ public class SinglePlayer implements Screen {
 			animTimeCroupier += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(0).getKeyFrame(animTime1, false), 870f, 197f, 181f, 251f);
 			batch.draw(p1.getMainJoueur(0).get(1).getKeyFrame(animTime2, false), 900f, 165f, 181f, 251f);
-			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 500f, 181f, 251f);
-			batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 830f, 468f, 181f, 251f);//1ere Carte Croupier
+			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 600f, 181f, 251f);
+			batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 830f, 568f, 181f, 251f);
 			
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				//clickStop = false;
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				//clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				//clickStop = false;
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 		}
 		//afficheMainCroupierNom()
@@ -543,15 +606,76 @@ public class SinglePlayer implements Screen {
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
+
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -564,18 +688,75 @@ public class SinglePlayer implements Screen {
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -584,25 +765,79 @@ public class SinglePlayer implements Screen {
 			animTime5 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(4).getKeyFrame(animTime5, false), 1200f, 172f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -611,25 +846,79 @@ public class SinglePlayer implements Screen {
 			animTime6 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(5).getKeyFrame(animTime6, false), 1230f, 140f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 		}
 		
@@ -637,26 +926,79 @@ public class SinglePlayer implements Screen {
 			animTime7 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(6).getKeyFrame(animTime7, false), 1260f, 110f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
-				
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -665,25 +1007,79 @@ public class SinglePlayer implements Screen {
 			animTime8 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(7).getKeyFrame(animTime8, false), 1290f, 80f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -692,25 +1088,79 @@ public class SinglePlayer implements Screen {
 			animTime9 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(8).getKeyFrame(animTime9, false), 1480f, 172f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -719,25 +1169,79 @@ public class SinglePlayer implements Screen {
 			animTime10 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(9).getKeyFrame(animTime10, false), 1510f, 140f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			
 		}
@@ -746,25 +1250,79 @@ public class SinglePlayer implements Screen {
 			animTime11 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainJoueur(0).get(10).getKeyFrame(animTime11, false), 1540f, 110f, 181f, 251f);
 			if (clickStop == true && p1.gagnant(0) == 0) {
-				clickStop = false;
 				p1.gagneMise(bet);
 				money = p1.getBanque(0);
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 1) {
-				clickStop = false;
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 			else if (clickStop == true && p1.gagnant(0) == 2) {
-				clickStop = false;
 				p1.perdMise(0);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 900f, 700f, 181f, 251f);
+				if (p1.afficheMainCroupierNom().size() >= 3) {
+					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 4) {
+					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 5) {
+					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 6) {
+					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+				}
+				if (p1.afficheMainCroupierNom().size() >= 7) {
+					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
+					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+				}
 			}
 		
 		}
