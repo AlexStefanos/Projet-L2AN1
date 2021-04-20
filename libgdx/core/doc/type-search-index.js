@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"fr.mygdx.game","l":"AppPreferences"}];updateSearchResults();

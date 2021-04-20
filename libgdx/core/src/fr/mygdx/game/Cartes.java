@@ -334,49 +334,52 @@ int mise = 0;
 	 }
 	 public int gagnant(int i) { //0 = a gagné, 1 = nul, 2 = défaite
 		 
-		 //for (int i=0;i<nbparticipants;i++) {
-		    
-		     if (total() > 21 && joueurs[i].total() < 22 ) {
-			     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
-			     if (joueurs[i].getHasBJ()) {
-			    	 joueurs[i].blackjack();
-			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
-			    	 return (0); 
-			     }
-			     else {
-			    	 joueurs[i].victoire();
-			    	 return (0);
-			     }
+		//for (int i=0;i<nbparticipants;i++) {
+	     int alpha = -2;
+	     if (total() > 21 && joueurs[i].total() < 22 ) {
+		     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
+		     if (joueurs[i].getHasBJ()) {
+		    	 joueurs[i].blackjack();
+		    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+		    	  
 		     }
-		     else if (total() < 22 && total() == joueurs[i].total()) {
-			     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
-			     return (1);
-			     
+		     else {
+		    	 joueurs[i].victoire();
+		    	 
 		     }
-		     else if (joueurs[i].total() > 21 ) {
-			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
-			     joueurs[i].defaite();
-			     return (2);
+		     alpha = 0;
+	     }
+	     else if (total() < 22 && total() == joueurs[i].total()) {
+		     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
+		     alpha = 1;
+		     
+	     }
+	     else if (joueurs[i].total() > 21 ) {
+		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
+		     joueurs[i].defaite();
+		     alpha = 2;
+	     }
+	     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
+		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
+		     if (joueurs[i].getHasBJ()) {
+		    	 joueurs[i].blackjack();
+		    	 System.out.println("Félicitations vous avez eu un Blackjack ");
+		    	 
 		     }
-		     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
-			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
-			     if (joueurs[i].getHasBJ()) {
-			    	 joueurs[i].blackjack();
-			    	 System.out.println("Félicitations vous avez eu un Blackjack ");
-			    	 return (0);
-			     }
-			     else {
-			    	 joueurs[i].victoire();
-			    	 return (0);
-			     }
+		     else {
+		    	 joueurs[i].victoire();
+		    	 
 		     }
-		     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
-			     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
-			     joueurs[i].defaite();
-			     return (2);
-		     }
-	     //}
-			return (1);
+		     alpha = 0;
+	     }
+	     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
+		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
+		     joueurs[i].defaite();
+		     alpha = 2;
+	     }
+     //}
+		return alpha;
+			
 	 }
 	 public void gagnantbis() { 
 		 
