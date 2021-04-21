@@ -103,7 +103,7 @@ public class History implements Screen{
 	    		label0Style.font = myFont1;
 	    		label0Style.fontColor = Color.WHITE;
 	    
-	    		label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+	    		label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z))+"  "+((Cartes.getotoWL(z) == "")? "---" : Cartes.getotoWL(z)),label0Style);
 	    		label0.setSize(Gdx.graphics.getWidth(),row_height);
 	    		label0.setPosition(820,150+e);
 	    		stage.addActor(label0);
@@ -117,7 +117,7 @@ public class History implements Screen{
 			    	label0Style.font = myFont1;
 			    	label0Style.fontColor = Color.WHITE;
 			    
-			    	label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z)),label0Style);
+			    	label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z))+"  "+((Cartes.getotoWL(z) == "")? "---" : Cartes.getotoWL(z)),label0Style);
 			    	label0.setSize(Gdx.graphics.getWidth(),row_height);
 			    	label0.setPosition(820,150+e);
 			    	stage.addActor(label0);

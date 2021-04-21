@@ -34,7 +34,7 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage, stageResult;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, youWin, tie, youLose , buttonGreenFinal;
+	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, buttonGreenFinal;
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
@@ -180,9 +180,6 @@ public class SinglePlayer implements Screen {
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		result = new Label("", skinLabel);
 		
-		youWin = new Texture("YOUWIN.png");
-		tie = new Texture("TIE.png");
-		youLose = new Texture("YOULOSE.png");
 		chipBlue = new Texture("LargeChips/chip_blue.png");
 		chipLightBlue = new Texture("LargeChips/chip_lightblue.png");
 		chipRed = new Texture("LargeChips/chip_red.png");

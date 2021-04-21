@@ -337,10 +337,8 @@ int mise = 0;
 		//for (int i=0;i<nbparticipants;i++) {
 	     int alpha = -2;
 	     if (total() > 21 && joueurs[i].total() < 22 ) {
-		     System.out.println("\nLe croupier a un score de " + total() + " " +   joueurs[i].getNom() +" a un score de " + joueurs[i].total() + " donc " + joueurs[i].getNom() +" est vainqueur");
 		     if (joueurs[i].getHasBJ()) {
 		    	 joueurs[i].blackjack();
-		    	 System.out.println("Félicitations vous avez eu un Blackjack ");
 		    	  
 		     }
 		     else {
@@ -350,20 +348,16 @@ int mise = 0;
 		     alpha = 0;
 	     }
 	     else if (total() < 22 && total() == joueurs[i].total()) {
-		     System.out.println( "\n" + joueurs[i].getNom() + "a le mï¿½me score que le croupier "  + joueurs[i].getNom() + " rï¿½cupï¿½re sa mise");
 		     alpha = 1;
 		     
 	     }
 	     else if (joueurs[i].total() > 21 ) {
-		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de " + joueurs[i].total() + " donc "  + joueurs[i].getNom() + " a perdu");
 		     joueurs[i].defaite();
 		     alpha = 2;
 	     }
 	     else if (total() < 22 && total() < joueurs[i].total() && joueurs[i].total() < 22  ) {
-		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc "  + joueurs[i].getNom() + " est vainqueur");
 		     if (joueurs[i].getHasBJ()) {
 		    	 joueurs[i].blackjack();
-		    	 System.out.println("Félicitations vous avez eu un Blackjack ");
 		    	 
 		     }
 		     else {
@@ -373,7 +367,6 @@ int mise = 0;
 		     alpha = 0;
 	     }
 	     else if (total() < 22 && total() > joueurs[i].total() && joueurs[i].total() < 22) {
-		     System.out.println( "\n" + joueurs[i].getNom() + " a un score de "  + joueurs[i].total() + " et le croupier un score de " + total() + " donc " +  joueurs[i].getNom() + " a perdu ");
 		     joueurs[i].defaite();
 		     alpha = 2;
 	     }
@@ -442,16 +435,30 @@ int mise = 0;
 		
 		return prefs.getString("State"+j);
 	}
-	
-	
-	 public void getTotal(int i,String state, int j) {
+	public static String getotoWL(int j) {
+		
+		return prefs.getString("WL"+j);
+	}
+
+	public void getTotal(int i,String state, int j) {
 		 	
 		 	prefs.putInteger("Score"+j, joueurs[i].total());
 			prefs.flush();
 			prefs.putString("State"+j, state);
 			prefs.flush();
-			System.out.println("score"+j+" = "+prefs.getInteger("Score"+j)+" et state"+j+" = "+prefs.getString("State"+j));
-	 }
+			if(gagnant(0) == 0) {
+				prefs.putString("WL"+j, "Win");
+				prefs.flush();
+			}
+			if(gagnant(0) == 1) {
+				prefs.putString("WL"+j, "Tie");
+				prefs.flush();
+			}
+			if(gagnant(0) == 2) {
+				prefs.putString("WL"+j, "Lose");
+				prefs.flush();
+			}
+	}
 
 	 public int getScore(int i) {
 		 return joueurs[i].total();
