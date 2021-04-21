@@ -7,43 +7,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck extends Animations{
-	private ArrayList<Integer> jeu;
-	private ArrayList<Animation<TextureRegion>> jeutext;
-	private ArrayList<String>  jeunoms;
+	private ArrayList<Integer> deckInt;
+	private ArrayList<Animation<TextureRegion>> deckAnim;
+	private ArrayList<String>  deckStr;
 		
 		public Deck(ArrayList<Animation<TextureRegion>> animationPack) {
 			super(animationPack);
-			jeu = new ArrayList<Integer>(312);
-			jeutext = new ArrayList<Animation<TextureRegion>>(312);
-			jeunoms = new ArrayList<String>(312);
+			deckInt = new ArrayList<Integer>(312);
+			deckAnim = new ArrayList<Animation<TextureRegion>>(312);
+			deckStr = new ArrayList<String>(312);
 		}
 
 		public void generateur() {
 			for (int i = 1; i<14;i++) {
 				for (int j = 0;j<24;j++) {
-					jeu.add(i); 
+					deckInt.add(i); 
 				}
 				
 			}
 		}
-		public void afficher() {
-			for (int i = 0;i<312;i++) {
-		    System.out.println(jeu.get(i)+ " ");
-			}
-		}
-		
-		public void affichernoms() {
-			for (int i = 0;i<312;i++) {
-		    System.out.println(jeutext.get(i)+ " ");
-			}
-		}
-		public int getSize() {
-			return jeu.size();
+	    public int getSize() {
+			return deckInt.size();
 		}
 		public void conversion() {
 			for (int i = 0; i<312;i++) {
-				if (jeu.get(i) > 10) {
-					jeu.set(i, 10);
+				if (deckInt.get(i) > 10) {
+					deckInt.set(i, 10);
 				}
 			}
 		}
@@ -53,498 +42,402 @@ public class Deck extends Animations{
 					
 					if (i<6) {
 						if (j == 1) {
-							jeutext.add(animAsCoeur);
-							//jeunoms.add("AsCoeur");
+							deckAnim.add(animAsCoeur);
 						}
 						else if (j == 2) {
-							jeutext.add(animDeuxCoeur);
-							//jeunoms.add("DeuxCoeur");
+							deckAnim.add(animDeuxCoeur);
 						}
 						else if (j == 3) {
-							jeutext.add(animTroisCoeur);
-							//jeunoms.add("TroisCoeur");
+							deckAnim.add(animTroisCoeur);
 						}
 						else if (j == 4) {
-							jeutext.add(animQuatreCoeur);
-							//jeunoms.add("QuatreCoeur");
+							deckAnim.add(animQuatreCoeur);
 						}
 						else if (j == 5) {
-							jeutext.add(animCinqCoeur);
-							//jeunoms.add("CinqCoeur");
+							deckAnim.add(animCinqCoeur);
 						}
 						else if (j == 6) {
-							jeutext.add(animSixCoeur);
-							//jeunoms.add("SixCoeur");
+							deckAnim.add(animSixCoeur);
 						}
 						else if (j == 7) {
-							jeutext.add(animSeptCoeur);
-							//jeunoms.add("SeptCoeur");
+							deckAnim.add(animSeptCoeur);
 						}
 						else if (j == 8) {
-							jeutext.add(animHuitCoeur);
-							//jeunoms.add("HuitCoeur");
+							deckAnim.add(animHuitCoeur);
 						}
 						else if (j == 9) {
-							jeutext.add(animNeufCoeur);
-							//jeunoms.add("NeufCoeur");
+							deckAnim.add(animNeufCoeur);
 						}
 						else if (j == 10) {
-							jeutext.add(animDixCoeur);
-							//jeunoms.add("DixCoeur");
+							deckAnim.add(animDixCoeur);
 						}
 						else if (j == 11) {
-							jeutext.add(animValetCoeur);
-							//jeunoms.add("ValetCoeur");
+							deckAnim.add(animValetCoeur);
 						}
 						else if (j == 12) {
-							jeutext.add(animDameCoeur);
-							//jeunoms.add("DameCoeur");}
+							deckAnim.add(animDameCoeur);
 						}
 						else if (j == 13) {
-							jeutext.add(animRoiCoeur);
-							//jeunoms.add("RoiCoeur");
+							deckAnim.add(animRoiCoeur);
+							
 						
 					}
 						
 				}
 					else if (i>=6 && i<12) {
 						if (j == 1) {
-							jeutext.add(animAsTrefle);
-							//jeunoms.add("AsTrefle");
+							deckAnim.add(animAsTrefle);
 						}
 						else if (j == 2) {
-							jeutext.add(animDeuxTrefle);
-							//jeunoms.add("DeuxTrefle");
+							deckAnim.add(animDeuxTrefle);
 						}
 						else if (j == 3) {
-							jeutext.add(animTroisTrefle);
-							//jeunoms.add("TroisTrefle");
+							deckAnim.add(animTroisTrefle);
 						}
 						else if (j == 4) {
-							jeutext.add(animQuatreTrefle);
-							//jeunoms.add("QuatreTrefle");
+							deckAnim.add(animQuatreTrefle);
 						}
 						else if (j == 5) {
-							jeutext.add(animCinqTrefle);
-							//jeunoms.add("CinqTrefle");
+							deckAnim.add(animCinqTrefle);
 						}
 						else if (j == 6) {
-							jeutext.add(animSixTrefle);
-							//jeunoms.add("SixTrefle");
+							deckAnim.add(animSixTrefle);
 						}
 						else if (j == 7) {
-							jeutext.add(animSeptTrefle);
-							//jeunoms.add("SeptTrefle");
+							deckAnim.add(animSeptTrefle);
 						}
 						else if (j == 8) {
-							jeutext.add(animHuitTrefle);
-							//jeunoms.add("HuitTrefle");
+							deckAnim.add(animHuitTrefle);
 						}
 						else if (j == 9) {
-							jeutext.add(animNeufTrefle);
-							//jeunoms.add("NeufTrefle");
+							deckAnim.add(animNeufTrefle);
 						}
 						else if (j == 10) {
-							jeutext.add(animDixTrefle);
-							//jeunoms.add("DixTrefle");
+							deckAnim.add(animDixTrefle);
 						}
 						else if (j == 11) {
-							jeutext.add(animValetTrefle);
-							//jeunoms.add("ValetTrefle");
+							deckAnim.add(animValetTrefle);
 						}
 						else if (j == 12) {
-							jeutext.add(animDameTrefle);
-							//jeunoms.add("DameTrefle");
+							deckAnim.add(animDameTrefle);
 						}
 						else if (j == 13) {
-							jeutext.add(animRoiTrefle);
-							//jeunoms.add("RoiTrefle");
+							deckAnim.add(animRoiTrefle);
+							
 						
 					
 					}
 					}
 						else if (i>=12 && i<18) {
 							if (j == 1) {
-								jeutext.add(animAsCarreau);
-								//jeunoms.add("AsCarreau");
+								deckAnim.add(animAsCarreau);
 							}
 							else if (j == 2) {
-								jeutext.add(animDeuxCarreau);
-								//jeunoms.add("DeuxCarreau");
+								deckAnim.add(animDeuxCarreau);
 							}
 							else if (j == 3) {
-								jeutext.add(animTroisCarreau);
-								//jeunoms.add("TroisCarreau");
+								deckAnim.add(animTroisCarreau);
 							}
 							else if (j == 4) {
-								jeutext.add(animQuatreCarreau);
-								//jeunoms.add("QuatreCarreau");
+								deckAnim.add(animQuatreCarreau);
 							}
 							else if (j == 5) {
-								jeutext.add(animCinqCarreau);
-								//jeunoms.add("CinqCarreau");
+								deckAnim.add(animCinqCarreau);
 							}
 							else if (j == 6) {
-								jeutext.add(animSixCarreau);
-								//jeunoms.add("SixCarreau");
+								deckAnim.add(animSixCarreau);
 							}
 							else if (j == 7) {
-								jeutext.add(animSeptCarreau);
-								//jeunoms.add("SeptCarreau");
+								deckAnim.add(animSeptCarreau);
 							}
 							else if (j == 8) {
-								jeutext.add(animHuitCarreau);
-								//jeunoms.add("HuitCarreau");
+								deckAnim.add(animHuitCarreau);
 							}
 							else if (j == 9) {
-								jeutext.add(animNeufCarreau);
-								//jeunoms.add("NeufCarreau");
+								deckAnim.add(animNeufCarreau);
 							}
 							else if (j == 10) {
-								jeutext.add(animDixCarreau);
-								//jeunoms.add("DixCarreau");
+								deckAnim.add(animDixCarreau);
 							}
 							else if (j == 11) {
-								jeutext.add(animValetCarreau);
-								//jeunoms.add("ValetCarreau");
+								deckAnim.add(animValetCarreau);
 							}
 							else if (j == 12) {
-								jeutext.add(animDameCarreau);
-								//jeunoms.add("DameCarreau");
+								deckAnim.add(animDameCarreau);
 							}
 							else if (j == 13) {
-								jeutext.add(animRoiCarreau);
-								//jeunoms.add("RoiCarreau");
+								deckAnim.add(animRoiCarreau);
+								
 							
 					}
 						
 				}
 						else if (i>=18 && i<24) {
 							if (j == 1) {
-								jeutext.add(animAsPique);
-								//jeunoms.add("AsPique");
+								deckAnim.add(animAsPique);
 							}
 							else if (j == 2) {
-								jeutext.add(animDeuxPique);
-								//jeunoms.add("DeuxPique");
+								deckAnim.add(animDeuxPique);
 							}
 							else if (j == 3) {
-								jeutext.add(animTroisPique);
-								//jeunoms.add("TroisPique");
+								deckAnim.add(animTroisPique);
 							}
 							else if (j == 4) {
-								jeutext.add(animQuatrePique);
-								//jeunoms.add("QuatrePique");
+								deckAnim.add(animQuatrePique);
 							}
 							else if (j == 5) {
-								jeutext.add(animCinqPique);
-								//jeunoms.add("CinqPique");
+								deckAnim.add(animCinqPique);
 							}
 							else if (j == 6) {
-								jeutext.add(animSixPique);
-								//jeunoms.add("SixPique");
+								deckAnim.add(animSixPique);
 							}
 							else if (j == 7) {
-								jeutext.add(animSeptPique);
-								//jeunoms.add("SeptPique");
+								deckAnim.add(animSeptPique);
 							}
 							else if (j == 8) {
-								jeutext.add(animHuitPique);
-								//jeunoms.add("(HuitPique");
+								deckAnim.add(animHuitPique);
 							}
 							else if (j == 9) {
-								jeutext.add(animNeufPique);
-								//jeunoms.add("NeufPique");
+								deckAnim.add(animNeufPique);
 							}
 							else if (j == 10) {
-								jeutext.add(animDixPique);
-								//jeunoms.add("DixPique");
+								deckAnim.add(animDixPique);
 							}
 							else if (j == 11) {
-								jeutext.add(animValetPique);
-								//jeunoms.add("ValetPique");
+								deckAnim.add(animValetPique);
 							}
 							else if (j == 12) {
-								jeutext.add(animDamePique);
-								//jeunoms.add("DamePique");
+								deckAnim.add(animDamePique);
 							}
 							else if (j == 13) {
-								jeutext.add(animRoiPique);		
-								//jeunoms.add("RoiPique");
+								deckAnim.add(animRoiPique);		
+						}
+		         }
 			}
 		}
-			}
-			
-	}
 }
 		public void toNb() {
 			for (int i =0;i<312;i++) {
-				if (jeutext.get(i) == animAsPique || jeutext.get(i) == animAsCoeur || jeutext.get(i) == animAsTrefle || jeutext.get(i) == animAsCarreau) {
-					jeu.add(1);
+				if (deckAnim.get(i) == animAsPique || deckAnim.get(i) == animAsCoeur || deckAnim.get(i) == animAsTrefle || deckAnim.get(i) == animAsCarreau) {
+					deckInt.add(1);
 				}
-				else if (jeutext.get(i) == animDeuxPique || jeutext.get(i) == animDeuxCoeur || jeutext.get(i) == animDeuxTrefle || jeutext.get(i) == animDeuxCarreau) {
-					jeu.add(2);
+				else if (deckAnim.get(i) == animDeuxPique || deckAnim.get(i) == animDeuxCoeur || deckAnim.get(i) == animDeuxTrefle || deckAnim.get(i) == animDeuxCarreau) {
+					deckInt.add(2);
 				}
-				else if (jeutext.get(i) == animTroisPique || jeutext.get(i) == animTroisCoeur || jeutext.get(i) == animTroisTrefle || jeutext.get(i) == animTroisCarreau) {
-					jeu.add(3);
+				else if (deckAnim.get(i) == animTroisPique || deckAnim.get(i) == animTroisCoeur || deckAnim.get(i) == animTroisTrefle || deckAnim.get(i) == animTroisCarreau) {
+					deckInt.add(3);
 				}
-				else if (jeutext.get(i) == animQuatrePique || jeutext.get(i) == animQuatreCoeur || jeutext.get(i) == animQuatreTrefle || jeutext.get(i) == animQuatreCarreau) {
-					jeu.add(4);
+				else if (deckAnim.get(i) == animQuatrePique || deckAnim.get(i) == animQuatreCoeur || deckAnim.get(i) == animQuatreTrefle || deckAnim.get(i) == animQuatreCarreau) {
+					deckInt.add(4);
 				}
-				else if (jeutext.get(i) == animCinqPique || jeutext.get(i) == animCinqCoeur || jeutext.get(i) == animCinqTrefle || jeutext.get(i) == animCinqCarreau) {
-					jeu.add(5);
+				else if (deckAnim.get(i) == animCinqPique || deckAnim.get(i) == animCinqCoeur || deckAnim.get(i) == animCinqTrefle || deckAnim.get(i) == animCinqCarreau) {
+					deckInt.add(5);
 				}
-				else if (jeutext.get(i) == animSixPique || jeutext.get(i) == animSixCoeur || jeutext.get(i) == animSixTrefle || jeutext.get(i) == animSixCarreau) {
-					jeu.add(6);
+				else if (deckAnim.get(i) == animSixPique || deckAnim.get(i) == animSixCoeur || deckAnim.get(i) == animSixTrefle || deckAnim.get(i) == animSixCarreau) {
+					deckInt.add(6);
 				}
-				else if (jeutext.get(i) == animSeptPique || jeutext.get(i) == animSeptCoeur || jeutext.get(i) == animSeptTrefle || jeutext.get(i) == animSeptCarreau) {
-					jeu.add(7);
+				else if (deckAnim.get(i) == animSeptPique || deckAnim.get(i) == animSeptCoeur || deckAnim.get(i) == animSeptTrefle || deckAnim.get(i) == animSeptCarreau) {
+					deckInt.add(7);
 				}
-				else if (jeutext.get(i) == animHuitPique || jeutext.get(i) == animHuitCoeur || jeutext.get(i) == animHuitTrefle || jeutext.get(i) == animHuitCarreau) {
-					jeu.add(8);
+				else if (deckAnim.get(i) == animHuitPique || deckAnim.get(i) == animHuitCoeur || deckAnim.get(i) == animHuitTrefle || deckAnim.get(i) == animHuitCarreau) {
+					deckInt.add(8);
 				}
-				else if (jeutext.get(i) == animNeufPique || jeutext.get(i) == animNeufCoeur || jeutext.get(i) == animNeufTrefle || jeutext.get(i) == animNeufCarreau) {
-					jeu.add(9);
+				else if (deckAnim.get(i) == animNeufPique || deckAnim.get(i) == animNeufCoeur || deckAnim.get(i) == animNeufTrefle || deckAnim.get(i) == animNeufCarreau) {
+					deckInt.add(9);
 				}
-				else if (jeutext.get(i) == animDixPique || jeutext.get(i) == animDixCoeur || jeutext.get(i) == animDixTrefle || jeutext.get(i) == animDixCarreau) {
-					jeu.add(10);
+				else if (deckAnim.get(i) == animDixPique || deckAnim.get(i) == animDixCoeur || deckAnim.get(i) == animDixTrefle || deckAnim.get(i) == animDixCarreau) {
+					deckInt.add(10);
 				}
-				else if (jeutext.get(i) == animValetPique || jeutext.get(i) == animValetCoeur || jeutext.get(i) == animValetTrefle || jeutext.get(i) == animValetCarreau) {
-					jeu.add(10);
+				else if (deckAnim.get(i) == animValetPique || deckAnim.get(i) == animValetCoeur || deckAnim.get(i) == animValetTrefle || deckAnim.get(i) == animValetCarreau) {
+					deckInt.add(10);
 				}
-				else if (jeutext.get(i) == animDamePique || jeutext.get(i) == animDameCoeur || jeutext.get(i) == animDameTrefle || jeutext.get(i) == animDameCarreau) {
-					jeu.add(10);
+				else if (deckAnim.get(i) == animDamePique || deckAnim.get(i) == animDameCoeur || deckAnim.get(i) == animDameTrefle || deckAnim.get(i) == animDameCarreau) {
+					deckInt.add(10);
 				}
-				else if (jeutext.get(i) == animRoiPique || jeutext.get(i) == animRoiCoeur || jeutext.get(i) == animRoiTrefle || jeutext.get(i) == animRoiCarreau) {
-					jeu.add(10);
+				else if (deckAnim.get(i) == animRoiPique || deckAnim.get(i) == animRoiCoeur || deckAnim.get(i) == animRoiTrefle || deckAnim.get(i) == animRoiCarreau) {
+					deckInt.add(10);
 				}
 				
 			}
 			for (int i =0;i<312;i++) {
 				
-				if (jeutext.get(i) == animAsPique ) {
-					jeunoms.add("Aspique");
+				if (deckAnim.get(i) == animAsPique ) {
+					deckStr.add("Aspique");
 				}
-				else if ( jeutext.get(i) == animAsCoeur) {
-					jeunoms.add("AsCoeur");
+				else if ( deckAnim.get(i) == animAsCoeur) {
+					deckStr.add("AsCoeur");
 				}
-				else if (jeutext.get(i) == animAsTrefle) {
-					jeunoms.add("AsTrefle");
+				else if (deckAnim.get(i) == animAsTrefle) {
+					deckStr.add("AsTrefle");
 				}
-				else if ( jeutext.get(i) == animAsCarreau) {
-					jeunoms.add("AsCarreau");
+				else if ( deckAnim.get(i) == animAsCarreau) {
+					deckStr.add("AsCarreau");
 				}
-				else if (jeutext.get(i) == animDeuxPique) {
-					jeunoms.add("DeuxPique");
-				}
-				
-				else if ( jeutext.get(i) == animDeuxCoeur) {
-					jeunoms.add(" DeuxCoeur");
-				}
-				else if (jeutext.get(i) == animDeuxTrefle) {
-					jeunoms.add("DeuxTrefle");
-				}
-				else if (jeutext.get(i) == animDeuxCarreau) {
-					jeunoms.add("DeuxCarreau");
+				else if (deckAnim.get(i) == animDeuxPique) {
+					deckStr.add("DeuxPique");
 				}
 				
-				else if (jeutext.get(i) == animDeuxPique) {
-					jeunoms.add("DeuxPique");
+				else if ( deckAnim.get(i) == animDeuxCoeur) {
+					deckStr.add(" DeuxCoeur");
+				}
+				else if (deckAnim.get(i) == animDeuxTrefle) {
+					deckStr.add("DeuxTrefle");
+				}
+				else if (deckAnim.get(i) == animDeuxCarreau) {
+					deckStr.add("DeuxCarreau");
 				}
 				
-				else if ( jeutext.get(i) == animTroisCoeur) {
-					jeunoms.add("TroisCoeur");
-				}
-				else if (jeutext.get(i) == animTroisTrefle) {
-					jeunoms.add("TroisTrefle");
-				}
-				else if (jeutext.get(i) == animTroisCarreau) {
-					jeunoms.add("TroisCarreau");
-				}
-				else if (jeutext.get(i) == animQuatrePique) {
-					jeunoms.add("QuatrePique");
-				}
-				else if (jeutext.get(i) == animQuatreCoeur) {
-					jeunoms.add("QuatreCoeur");
-				}
-				else if (jeutext.get(i) == animQuatreTrefle) {
-					jeunoms.add(" QuatreTrefle");
-				}
-				else if (jeutext.get(i) == animQuatreCarreau) {
-					jeunoms.add("QuatreCarreau");
-				}
-				else if (jeutext.get(i) == animCinqPique) {
-					jeunoms.add("CinqPique");
-				}
-				else if ( jeutext.get(i) == animCinqCoeur) {
-					jeunoms.add("CinqCoeur");
-				}
-				else if (jeutext.get(i) == animCinqTrefle) {
-					jeunoms.add(" CinqTrefle");
-				}
-				else if ( jeutext.get(i) == animCinqCarreau) {
-					jeunoms.add("CinqCarreau");
+				else if (deckAnim.get(i) == animDeuxPique) {
+					deckStr.add("DeuxPique");
 				}
 				
-				else if (jeutext.get(i) == animSixPique) {
-					jeunoms.add("SixPique");
+				else if ( deckAnim.get(i) == animTroisCoeur) {
+					deckStr.add("TroisCoeur");
 				}
-				else if ( jeutext.get(i) == animSixCoeur) {
-					jeunoms.add("SixCoeur");
+				else if (deckAnim.get(i) == animTroisTrefle) {
+					deckStr.add("TroisTrefle");
 				}
-				else if (jeutext.get(i) == animSixTrefle) {
-					jeunoms.add("SixTrefle");
+				else if (deckAnim.get(i) == animTroisCarreau) {
+					deckStr.add("TroisCarreau");
 				}
-				else if (jeutext.get(i) == animSixCarreau) {
-					jeunoms.add("SixCarreau");
+				else if (deckAnim.get(i) == animQuatrePique) {
+					deckStr.add("QuatrePique");
 				}
-				else if (jeutext.get(i) == animSeptPique) {
-					jeunoms.add("SeptPique");
+				else if (deckAnim.get(i) == animQuatreCoeur) {
+					deckStr.add("QuatreCoeur");
 				}
-				else if (jeutext.get(i) == animSeptCoeur) {
-					jeunoms.add("SeptCoeur");
+				else if (deckAnim.get(i) == animQuatreTrefle) {
+					deckStr.add(" QuatreTrefle");
 				}
-				else if (jeutext.get(i) == animSeptTrefle) {
-					jeunoms.add("SeptTrefle");
+				else if (deckAnim.get(i) == animQuatreCarreau) {
+					deckStr.add("QuatreCarreau");
 				}
-				else if ( jeutext.get(i) == animSeptCarreau) {
-					jeunoms.add("SeptCarreau");
+				else if (deckAnim.get(i) == animCinqPique) {
+					deckStr.add("CinqPique");
 				}
-				else if (jeutext.get(i) == animHuitPique) {
-					jeunoms.add(" HuitPique");
+				else if ( deckAnim.get(i) == animCinqCoeur) {
+					deckStr.add("CinqCoeur");
 				}
-				else if ( jeutext.get(i) == animHuitCoeur) {
-					jeunoms.add("HuitCoeur");
+				else if (deckAnim.get(i) == animCinqTrefle) {
+					deckStr.add(" CinqTrefle");
 				}
-				else if (jeutext.get(i) == animHuitTrefle) {
-					jeunoms.add("HuitTrefle");
+				else if ( deckAnim.get(i) == animCinqCarreau) {
+					deckStr.add("CinqCarreau");
 				}
-				else if ( jeutext.get(i) == animHuitCarreau) {
-					jeunoms.add("HuitCarreau");
+				
+				else if (deckAnim.get(i) == animSixPique) {
+					deckStr.add("SixPique");
 				}
-				else if (jeutext.get(i) == animNeufPique) {
-					jeunoms.add("NeufPique");
+				else if ( deckAnim.get(i) == animSixCoeur) {
+					deckStr.add("SixCoeur");
 				}
-				else if (jeutext.get(i) == animNeufCoeur) {
-					jeunoms.add("NeufCoeur");
+				else if (deckAnim.get(i) == animSixTrefle) {
+					deckStr.add("SixTrefle");
 				}
-				else if ( jeutext.get(i) == animNeufTrefle) {
-					jeunoms.add("NeufTrefle");
+				else if (deckAnim.get(i) == animSixCarreau) {
+					deckStr.add("SixCarreau");
 				}
-				else if (jeutext.get(i) == animNeufCarreau) {
-					jeunoms.add("NeufCarreau");
+				else if (deckAnim.get(i) == animSeptPique) {
+					deckStr.add("SeptPique");
 				}
-				else if (jeutext.get(i) == animDixPique) {
-					jeunoms.add("DixPique");
+				else if (deckAnim.get(i) == animSeptCoeur) {
+					deckStr.add("SeptCoeur");
 				}
-				else if ( jeutext.get(i) == animDixTrefle) {
-					jeunoms.add("DixTrefle");
+				else if (deckAnim.get(i) == animSeptTrefle) {
+					deckStr.add("SeptTrefle");
 				}
-				else if (jeutext.get(i) == animDixCarreau) {
-					jeunoms.add("DixCarreau");
+				else if ( deckAnim.get(i) == animSeptCarreau) {
+					deckStr.add("SeptCarreau");
 				}
-				else if ( jeutext.get(i) == animValetPique) {
-					jeunoms.add("ValetPique");
+				else if (deckAnim.get(i) == animHuitPique) {
+					deckStr.add(" HuitPique");
 				}
-				else if (jeutext.get(i) == animValetCoeur) {
-					jeunoms.add("ValetCoeur");
+				else if ( deckAnim.get(i) == animHuitCoeur) {
+					deckStr.add("HuitCoeur");
 				}
-				else if (  jeutext.get(i) == animValetTrefle) {
-					jeunoms.add("ValetTrefle");
+				else if (deckAnim.get(i) == animHuitTrefle) {
+					deckStr.add("HuitTrefle");
 				}
-				else if (jeutext.get(i) == animValetCarreau) {
-					jeunoms.add("ValetCarreau");
+				else if ( deckAnim.get(i) == animHuitCarreau) {
+					deckStr.add("HuitCarreau");
 				}
-				else if ( jeutext.get(i) == animDamePique) {
-					jeunoms.add("DamePique");
+				else if (deckAnim.get(i) == animNeufPique) {
+					deckStr.add("NeufPique");
 				}
-				else if (jeutext.get(i) == animDameCoeur) {
-					jeunoms.add("DameCoeur");
+				else if (deckAnim.get(i) == animNeufCoeur) {
+					deckStr.add("NeufCoeur");
 				}
-				else if ( jeutext.get(i) == animDameTrefle) {
-					jeunoms.add("DameTrefle");
+				else if ( deckAnim.get(i) == animNeufTrefle) {
+					deckStr.add("NeufTrefle");
 				}
-				else if ( jeutext.get(i) == animDameCarreau) {
-					jeunoms.add("DameCarreau");
+				else if (deckAnim.get(i) == animNeufCarreau) {
+					deckStr.add("NeufCarreau");
 				}
-				else if (jeutext.get(i) == animRoiPique) {
-					jeunoms.add("RoiPique");
+				else if (deckAnim.get(i) == animDixPique) {
+					deckStr.add("DixPique");
 				}
-				else if (jeutext.get(i) == animRoiCoeur) {
-					jeunoms.add("RoiCoeur");
+				else if ( deckAnim.get(i) == animDixTrefle) {
+					deckStr.add("DixTrefle");
 				}
-				else if ( jeutext.get(i) == animRoiTrefle) {
-					jeunoms.add("RoiTrefle");
+				else if (deckAnim.get(i) == animDixCarreau) {
+					deckStr.add("DixCarreau");
 				}
-				else if (jeutext.get(i) == animRoiCarreau) {
-					jeunoms.add("RoiCarreau");
+				else if ( deckAnim.get(i) == animValetPique) {
+					deckStr.add("ValetPique");
+				}
+				else if (deckAnim.get(i) == animValetCoeur) {
+					deckStr.add("ValetCoeur");
+				}
+				else if (  deckAnim.get(i) == animValetTrefle) {
+					deckStr.add("ValetTrefle");
+				}
+				else if (deckAnim.get(i) == animValetCarreau) {
+					deckStr.add("ValetCarreau");
+				}
+				else if ( deckAnim.get(i) == animDamePique) {
+					deckStr.add("DamePique");
+				}
+				else if (deckAnim.get(i) == animDameCoeur) {
+					deckStr.add("DameCoeur");
+				}
+				else if ( deckAnim.get(i) == animDameTrefle) {
+					deckStr.add("DameTrefle");
+				}
+				else if ( deckAnim.get(i) == animDameCarreau) {
+					deckStr.add("DameCarreau");
+				}
+				else if (deckAnim.get(i) == animRoiPique) {
+					deckStr.add("RoiPique");
+				}
+				else if (deckAnim.get(i) == animRoiCoeur) {
+					deckStr.add("RoiCoeur");
+				}
+				else if ( deckAnim.get(i) == animRoiTrefle) {
+					deckStr.add("RoiTrefle");
+				}
+				else if (deckAnim.get(i) == animRoiCarreau) {
+					deckStr.add("RoiCarreau");
 				}
 				
 				
 			}
 		}
 		
-		/*public void creation() {
-			for (int i = 0; i<312;i++) {
-				
-				if (jeu.get(i) == 1) {
-					jeutext.add("As");
-				}
-				else if (jeu.get(i) == 2) {
-					jeutext.add("Deux");
-				}
-				else if (jeu.get(i) == 3) {
-					jeutext.add("Trois");
-				}
-				else if (jeu.get(i) == 4) {
-					jeutext.add("Quatre");
-				}
-				else if (jeu.get(i) == 5) {
-					jeutext.add("Cinq");
-				}
-				else if (jeu.get(i) == 6) {
-					jeutext.add("Six");
-				}
-				else if (jeu.get(i) == 7) {
-					jeutext.add("Sept");
-				}
-				else if (jeu.get(i) == 8) {
-					jeutext.add("Huit");
-				}
-				else if (jeu.get(i) == 9) {
-					jeutext.add("Neuf");
-				}
-				else if (jeu.get(i) == 10) {
-					jeutext.add("Dix");
-				}
-				else if (jeu.get(i) == 11) {
-					jeutext.add("Valet");
-				}
-				else if (jeu.get(i) == 12) {
-					jeutext.add("Dame");
-				}
-				else if (jeu.get(i) == 13) {
-					jeutext.add("Roi");
-				}
-			} 
-			
-			
-			
-		}*/
+		
 		
 		
 		
 		public void shuffle() {
-			Collections.shuffle(jeutext);
+			Collections.shuffle(deckAnim);
 			
 		}
 		public ArrayList<Integer> getPaquet() {
-			return jeu;
+			return deckInt;
 		}
 		public ArrayList<Animation<TextureRegion>> getPaquetText(){
-			return jeutext;
+			return deckAnim;
 		}
 		public ArrayList<String> getPaquetNom(){
-			return jeunoms;
+			return deckStr;
 		}
 }	

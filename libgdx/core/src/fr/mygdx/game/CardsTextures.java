@@ -79,63 +79,6 @@ public class CardsTextures {
 		JetonVert = new Texture("LargeChips/chip_green.png");
 		JetonBeige = new Texture("LargeChips/chip_biege.png");
 		JetonJaune = new Texture("LargeChips/chip_yellow.png");
-
-		
-		
-		/*texturespack.add(0, AsCoeur);
-		texturespack.add(1, DeuxCoeur);
-		texturespack.add(2, TroisCoeur);
-		texturespack.add(3, QuatreCoeur);
-		texturespack.add(4, CinqCoeur);
-		texturespack.add(5, SixCoeur);
-		texturespack.add(6, SeptCoeur);
-		texturespack.add(7, HuitCoeur);
-		texturespack.add(8, NeufCoeur);
-		texturespack.add(9, DixCoeur);
-		texturespack.add(10, ValetCoeur);
-		texturespack.add(11, DameCoeur);
-		texturespack.add(12, RoiCoeur);
-		texturespack.add(13, AsTrefle);
-		texturespack.add(14, DeuxTrefle);
-		texturespack.add(15, TroisTrefle);
-		texturespack.add(16, QuatreTrefle);
-		texturespack.add(17, CinqTrefle);
-		texturespack.add(18, SixTrefle);
-		texturespack.add(19, SeptTrefle);
-		texturespack.add(20, HuitTrefle);
-		texturespack.add(21, NeufTrefle);
-		texturespack.add(22, DixTrefle);
-		texturespack.add(23, ValetTrefle);
-		texturespack.add(24, DameTrefle);
-		texturespack.add(25, RoiTrefle);
-		texturespack.add(26, AsCarreau);
-		texturespack.add(27, DeuxCarreau);
-		texturespack.add(28, TroisCarreau);
-		texturespack.add(29, QuatreCarreau);
-		texturespack.add(30, CinqCarreau);
-		texturespack.add(31, SixCarreau);
-		texturespack.add(32, SeptCarreau);
-		texturespack.add(33, HuitCarreau);
-		texturespack.add(34, NeufCarreau);
-		texturespack.add(35, DixCarreau);
-		texturespack.add(36, ValetCarreau);
-		texturespack.add(37, DameCarreau);
-		texturespack.add(38, RoiCarreau);
-		texturespack.add(39, AsPique);
-		texturespack.add(40, DeuxPique);
-		texturespack.add(41, TroisPique);
-		texturespack.add(42, QuatrePique);
-		texturespack.add(43, CinqPique);
-		texturespack.add(44,SixPique);
-		texturespack.add(45, SeptPique);
-		texturespack.add(46, HuitPique);
-		texturespack.add(47, NeufPique);
-		texturespack.add(48, DixPique);
-		texturespack.add(49, ValetPique);
-		texturespack.add(50, DamePique);
-		texturespack.add(51, RoiPique);
-		texturespack.add(52, JokerRed);
-		texturespack.add(53, JokerBlack);*/
 	}
 	
 	public ArrayList<Texture> getTexturespack() {

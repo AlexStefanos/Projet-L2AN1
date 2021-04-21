@@ -66,10 +66,10 @@ public class DuoPlayers implements Screen{
 	}
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
-	private Joueur[] joueurs = new Joueur[2];
+	private Player[] joueurs = new Player[2];
 	Deck paquet = new Deck(animationPack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
-	Cartes p1 = new Cartes(paquet);
+	Cards p1 = new Cards(paquet);
 	
 	private int p1Carte = 0;//, p2Carte = 0;
 	

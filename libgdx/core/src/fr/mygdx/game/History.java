@@ -41,11 +41,11 @@ public class History implements Screen{
 	private int i,e,p;
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
-	private Joueur[] joueurs = new Joueur[1];
+	private Player[] joueurs = new Player[1];
 	Deck paquet = new Deck(animationPack);
 	//Deck paquetnom = new Deck(); Inutile pour l'instant
-	Cartes p1 = new Cartes(paquet);
-	Cartes p2 = new Cartes(paquet);
+	Cards p1 = new Cards(paquet);
+	Cards p2 = new Cards(paquet);
 	private int p1Carte = 0, p2Carte = 0;
 	
 	public History(BLACKJACKCity blackjackcity){
@@ -103,7 +103,7 @@ public class History implements Screen{
 	    		label0Style.font = myFont1;
 	    		label0Style.fontColor = Color.WHITE;
 	    
-	    		label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z))+"  "+((Cartes.getotoWL(z) == "")? "---" : Cartes.getotoWL(z)),label0Style);
+	    		label0 = new Label(((Cards.getotoS(z) == "")? "---" : Cards.getotoS(z))+"  Score = "+((Cards.getoto(z) == 0)? "---" : Cards.getoto(z))+"  "+((Cards.getotoWL(z) == "")? "---" : Cards.getotoWL(z)),label0Style);
 	    		label0.setSize(Gdx.graphics.getWidth(),row_height);
 	    		label0.setPosition(820,150+e);
 	    		stage.addActor(label0);
@@ -117,7 +117,7 @@ public class History implements Screen{
 			    	label0Style.font = myFont1;
 			    	label0Style.fontColor = Color.WHITE;
 			    
-			    	label0 = new Label(((Cartes.getotoS(z) == "")? "---" : Cartes.getotoS(z))+"  Score = "+((Cartes.getoto(z) == 0)? "---" : Cartes.getoto(z))+"  "+((Cartes.getotoWL(z) == "")? "---" : Cartes.getotoWL(z)),label0Style);
+			    	label0 = new Label(((Cards.getotoS(z) == "")? "---" : Cards.getotoS(z))+"  Score = "+((Cards.getoto(z) == 0)? "---" : Cards.getoto(z))+"  "+((Cards.getotoWL(z) == "")? "---" : Cards.getotoWL(z)),label0Style);
 			    	label0.setSize(Gdx.graphics.getWidth(),row_height);
 			    	label0.setPosition(820,150+e);
 			    	stage.addActor(label0);
@@ -125,32 +125,7 @@ public class History implements Screen{
 	    		}
 		    }
 	    }
-	    
-	    
-	   /* Label.LabelStyle label1Style = new Label.LabelStyle();
-	    label1Style.font = myFont;
-	    label1Style.fontColor = Color.GREEN;
-	    
-	    Label label1 = new Label("Mode de jeu : "+Cartes.getotoS(1)+" Score = "+((Cartes.getoto(1) == 0)? 000 : Cartes.getoto(1)),label1Style);
-	    label1.setSize(Gdx.graphics.getWidth(),row_height);
-	    label1.setPosition(0,300);
-	    label1.setAlignment(Align.center);
-	    stage.addActor(label1);
-	    
-	    Label.LabelStyle label2Style = new Label.LabelStyle();
-	    label2Style.font = myFont;
-	    label2Style.fontColor = Color.GREEN;
-	    
-	    Label label2 = new Label("Mode de jeu : "+Cartes.getotoS(2)+" Score = "+ ((Cartes.getoto(2) == 0)? 000 : Cartes.getoto(2)),label0Style);
-	    label2.setSize(Gdx.graphics.getWidth(),row_height);
-	    label2.setPosition(0,100);
-	    label2.setAlignment(Align.center);
-	    stage.addActor(label2);*/
-	    
-	    
-
-	    
-		music.setLooping(true);
+	    music.setLooping(true);
 		music.setVolume(AppPreferences.MVOLUME);
 		music.play();
 		pressbutton.setVolume(AppPreferences.SVOLUME);
