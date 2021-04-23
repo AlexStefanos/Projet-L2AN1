@@ -32,6 +32,11 @@ int mise = 0;
 		prefs = Gdx.app.getPreferences("Les Scores");
 	}
 	
+	
+	/**
+	 * Permet l'initialisation des joueurs sous forme de tableau, comme il n'y a que le mode singleplayer nous avons mis 
+	 * nbparticipants à 1 directement.
+	 */
 	public void initialisation() {
 	    do {
 		nbparticipants = 1;
@@ -44,6 +49,9 @@ int mise = 0;
 	    	
 	    }
 	}
+	/**
+	 * Permet l'initialisation pour deux joueurs.
+	 */
 	public void initialisation2() {
 	    do {
 		nbparticipants = 2;
@@ -58,6 +66,9 @@ int mise = 0;
 	    player[1].nomJoueur("Samuel");
 	}
 	
+	/**
+	 * Vide les mains des joueurs pour commencer une nouvelle partie.
+	 */
 	public void reinitialisation() {
 		for (int i =0;i<nbparticipants;i++) {
 			player[i].clearHands();
@@ -67,15 +78,16 @@ int mise = 0;
 		handsString.clear();
 	}
 	 
+	/**
+	 * 
+	 * @param i retourne le nom du joueur numéro i.
+	 * @return
+	 */
 	 public String getJoueur(int i) {
 		 return player[i].getNom();
 	 }
 	
-	public void mise(int bet) {
-		for (int i = 0;i<player.length;i++) {
-			player[i].miser(bet);
-		}
-	}
+	 
 	
 	/** Permet de générer le paquet 
 	 * 
@@ -91,11 +103,10 @@ int mise = 0;
 	
 	    	
 	
-	public void afficher() {
-		for (int i = 0;i<120;i++) {
-	    System.out.println(paquet.getPaquet().get(i)+ " ");
-		}
-	}
+	/**
+	 * Méthode pour faire doubler le joueur i.
+	 * @param i
+	 */
 	
 	public void doubler(int i) {
 		player[i].addint(paquet.getPaquet().get(0));
@@ -107,6 +118,10 @@ int mise = 0;
 	    player[i].miser(mise*2);
 	}
 	
+	/**
+	 * Méthode pour faire split le joueur i.
+	 * @param i
+	 */
 	public void split(int i) {
 		player[i].addintSplit(player[i].getMain().get(1));
 		player[i].addtextSplit(player[i].getHandsAnim().get(1));
@@ -118,7 +133,10 @@ int mise = 0;
 		
 	}
 	
-	
+	/**
+	 * Permet de générer la main de départ des joueurs.
+	 * @return renvoie une arrayList avec la main du joueur sous forme d'animation.
+	 */
 	 public ArrayList<Animation<TextureRegion>> maindep() {
 		 for (int j=0;j<nbparticipants;j++) {
 			 for (int i =0;i<2;i++) {		            
@@ -136,23 +154,48 @@ int mise = 0;
 		return player[0].getHandsAnim();
 	 }
 	 
+	 /**
+	  * 
+	  * @param k Placement de la carte que l'on souhaite avoir.
+	  * @return La carte sous forme d'animation associé à la position k de la main du joueur.
+	  */
 	 
 	 public Animation<TextureRegion> uneCarte(int k) {
 		 return player[0].getHandsAnim().get(k);
 	 }
 	
+	 /**
+	  * 
+	  * @param k Placement de la carte que l'on souhaite avoir.
+	  * @return La carte sous forme d'entier (sa valeur dans le jeu du blackjack) associé à la position k de la main du joueur.
+	  */
 	 public int uneCartev2(int k) {
 		 return player[0].getMain().get(k);
 	 }
+	 /**
+	  * 
+	  * @param i désigne le joueur dont l'on souhaite avoir la main.
+	  * @return la main entière du joueur i sous forme d'animation.
+	  */
 	 public ArrayList<Animation<TextureRegion>> carteJoueuri(int i){
 		 return player[i].getHandsAnim();
 	 }
+	 /**
+	  * 
+	  * @param i désigne le joueur dont l'on souhaite avoir la main.
+	  * @return la main entière du joueur i sous forme d'entiers.
+	  * 
+	  */
 	 public ArrayList<Integer> joueuri(int i) {
 		 return player[0].getMain();
 	 }
 	 
 	 
-	        
+	/**
+	 *         
+	 * @param i désigne le joueur dont l'on souhaite lui faire tirer une carte.
+	 * Cette méthode permet de faire tirer des cartes.
+	 */
 	public void tirerjoueur(int i) {
 		
 	    	     if (SinglePlayer.ADDCARTE == 1) {
@@ -167,6 +210,7 @@ int mise = 0;
 	    	        }
 	    	   }
 	       
+	
 	public ArrayList<Animation<TextureRegion>> gethandsAnim(){
 		return handsAnim;
 	}
@@ -174,7 +218,9 @@ int mise = 0;
 		return player[i].getMainstr();
 	}
 	
-	
+	/**
+	 * Permet de générer les deux premières cartes du croupier.
+	 */
 	 public void croupierdep() {
 		 for (int i =0;i<2;i++) {
 		        handsInt.add((paquet.getPaquet().get(0)));
@@ -186,13 +232,15 @@ int mise = 0;
 		 }
 	}
 	 
-	 public ArrayList<Integer> afficheMainCroupier(){
-		 return handsInt;
-	 }
-	 public ArrayList<Animation<TextureRegion>> afficheMainCroupierNom(){
+	 
+	 public ArrayList<Animation<TextureRegion>> getMainCroupierNom(){
 			 return handsAnim;
 	 }
-	 public Animation<TextureRegion> croupiertirer() {
+	 /**
+	  * Fait tirer le croupier tant qu'il a moins de 17.
+	  * 
+	  */
+	 public void croupiertirer() {
 		 while (total() < 17) {
 	    	 handsInt.add((paquet.getPaquet().get(0)));
 		     handsAnim.add(paquet.getPaquetText().get(0));
@@ -205,8 +253,14 @@ int mise = 0;
 		 if (total() > 17) {
 			 System.out.println("\nMain du croupier final : " + handsString);
 		 }
-		 return handsAnim.get(0);
+		 
 	 }
+	/**
+	 * Permet de savoir si l'on a gagné, perdu ou fait nul.
+	 * @param i  permet de savoir le statut final du ième joueur
+	 * @return 0, 1 ou 2, 0 étant la valeur si le joueur à gagné, 1 si il y a nul, et 2 si le joueur a perdu.
+	 */
+	 
 	 public int winner(int i) { //0 = a gagné, 1 = nul, 2 = défaite
 		 
 		 int alpha = -1; // Alpha va être la valeur retourné de win/défaite/nul.
@@ -241,7 +295,10 @@ int mise = 0;
 	     }
      return alpha;
 	}
-	 
+	 /**
+	  * Permet de calculer la valeur total des cartes du joueur.
+	  * @return Le total des cartes du joueur.
+	  */
 	 public int total() {
 		 int somme = 0;
 		 boolean flag = false;
@@ -321,7 +378,9 @@ int mise = 0;
 		 return player[i].total();
 	 }
 	 
-	 
+	/**
+	 * Permet de convertir les valeurs supérieurs à 10 (Valet,Dame,Roi) en 10 puisqu'au blackjack les têtes valent 10 (sauf l'As).
+	 */
 	public void convert() {
 		for (int i = 0; i<312;i++) {
 			if (paquet.getPaquet().get(i) > 10) {
@@ -330,8 +389,8 @@ int mise = 0;
 			
 			
 		}
-		
 	}
+	
 	public ArrayList<Animation<TextureRegion>> getMainPlayer(int i){
 		return player[i].getHandsAnim();
 	}
@@ -348,19 +407,24 @@ int mise = 0;
 	public void miser(int i, int bet) {
 		player[i].miser(bet);
 	}
-	
+	/**
+	 * Ajoute le gain à la banque.
+	 * @param i
+	 */
 	public void gagneMise(int i) {
 		bank = bank + i*2;
 	}
-	public void perdMise(int i) {
-		player[i].defaite();
-	}
+	
 	public void setBanque(int i) {
 		bank = i;
 	}
 	public void setMise(int i) {
 		mise = i;
 	}
+	/**
+	 * 
+	 * @return un boolean pour savoir si le joueur a eu un blackjack ou non.
+	 */
 	public boolean HasBJ() {
 		return player[0].getHasBJ();
 	}

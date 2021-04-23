@@ -17,18 +17,24 @@ public class Deck extends Animations{
 			deckAnim = new ArrayList<Animation<TextureRegion>>(312);
 			deckStr = new ArrayList<String>(312);
 		}
+		
+		/**
+		 * Permet la génération des paquets de cartes pour jouer au blackjack, ici 6 paquets car le blackjack se joue avec 6 paquets.
+		 */
 
 		public void generateur() {
 			for (int i = 1; i<14;i++) {
 				for (int j = 0;j<24;j++) {
 					deckInt.add(i); 
 				}
-				
 			}
 		}
 	    public int getSize() {
 			return deckInt.size();
 		}
+	    /**
+	     * Permet de convertir les têtes en 10.
+	     */
 		public void conversion() {
 			for (int i = 0; i<312;i++) {
 				if (deckInt.get(i) > 10) {
@@ -36,6 +42,10 @@ public class Deck extends Animations{
 				}
 			}
 		}
+		
+		/**
+		 * Permet de lier les animations aux bonnes cartes.
+		 */
 		public void creationn() {
 			for (int i = 0;i<24;i++) {
 				for (int j = 1;j<14;j++) {
@@ -216,6 +226,9 @@ public class Deck extends Animations{
 			}
 		}
 }
+		/**
+		 * Ajoute les valeurs entières selon les animations dans l'arraylist.
+		 */
 		public void toNb() {
 			for (int i =0;i<312;i++) {
 				if (deckAnim.get(i) == animAsPique || deckAnim.get(i) == animAsCoeur || deckAnim.get(i) == animAsTrefle || deckAnim.get(i) == animAsCarreau) {
@@ -426,7 +439,9 @@ public class Deck extends Animations{
 		
 		
 		
-		
+		/**
+		 * Mélange le paquet.
+		 */
 		public void shuffle() {
 			Collections.shuffle(deckAnim);
 			

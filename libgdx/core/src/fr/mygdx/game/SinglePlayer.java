@@ -574,8 +574,8 @@ public class SinglePlayer implements Screen {
 			animTimeCroupier += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainPlayer(0).get(0).getKeyFrame(animTime1, false), 870f, 197f, 181f, 251f);
 			batch.draw(p1.getMainPlayer(0).get(1).getKeyFrame(animTime2, false), 900f, 165f, 181f, 251f);
-			batch.draw(p1.afficheMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 600f, 181f, 251f);
-			batch.draw(p1.afficheMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 830f, 568f, 181f, 251f);
+			batch.draw(p1.getMainCroupierNom().get(0).getKeyFrame(animTimeCroupier, false), 800f, 600f, 181f, 251f);
+			batch.draw(p1.getMainCroupierNom().get(1).getKeyFrame(animTimeCroupier2, false), 830f, 568f, 181f, 251f);
 			
 			if (clickStop == true && p1.winner(0) == 0) {
 				launchVictory = true;
@@ -602,25 +602,25 @@ public class SinglePlayer implements Screen {
 				
 				    
 			    }
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 				
 			}
@@ -635,25 +635,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
 				
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -665,25 +665,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
 				
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 		}
@@ -725,25 +725,25 @@ public class SinglePlayer implements Screen {
 				    tableDraw.setPosition(500f, 500f, 0);
 				    tableDraw.add(miseLabel);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 
 			}
@@ -757,25 +757,25 @@ public class SinglePlayer implements Screen {
 				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -786,25 +786,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -833,25 +833,25 @@ public class SinglePlayer implements Screen {
 				    tableDraw.setPosition(500f, 500f, 0);
 				    tableDraw.add(miseLabel);
 			    }
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -863,25 +863,25 @@ public class SinglePlayer implements Screen {
 				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -892,25 +892,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -943,25 +943,25 @@ public class SinglePlayer implements Screen {
 				    tableDraw.add(miseLabel);
 				    
 			    }
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -973,25 +973,25 @@ public class SinglePlayer implements Screen {
 				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1002,25 +1002,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -1050,25 +1050,25 @@ public class SinglePlayer implements Screen {
 				    tableDraw.setPosition(500f, 500f, 0);
 				    tableDraw.add(miseLabel);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1080,25 +1080,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1109,25 +1109,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 		}
@@ -1156,25 +1156,25 @@ public class SinglePlayer implements Screen {
 				    tableDraw.setPosition(500f, 500f, 0);
 				    tableDraw.add(miseLabel);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1186,25 +1186,25 @@ public class SinglePlayer implements Screen {
 				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1215,25 +1215,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -1261,25 +1261,25 @@ public class SinglePlayer implements Screen {
 				}
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1291,25 +1291,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1320,25 +1320,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -1366,25 +1366,25 @@ public class SinglePlayer implements Screen {
 				}
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1396,25 +1396,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchTie = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1425,25 +1425,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -1471,25 +1471,25 @@ public class SinglePlayer implements Screen {
 			    }
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1501,25 +1501,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1530,25 +1530,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			
@@ -1577,25 +1577,25 @@ public class SinglePlayer implements Screen {
 			    }
 				launchVictory = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 1) {
@@ -1607,25 +1607,25 @@ public class SinglePlayer implements Screen {
 				miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
 				tableDraw.setPosition(500f, 500f, 0);
 				tableDraw.add(miseLabel);
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 			else if (clickStop == true && p1.winner(0) == 2) {
@@ -1636,25 +1636,25 @@ public class SinglePlayer implements Screen {
 				tableDraw.add(miseLabel);
 				launchDefeat = true;
 				animTimeCroupier2 += Gdx.graphics.getDeltaTime();
-				if (p1.afficheMainCroupierNom().size() >= 3) {
+				if (p1.getMainCroupierNom().size() >= 3) {
 					animTimeCroupier3 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(2).getKeyFrame(animTimeCroupier3, false), 860f, 536f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 4) {
+				if (p1.getMainCroupierNom().size() >= 4) {
 					animTimeCroupier4 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(3).getKeyFrame(animTimeCroupier4, false), 890f, 504f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 5) {
+				if (p1.getMainCroupierNom().size() >= 5) {
 					animTimeCroupier5 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(4).getKeyFrame(animTimeCroupier5, false), 920f, 472f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 6) {
+				if (p1.getMainCroupierNom().size() >= 6) {
 					animTimeCroupier6 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(5).getKeyFrame(animTimeCroupier6, false), 950f, 440f, 181f, 251f);
 				}
-				if (p1.afficheMainCroupierNom().size() >= 7) {
+				if (p1.getMainCroupierNom().size() >= 7) {
 					animTimeCroupier7 += Gdx.graphics.getDeltaTime();
-					batch.draw(p1.afficheMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
+					batch.draw(p1.getMainCroupierNom().get(6).getKeyFrame(animTimeCroupier7, false), 980f, 408f, 181f, 251f);
 				}
 			}
 		

@@ -28,6 +28,10 @@ public class Player {
     	handsStr = new ArrayList<String>(15);
     	hasBJ = false;
     }
+    /**
+     * Calcul le score du joueur.
+     * @return score du joueur.
+     */
     public int total() {
 		 int sum = 0;
 		 boolean flag = false;
@@ -48,26 +52,46 @@ public class Player {
     	bank = 5000;
     	return bank;
     }
+    /**
+     *  Fait perdre le joueur si il dépasse 21.
+     */
 	public void bust() {
 		bank -= bet;
 		bet = 0;
 	}
+	/**
+	 * Ajoute les gains au joueur.
+	 */
 	public void win() {
 		bank += bet;
 		bet = 0;
 	}
+	/**
+	 * Ajoute les perte au joueur.
+	 */
 	public void defaite() {
 		bank -= bet;
 		bet = 0;
 	}
+	/**
+	 * Ajouter les gains en cas de blackjack(x1.5) au joueur.
+	 */
 	public void blackjack() {
 		bank += bet * 1.5;
 		bet = 0;
 	}
+	/**
+	 * 
+	 * @param betPlayer Ajoute la mise du joueur et l'enlève de sa banque.
+	 */
 	public void miser(int betPlayer) {
 		bet = betPlayer;
 		bank = bank - betPlayer;
 	}
+	/**
+	 * Permet de donner un nom au joueur.
+	 * @param nameplayer nom du joueur.
+	 */
 	public void nomJoueur(String nameplayer) {
 		name = nameplayer;
 	}
@@ -97,43 +121,70 @@ public class Player {
 	public ArrayList<Animation<TextureRegion>> getMainSplitText(){
 		return handsAnimSplit;
 	}
-	
+	/**
+	 * Ajouter une carte à la main du joueur.
+	 * @param card
+	 */
 	public void addint(int card) {
 		handsInt.add(card);
 	}
-	
+	/**
+	 * Ajoute une carte à la main split du joueur.
+	 * @param card
+	 */
 	public void addintSplit(int card) {
 		mainsintsplit.add(card);
 	}
-	
+	/**
+	 * Ajoute une carte sous forme d'animation.
+	 * @param card
+	 */
 	public void addtext(Animation<TextureRegion> card) {
 	    handsAnim.add(card);
 	}
-	
+	/**
+	 * Ajoute une carte sous forme d'animation à la main split du joueur.
+	 * @param card
+	 */
 	public void addtextSplit(Animation<TextureRegion> card) {
 	    handsAnimSplit.add(card);
 	}
 	
-	
+	/**
+	 * Ajoute une carte dans l'arraylist String.
+	 * @param card
+	 */
 	public void addstr(String card) {
 		handsStr.add(card);
 	}
-	
+	/**
+	 * Ajoute une carte dans la main split.
+	 * @param card
+	 */
 	public void addstrSplit(String card) {
 		mainstrsplit.add(card);
 	}
+	/**
+	 * Vérifie si le joueur a un blackjack ou non.
+	 * @param i
+	 */
 	public void hasBJ(int i) {
 	    if (i == 21) {
 			hasBJ = true;
 		}
 	}
+	/**
+	 * réinitialise les mains du joueur.
+	 */
 	
 	public void clearHands() {
 		handsAnim.clear();
 		handsStr.clear();
 		handsInt.clear();
 	}
-	
+	/**
+	 * Fait spliter le joueur.
+	 */
 	public void hassplit() {
 		hassplit = true;
 	}
