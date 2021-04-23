@@ -1,4 +1,4 @@
-package fr.mygdx.game;
+	package fr.mygdx.game;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Array;
-
+/**
+ * La classe Animation permet d'initialiser toute les animations pour les appeler facilement.
+ * @author arthu
+ *
+ */
 public class Animations {
 	
 	private TextureAtlas atlasAsCarreau , atlasDeuxCarreau , atlasTroisCarreau , atlasQuatreCarreau , atlasCinqCarreau , atlasSixCarreau ,
@@ -387,12 +391,20 @@ public class Animations {
 		*/
 	
 	}
-	
+
+	/**
+	 * Permet de retourner notre ArrayList contenant toutes les animations.
+	 * @return
+	 */
 	public ArrayList<Animation<TextureRegion>> getAnimationsPack() {
 		return animationPack;
 	}
 	
-	
+	/**
+	 * On créer ici une ArrayList qui va définir et stocker les animations de toutes les cartes 
+	 * pour pouvoir appeler les animations facilement pour la suite.
+	 * @param p1
+	 */
 	public void creaAnimations(ArrayList<Animation<TextureRegion>> p1) {
 		for (int i =0;i<p1.size();i++) {
 			animationPack.add(p1.get(i));
