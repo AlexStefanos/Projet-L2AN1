@@ -312,7 +312,11 @@ int mise = 0;
 				prefs.flush();
 			}
 	}
-
+	/**
+	 * Retourne le score du joueur.
+	 * @param i
+	 * @return
+	 */
 	 public int getScore(int i) {
 		 return player[i].total();
 	 }
