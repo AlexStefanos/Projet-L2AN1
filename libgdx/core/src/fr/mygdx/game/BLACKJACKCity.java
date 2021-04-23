@@ -29,7 +29,10 @@ public class BLACKJACKCity extends Game {
 	public final static int PLAY = 8;
 	public final static int RULES = 9;
 	public final static int HISTORY = 10;
-
+	
+	/**
+	 * Permet de creer la fenêtre.
+	 */
 	@Override
 	public void create () {
 		setScreen(new Splash(this));
@@ -41,6 +44,10 @@ public class BLACKJACKCity extends Game {
 	public void render () {
 		super.render();
 	}
+	/**
+	 * Cette fonction nous permet de pouvoir changer d'écran.
+	 * @param screen
+	 */
 	public void changeScreen(int screen){
 		switch(screen){
 			case AUDIO:
@@ -98,6 +105,10 @@ public class BLACKJACKCity extends Game {
 	public void pause() {
 		super.pause();
 	}
+	/**
+	 * Permet de charger les options de l'utilisateur en sauvegarde dès le démarrage du jeu.
+	 * @return
+	 */
 	public AppPreferences getPreferences(){
 		return this.preferences;
 	}

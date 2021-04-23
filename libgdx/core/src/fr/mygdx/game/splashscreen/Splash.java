@@ -39,6 +39,10 @@ public class Splash implements Screen{
 		
 		Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
 		Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).repeatYoyo(1, 1).setCallback(new TweenCallback() {
+			/**
+			 * Permet de faire apparaitre le menu à la fin de l'écran de chargement.
+			 * @param type, source
+			 */
 			@Override
 			public void onEvent(int type, BaseTween<?> source) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);

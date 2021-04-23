@@ -138,6 +138,10 @@ public class History implements Screen{
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
 		buttonBack.addListener(new ClickListener() {
+			/**
+			 * Détermine lorsque l'on clique sur un bouton.
+			 * @param event,x,y
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.PLAY);

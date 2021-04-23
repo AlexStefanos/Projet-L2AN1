@@ -256,19 +256,43 @@ int mise = 0;
 		 }
 		return somme;
 	}
+	 
+	/**
+	 * Retourne le nombre de partie effectué.
+	 * @param j
+	 * @return prefs.getInteger("Score"+j);
+	 */
 	public static int getoto(int j) {
 		
 		return prefs.getInteger("Score"+j);
 	}
+	
+	/**
+	 * Retourne le mode de jeu dans lequel le joueur etait.
+	 * @param j
+	 * @return prefs.getString("State"+j);
+	 */
 	public static String getotoS(int j) {
 		
 		return prefs.getString("State"+j);
 	}
+	
+	/**
+	 * Retourne si le joueur a gagné, perdu ou fait égalité.
+	 * @param j
+	 * @return prefs.getString("WL"+j);
+	 */
 	public static String getotoWL(int j) {
 		
 		return prefs.getString("WL"+j);
 	}
-
+	
+	/**
+	 * Enregistre la partie du joueur(son mode de jeu,victoire ou défaite,numero de la partie).
+	 * @param i
+	 * @param state
+	 * @param j
+	 */
 	public void getTotal(int i,String state, int j) {
 		 	
 		 	prefs.putInteger("Score"+j, player[i].total());

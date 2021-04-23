@@ -6,7 +6,10 @@ import aurelienribon.tweenengine.TweenAccessor;
 
 public class SpriteAccessor implements TweenAccessor<Sprite>{
 	public static final int ALPHA = 0;
-
+	/**
+	 * Retourne la valeur qui permet de faire le fondu/l'animation pour l'écran de chargement.
+	 * @return 1, -1
+	 */
 	@Override
 	public int getValues(Sprite target, int tweenType, float[] returnValues) {
 		switch(tweenType) {
@@ -18,7 +21,10 @@ public class SpriteAccessor implements TweenAccessor<Sprite>{
 			return -1;
 		}
 	}
-
+	/**
+	 * Defenie les valeurs qui permetde faire le fondu/l'animation pour l'écran de chargement.
+	 * @param target, tweenType, newValues
+	 */
 	@Override
 	public void setValues(Sprite target, int tweenType, float[] newValues) {
 		switch(tweenType) {
