@@ -38,9 +38,9 @@ public class SinglePlayer implements Screen {
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton, buttonDouble;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult,tableDouble;
-	private int launch = 0, click = 0, bet = 0, money = 5000, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0;;
+	private int launch = 0, click = 0, bet = 0, money = 5000, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0, hasDouble = 0;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
-					displayChips = true,afficheMise = false,clickMise = true;
+					displayChips = true,afficheMise = false,clickMise = true, hasStop = false;
 	private Label miseLabel, banque, result, labelScorePlayer;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 
@@ -240,8 +240,10 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				clickPlay = true;
 				displayChips = true;
+				tableGame.add(buttonDouble);
 				tableGame.removeActor(buttonPlay);
 				tableGame.add(buttonDraw);
+				tableDouble.add(buttonDouble);
 				tableStop.add(buttonStop);
 				Label.LabelStyle label1Style = new Label.LabelStyle();
 				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
@@ -275,7 +277,7 @@ public class SinglePlayer implements Screen {
 				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
 				label1Style.font = myFont;
 				label1Style.fontColor = Color.WHITE;
-
+                tableDouble.removeActor(buttonDouble);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 				labelScorePlayer.setSize(200f,300f);
 				labelScorePlayer.setPosition(1300,200);
@@ -343,7 +345,7 @@ public class SinglePlayer implements Screen {
 				displayChips = true;
 				resultCount = true;
 				p1.reinitialisation();
-				
+				tableDouble.add(buttonDouble);
 			    animTime1 = 0f;
 			    animTime2 = 0f;
 			    animTime3 = 0f;
@@ -482,11 +484,55 @@ public class SinglePlayer implements Screen {
 				}
 			}
 		});
-		buttonDouble = new TextButton("Double", textButtonStyle);
+		buttonDouble = new TextButton("Doubler", textButtonStyle);
 		buttonDouble.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				
+				if (money-bet>= 0){
+					money -= bet;
+					bet += bet;
+					clickStop = false;
+					tableDraw.removeActor(miseLabel);
+					miseLabel = new Label( "Mise = "+ bet + " Banque " + money, skinLabel );
+					tableDraw.setPosition(500f, 500f, 0);
+					tableDraw.add(miseLabel);
+					tableDraw.add(banque);
+					tableDraw.pad(10,0,0,10);
+					pressbutton.play();
+					music.dispose();
+					hasDouble++;
+					tableGame.removeActor(buttonDraw);
+					tableDouble.removeActor(buttonDouble);
+					hasStop = true;
+					tableGame.removeActor(buttonDraw);
+					tableStop.removeActor(buttonStop);
+					clickStop = true;
+					tablePlayAgain.add(buttonPlayAgain);
+					p1.getTotal(0, "SinglePlayer",AppPreferences.J);
+					parent.getPreferences().setJ(1);
+					System.out.println("J : " + AppPreferences.J);
+					labelScorePlayer.remove();
+					Label.LabelStyle label1Style = new Label.LabelStyle();
+					BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+					label1Style.font = myFont;
+					label1Style.fontColor = Color.WHITE;
+					tableRedJeton.setPosition(650f,100f, 0);
+					tableRedJeton.add(buttonRedJeton);
+
+					tableGreenJeton.setPosition(850f,100f, 0);
+					tableGreenJeton.add(buttonGreenJeton);
+					
+					tableBlueJeton.setPosition(1250f,100f, 0);
+					tableBlueJeton.add(buttonBlueJeton);
+					
+					tableYellowJeton.setPosition(1050f,100f, 0);
+					tableYellowJeton.add(buttonYellowJeton);
+					labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+p1.total(),label1Style);
+					labelScorePlayer.setSize(200f,300f);
+					labelScorePlayer.setPosition(1300,200);
+					stage.addActor(labelScorePlayer);
+					
+				}
 			}
 		});
 		buttonDouble.pad(15f, 40f, 15f, 40f);
@@ -526,7 +572,7 @@ public class SinglePlayer implements Screen {
 		tableYellowJeton.add(buttonYellowJeton);
 		
 		tableDouble.setPosition(500f,100f, 0);
-		tableDouble.add(buttonDouble);
+		
 		
 		stage.addActor(table);
 		stage.addActor(tableGame);
@@ -605,7 +651,21 @@ public class SinglePlayer implements Screen {
 			clickRestart--;
 		}
 
-		
+		if (hasDouble == 1) {
+			click++;
+			ADDCARTE = 1;
+			p1.tirerjoueur(0);	
+			labelScorePlayer.remove();
+			Label.LabelStyle label1Style = new Label.LabelStyle();
+			BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+			label1Style.font = myFont;
+			label1Style.fontColor = Color.WHITE;
+            labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
+			labelScorePlayer.setSize(200f,300f);
+			labelScorePlayer.setPosition(1300,200);
+			stage.addActor(labelScorePlayer);
+			hasDouble = 0;
+		}
 		if (clickPlay == true) {
 			animTime1 += Gdx.graphics.getDeltaTime();
 			animTime2 += Gdx.graphics.getDeltaTime();
@@ -729,6 +789,7 @@ public class SinglePlayer implements Screen {
 		if(p1.getScore(0) > 21) {
 			tableGame.removeActor(buttonDraw);
 		}
+		
 		if (click >= 1 && p1.getSize() > 0) {
 			animTime3 += Gdx.graphics.getDeltaTime();
 			batch.draw(p1.getMainPlayer(0).get(2).getKeyFrame(animTime3, false), 930f, 133f, 181f, 251f);

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.mygdx.game"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Blackjack"},{"l":"fr.mygdx.game.desktop"},{"l":"fr.mygdx.game.splashengine"},{"l":"fr.mygdx.game.splashscreen"}];updateSearchResults();
