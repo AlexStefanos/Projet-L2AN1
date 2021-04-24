@@ -34,7 +34,7 @@ public class SinglePlayer implements Screen {
 
 	private Stage stage, stageResult;
 	private SpriteBatch batch;
-	private Texture BlackjackTable, chipBlue, chipRed, chipGreen, chipYellow, chipLightBlue, chipBeige, chipWhite, buttonGreenFinal;
+	private Texture BlackjackTable, buttonGreenFinal;
 	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
 	private BitmapFont black, white;
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
@@ -81,13 +81,16 @@ public class SinglePlayer implements Screen {
 	
 	static int pushButton = 0;
 	
+	/**
+	 * Lorsqu'une classe est à l'écran, show() est la première méthode à être appelé. Par convention, on initialise les variables de la classe dans cette méthode.
+	 */
 	@Override
 	public void show() {
 		//totalAnimTime = 0.1f;
-		
 		batch = new SpriteBatch();
 		
 		BlackjackTable = new Texture("BlackjackTable SinglePlayer.png");
+		buttonGreenFinal = new Texture("AnimGreen7.png");
 		
 		atlasAura = new TextureAtlas("AuraJetons/AnimAuraJetons.pack");
 		atlasAnimRedJ = new TextureAtlas("ANIMREDJ/AnimRedJ.pack");
@@ -107,6 +110,7 @@ public class SinglePlayer implements Screen {
 		stage = new Stage();
 		stageResult = new Stage();
 		skin = new Skin(atlas);
+		
 		Gdx.input.setInputProcessor(stage);
 		
 		totalAnimTime = 0.2f;
@@ -122,8 +126,7 @@ public class SinglePlayer implements Screen {
 		animTimeAura2 = 0f;
 		animTimeAura3 = 0f;
 		animTimeAura4 = 0f;
-
-		
+	
 		animationFrames = atlasAnimRedJ.getRegions();
 		animRedJ = new Animation<TextureRegion> (totalAnimTimeJetons,animationFrames);
 		animRedJ.setPlayMode(Animation.PlayMode.NORMAL);
@@ -171,15 +174,6 @@ public class SinglePlayer implements Screen {
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		result = new Label("", skinLabel);
 		
-		chipBlue = new Texture("LargeChips/chip_blue.png");
-		chipLightBlue = new Texture("LargeChips/chip_lightblue.png");
-		chipRed = new Texture("LargeChips/chip_red.png");
-		chipWhite = new Texture("LargeChips/chip_white.png");
-		chipGreen = new Texture("LargeChips/chip_green.png");
-		chipBeige = new Texture("LargeChips/chip_biege.png");
-		chipYellow = new Texture("LargeChips/chip_yellow.png");
-		buttonGreenFinal = new Texture("AnimGreen7.png");
-		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
 		textButtonStyle.down = skin.getDrawable("button.down");
@@ -222,6 +216,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
 		buttonQuit.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
@@ -233,6 +230,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonPlay = new TextButton("Jouer", textButtonStyle);
 		buttonPlay.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
@@ -259,6 +259,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonDraw = new TextButton("Tirer", textButtonStyle);
 		buttonDraw.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
@@ -281,6 +284,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonStop = new TextButton("Stop", textButtonStyle);
 		buttonStop.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
@@ -318,6 +324,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonPlayAgain = new TextButton("Rejouer", textButtonStyle);
 		buttonPlayAgain.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				pressbutton.play();
@@ -369,6 +378,9 @@ public class SinglePlayer implements Screen {
 		});
 		buttonRedJeton = new TextButton("500", textButtonStyle2);
 		buttonRedJeton.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 
@@ -394,6 +406,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonYellowJeton = new TextButton("100", textButtonStyle5);
 		buttonYellowJeton.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (money-100>=0) {
@@ -417,6 +432,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonGreenJeton = new TextButton("200", textButtonStyle3);
 		buttonGreenJeton.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (money - 200 >= 0) {
@@ -440,6 +458,9 @@ public class SinglePlayer implements Screen {
 		
 		buttonBlueJeton = new TextButton("50", textButtonStyle4);
 		buttonBlueJeton.addListener(new ClickListener() {
+			/**
+			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				if (money-50>= 0) {
@@ -507,6 +528,9 @@ public class SinglePlayer implements Screen {
 		
 	}
 
+	/**
+	 * Gestion de tous les affichages de la classe.
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
@@ -688,14 +712,6 @@ public class SinglePlayer implements Screen {
 			}
 		}
 		
-
-		batch.draw(chipGreen, 737f, 1005f, 65f, 29f);
-		batch.draw(chipRed, 807f, 1005f, 65f, 29f);
-		batch.draw(chipBeige, 880f, 1005f, 65f, 29f);
-		batch.draw(chipBlue, 953f, 1005f, 65f, 29f);
-		batch.draw(chipLightBlue, 1026f, 1005f, 65f, 29f);
-		batch.draw(chipYellow, 1103f, 1005f, 65f, 29f);
-		batch.draw(chipWhite, 1175f, 1005f, 65f, 29f);
 		if(p1.getScore(0) > 21) {
 			tableGame.removeActor(buttonDraw);
 		}
@@ -1801,30 +1817,49 @@ public class SinglePlayer implements Screen {
 		stageResult.draw();
 	}
 	
+	/**
+	 * Permet de récupérer le Total du Score
+	 * @return
+	 */
 	public static int getoto() {
 		return score;
 	}
 
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiché à l'écran
+	 */
 	@Override
 	public void resize(int width, int height) {
 
 	}
 
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
 
 	}
 
+	/**
+	 * Gestion de la reprise des pauses
+	 */
 	@Override
 	public void resume() {
 
 	}
 
+	/**
+	 * Gestion des Textures, bouttons, etc. non-affiché à l'écran
+	 */
 	@Override
 	public void hide() {
 
 	}
 
+	/**
+	 * Permet de fermer proprement la variable donnée (méthodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose() {
 		
