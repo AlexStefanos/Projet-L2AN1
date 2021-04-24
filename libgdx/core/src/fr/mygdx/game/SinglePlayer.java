@@ -35,9 +35,9 @@ public class SinglePlayer implements Screen {
 	private Stage stage, stageResult;
 	private SpriteBatch batch;
 	private Texture BlackjackTable, buttonGreenFinal;
-	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton;
+	private TextButton buttonQuit, buttonDraw, buttonPlay, buttonBet, buttonStop, buttonPlayAgain, buttonRedJeton, buttonGreenJeton, buttonBlueJeton, buttonYellowJeton, buttonDouble;
 	private BitmapFont black, white;
-	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult;
+	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult,tableDouble;
 	private int launch = 0, click = 0, bet = 0, money = 5000, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0;;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
 					displayChips = true,afficheMise = false,clickMise = true;
@@ -167,6 +167,8 @@ public class SinglePlayer implements Screen {
 		tableDraw.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		tableResult = new Table(skin);
 		tableResult.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		tableDouble = new Table(skin);
+		tableDouble.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
@@ -480,6 +482,14 @@ public class SinglePlayer implements Screen {
 				}
 			}
 		});
+		buttonDouble = new TextButton("Double", textButtonStyle);
+		buttonDouble.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				
+			}
+		});
+		buttonDouble.pad(15f, 40f, 15f, 40f);
 		miseLabel = new Label( "Mise = "+ bet + "Banque = " + money , skinLabel );
 		
 		
@@ -515,6 +525,9 @@ public class SinglePlayer implements Screen {
 		tableYellowJeton.setPosition(1050f,100f, 0);
 		tableYellowJeton.add(buttonYellowJeton);
 		
+		tableDouble.setPosition(500f,100f, 0);
+		tableDouble.add(buttonDouble);
+		
 		stage.addActor(table);
 		stage.addActor(tableGame);
 		stage.addActor(tableStop);
@@ -525,6 +538,7 @@ public class SinglePlayer implements Screen {
 		stage.addActor(tableYellowJeton);
 		stage.addActor(tableDraw);
 		stage.addActor(tableResult);
+		stage.addActor(tableDouble);
 		
 	}
 
