@@ -152,7 +152,7 @@ public class History implements Screen{
 		p1.initialisation();
 		buttonBack.pad(15f, 40f, 15f, 40f);
 		
-		table.setPosition(1700f, 150f, 0);
+		table.setPosition(1500f, 100f, 0);
 		table.add(buttonBack);
 		
 		stage.addActor(table);
