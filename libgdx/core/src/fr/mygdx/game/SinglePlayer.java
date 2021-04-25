@@ -60,10 +60,10 @@ public class SinglePlayer implements Screen {
 			, animTimeCroupier5 = 0f , animTimeCroupier6 = 0f , animTimeCroupier7 = 0f;
 	private Array<AtlasRegion> animationFrames , animationFramesAura;
 	public static Animation <TextureRegion> animRedJ, animGreenJ, animBlueJ, animYellowJ , animCartes,animAura;
-	private Vector2 screenposRed = new Vector2(650f,100f);
-	private Vector2 screenposGreen = new Vector2(850f,100f);
-	private Vector2 screenposBlue = new Vector2(1250f,100f);
-	private Vector2 screenposYellow = new Vector2(1050f,100f);
+	private Vector2 screenposRed = new Vector2(600f,50f);
+	private Vector2 screenposGreen = new Vector2(800f,50f);
+	private Vector2 screenposBlue = new Vector2(1200f,50f);
+	private Vector2 screenposYellow = new Vector2(1000f,50f);
 	private Vector2 screenPos = new Vector2(500f,500f);
 	
 	//private float totalAnimTime;
@@ -1800,15 +1800,15 @@ public class SinglePlayer implements Screen {
 			
 			if (buttonRedJeton.isPressed() && animRedJ.isAnimationFinished(animTimeJetons1)) {
 				animTimeJetons1 = 0f;
-				screenposRed.x = 650f;
-				screenposRed.y = 380f;
+				screenposRed.x = 600f;
+				screenposRed.y = 50f;
 			}
 			
-			if (red >= 1 && screenposRed.x <= 660) {
+			if (red >= 1 && screenposRed.x <= 890) {
 				screenposRed.x += 10;
 			}
 			
-			if (red >= 1 && screenposRed.y <= 660) {
+			if (red >= 1 && screenposRed.y <= 150) {
 				screenposRed.y += 10;
 			}
 			
@@ -1820,14 +1820,14 @@ public class SinglePlayer implements Screen {
 			}
 			if (buttonGreenJeton.isPressed() && animGreenJ.isAnimationFinished(animTimeJetons2)) {
 					animTimeJetons2 = 0f;
-					screenposGreen.x = 850f;
-					screenposGreen.y = 380f;
+					screenposGreen.x = 800f;
+					screenposGreen.y = 50f;
 			}
 
-			if (green >= 1 && screenposGreen.x <= 660) {
+			if (green >= 1 && screenposGreen.x <= 890) {
 				screenposGreen.x += 10;
 			}
-			if (green >= 1 && screenposGreen.y <= 660) {
+			if (green >= 1 && screenposGreen.y <= 150) {
 				screenposGreen.y += 10;
 			}
 			
@@ -1840,16 +1840,16 @@ public class SinglePlayer implements Screen {
 			
 			if(buttonBlueJeton.isPressed() && animBlueJ.isAnimationFinished(animTimeJetons3)) {
 				animTimeJetons3 = 0f;
-				screenposBlue.x = 1250f;
-				screenposBlue.y = 380f;
+				screenposBlue.x = 1200f;
+				screenposBlue.y = 50f;
 			}
 
 				
-			if (blue >= 1 && screenposBlue.x <= 660) {
-				screenposBlue.x += 10;
+			if (blue >= 1 && screenposBlue.x >= 910) {
+				screenposBlue.x -= 10;
 			}
 			
-			if (blue >= 1 && screenposBlue.y <= 660) {
+			if (blue >= 1 && screenposBlue.y <= 150) {
 				screenposBlue.y += 10;
 			}
 			
@@ -1862,15 +1862,15 @@ public class SinglePlayer implements Screen {
 			
 			if (buttonYellowJeton.isPressed() && animYellowJ.isAnimationFinished(animTimeJetons4)) {
 				animTimeJetons4 = 0f;
-				screenposYellow.x = 1050f;
-				screenposYellow.y = 380f;
+				screenposYellow.x = 1000f;
+				screenposYellow.y = 50f;
 			}
 		
-			if (yellow >= 1 && screenposYellow.x <= 660) {
-				screenposYellow.x += 10;
+			if (yellow >= 1 && screenposYellow.x >= 910) {
+				screenposYellow.x -= 10;
 			}
 			
-			if (yellow >= 1 && screenposYellow.y <= 660) {
+			if (yellow >= 1 && screenposYellow.y <= 150) {
 				screenposYellow.y += 10;
 			}		
 			
@@ -1882,6 +1882,7 @@ public class SinglePlayer implements Screen {
 				screenPos.y -= 5;
 			}
 		}
+
 
 		
 		batch.end();	
