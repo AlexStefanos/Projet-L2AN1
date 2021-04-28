@@ -351,6 +351,15 @@ int mise = 0;
 	 * @param j
 	 */
 	public void getTotal(int i,String state, int j) {
+		
+		
+			if(AppPreferences.J >=20) {
+				for(int o = 0; o <= 10 ; o++) {
+					prefs.remove("Score"+o);
+					prefs.remove("State"+o);
+					prefs.remove("WL"+o);
+				}
+			}
 		 	
 		 	prefs.putInteger("Score"+j, player[i].total());
 			prefs.flush();
