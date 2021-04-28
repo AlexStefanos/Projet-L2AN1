@@ -6,7 +6,7 @@ import fr.mygdx.game.splashscreen.MainMenu;
 import fr.mygdx.game.splashscreen.Splash;
 
 public class BLACKJACKCity extends Game {
-	public static final String TITLE = "BLACKJACK City", VERSION="0.0.0.0";
+	public static final String TITLE = "BLACKJACK City";
 	private AppPreferences preferences;
 	private Options option;
 	private MainMenu mainmenu;
@@ -31,13 +31,12 @@ public class BLACKJACKCity extends Game {
 	public final static int HISTORY = 10;
 	
 	/**
-	 * Permet de creer la fenêtre.
+	 * Permet de creer la fenetre.
 	 */
 	@Override
 	public void create () {
 		setScreen(new Splash(this));
 		preferences = new AppPreferences();
-		
 	}
 
 	@Override
@@ -45,7 +44,7 @@ public class BLACKJACKCity extends Game {
 		super.render();
 	}
 	/**
-	 * Cette fonction nous permet de pouvoir changer d'écran.
+	 * Cette fonction nous permet de pouvoir changer d'ecran.
 	 * @param screen
 	 */
 	public void changeScreen(int screen){
@@ -106,7 +105,7 @@ public class BLACKJACKCity extends Game {
 		super.pause();
 	}
 	/**
-	 * Permet de charger les options de l'utilisateur en sauvegarde dès le démarrage du jeu.
+	 * Permet de charger les options de l'utilisateur en sauvegarde dès le demarrage du jeu.
 	 * @return
 	 */
 	public AppPreferences getPreferences(){

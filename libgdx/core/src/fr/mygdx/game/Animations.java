@@ -2,10 +2,7 @@
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -51,7 +48,6 @@ public class Animations {
 	
 	private ArrayList<Animation<TextureRegion>> animationPack;
 	
-	//private float animTimeCarte = 0f;
 	private float totalAnimTime = 0.1f;
 	
 	public Animations(ArrayList<Animation<TextureRegion>> animationPack) {
@@ -333,63 +329,7 @@ public class Animations {
 
 		animationFramesRoiPique = atlasRoiPique.getRegions();
 		animRoiPique = new Animation<TextureRegion> (totalAnimTime , animationFramesRoiPique);
-		animRoiPique.setPlayMode(Animation.PlayMode.NORMAL);
-		
-		/*
-		animationPack.add(0, animAsCoeur);
-		animationPack.add(1, animDeuxCoeur);
-		animationPack.add(2, animTroisCoeur);
-		animationPack.add(3, animQuatreCoeur);
-		animationPack.add(4, animCinqCoeur);
-		animationPack.add(5, animSixCoeur);
-		animationPack.add(6, animSeptCoeur);
-		animationPack.add(7, animHuitCoeur);
-		animationPack.add(8, animNeufCoeur);
-		animationPack.add(9, animDixCoeur);
-		animationPack.add(10, animValetCoeur);
-		animationPack.add(11, animDameCoeur);
-		animationPack.add(12, animRoiCoeur);
-		animationPack.add(13, animAsTrefle);
-		animationPack.add(14, animDeuxTrefle);
-		animationPack.add(15, animTroisTrefle);
-		animationPack.add(16, animQuatreTrefle);
-		animationPack.add(17, animCinqTrefle);
-		animationPack.add(18, animSixTrefle);
-		animationPack.add(19, animSeptTrefle);
-		animationPack.add(20, animHuitTrefle);
-		animationPack.add(21, animNeufTrefle);
-		animationPack.add(22, animDixTrefle);
-		animationPack.add(23, animValetTrefle);
-		animationPack.add(24, animDameTrefle);
-		animationPack.add(25, animRoiTrefle);
-		animationPack.add(26, animAsCarreau);
-		animationPack.add(27, animDeuxCarreau);
-		animationPack.add(28, animTroisCarreau);
-		animationPack.add(29, animQuatreCarreau);
-		animationPack.add(30, animCinqCarreau);
-		animationPack.add(31, animSixCarreau);
-		animationPack.add(32, animSeptCarreau);
-		animationPack.add(33, animHuitCarreau);
-		animationPack.add(34, animNeufCarreau);
-		animationPack.add(35, animDixCarreau);
-		animationPack.add(36, animValetCarreau);
-		animationPack.add(37, animDameCarreau);
-		animationPack.add(38, animRoiCarreau);
-		animationPack.add(39, animAsPique);
-		animationPack.add(40, animDeuxPique);
-		animationPack.add(41, animTroisPique);
-		animationPack.add(42, animQuatrePique);
-		animationPack.add(43, animCinqPique);
-		animationPack.add(44, animSixPique);
-		animationPack.add(45, animSeptPique);
-		animationPack.add(46, animHuitPique);
-		animationPack.add(47, animNeufPique);
-		animationPack.add(48, animDixPique);
-		animationPack.add(49, animValetPique);
-		animationPack.add(50, animDamePique);
-		animationPack.add(51, animRoiPique);
-		*/
-	
+		animRoiPique.setPlayMode(Animation.PlayMode.NORMAL);	
 	}
 
 	/**
@@ -401,7 +341,7 @@ public class Animations {
 	}
 	
 	/**
-	 * On créer ici une ArrayList qui va définir et stocker les animations de toutes les cartes 
+	 * On creer ici une ArrayList qui va definir et stocker les animations de toutes les cartes 
 	 * pour pouvoir appeler les animations facilement pour la suite.
 	 * @param p1
 	 */

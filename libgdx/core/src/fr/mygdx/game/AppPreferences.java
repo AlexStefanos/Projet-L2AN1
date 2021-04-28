@@ -3,7 +3,6 @@ package fr.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 
 public class AppPreferences {
 	private Music music;
@@ -18,9 +17,8 @@ public class AppPreferences {
 	public static float SVOLUME = getSoundVolume();
 	public static int J = getJ();
 	
-	
 	/**
-	 * Cette fontion retourne le fichier où va être sauvegardé les options de l'utilisateur.
+	 * Cette fontion retourne le fichier ou va etre sauvegarde les options de l'utilisateur.
 	 * @return Gdx.app.getPreferences(PREFS_NAME); 
 	 */
 	protected static Preferences getPrefs() {
@@ -28,7 +26,7 @@ public class AppPreferences {
 	}
 	
 	/**
-	 * Permet de savoir si  le volume des effet est muté.
+	 * Permet de savoir si  le volume des effet est mute.
 	 * @return getPrefs().getBoolean(PREF_SOUND_ENABLED, true);
 	 */
 	public boolean isSoundEffectsEnabled() {
@@ -52,7 +50,7 @@ public class AppPreferences {
 		getPrefs().flush();
 	}
 	/**
-	 * Retourne un booleen pour savoir si la musique est muté ou non.
+	 * Retourne un booleen pour savoir si la musique est mute ou non.
 	 * @return getPrefs().getBoolean(PREF_MUSIC_ENABLED, true);
 	 */
 	public boolean isMusicEnabled() {

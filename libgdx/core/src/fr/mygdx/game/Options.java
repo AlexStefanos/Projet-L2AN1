@@ -1,10 +1,8 @@
 package fr.mygdx.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,8 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-import fr.mygdx.game.splashscreen.MainMenu;
-
 public class Options implements Screen {
 
 	private Stage stage;
@@ -27,7 +23,7 @@ public class Options implements Screen {
 	private TextButton buttonBack, buttonFullscreenOn, buttonFullscreenOff, buttonAudio, buttonResolution0, buttonResolution1, buttonResolution2, buttonResolution3, buttonResolution4, buttonResolution5;
 	private Texture Background;
 	private Skin skin;
-	private BitmapFont black, white;
+	private BitmapFont black;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music music;
@@ -57,7 +53,6 @@ public class Options implements Screen {
 		tableResolution = new Table(skin);
 		tableResolution.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
-		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 	
@@ -214,9 +209,6 @@ public class Options implements Screen {
 		tableAudio.add(buttonAudio);
 		tableAudio.getCell(buttonAudio).spaceBottom(40f);
 		
-		/*tableResolution.setPosition(1500f*MULTIWEIGHT0, 600f, 0);
-		tableResolution.add(buttonResolution0);*/
-		
 		stage.addActor(table);
 		stage.addActor(tableFullscreen);
 		stage.addActor(tableAudio);
@@ -236,31 +228,26 @@ public class Options implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 

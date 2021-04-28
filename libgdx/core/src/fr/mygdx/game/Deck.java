@@ -1,8 +1,7 @@
 package fr.mygdx.game;
-import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -19,7 +18,7 @@ public class Deck extends Animations{
 		}
 		
 		/**
-		 * Permet la génération des paquets de cartes pour jouer au blackjack, ici 6 paquets car le blackjack se joue avec 6 paquets.
+		 * Permet la generation des paquets de cartes pour jouer au blackjack, ici 6 paquets car le blackjack se joue avec 6 paquets.
 		 */
 
 		public void generateur() {
@@ -33,7 +32,7 @@ public class Deck extends Animations{
 			return deckInt.size();
 		}
 	    /**
-	     * Permet de convertir les têtes en 10.
+	     * Permet de convertir les tetes en 10.
 	     */
 		public void conversion() {
 			for (int i = 0; i<312;i++) {
@@ -227,7 +226,7 @@ public class Deck extends Animations{
 		}
 }
 		/**
-		 * Ajoute les valeurs entières selon les animations dans l'arraylist.
+		 * Ajoute les valeurs entieres selon les animations dans l'arraylist.
 		 */
 		public void toNb() {
 			for (int i =0;i<312;i++) {
@@ -440,7 +439,7 @@ public class Deck extends Animations{
 		
 		
 		/**
-		 * Mélange le paquet.
+		 * Melange le paquet.
 		 */
 		public void shuffle() {
 			Collections.shuffle(deckAnim);

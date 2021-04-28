@@ -2,12 +2,10 @@ package fr.mygdx.game;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,8 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
-import fr.mygdx.game.splashscreen.MainMenu;
-
+@SuppressWarnings("unused")
 public class SinglePlayer implements Screen {
 
 	private Stage stage, stageResult;
@@ -82,7 +79,7 @@ public class SinglePlayer implements Screen {
 	static int pushButton = 0;
 	
 	/**
-	 * Lorsqu'une classe est à l'écran, show() est la première méthode à être appelé. Par convention, on initialise les variables de la classe dans cette méthode.
+	 * Lorsqu'une classe est a l'ecran, show() est la premiere methode a etre appele. Par convention, on initialise les variables de la classe dans cette methode.
 	 */
 	@Override
 	public void show() {
@@ -219,7 +216,7 @@ public class SinglePlayer implements Screen {
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
 		buttonQuit.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -230,10 +227,10 @@ public class SinglePlayer implements Screen {
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
 		
-		buttonPlay = new TextButton("Jouer", textButtonStyle);
+		buttonPlay = new TextButton("Play", textButtonStyle);
 		buttonPlay.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -255,16 +252,16 @@ public class SinglePlayer implements Screen {
 				tableBlueJeton.removeActor(buttonBlueJeton);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 				labelScorePlayer.setSize(200f,200f);
-				labelScorePlayer.setPosition(1300,200);
+				labelScorePlayer.setPosition(200,200);
 				stage.addActor(labelScorePlayer);
 			}
 		});
 		buttonPlay.pad(15f, 40f, 15f, 40f);
 		
-		buttonDraw = new TextButton("Tirer", textButtonStyle);
+		buttonDraw = new TextButton("Hit", textButtonStyle);
 		buttonDraw.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -280,7 +277,7 @@ public class SinglePlayer implements Screen {
                 tableDouble.removeActor(buttonDouble);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 				labelScorePlayer.setSize(200f,300f);
-				labelScorePlayer.setPosition(1300,200);
+				labelScorePlayer.setPosition(200,200);
 				stage.addActor(labelScorePlayer);
 			}
 		});
@@ -289,7 +286,7 @@ public class SinglePlayer implements Screen {
 		buttonStop = new TextButton("Stop", textButtonStyle);
 		buttonStop.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -300,7 +297,6 @@ public class SinglePlayer implements Screen {
 				tablePlayAgain.add(buttonPlayAgain);
 				p1.getTotal(0, "SinglePlayer",AppPreferences.J);
 				parent.getPreferences().setJ(1);
-				System.out.println("J : " + AppPreferences.J);
 				labelScorePlayer.remove();
 				Label.LabelStyle label1Style = new Label.LabelStyle();
 				BitmapFont myFont = new BitmapFont(Gdx.files.internal("font/white.fnt"));
@@ -319,17 +315,17 @@ public class SinglePlayer implements Screen {
 				tableYellowJeton.add(buttonYellowJeton);
 				labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+p1.total(),label1Style);
 				labelScorePlayer.setSize(200f,300f);
-				labelScorePlayer.setPosition(1300,200);
+				labelScorePlayer.setPosition(200,200);
 				stage.addActor(labelScorePlayer);
 				
 			}
 		});
 		buttonStop.pad(15f, 40f, 15f, 40f);
 		
-		buttonPlayAgain = new TextButton("Rejouer", textButtonStyle);
+		buttonPlayAgain = new TextButton("Replay", textButtonStyle);
 		buttonPlayAgain.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -383,7 +379,7 @@ public class SinglePlayer implements Screen {
 		buttonRedJeton = new TextButton("500", textButtonStyle2);
 		buttonRedJeton.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -411,7 +407,7 @@ public class SinglePlayer implements Screen {
 		buttonYellowJeton = new TextButton("100", textButtonStyle5);
 		buttonYellowJeton.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -437,7 +433,7 @@ public class SinglePlayer implements Screen {
 		buttonGreenJeton = new TextButton("200", textButtonStyle3);
 		buttonGreenJeton.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -463,7 +459,7 @@ public class SinglePlayer implements Screen {
 		buttonBlueJeton = new TextButton("50", textButtonStyle4);
 		buttonBlueJeton.addListener(new ClickListener() {
 			/**
-			 * Permet la récupération des cliques de souris sur une portion de l'écran étant majoritairement : un bouton.
+			 * Permet la recuperation des cliques de souris sur une portion de l'ecran etant majoritairement : un bouton.
 			 */
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -484,7 +480,7 @@ public class SinglePlayer implements Screen {
 				}
 			}
 		});
-		buttonDouble = new TextButton("Doubler", textButtonStyle);
+		buttonDouble = new TextButton("Double", textButtonStyle);
 		buttonDouble.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -529,15 +525,14 @@ public class SinglePlayer implements Screen {
 					tableYellowJeton.add(buttonYellowJeton);
 					labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+p1.total(),label1Style);
 					labelScorePlayer.setSize(200f,300f);
-					labelScorePlayer.setPosition(1300,200);
+					labelScorePlayer.setPosition(200,200);
 					stage.addActor(labelScorePlayer);
 					
 				}
 			}
 		});
 		buttonDouble.pad(15f, 40f, 15f, 40f);
-		miseLabel = new Label( "Mise = "+ bet + "Banque = " + money , skinLabel );
-		
+		miseLabel = new Label( "Mise = "+ bet + " Banque = " + money , skinLabel );
 		
 		tableDraw.setPosition(500f, 500f, 0);
 		tableDraw.add(miseLabel);
@@ -573,7 +568,6 @@ public class SinglePlayer implements Screen {
 		
 		tableDouble.setPosition(500f,100f, 0);
 		
-		
 		stage.addActor(table);
 		stage.addActor(tableGame);
 		stage.addActor(tableStop);
@@ -585,7 +579,6 @@ public class SinglePlayer implements Screen {
 		stage.addActor(tableDraw);
 		stage.addActor(tableResult);
 		stage.addActor(tableDouble);
-		
 	}
 
 	/**
@@ -646,7 +639,7 @@ public class SinglePlayer implements Screen {
 
 			labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 			labelScorePlayer.setSize(200f,300f);
-			labelScorePlayer.setPosition(1300,200);
+			labelScorePlayer.setPosition(200f,200f);
 			stage.addActor(labelScorePlayer);
 			clickRestart--;
 		}
@@ -662,7 +655,7 @@ public class SinglePlayer implements Screen {
 			label1Style.fontColor = Color.WHITE;
             labelScorePlayer = new Label("Score = "+p1.getScore(0)+"       Score du croupier = "+((p1.getMain().get(0) == 1)? "1 / 11" : p1.getMain().get(0)),label1Style);
 			labelScorePlayer.setSize(200f,300f);
-			labelScorePlayer.setPosition(1300,200);
+			labelScorePlayer.setPosition(200f,200f);
 			stage.addActor(labelScorePlayer);
 			hasDouble = 0;
 		}
@@ -1757,7 +1750,7 @@ public class SinglePlayer implements Screen {
 			resultStyle.font = myFont;
 			resultStyle.fontColor = Color.WHITE;
 
-			result = new Label("Vous avez Gagné !", resultStyle);
+			result = new Label("Vous avez Gagne !", resultStyle);
 			result.setSize(500f, 440f);
 			result.setPosition(350,500);
 			stageResult.addActor(result);
@@ -1768,7 +1761,7 @@ public class SinglePlayer implements Screen {
 			resultStyle.font = myFont;
 			resultStyle.fontColor = Color.WHITE;
 
-			result = new Label("C'est une égalité !", resultStyle);
+			result = new Label("C'est une egalite !", resultStyle);
 			result.setSize(500f, 440f);
 			result.setPosition(350,500);
 			stageResult.addActor(result);			
@@ -1894,7 +1887,7 @@ public class SinglePlayer implements Screen {
 	}
 	
 	/**
-	 * Permet de récupérer le Total du Score
+	 * Permet de recuperer le Total du Score
 	 * @return
 	 */
 	public static int getoto() {
@@ -1902,7 +1895,7 @@ public class SinglePlayer implements Screen {
 	}
 
 	/**
-	 * Permet de redimensionner des Textures, bouttons, etc. affiché à l'écran
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
 	 */
 	@Override
 	public void resize(int width, int height) {
@@ -1926,7 +1919,7 @@ public class SinglePlayer implements Screen {
 	}
 
 	/**
-	 * Gestion des Textures, bouttons, etc. non-affiché à l'écran
+	 * Gestion des Textures, bouttons, etc. non-affiche a l'ecran
 	 */
 	@Override
 	public void hide() {
@@ -1934,7 +1927,7 @@ public class SinglePlayer implements Screen {
 	}
 
 	/**
-	 * Permet de fermer proprement la variable donnée (méthodes, stage, etc.) 
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
 	 */
 	@Override
 	public void dispose() {

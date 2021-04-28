@@ -1,10 +1,8 @@
 package fr.mygdx.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,14 +10,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
-import fr.mygdx.game.splashscreen.MainMenu;
 
 public class Play implements Screen {
 
@@ -28,7 +23,7 @@ public class Play implements Screen {
 	private TextButton buttonBack, buttonSingle, buttonDuo, buttonTrio, buttonQuadra, buttonHistory;
 	private Texture Background;
 	private Skin skin;
-	private BitmapFont black, white;
+	private BitmapFont black;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music pressbutton;
@@ -52,7 +47,6 @@ public class Play implements Screen {
 		tablePlay = new Table(skin);
 		tablePlay.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
-		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 
@@ -122,6 +116,8 @@ public class Play implements Screen {
 				music.dispose();
 			}
 		});
+		buttonQuadra.pad(15f, 20f, 15f, 20f);
+		
 		buttonHistory = new TextButton("History", textButtonStyle);
 		buttonHistory.addListener(new ClickListener() {
 			@Override
@@ -174,31 +170,26 @@ public class Play implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 }

@@ -3,13 +3,11 @@ package fr.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -21,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -39,21 +36,17 @@ public class Audio implements Screen {
 	private TextureAtlas atlas;
 	private TextButton buttonBack;
 	private Texture Background;
-	private BitmapFont black, white;
+	private BitmapFont black;
 	private SpriteBatch batch;
 	private Music pressbutton;
 	
 	public Audio(BLACKJACKCity blackjackcity){
 		parent = blackjackcity;
 		stage = new Stage(new ScreenViewport());
-		
 	}
-	
 	
 	@Override
 	public void show() {
-		
-
 		stage.clear();
 		Gdx.input.setInputProcessor(stage);
 		atlas = new TextureAtlas("ui/button.pack");
@@ -63,7 +56,6 @@ public class Audio implements Screen {
 		batch = new SpriteBatch();
 		Background = new Texture("Background.png");
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
-		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
@@ -72,8 +64,7 @@ public class Audio implements Screen {
 		textButtonStyle.pressedOffsetX = 1;
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
-		
-		
+			
 		Table table = new Table();
 		table.setFillParent(true);
 		
@@ -85,10 +76,7 @@ public class Audio implements Screen {
 		music.play();
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 	
-
-	
 		Skin skin = new Skin(Gdx.files.internal("skin/golden-ui-skin.json"));
-
 		
 		final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
 		parent.getPreferences();
@@ -163,7 +151,6 @@ public class Audio implements Screen {
 				table.add(soundEffectsCheckbox);
 				table.row().pad(10,0,0,10);
 				table.add(buttonBack);
-
 	}
 
 	@Override
@@ -177,37 +164,30 @@ public class Audio implements Screen {
 		batch.end();
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
-
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
-
 }

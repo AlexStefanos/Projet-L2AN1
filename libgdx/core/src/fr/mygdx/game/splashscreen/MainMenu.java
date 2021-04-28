@@ -1,11 +1,8 @@
 package fr.mygdx.game.splashscreen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,8 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -22,17 +17,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import fr.mygdx.game.BLACKJACKCity;
-import fr.mygdx.game.Options;
-import fr.mygdx.game.Play;
-import fr.mygdx.game.Rules;
 import fr.mygdx.game.AppPreferences;
-import fr.mygdx.game.Audio;
 
 public class MainMenu implements Screen {
 
 	private Stage stage;
 	private Table table;
-	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions, buttonMenu;
+	private TextButton buttonPlay, buttonExit, buttonRules, buttonOptions;
 	private Texture Background;
 	private Skin skin;
 	private BitmapFont black, white;
@@ -114,19 +105,8 @@ public class MainMenu implements Screen {
             }
         });
 		buttonExit.pad(15f, 41f, 15f, 41f);
-		buttonMenu = new TextButton("BLACKJACK City", textButtonStyle);
-		buttonMenu.addListener(new ClickListener() {
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				pressbutton.play();
-			}
-		});
-		buttonMenu.pad(15f,41f, 15f, 41f);
 		
 		table.setPosition(1500f, 500f, 0);
-		table.add(buttonMenu);
-		table.getCell(buttonMenu).spaceBottom(20f);
-		table.row();
 		table.add(buttonPlay);
 		table.getCell(buttonPlay).spaceBottom(20f);
 		table.row();
@@ -139,8 +119,7 @@ public class MainMenu implements Screen {
 		table.add(buttonExit);
 		table.getCell(buttonExit).spaceBottom(20f);
 		table.row();
-		stage.addActor(table);
-				
+		stage.addActor(table);	
 	}
 
 	@Override
@@ -158,25 +137,25 @@ public class MainMenu implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
+
 
 	}
 

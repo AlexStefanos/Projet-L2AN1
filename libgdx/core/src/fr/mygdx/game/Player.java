@@ -1,5 +1,5 @@
 package fr.mygdx.game;
-import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -53,7 +53,7 @@ public class Player {
     	return bank;
     }
     /**
-     *  Fait perdre le joueur si il dépasse 21.
+     *  Fait perdre le joueur si il depasse 21.
      */
 	public void bust() {
 		bank -= bet;
@@ -82,7 +82,7 @@ public class Player {
 	}
 	/**
 	 * 
-	 * @param betPlayer Ajoute la mise du joueur et l'enlève de sa banque.
+	 * @param betPlayer Ajoute la mise du joueur et l'enleve de sa banque.
 	 */
 	public void miser(int betPlayer) {
 		bet = betPlayer;
@@ -122,14 +122,14 @@ public class Player {
 		return handsAnimSplit;
 	}
 	/**
-	 * Ajouter une carte à la main du joueur.
+	 * Ajouter une carte a la main du joueur.
 	 * @param card
 	 */
 	public void addint(int card) {
 		handsInt.add(card);
 	}
 	/**
-	 * Ajoute une carte à la main split du joueur.
+	 * Ajoute une carte a la main split du joueur.
 	 * @param card
 	 */
 	public void addintSplit(int card) {
@@ -143,7 +143,7 @@ public class Player {
 	    handsAnim.add(card);
 	}
 	/**
-	 * Ajoute une carte sous forme d'animation à la main split du joueur.
+	 * Ajoute une carte sous forme d'animation a la main split du joueur.
 	 * @param card
 	 */
 	public void addtextSplit(Animation<TextureRegion> card) {
@@ -165,7 +165,7 @@ public class Player {
 		mainstrsplit.add(card);
 	}
 	/**
-	 * Vérifie si le joueur a un blackjack ou non.
+	 * Verifie si le joueur a un blackjack ou non.
 	 * @param i
 	 */
 	public void hasBJ(int i) {
@@ -174,7 +174,7 @@ public class Player {
 		}
 	}
 	/**
-	 * réinitialise les mains du joueur.
+	 * reinitialise les mains du joueur.
 	 */
 	
 	public void clearHands() {

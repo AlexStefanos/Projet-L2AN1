@@ -1,11 +1,8 @@
 package fr.mygdx.game;
 
-import com.badlogic.gdx.Game;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,9 +18,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-
-import fr.mygdx.game.splashscreen.MainMenu;
-import fr.mygdx.game.Options;
 
 public class Rules implements Screen {
 
@@ -44,10 +38,10 @@ public class Rules implements Screen {
 	
 	private static final String textrules = "REGLES PRINCIPALES :\n"
     		+ "Voici les regles de base a connaitre pour le Blackjack :\n"
-			+ "La partie oppose individuellement chaque joueur contre la banque. Le but est de battre le croupier sans dépasser 21.\n"
-			+ "Dès qu'un joueur fait plus que 21, on dit qu'il 'Brûle' ou qu'il 'crève' et il perd sa mise initiale.\n"
-			+ "La valeur des cartes est établie comme suit : -De 2 à 9 -> valeur nominale de la carte l'As -> 1 ou 11 (au choix).\n"
-			+ "                                                   -Chaque figure + le 10 surnommées bûche -> 10 points\n"
+			+ "La partie oppose individuellement chaque joueur contre la banque. Le but est de battre le croupier sans depasser 21.\n"
+			+ "Des qu'un joueur fait plus que 21, on dit qu'il 'Brûle' ou qu'il 'creve' et il perd sa mise initiale.\n"
+			+ "La valeur des cartes est etablie comme suit : -De 2 a 9 -> valeur nominale de la carte l'As -> 1 ou 11 (au choix).\n"
+			+ "                                                   -Chaque figure + le 10 surnommees bûche -> 10 points\n"
 			+ "                                                   -l'As -> 1 ou 11 (au choix).\n"
 			+ "\n"
 			+ "\n"
@@ -63,24 +57,24 @@ public class Rules implements Screen {
 			+ "\n"
 			+ "\n"
 			+ "\n"
-			+ "Un Blackjack est composé d'une bûche et d'un As ce qui fait 21, si on obtient 21 avec 3 cartes ou plus, ce n'est pas un blackjack mais un 21\n"
+			+ "Un Blackjack est compose d'une bûche et d'un As ce qui fait 21, si on obtient 21 avec 3 cartes ou plus, ce n'est pas un blackjack mais un 21\n"
 			+ "Dans un premier temps, le(s) joueur(s) mise(nt) puis le croupier distribue 2 cartes visibles a chaque joueur, et 1 carte visible ainsi qu'une\n"
 			+ "carte non visible pour lui. Le premier joueur (celui a la gauche du croupier) commence :\n"
-			+ "Il peut tirer autant de carte qu'il veut tant qu'il ne dépasse pas 21 ou qu'il n'a pas atteint 21. Si il dépasse 21, il perd sa mise initiale, on dit qu'il 'bust'.\n"
-			+ "Il peut décider de s'arreter de tirer des cartes, on dit qu'il 'stay', ainsi chaque joueur joue en tirant tour par tour leurs cartes, et ce jusqu'a ce que tous les\n"
-			+ "joueurs aient joué. Maintenant, c'est au tour du croupier, qui dévoile sa seconde carte et va tirer tant qu'il n'a pas 17 points ou plus.\n"
+			+ "Il peut tirer autant de carte qu'il veut tant qu'il ne depasse pas 21 ou qu'il n'a pas atteint 21. Si il depasse 21, il perd sa mise initiale, on dit qu'il 'bust'.\n"
+			+ "Il peut decider de s'arreter de tirer des cartes, on dit qu'il 'stay', ainsi chaque joueur joue en tirant tour par tour leurs cartes, et ce jusqu'a ce que tous les\n"
+			+ "joueurs aient joue. Maintenant, c'est au tour du croupier, qui devoile sa seconde carte et va tirer tant qu'il n'a pas 17 points ou plus.\n"
 			+ "\n"
-			+ "Le croupier possède en première carte un AS :\n"
-			+ "Ici, l'AS est une carte dangereuse car si la deuxième carte est un 10, le joueur perd dans tous les cas, une option s'offre a lui : l'assurance, cela consiste \n"
-			+ "a payer la moitié de la mise initiale mais le joueur ne peut pas perdre la main(Il perd donc seulement la moitié de sa mise).\n"
+			+ "Le croupier possede en premiere carte un AS :\n"
+			+ "Ici, l'AS est une carte dangereuse car si la deuxieme carte est un 10, le joueur perd dans tous les cas, une option s'offre a lui : l'assurance, cela consiste \n"
+			+ "a payer la moitie de la mise initiale mais le joueur ne peut pas perdre la main(Il perd donc seulement la moitie de sa mise).\n"
 			+ "\n"
-			+ "Si le joueur pense avoir un bon jeu contre le croupier, a condition qu'il n'ai pas tiré une seul fois pendant la main, il peut prendre\n"
-			+ "le décision de doubler sa mise mais ne pourra tirer qu'une seule carte.\n"
+			+ "Si le joueur pense avoir un bon jeu contre le croupier, a condition qu'il n'ai pas tire une seul fois pendant la main, il peut prendre\n"
+			+ "le decision de doubler sa mise mais ne pourra tirer qu'une seule carte.\n"
 			+ "\n"
-			+ "Parfois, il arrive que le joueur pioche deux cartes de même valeur (deux 8 ou meme un Valet et une Dame), dans ce cas, il peut décider\n"
-			+ "de 'split', cela consiste a séparer ses deux cartes pour avoir 2 mains et en meme temps doubler la mise(la mise initiale par main) Il pourra\n"
-			+ "ainsi jouer ses deux mains dans le meme tour, avec les memes règles que précédemment, sauf une :\n"
-			+ "Si le joueur décide de plit deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
+			+ "Parfois, il arrive que le joueur pioche deux cartes de meme valeur (deux 8 ou meme un Valet et une Dame), dans ce cas, il peut decider\n"
+			+ "de 'split', cela consiste a separer ses deux cartes pour avoir 2 mains et en meme temps doubler la mise(la mise initiale par main) Il pourra\n"
+			+ "ainsi jouer ses deux mains dans le meme tour, avec les memes regles que precedemment, sauf une :\n"
+			+ "Si le joueur decide de plit deux As alors il ne pourra piocher qu'une seule carte en plus de son AS pour ses deux mains.\n";
 
 	
 	public Rules(BLACKJACKCity blackjackcity){
@@ -157,31 +151,26 @@ public class Rules implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 
