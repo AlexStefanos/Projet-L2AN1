@@ -1,0 +1,47 @@
+
+AnimValetCoeur.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Ez1
+  rotate: false
+  xy: 0, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1
+Ez2
+  rotate: false
+  xy: 150, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1
+Ez3
+  rotate: false
+  xy: 300, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1
+Ez4
+  rotate: false
+  xy: 450, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1
+Ez5
+  rotate: false
+  xy: 600, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1
+Ez6
+  rotate: false
+  xy: 750, 0
+  size: 150, 152
+  orig: 150, 152
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,2 @@
+fr/mygdx/game/desktop/DesktopLauncher.java
+ fr.mygdx.game.desktop.DesktopLauncher

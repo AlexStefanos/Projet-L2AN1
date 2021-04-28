@@ -1,0 +1,54 @@
+
+AnimBlueJ.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+AnimBlue1
+  rotate: false
+  xy: 0, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue2
+  rotate: false
+  xy: 112, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue3
+  rotate: false
+  xy: 224, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue4
+  rotate: false
+  xy: 336, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue5
+  rotate: false
+  xy: 448, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue6
+  rotate: false
+  xy: 560, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+AnimBlue7
+  rotate: false
+  xy: 672, 0
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
