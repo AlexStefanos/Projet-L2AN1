@@ -4,7 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.*;
-
+/**
+ * Permet de gérer les informations liées aux joueurs.
+ * 
+ *
+ */
 public class Player {
     private String name;
     private ArrayList<Integer> handsInt;

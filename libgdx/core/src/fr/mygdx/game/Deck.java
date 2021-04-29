@@ -4,7 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * Permet de construire le paquet avec lequel on va jouer.
+ * 
+ *
+ */
 public class Deck extends Animations{
 	private ArrayList<Integer> deckInt;
 	private ArrayList<Animation<TextureRegion>> deckAnim;
