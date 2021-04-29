@@ -26,7 +26,7 @@ public class Options implements Screen {
 	private BitmapFont black;
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	private Music music;
+	
 	private Music pressbutton;
 	private BLACKJACKCity parent;
 	public static boolean FULLSCREEN = true;
@@ -53,7 +53,7 @@ public class Options implements Screen {
 		tableResolution = new Table(skin);
 		tableResolution.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
-		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
+		
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 	
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
@@ -63,9 +63,9 @@ public class Options implements Screen {
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 		
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		
+		
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 		
 		buttonBack = new TextButton("Back", textButtonStyle);
@@ -74,7 +74,7 @@ public class Options implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
@@ -111,7 +111,7 @@ public class Options implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.AUDIO);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonAudio.pad(15f, 41f, 15f, 41f);

@@ -170,7 +170,7 @@ public class SinglePlayer implements Screen {
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		white = new BitmapFont(Gdx.files.internal("font/white.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
-		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
 		result = new Label("", skinLabel);
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
@@ -208,9 +208,8 @@ public class SinglePlayer implements Screen {
 		textButtonStyle5.pressedOffsetY = -1;
 		textButtonStyle5.font = black;
 		
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 		
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
@@ -222,7 +221,7 @@ public class SinglePlayer implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);

@@ -160,9 +160,7 @@ public class DuoPlayers implements Screen{
 		textButtonStyle5.pressedOffsetY = -1;
 		textButtonStyle5.font = black;
 			
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 			
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
@@ -171,7 +169,7 @@ public class DuoPlayers implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
@@ -205,7 +203,7 @@ public class DuoPlayers implements Screen{
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonRedJeton.pad(20f, 20f, 20f, 20f);
@@ -221,7 +219,7 @@ public class DuoPlayers implements Screen{
 				table.add(miseLabel);
 				table.pad(10,0,0,10);	
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonYellowJeton.pad(20f, 20f, 20f, 20f);
@@ -237,7 +235,7 @@ public class DuoPlayers implements Screen{
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonGreenJeton.pad(20f, 20f, 20f, 20f);
@@ -253,7 +251,7 @@ public class DuoPlayers implements Screen{
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		miseLabel = new Label( "Mise = "+mise , skinLabel );

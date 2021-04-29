@@ -32,6 +32,7 @@ public class MainMenu implements Screen {
 	private Music music;
 	private Music pressbutton;
 	private  BLACKJACKCity parent;
+	private boolean musicIsOff = true;
 	
 	
 	public MainMenu(BLACKJACKCity blackjackcity){
@@ -45,7 +46,7 @@ public class MainMenu implements Screen {
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
 		stage = new Stage();
-		music = Gdx.audio.newMusic(Gdx.files.internal("Mainmusic.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
 		Gdx.input.setInputProcessor(stage);
 		table = new Table(skin);
@@ -60,9 +61,12 @@ public class MainMenu implements Screen {
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 		
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		if (musicIsOff) {
+		    music.setLooping(true);
+		    music.setVolume(AppPreferences.MVOLUME);
+		    music.play();
+		    musicIsOff = false;
+		}
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 	
 		buttonPlay = new TextButton("Play", textButtonStyle);
@@ -71,7 +75,7 @@ public class MainMenu implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.PLAY);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonPlay.pad(15f, 40f, 15f, 40f);
@@ -82,7 +86,7 @@ public class MainMenu implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.RULES);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonOptions = new TextButton("Options", textButtonStyle);
@@ -92,7 +96,7 @@ public class MainMenu implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.OPTION);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonExit = new TextButton("Exit", textButtonStyle);

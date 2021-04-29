@@ -6,7 +6,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.*;
-
+/**
+ * Classe permettant de gérer les règles du jeu (détermine le vainqueur, fait piocher, etc...).
+ * 
+ *
+ */
 public class Cards {
 
 

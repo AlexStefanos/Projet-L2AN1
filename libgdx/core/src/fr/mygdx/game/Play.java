@@ -27,7 +27,7 @@ public class Play implements Screen {
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
 	private Music pressbutton;
-	private Music music;
+	
 	private BLACKJACKCity parent;
 	
 	public Play(BLACKJACKCity blackjackcity){
@@ -48,8 +48,7 @@ public class Play implements Screen {
 		tablePlay.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
-		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
-
+		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
 		textButtonStyle.down = skin.getDrawable("button.down");
@@ -57,9 +56,7 @@ public class Play implements Screen {
 		textButtonStyle.pressedOffsetY = -1;
 		textButtonStyle.font = black;
 
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 
 
@@ -69,7 +66,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonBack.pad(15f, 40f, 15f, 40f);
@@ -80,7 +77,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.SINGLEPLAYER);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonSingle.pad(15f, 40f, 15f, 40f);
@@ -91,7 +88,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.DUOPLAYERS);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonDuo.pad(15f, 40f, 15f, 40f);
@@ -102,7 +99,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.TRIOPLAYERS);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonTrio.pad(15f, 40f, 15f, 40f);
@@ -113,7 +110,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.QUADRAPLAYERS);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonQuadra.pad(15f, 20f, 15f, 20f);
@@ -124,7 +121,7 @@ public class Play implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.HISTORY);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonHistory.pad(15f, 40f, 15f, 40f);

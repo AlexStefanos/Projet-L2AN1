@@ -25,6 +25,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 @SuppressWarnings("unused")
+/**
+ * Mode pour trois joueurs.
+ * 
+ *
+ */
 public class TrioPlayers implements Screen {
 	private Stage stage;
 	private SpriteBatch batch;
@@ -34,7 +39,7 @@ public class TrioPlayers implements Screen {
 	private Table table, tableJeu, tableQuit, tableJeu2, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel,atlasAnimRedJ,atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ, cards1,atlasAura;
 	private Skin skin, skin2, skin3, skin4, skin5,skinLabel;
-	private Music music;
+
 	private Music pressbutton;
 	private Label miseLabel;
 	private int cliqueJ1, cliqueJ2, mise,red,green,blue,yellow, cliqueStop = 0;
@@ -151,7 +156,6 @@ public class TrioPlayers implements Screen {
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
-		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -188,9 +192,7 @@ public class TrioPlayers implements Screen {
 		textButtonStyle5.pressedOffsetY = -1;
 		textButtonStyle5.font = black;
 			
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 			
 		buttonQuit = new TextButton("Quit to Main Menu", textButtonStyle);
@@ -199,7 +201,7 @@ public class TrioPlayers implements Screen {
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.MAINMENU);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonQuit.pad(15f, 40f, 15f, 40f);
@@ -234,7 +236,7 @@ public class TrioPlayers implements Screen {
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonRedJeton.pad(20f, 20f, 20f, 20f);
@@ -251,7 +253,7 @@ public class TrioPlayers implements Screen {
 				table.add(miseLabel);
 				table.pad(10,0,0,10);	
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonYellowJeton.pad(20f, 20f, 20f, 20f);
@@ -268,7 +270,7 @@ public class TrioPlayers implements Screen {
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		buttonGreenJeton.pad(20f, 20f, 20f, 20f);
@@ -285,7 +287,7 @@ public class TrioPlayers implements Screen {
 				table.add(miseLabel);
 				table.pad(10,0,0,10);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		miseLabel = new Label( "Mise = "+mise , skinLabel );

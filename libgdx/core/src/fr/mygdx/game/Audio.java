@@ -70,10 +70,9 @@ public class Audio implements Screen {
 		
 		stage.addActor(table);
 		
-		music = Gdx.audio.newMusic(Gdx.files.internal("Optionmusic.mp3"));
-		music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+		music = Gdx.audio.newMusic(Gdx.files.internal("Rulesmusic.mp3"));
+		
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 	
 		Skin skin = new Skin(Gdx.files.internal("skin/golden-ui-skin.json"));

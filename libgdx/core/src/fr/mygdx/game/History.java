@@ -64,7 +64,7 @@ public class History implements Screen{
 		
 		black = new BitmapFont(Gdx.files.internal("font/black.fnt"), false);
 		pressbutton = Gdx.audio.newMusic(Gdx.files.internal("pressbutton.mp3"));
-		music = Gdx.audio.newMusic(Gdx.files.internal("Playmusic.mp3"));
+		
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
 		textButtonStyle.up = skin.getDrawable("button.up");
@@ -118,9 +118,9 @@ public class History implements Screen{
 	    		}
 		    }
 	    }
-	    music.setLooping(true);
-		music.setVolume(AppPreferences.MVOLUME);
-		music.play();
+	    
+		
+		
 		pressbutton.setVolume(AppPreferences.SVOLUME);
 
 		buttonBack = new TextButton("Back", textButtonStyle);
@@ -133,7 +133,7 @@ public class History implements Screen{
 			public void clicked(InputEvent event, float x, float y) {
 				parent.changeScreen(BLACKJACKCity.PLAY);
 				pressbutton.play();
-				music.dispose();
+				
 			}
 		});
 		p1.initialisation();
