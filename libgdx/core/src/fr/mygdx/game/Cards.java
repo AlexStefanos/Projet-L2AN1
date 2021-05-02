@@ -22,7 +22,7 @@ private Player[] player;
 private Deck paquet;
 private static Preferences prefs;
 private int nbparticipants;
-private int bank = 5000;
+private int t,bank = 5000;
 
 int mise = 0;
 
@@ -342,9 +342,10 @@ int mise = 0;
 	public void getTotal(int i,String state, int j) {
 			if (AppPreferences.J >=20) {
 				for(int o = 0; o <= 10 ; o++) {
-					prefs.remove("Score"+o);
-					prefs.remove("State"+o);
-					prefs.remove("WL"+o);
+					t = (AppPreferences.J -20) + o;
+					prefs.remove("Score"+t);
+					prefs.remove("State"+t);
+					prefs.remove("WL"+t);
 				}
 			}
 		 	
