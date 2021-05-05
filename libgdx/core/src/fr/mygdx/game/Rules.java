@@ -84,7 +84,7 @@ public class Rules implements Screen {
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		Background = new Texture("Backgroundrules.png");
+		Background = new Texture("Fond_Vert.png");
 		Image = new Texture("Tableau.png");
 		atlas = new TextureAtlas("ui/button.pack");
 		skin = new Skin(atlas);
