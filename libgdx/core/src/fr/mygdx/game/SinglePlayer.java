@@ -297,6 +297,7 @@ public class SinglePlayer implements Screen {
 				pressbutton.play();
 				tableGame.removeActor(buttonDraw);
 				tableStop.removeActor(buttonStop);
+				tableDouble.removeActor(buttonDouble);
 				clickStop = true;
 				tablePlayAgain.add(buttonPlayAgain);
 				p1.getTotal(0, "SinglePlayer",AppPreferences.J);
