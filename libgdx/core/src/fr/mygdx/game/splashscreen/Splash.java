@@ -14,7 +14,9 @@ import aurelienribon.tweenengine.TweenManager;
 import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.splashengine.SpriteAccessor;
 
-
+/**
+ * Paramètrage du SplashScreen
+ */
 public class Splash implements Screen{
 	private SpriteBatch batch;
 	private Sprite splash;

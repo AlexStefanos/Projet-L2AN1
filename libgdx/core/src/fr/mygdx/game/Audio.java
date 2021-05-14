@@ -22,7 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 /**
- * Permet de gérer l'audio du jeu.
+ * Permet de gérer l'audio du jeu
  * @author arthu
  *
  */

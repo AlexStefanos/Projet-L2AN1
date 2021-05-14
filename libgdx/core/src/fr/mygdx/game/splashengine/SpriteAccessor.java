@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import aurelienribon.tweenengine.TweenAccessor;
 
+/**
+ * Gestion des erreurs du SplashScreen
+ */
 public class SpriteAccessor implements TweenAccessor<Sprite>{
 	public static final int ALPHA = 0;
 	/**

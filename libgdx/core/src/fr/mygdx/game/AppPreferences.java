@@ -5,7 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 
 /**
- * Classe qui permet de gérer l'utilisation et le réglage du son.
+ * Classe qui permet de gérer l'utilisation et le réglage du son
  * @author arthu
  *
  */

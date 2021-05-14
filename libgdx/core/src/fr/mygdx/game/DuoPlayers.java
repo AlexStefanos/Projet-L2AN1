@@ -24,7 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Mode pour deux joueurs.
+ * Mode pour deux joueurs
  * 
  *
  */

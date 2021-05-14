@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.*;
 /**
- * Permet de gérer les informations liées aux joueurs.
+ * Permet de gérer les informations liées aux joueurs
  * 
  *
  */

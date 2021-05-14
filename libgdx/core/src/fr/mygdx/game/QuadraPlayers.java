@@ -24,9 +24,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
-@SuppressWarnings("unused")
 /**
- * Mode pour quatre joueurs.
+ * Mode pour quatre joueurs
  * 
  *
  */

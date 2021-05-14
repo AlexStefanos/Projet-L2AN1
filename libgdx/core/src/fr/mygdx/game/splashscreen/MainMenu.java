@@ -19,6 +19,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import fr.mygdx.game.BLACKJACKCity;
 import fr.mygdx.game.AppPreferences;
 
+/**
+ * Gestion du menu principal
+ */
 public class MainMenu implements Screen {
 
 	private Stage stage;

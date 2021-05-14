@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 /**
- * Classe qui permet d'accéder aux quatres menus (SinglePlayer,DuoPlayer,TrioPlayre et QuadraPlayer) et au menu History.
+ * Classe qui permet d'accéder aux quatres menus (SinglePlayer,DuoPlayer,TrioPlayer et QuadraPlayer) et au menu History
  * @author arthu
  *
  */

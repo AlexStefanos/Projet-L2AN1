@@ -26,7 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
-@SuppressWarnings("unused")
+
 /**
  * Mode pour un joueur.
  * 
@@ -42,7 +42,7 @@ public class SinglePlayer implements Screen {
 	private Table table, tableGame, tableStop, tablePlayAgain, tableRedJeton, tableGreenJeton, tableBlueJeton, tableYellowJeton, tableDraw, tableResult,tableDouble;
 	private int launch = 0, click = 0, bet = 0, money = 5000, red = 0, yellow = 0, green = 0, blue = 0, firstLaunch = 0, clickRestart = 0, hasDouble = 0;
 	private boolean clickStop = false, launchVictory = false, launchTie = false, launchDefeat = false, clickPlay = false, resultCount = false, 
-					displayChips = true,afficheMise = false,clickMise = true, hasStop = false;
+					displayChips = true,afficheMise = false, clickMise = true, hasStop = false;
 	private Label miseLabel, banque, result, labelScorePlayer;
 	private TextureAtlas atlas, atlas2, atlas3, atlas4, atlas5, atlasLabel, atlasAnimRedJ, atlasAnimGreenJ, atlasAnimBlueJ, atlasAnimYellowJ,atlasAura;/*, atlas2*/;
 
