@@ -402,6 +402,11 @@ int mise = 0;
 		return bank;
 	}
 	
+	/**
+	 * Permet au joueur de miser
+	 * @param i
+	 * @param bet
+	 */
 	public void miser(int i, int bet) {
 		player[i].miser(bet);
 	}

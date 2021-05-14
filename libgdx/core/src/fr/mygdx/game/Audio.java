@@ -21,7 +21,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
+/**
+ * Permet de gérer l'audio du jeu.
+ * @author arthu
+ *
+ */
 public class Audio implements Screen {
 	private BLACKJACKCity parent;
 	private Stage stage;
@@ -45,6 +49,9 @@ public class Audio implements Screen {
 		stage = new Stage(new ScreenViewport());
 	}
 	
+	/**
+	 * Lorsqu'une classe est a l'ecran, show() est la premiere methode a etre appele. Par convention, on initialise les variables de la classe dans cette methode.
+	 */
 	@Override
 	public void show() {
 		stage.clear();
@@ -152,6 +159,9 @@ public class Audio implements Screen {
 				table.add(buttonBack);
 	}
 
+	/**
+	 * Gestion de tous les affichages de la classe.
+	 */
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
@@ -164,29 +174,45 @@ public class Audio implements Screen {
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
 	}
-
+	
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
+	 */
 	@Override
 	public void resize(int width, int height) {
 
 	}
-
+	
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
 
 	}
-
+	
+	/**
+	 * Gestion de la reprise des pauses 
+	 */
 	@Override
 	public void resume() {
 
 	}
 
+	/**
+	 * Gestion des Textures, bouttons, etc. non-affiche a l'ecran
+	 */
 	@Override
 	public void hide() {
 
 	}
 
+	/**
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose() {
 
 	}
+
 }

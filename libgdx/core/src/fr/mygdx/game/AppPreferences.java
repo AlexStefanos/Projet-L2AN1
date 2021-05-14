@@ -4,6 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Music;
 
+/**
+ * Classe qui permet de gérer l'utilisation et le réglage du son.
+ * @author arthu
+ *
+ */
 public class AppPreferences {
 	private Music music;
 	private Music pressbutton;

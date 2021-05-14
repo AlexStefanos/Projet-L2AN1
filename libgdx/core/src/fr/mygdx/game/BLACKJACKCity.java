@@ -5,6 +5,11 @@ import com.badlogic.gdx.Game;
 import fr.mygdx.game.splashscreen.MainMenu;
 import fr.mygdx.game.splashscreen.Splash;
 
+/**
+ * Classe qui permet de faire la transition entre le splashscreen et le menu principal
+ * @author arthu
+ *
+ */
 public class BLACKJACKCity extends Game {
 	public static final String TITLE = "BLACKJACK City";
 	private AppPreferences preferences;
@@ -39,6 +44,9 @@ public class BLACKJACKCity extends Game {
 		preferences = new AppPreferences();
 	}
 
+	/**
+	 * Gestion de tous les affichages de la classe.
+	 */
 	@Override
 	public void render () {
 		super.render();
@@ -92,14 +100,25 @@ public class BLACKJACKCity extends Game {
 		}
 	}
 	
+	/**
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose () {
 		super.dispose();
 	}
+	
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
+	 */
 	@Override
 	public void resize(int weidth, int height ) {
 		super.resize(weidth, height);
 	}
+	
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
 		super.pause();
@@ -111,6 +130,10 @@ public class BLACKJACKCity extends Game {
 	public AppPreferences getPreferences(){
 		return this.preferences;
 	}
+	
+	/**
+	 * Gestion de la reprise des pauses 
+	 */
 	@Override
 	public void resume() {
 		super.resume();

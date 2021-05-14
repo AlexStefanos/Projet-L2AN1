@@ -72,7 +72,10 @@ public class QuadraPlayers implements Screen{
 	Cards p1 = new Cards(paquet);
 	
 	private int p1Carte = 0;//, p2Carte = 0;
-		
+	
+	/**
+	 * Lorsqu'une classe est a l'ecran, show() est la premiere methode a etre appele. Par convention, on initialise les variables de la classe dans cette methode.
+	 */
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -332,6 +335,9 @@ public class QuadraPlayers implements Screen{
 		stage.addActor(tableYellowJeton);
 	}
 
+	/**
+	 * Gestion de tous les affichages de la classe.
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
@@ -352,26 +358,41 @@ public class QuadraPlayers implements Screen{
 		stage.draw();
 	}
 
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
+	 */
 	@Override
 	public void resize(int width, int height) {
 
 	}
-
+	
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
 
 	}
-
+	
+	/**
+	 * Gestion de la reprise des pauses 
+	 */
 	@Override
 	public void resume() {
 
 	}
-		
+
+	/**
+	 * Gestion des Textures, bouttons, etc. non-affiche a l'ecran
+	 */
 	@Override
 	public void hide() {
 
 	}
 
+	/**
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose() {
 

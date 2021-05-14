@@ -57,6 +57,9 @@ public class DuoPlayers implements Screen{
 	Deck paquet = new Deck(animationPack);
 	Cards p1 = new Cards(paquet);
 	
+	/**
+	 * Lorsqu'une classe est a l'ecran, show() est la premiere methode a etre appele. Par convention, on initialise les variables de la classe dans cette methode.
+	 */
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -299,6 +302,9 @@ public class DuoPlayers implements Screen{
 		stage.addActor(tableYellowJeton);
 	}
 
+	/**
+	 * Gestion de tous les affichages de la classe.
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClearColor(2, 2, 2, 1);
@@ -315,33 +321,43 @@ public class DuoPlayers implements Screen{
 		stage.draw();
 	}
 
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
+	 */
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
-
+	
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
-
+	
+	/**
+	 * Gestion de la reprise des pauses 
+	 */
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
-		
+
+	/**
+	 * Gestion des Textures, bouttons, etc. non-affiche a l'ecran
+	 */
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 }

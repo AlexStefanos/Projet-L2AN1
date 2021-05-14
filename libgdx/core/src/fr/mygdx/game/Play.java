@@ -16,6 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+/**
+ * Classe qui permet d'accéder aux quatres menus (SinglePlayer,DuoPlayer,TrioPlayre et QuadraPlayer) et au menu History.
+ * @author arthu
+ *
+ */
 public class Play implements Screen {
 
 	private Stage stage;
@@ -34,6 +39,9 @@ public class Play implements Screen {
 		parent = blackjackcity;
 	}
 
+	/**
+	 * Lorsqu'une classe est a l'ecran, show() est la premiere methode a etre appele. Par convention, on initialise les variables de la classe dans cette methode.
+	 */
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
@@ -165,26 +173,41 @@ public class Play implements Screen {
 		stage.draw();
 	}
 
+	/**
+	 * Permet de redimensionner des Textures, bouttons, etc. affiche a l'ecran
+	 */
 	@Override
 	public void resize(int width, int height) {
 
 	}
-
+	
+	/**
+	 * Gestion des pauses du jeu
+	 */
 	@Override
 	public void pause() {
 
 	}
-
+	
+	/**
+	 * Gestion de la reprise des pauses 
+	 */
 	@Override
 	public void resume() {
 
 	}
 
+	/**
+	 * Gestion des Textures, bouttons, etc. non-affiche a l'ecran
+	 */
 	@Override
 	public void hide() {
 
 	}
 
+	/**
+	 * Permet de fermer proprement la variable donnee (methodes, stage, etc.) 
+	 */
 	@Override
 	public void dispose() {
 

@@ -1,4 +1,4 @@
-	package fr.mygdx.game;
+package fr.mygdx.game;
 
 import java.util.ArrayList;
 
@@ -105,11 +105,6 @@ public class Animations {
 		atlasValetPique = new TextureAtlas("Anim/ValetPique/AnimValetPique.pack");
 		atlasDamePique = new TextureAtlas("Anim/DamePique/AnimDamePique.pack");
 		atlasRoiPique = new TextureAtlas("Anim/RoiPique/AnimRoiPique.pack");
-
-		//--------------------------------------------------------------------------------------------------
-		//---------------------------------------------------Carreau----------------------------------------
-		//--------------------------------------------------------------------------------------------------
-		
 		
 		animationFramesAsCarreau = atlasAsCarreau.getRegions();
 		animAsCarreau = new Animation<TextureRegion> (totalAnimTime , animationFramesAsCarreau);
@@ -163,10 +158,6 @@ public class Animations {
 		animRoiCarreau = new Animation<TextureRegion> (totalAnimTime , animationFramesRoiCarreau);
 		animRoiCarreau.setPlayMode(Animation.PlayMode.NORMAL);
 		
-		//--------------------------------------------------------------------------------------------------
-		//---------------------------------------------------Coeur------------------------------------------
-		//--------------------------------------------------------------------------------------------------
-		
 		animationFramesAsCoeur = atlasAsCoeur.getRegions();
 		animAsCoeur = new Animation<TextureRegion> (totalAnimTime , animationFramesAsCoeur);
 		animAsCoeur.setPlayMode(Animation.PlayMode.NORMAL);
@@ -218,10 +209,6 @@ public class Animations {
 		animationFramesRoiCoeur = atlasRoiCoeur.getRegions();
 		animRoiCoeur = new Animation<TextureRegion> (totalAnimTime , animationFramesRoiCoeur);
 		animRoiCoeur.setPlayMode(Animation.PlayMode.NORMAL);
-
-		//--------------------------------------------------------------------------------------------------
-		//---------------------------------------------------Trefle-----------------------------------------
-		//--------------------------------------------------------------------------------------------------
 		
 		animationFramesAsTrefle = atlasAsTrefle.getRegions();
 		animAsTrefle = new Animation<TextureRegion> (totalAnimTime , animationFramesAsTrefle);
@@ -274,10 +261,6 @@ public class Animations {
 		animationFramesRoiTrefle = atlasRoiTrefle.getRegions();
 		animRoiTrefle = new Animation<TextureRegion> (totalAnimTime , animationFramesRoiTrefle);
 		animRoiTrefle.setPlayMode(Animation.PlayMode.NORMAL);
-
-		//--------------------------------------------------------------------------------------------------
-		//---------------------------------------------------Pique------------------------------------------
-		//--------------------------------------------------------------------------------------------------
 		
 		animationFramesAsPique = atlasAsPique.getRegions();
 		animAsPique = new Animation<TextureRegion> (totalAnimTime , animationFramesAsPique);

@@ -6,6 +6,11 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import fr.mygdx.game.Options;
 import fr.mygdx.game.BLACKJACKCity;
 
+/**
+ * C'est grâce a cette classe que le jeu se lance
+ * @author arthu
+ *
+ */
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
